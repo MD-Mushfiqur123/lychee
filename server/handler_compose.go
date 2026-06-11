@@ -2,6 +2,7 @@ package server
 
 import (
 	"context"
+	"encoding/json"
 	"net/http"
 	"strings"
 
@@ -26,7 +27,7 @@ func (s *Server) ComposeHandler(c *gin.Context) {
 		return
 	}
 
-	runStep := func(ctx context.Context, modelName string, prompt string, options map[string]any) (string, error) {
+	runStep := func(ctx context.Context, modelName string, prompt string, options map[string]any, onChunk func(string)) (string, error) {
 		modelRef, err := parseAndValidateModelRef(modelName)
 		if err != nil {
 			return "", err
@@ -69,6 +70,9 @@ func (s *Server) ComposeHandler(c *gin.Context) {
 			LeadingBOS: leadingBOS,
 		}, func(cr llm.CompletionResponse) {
 			responseSB.WriteString(cr.Content)
+			if onChunk != nil {
+				onChunk(cr.Content)
+			}
 		})
 		if err != nil {
 			return "", err
@@ -77,7 +81,35 @@ func (s *Server) ComposeHandler(c *gin.Context) {
 		return responseSB.String(), nil
 	}
 
-	resp, err := chainmodel.ExecuteChain(c.Request.Context(), &req, runStep)
+	if req.Stream {
+		c.Header("Content-Type", "text/event-stream")
+		c.Header("Cache-Control", "no-cache")
+		c.Header("Connection", "keep-alive")
+		c.Header("Transfer-Encoding", "chunked")
+
+		onEvent := func(event chainmodel.ComposeEvent) {
+			jsonData, err := json.Marshal(event)
+			if err != nil {
+				return
+			}
+			c.SSEvent("message", string(jsonData))
+			c.Writer.Flush()
+		}
+
+		_, err := chainmodel.ExecuteChain(c.Request.Context(), &req, runStep, onEvent)
+		if err != nil {
+			errEvent := chainmodel.ComposeEvent{
+				Event: "error",
+				Text:  err.Error(),
+			}
+			jsonData, _ := json.Marshal(errEvent)
+			c.SSEvent("message", string(jsonData))
+			c.Writer.Flush()
+		}
+		return
+	}
+
+	resp, err := chainmodel.ExecuteChain(c.Request.Context(), &req, runStep, nil)
 	if err != nil {
 		c.JSON(http.StatusInternalServerError, gin.H{"error": err.Error()})
 		return
