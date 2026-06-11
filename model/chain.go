@@ -10,6 +10,31 @@ import (
 	"github.com/lychee/lychee/api"
 )
 
+// evaluateCondition checks whether a step's condition is satisfied
+// given the current pipeline output so far.
+func evaluateCondition(cond *api.ComposeCondition, currentInput string) bool {
+	if cond == nil {
+		return true // no condition = always run
+	}
+	if cond.Always {
+		return true
+	}
+	lower := strings.ToLower(currentInput)
+	if cond.Contains != "" && !strings.Contains(lower, strings.ToLower(cond.Contains)) {
+		return false
+	}
+	if cond.NotContains != "" && strings.Contains(lower, strings.ToLower(cond.NotContains)) {
+		return false
+	}
+	if cond.MinLength > 0 && len(currentInput) < cond.MinLength {
+		return false
+	}
+	if cond.MaxLength > 0 && len(currentInput) > cond.MaxLength {
+		return false
+	}
+	return true
+}
+
 // ComposeEvent represents a progress event streamed during composition.
 type ComposeEvent struct {
 	Event  string               `json:"event"`
@@ -131,8 +156,45 @@ func ExecuteChain(
 			}
 		}
 
+		// ── DAG: check condition before executing ──────────────────────
+		if !evaluateCondition(step.Condition, currentInput) {
+			if onEvent != nil {
+				onEvent(ComposeEvent{
+					Event: "step_skipped",
+					Index: i,
+					Model: step.Model,
+					Text:  "condition not met, step skipped",
+				})
+			}
+			stepRes := api.StepResult{
+				Model:   step.Model,
+				Output:  currentInput, // pass through unchanged
+				Skipped: true,
+			}
+			results = append(results, stepRes)
+			continue
+		}
+
 		output, err := execWithRetry(ctx, step, i, false, 0, mainOnChunk)
 		if err != nil {
+			if step.SkipOnError {
+				// Resilient mode: log the error and continue
+				if onEvent != nil {
+					onEvent(ComposeEvent{
+						Event: "step_error",
+						Index: i,
+						Model: step.Model,
+						Text:  fmt.Sprintf("step failed (skip_on_error=true): %s", err.Error()),
+					})
+				}
+				stepRes := api.StepResult{
+					Model:   step.Model,
+					Output:  currentInput, // pass through unchanged
+					Error:   err.Error(),
+				}
+				results = append(results, stepRes)
+				continue
+			}
 			return nil, fmt.Errorf("step %d (%s) failed: %w", i, step.Model, err)
 		}
 
