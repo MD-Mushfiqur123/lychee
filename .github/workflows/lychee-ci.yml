@@ -1,0 +1,99 @@
+name: Lychee CI
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  # ─── Go Unit Tests ───────────────────────────────────────────────
+  test:
+    name: Go Tests (${{ matrix.os }})
+    strategy:
+      matrix:
+        os: [ubuntu-latest, windows-latest, macos-latest]
+    runs-on: ${{ matrix.os }}
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-go@v5
+        with:
+          go-version-file: go.mod
+          cache: true
+
+      - name: Run unit tests
+        run: go test -count=1 -timeout 120s ./api/... ./cmd/... ./server/... ./model/... ./x/agent/... ./anthropic/...
+
+      - name: Run Lychee-specific feature tests
+        run: |
+          go test -v -count=1 ./server/ -run "TestCompose|TestSchema|TestPromptCache|TestDashboard"
+          go test -v -count=1 ./cmd/ -run "TestExtractQuant|TestGroupByQuant|TestSelectBest|TestCommunity"
+          go test -v -count=1 ./model/ -run "TestExecuteChain"
+
+  # ─── Linting ─────────────────────────────────────────────────────
+  lint:
+    name: Lint
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-go@v5
+        with:
+          go-version-file: go.mod
+          cache: true
+      - uses: golangci/golangci-lint-action@v6
+        with:
+          version: latest
+          args: --timeout=5m --new-from-rev=HEAD~1
+
+  # ─── Build Verification ──────────────────────────────────────────
+  build:
+    name: Build (${{ matrix.os }})
+    strategy:
+      matrix:
+        include:
+          - os: ubuntu-latest
+            binary: lychee
+          - os: windows-latest
+            binary: lychee.exe
+          - os: macos-latest
+            binary: lychee
+    runs-on: ${{ matrix.os }}
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-go@v5
+        with:
+          go-version-file: go.mod
+          cache: true
+      - name: Build binary
+        run: go build -o ${{ matrix.binary }} .
+      - name: Verify binary runs
+        run: ./${{ matrix.binary }} --version
+
+  # ─── Security Scan ───────────────────────────────────────────────
+  security:
+    name: Security Scan
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-go@v5
+        with:
+          go-version-file: go.mod
+      - name: Run govulncheck
+        run: |
+          go install golang.org/x/vuln/cmd/govulncheck@latest
+          govulncheck ./...
+
+  # ─── go mod tidy check ───────────────────────────────────────────
+  mod-tidy:
+    name: go mod tidy
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-go@v5
+        with:
+          go-version-file: go.mod
+      - run: go mod tidy --diff || (echo "Please run 'go mod tidy'" && exit 1)

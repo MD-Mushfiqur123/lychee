@@ -3,9 +3,12 @@ package server
 import (
 	"encoding/json"
 	"fmt"
+	"net/mail"
+	"net/url"
 	"reflect"
 	"regexp"
 	"strings"
+	"time"
 )
 
 // ValidateJSONSchema validates a JSON string or raw byte slice against a JSON Schema.
@@ -262,5 +265,116 @@ func validateValue(val any, schema map[string]any, path string, depth int, root 
 		}
 	}
 
+	// Validate not
+	if notSchemaVal, ok := schema["not"]; ok {
+		if notSchema, ok := notSchemaVal.(map[string]any); ok {
+			if err := validateValue(val, notSchema, path, depth+1, root); err == nil {
+				return fmt.Errorf("path %q: value must NOT match the 'not' schema", path)
+			}
+		}
+	}
+
+	// Validate const
+	if constVal, ok := schema["const"]; ok {
+		if !reflect.DeepEqual(constVal, val) {
+			return fmt.Errorf("path %q: value must equal const %v, got %v", path, constVal, val)
+		}
+	}
+
+	// Validate format (string only)
+	if sVal, ok := val.(string); ok {
+		if formatStr, ok := schema["format"].(string); ok {
+			if err := validateFormat(sVal, formatStr, path); err != nil {
+				return err
+			}
+		}
+	}
+
+	// Validate if/then/else
+	if ifSchemaVal, ok := schema["if"]; ok {
+		if ifSchema, ok := ifSchemaVal.(map[string]any); ok {
+			ifPasses := validateValue(val, ifSchema, path, depth+1, root) == nil
+			if ifPasses {
+				if thenSchemaVal, ok := schema["then"]; ok {
+					if thenSchema, ok := thenSchemaVal.(map[string]any); ok {
+						if err := validateValue(val, thenSchema, path, depth+1, root); err != nil {
+							return fmt.Errorf("path %q: 'then' schema failed: %w", path, err)
+						}
+					}
+				}
+			} else {
+				if elseSchemaVal, ok := schema["else"]; ok {
+					if elseSchema, ok := elseSchemaVal.(map[string]any); ok {
+						if err := validateValue(val, elseSchema, path, depth+1, root); err != nil {
+							return fmt.Errorf("path %q: 'else' schema failed: %w", path, err)
+						}
+					}
+				}
+			}
+		}
+	}
+
+	return nil
+}
+
+// validateFormat checks a string value against a JSON Schema format keyword.
+func validateFormat(s, format, path string) error {
+	switch format {
+	case "email":
+		if _, err := mail.ParseAddress(s); err != nil {
+			return fmt.Errorf("path %q: value %q is not a valid email address", path, s)
+		}
+	case "uri", "url":
+		u, err := url.ParseRequestURI(s)
+		if err != nil || u.Scheme == "" || u.Host == "" {
+			return fmt.Errorf("path %q: value %q is not a valid URI", path, s)
+		}
+	case "date-time":
+		formats := []string{
+			time.RFC3339,
+			time.RFC3339Nano,
+			"2006-01-02T15:04:05Z",
+			"2006-01-02T15:04:05.000Z",
+		}
+		parsed := false
+		for _, f := range formats {
+			if _, err := time.Parse(f, s); err == nil {
+				parsed = true
+				break
+			}
+		}
+		if !parsed {
+			return fmt.Errorf("path %q: value %q is not a valid date-time (RFC3339)", path, s)
+		}
+	case "date":
+		if _, err := time.Parse("2006-01-02", s); err != nil {
+			return fmt.Errorf("path %q: value %q is not a valid date (YYYY-MM-DD)", path, s)
+		}
+	case "time":
+		if _, err := time.Parse("15:04:05", s); err != nil {
+			if _, err2 := time.Parse("15:04:05Z07:00", s); err2 != nil {
+				return fmt.Errorf("path %q: value %q is not a valid time (HH:MM:SS)", path, s)
+			}
+		}
+	case "uuid":
+		uuidPattern := regexp.MustCompile(`^[0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{12}$`)
+		if !uuidPattern.MatchString(s) {
+			return fmt.Errorf("path %q: value %q is not a valid UUID", path, s)
+		}
+	case "ipv4":
+		ipv4Pattern := regexp.MustCompile(`^(\d{1,3}\.){3}\d{1,3}$`)
+		if !ipv4Pattern.MatchString(s) {
+			return fmt.Errorf("path %q: value %q is not a valid IPv4 address", path, s)
+		}
+		parts := strings.Split(s, ".")
+		for _, part := range parts {
+			var n int
+			fmt.Sscanf(part, "%d", &n)
+			if n < 0 || n > 255 {
+				return fmt.Errorf("path %q: value %q is not a valid IPv4 address", path, s)
+			}
+		}
+	// Silently ignore unknown formats (per JSON Schema spec)
+	}
 	return nil
 }
