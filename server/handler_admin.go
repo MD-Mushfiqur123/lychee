@@ -8,11 +8,9 @@ import (
 	"io"
 	"log/slog"
 	"net/http"
-	"net/url"
 	"os"
 	"slices"
 	"strings"
-	"time"
 
 	"github.com/gin-gonic/gin"
 
@@ -30,7 +28,7 @@ import (
 )
 
 func (s *Server) PullHandler(c *gin.Context) {
-	var req api.ProgressRequest
+	var req api.PullRequest
 	err := c.ShouldBindJSON(&req)
 	switch {
 	case errors.Is(err, io.EOF):

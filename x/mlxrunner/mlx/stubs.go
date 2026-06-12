@@ -48,6 +48,10 @@ func (t *Array) SumAxis(axis int, keepDims bool) *Array { return t }
 func (t *Array) TakeAlongAxis(indices *Array, axis int) *Array { return t }
 func (t *Array) TakeAxis(indices *Array, axis int) *Array { return t }
 func (t *Array) Transpose(axes ...int) *Array { return t }
+func (t *Array) GatherMM(other, lhs, rhs *Array, sorted bool) *Array { return t }
+func (t *Array) Matmul(other *Array) *Array { return t }
+func (t *Array) Sigmoid() *Array { return t }
+func (t *Array) Tanh() *Array { return t }
 
 // Additional methods for convenience/safety
 func (t *Array) Dim(axis int) int { return 0 }
@@ -179,3 +183,4 @@ func Compile3(name string, fn func(*Array, *Array, *Array) *Array, opts ...Compi
 }
 
 func Logaddexp(a, b *Array) *Array { return a }
+func Conv1d(x, weight *Array, bias *Array, stride, padding, dilation, groups int32) *Array { return nil }

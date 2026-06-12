@@ -7,6 +7,7 @@ import (
 	"fmt"
 	"io"
 	"log/slog"
+	"os"
 	"net/http"
 	"net/url"
 	"slices"
@@ -17,6 +18,7 @@ import (
 
 	"github.com/lychee/lychee/api"
 	"github.com/lychee/lychee/envconfig"
+	internalcloud "github.com/lychee/lychee/internal/cloud"
 	"github.com/lychee/lychee/llm"
 	"github.com/lychee/lychee/logutil"
 	"github.com/lychee/lychee/model/parsers"

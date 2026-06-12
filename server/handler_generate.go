@@ -7,6 +7,7 @@ import (
 	"fmt"
 	"io"
 	"log/slog"
+	"os"
 	"net/http"
 	"net/url"
 	"slices"
@@ -137,7 +138,7 @@ func (s *Server) GenerateHandler(c *gin.Context) {
 	m, err := GetModel(name.String())
 	if err != nil {
 		switch {
-		case errors.Is(err, fs.ErrNotExist):
+		case errors.Is(err, os.ErrNotExist):
 			c.JSON(http.StatusNotFound, gin.H{"error": fmt.Sprintf("model '%s' not found", req.Model)})
 		case err.Error() == errtypes.InvalidModelNameErrMsg:
 			c.JSON(http.StatusBadRequest, gin.H{"error": err.Error()})

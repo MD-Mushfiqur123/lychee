@@ -18,6 +18,8 @@ func (a *Array) Valid() bool { return false }
 func (a *Array) Kept() bool { return false }
 func (a *Array) Eval() *Array { return a }
 func (a *Array) Free() {}
+func (a *Array) Ndim() int { return 0 }
+func (a *Array) Dim(axis int) int { return 0 }
 
 type Dtype int
 
