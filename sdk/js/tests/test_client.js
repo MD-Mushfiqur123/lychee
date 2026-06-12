@@ -146,7 +146,7 @@ test('Lychee Client methods success flows', async (t) => {
 
   // Test List Conversations
   globalThis.fetch = async (url, options = {}) => {
-    assert.strictEqual(url, 'http://localhost:11434/api/conversations');
+    assert.strictEqual(url, 'http://localhost:11434/api/conversations?limit=50&offset=0');
     assert.strictEqual(options.method ?? 'GET', 'GET');
     return {
       ok: true,
