@@ -189,6 +189,7 @@ var LycheeModelRegistry = []ModelInfo{
 	// ── Multilingual Models ───────────────────────────────────────────────────
 	{Name: "aya", DisplayName: "Aya", Family: "aya", Sizes: []string{"8b", "35b"}, Description: "Cohere Aya multilingual", Tags: []string{"chat", "multilingual"}},
 	{Name: "aya-expanse", DisplayName: "Aya Expanse", Family: "aya", Sizes: []string{"8b", "32b"}, Description: "Cohere Aya Expanse", Tags: []string{"chat", "multilingual"}},
+	{Name: "tiny-aya-global", DisplayName: "Tiny Aya Global", Family: "aya", Sizes: []string{"3b"}, Description: "Cohere Tiny Aya Global 3.3B", Tags: []string{"chat", "multilingual"}},
 	{Name: "marco-o1", DisplayName: "Marco-o1", Family: "marco", Sizes: []string{"7b"}, Description: "Alibaba Marco reasoning", Tags: []string{"reasoning", "multilingual"}},
 
 	// ── Small / Edge Models ───────────────────────────────────────────────────
@@ -254,7 +255,9 @@ var LycheeModelRegistry = []ModelInfo{
 
 	// ── Korean Models ─────────────────────────────────────────────────────────
 	{Name: "exaone3", DisplayName: "EXAONE 3", Family: "exaone", Sizes: []string{"2.4b", "7.8b"}, Description: "LG AI Research EXAONE 3", Tags: []string{"chat", "korean"}},
-	{Name: "hyperclova", DisplayName: "HyperCLOVA", Family: "hyperclova", Sizes: []string{"7b"}, Description: "Naver HyperCLOVA", Tags: []string{"chat", "korean"}},
+	{Name: "exaone4", DisplayName: "EXAONE 4", Family: "exaone", Sizes: []string{"32b"}, Description: "LG AI EXAONE 4.0", Tags: []string{"chat"}},
+	{Name: "exaone-deep", DisplayName: "EXAONE Deep", Family: "exaone", Sizes: []string{"32b"}, Description: "LG AI EXAONE Deep", Tags: []string{"chat"}},
+	{Name: "hyperclova", DisplayName: "HyperCLOVA", Family: "hyperclova", Sizes: []string{"1.5b", "7b"}, Description: "Naver HyperCLOVA", Tags: []string{"chat", "korean"}},
 
 	// ── Arabic Models ─────────────────────────────────────────────────────────
 	{Name: "jais", DisplayName: "Jais", Family: "jais", Sizes: []string{"13b", "30b"}, Description: "Core42 Jais Arabic LLM", Tags: []string{"chat", "arabic"}},
@@ -411,7 +414,7 @@ var LycheeModelRegistry = []ModelInfo{
 	{Name: "mistral-small3.2", DisplayName: "Mistral Small 3.2", Family: "mistral", Sizes: []string{"24b"}, Description: "Mistral Small 3.2", Tags: []string{"chat"}},
 	{Name: "devstral", DisplayName: "Devstral", Family: "mistral", Sizes: []string{"24b"}, Description: "Mistral agentic coding model", Tags: []string{"code", "agent"}},
 	{Name: "kimi-vl", DisplayName: "Kimi VL", Family: "kimi", Sizes: []string{"16b"}, Description: "Moonshot Kimi vision-language MoE", Tags: []string{"vision", "chat"}},
-	{Name: "qwen3-coder", DisplayName: "Qwen3 Coder", Family: "qwen", Sizes: []string{"7b", "14b", "32b"}, Description: "Qwen 3 code model", Tags: []string{"code"}},
+	{Name: "qwen3-coder", DisplayName: "Qwen3 Coder", Family: "qwen", Sizes: []string{"7b", "14b", "32b", "30b-a3b", "480b-a35b"}, Description: "Qwen 3 code model", Tags: []string{"code"}},
 	{Name: "hunyuan-a13b", DisplayName: "Hunyuan A13B", Family: "hunyuan", Sizes: []string{"a13b"}, Description: "Tencent Hunyuan MoE A13B", Tags: []string{"chat", "general"}},
 	{Name: "nova-lite", DisplayName: "Nova Lite", Family: "nova", Sizes: []string{"7b"}, Description: "Nova Lite efficient model", Tags: []string{"chat", "edge"}},
 	{Name: "phi4-multimodal", DisplayName: "Phi 4 Multimodal", Family: "phi", Sizes: []string{"5.6b"}, Description: "Phi 4 multimodal vision+audio", Tags: []string{"vision", "audio"}},
