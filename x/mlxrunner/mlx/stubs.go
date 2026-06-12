@@ -209,3 +209,10 @@ func RoPEWithBase(x *Array, dims int, traditional bool, base, scale float32, off
 func Matmul(a, b *Array) *Array { return nil }
 func Squeeze(a *Array, axis int) *Array { return nil }
 func Stack(arrays []*Array, axis int) *Array { return nil }
+func GatherQMM(x, w, scales *Array, biases, lhsIndices, rhsIndices *Array, transpose bool, groupSize, bits int, mode string, sortedIndices bool) *Array { return nil }
+func Take(a *Array, indices *Array, axis int) *Array { return nil }
+func FloorDivideScalar(a *Array, s int32) *Array { return nil }
+func Argsort(a *Array, axis int) *Array { return nil }
+func Flatten(a *Array) *Array { return nil }
+func Argpartition(a *Array, kth int, axis int) *Array { return nil }
+func Neg(a *Array) *Array { return nil }
