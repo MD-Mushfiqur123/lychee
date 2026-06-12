@@ -70,6 +70,8 @@ func (t *Array) FloorDivide(other *Array) *Array { return t }
 func (t *Array) Power(exponent *Array) *Array { return t }
 func (t *Array) Sqrt() *Array { return t }
 func (t *Array) StackAxis(axis int, others ...*Array) *Array { return t }
+func (t *Array) Ints() []int { return nil }
+func (t *Array) Floats() []float32 { return nil }
 
 type DType int
 
@@ -259,3 +261,5 @@ type RMSNorm struct {
 }
 
 func (r *RMSNorm) Forward(x *Array, eps float32) *Array { return x }
+
+func ClearCache() {}
