@@ -3,14 +3,9 @@ package server
 import (
 	"context"
 	"errors"
-	"fmt"
 	"log/slog"
-	"os"
 	"reflect"
-	"runtime"
 	"slices"
-	"sort"
-	"strings"
 	"sync"
 	"time"
 
@@ -23,7 +18,6 @@ import (
 	"github.com/lychee/lychee/logutil"
 	"github.com/lychee/lychee/ml"
 	"github.com/lychee/lychee/types/model"
-	"github.com/lychee/lychee/x/imagegen"
 	"github.com/lychee/lychee/x/mlxrunner"
 )
 

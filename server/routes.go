@@ -49,8 +49,6 @@ import (
 	"github.com/lychee/lychee/types/errtypes"
 	"github.com/lychee/lychee/types/model"
 	"github.com/lychee/lychee/version"
-	imagegenmanifest "github.com/lychee/lychee/x/imagegen/manifest"
-	xserver "github.com/lychee/lychee/x/server"
 )
 
 const signinURLStr = "https://lychee.github.io/lychee/connect?name=%s&key=%s"

@@ -15,6 +15,7 @@ func (t *Array) DType() DType { return 0 }
 func (t *Array) Dtype() Dtype { return 0 }
 func (t *Array) Shape() []int32 { return nil }
 func (t *Array) Dims() []int { return nil }
+func (t *Array) NumDims() int { return 0 }
 func (t *Array) DataFloat32() []float32 { return nil }
 func (t *Array) Valid() bool { return false }
 func (t *Array) Free() {}
@@ -140,6 +141,10 @@ func Tri(n, m int32, k int) *Array { return nil }
 func Mul(a, b *Array) *Array { return nil }
 func LayerNormFn(x, weight, bias *Array, eps float32) *Array { return nil }
 func RMSNormFn(x, weight *Array, eps float32) *Array { return nil }
+func SliceStartStop(a *Array, start, stop []int32) *Array { return nil }
+func TakeAlongAxis(a, indices *Array, axis int) *Array { return nil }
+func ExpandDims(a *Array, axis int) *Array { return nil }
+func NewScalarArray(value float32) *Array { return nil }
 func Quantize(w *Array, groupSize, bits int, mode string) (weights, scales, biases *Array) { return nil, nil, nil }
 func RandomKey(seed uint64) *Array { return nil }
 func SoftmaxAxis(a *Array, axis int, precise bool) *Array { return nil }
