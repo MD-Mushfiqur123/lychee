@@ -7,6 +7,7 @@ import (
 	"errors"
 	"fmt"
 	"iter"
+	"log/slog"
 )
 
 type Array struct{}
@@ -72,6 +73,7 @@ func (t *Array) Sqrt() *Array { return t }
 func (t *Array) StackAxis(axis int, others ...*Array) *Array { return t }
 func (t *Array) Ints() []int { return nil }
 func (t *Array) Floats() []float32 { return nil }
+func (t *Array) Int() int { return 0 }
 
 type DType int
 
@@ -263,3 +265,9 @@ type RMSNorm struct {
 func (r *RMSNorm) Forward(x *Array, eps float32) *Array { return x }
 
 func ClearCache() {}
+func ResetPeakMemory() {}
+func LogArrays() {}
+
+type Memory struct{}
+
+func (Memory) LogValue() slog.Value { return slog.Value{} }
