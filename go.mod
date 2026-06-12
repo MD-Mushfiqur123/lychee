@@ -1,6 +1,6 @@
 module github.com/lychee/lychee
 
-go 1.24.1
+go 1.25.0
 
 require (
 	github.com/TheTitanrain/w32 v0.0.0-20180517000239-4f5cfb03fabf
@@ -14,8 +14,8 @@ require (
 	github.com/spf13/cobra v1.7.0
 	github.com/stretchr/testify v1.10.0
 	github.com/x448/float16 v0.8.4
-	golang.org/x/sync v0.17.0
-	golang.org/x/sys v0.37.0
+	golang.org/x/sync v0.21.0
+	golang.org/x/sys v0.46.0
 	modernc.org/sqlite v1.34.1
 )
 
@@ -36,9 +36,9 @@ require (
 	github.com/tree-sitter/go-tree-sitter v0.25.0
 	github.com/tree-sitter/tree-sitter-cpp v0.23.4
 	github.com/wk8/go-ordered-map/v2 v2.1.8
-	golang.org/x/image v0.22.0
-	golang.org/x/mod v0.30.0
-	golang.org/x/tools v0.38.0
+	golang.org/x/image v0.42.0
+	golang.org/x/mod v0.37.0
+	golang.org/x/tools v0.46.0
 	gonum.org/v1/gonum v0.15.0
 )
 
@@ -110,11 +110,11 @@ require (
 	github.com/twitchyliquid64/golang-asm v0.15.1 // indirect
 	github.com/ugorji/go/codec v1.2.12 // indirect
 	golang.org/x/arch v0.8.0 // indirect
-	golang.org/x/crypto v0.43.0
+	golang.org/x/crypto v0.53.0
 	golang.org/x/exp v0.0.0-20250218142911-aa4b98e5adaa // indirect
-	golang.org/x/net v0.46.0
-	golang.org/x/term v0.36.0
-	golang.org/x/text v0.30.0
+	golang.org/x/net v0.56.0
+	golang.org/x/term v0.44.0
+	golang.org/x/text v0.38.0
 	google.golang.org/protobuf v1.34.1
 	gopkg.in/yaml.v3 v3.0.1
 )
