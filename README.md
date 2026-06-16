@@ -7,17 +7,20 @@ multi-model pipelines, structured output with auto-retry, persistent conversatio
 and multi-instance load balancing. Everything Ollama does, Lychee does too — plus more.
 
 <p align="center">
-  <a href="https://github.com/MD-Mushfiqur123/lychee">
-    <img src="https://img.shields.io/github/license/MD-Mushfiqur123/lychee?style=flat-square&color=A51C30" alt="License"/>
-  </a>
   <a href="https://github.com/MD-Mushfiqur123/lychee/stargazers">
     <img src="https://img.shields.io/github/stars/MD-Mushfiqur123/lychee?style=flat-square&color=yellow" alt="GitHub Stars"/>
   </a>
   <a href="https://github.com/MD-Mushfiqur123/lychee/releases">
     <img src="https://img.shields.io/github/v/release/MD-Mushfiqur123/lychee?style=flat-square&color=green&label=release" alt="Latest Release"/>
   </a>
+  <a href="https://github.com/MD-Mushfiqur123/lychee/blob/main/go.mod">
+    <img src="https://img.shields.io/github/go-mod/go-version/MD-Mushfiqur123/lychee?style=flat-square&color=00ADD8" alt="Go Version"/>
+  </a>
   <a href="https://github.com/MD-Mushfiqur123/lychee/blob/main/LICENSE">
     <img src="https://img.shields.io/badge/license-MIT-blue?style=flat-square" alt="MIT License"/>
+  </a>
+  <a href="https://md-mushfiqur123.github.io/lychee-docs/">
+    <img src="https://img.shields.io/badge/docs-vitepress-646cff?style=flat-square" alt="Documentation"/>
   </a>
 </p>
 
@@ -66,7 +69,18 @@ Lychee acts as a local proxy that translates industry-standard APIs into optimiz
 ## 📦 Installation
 
 > [!NOTE]
-> Lychee is currently in active early alpha phase.
+> Lychee is currently in active early alpha phase. Requires Go 1.22+.
+
+### go install (Recommended)
+```bash
+go install github.com/MD-Mushfiqur123/lychee@v0.1.1-alpha
+```
+
+### Docker
+```bash
+docker build -t lychee https://github.com/MD-Mushfiqur123/lychee.git
+docker run -d -v lychee:/root/.lychee -p 11434:11434 --name lychee lychee
+```
 
 ### Build from Source
 ```bash
@@ -76,19 +90,10 @@ go build -o lychee .
 sudo mv lychee /usr/local/bin/
 ```
 
-<details>
-<summary>Advanced Installation (Requires GitHub Releases)</summary>
-
-The installation scripts below retrieve pre-built binaries. Note: These require a published release.
-* **macOS & Linux:**
-  ```bash
-  curl -fsSL https://raw.githubusercontent.com/MD-Mushfiqur123/lychee/main/scripts/install.sh | sh
-  ```
-* **Windows (PowerShell):**
-  ```powershell
-  irm https://raw.githubusercontent.com/MD-Mushfiqur123/lychee/main/scripts/install.ps1 | iex
-  ```
-</details>
+### Windows (PowerShell)
+```powershell
+irm https://raw.githubusercontent.com/MD-Mushfiqur123/lychee/main/scripts/install.ps1 | iex
+```
 
 ### Client SDKs Installation
 
@@ -109,14 +114,6 @@ Official client SDKs are available to integrate Lychee into your applications:
   lychee-rs = { git = "https://github.com/MD-Mushfiqur123/lychee.git", branch = "main" }
   ```
 
-
-### Docker (Coming Soon)
-> Docker images will be published to GHCR once the first stable release is tagged.
-> The Dockerfile is ready in the repository root — you can build locally:
-> ```bash
-> docker build -t lychee .
-> docker run -d -v lychee:/root/.lychee -p 11434:11434 --name lychee lychee
-> ```
 
 ---
 
@@ -338,6 +335,15 @@ Optimizing and integrating local models has never been simpler:
 Lychee leverages the best-in-class local inference engines under the hood:
 * **llama.cpp** — optimized CPU/GPU execution for Apple Silicon (Metal), NVIDIA (CUDA), and AMD (ROCm).
 * **MLX** — native Apple Silicon machine learning framework for maximum performance on macOS.
+
+---
+
+## 🔗 Links
+
+- 📖 **Documentation**: [md-mushfiqur123.github.io/lychee-docs](https://md-mushfiqur123.github.io/lychee-docs/)
+- 🌐 **Landing Page**: [md-mushfiqur123.github.io/lychee-landing-page](https://md-mushfiqur123.github.io/lychee-landing-page/)
+- 💻 **GitHub**: [MD-Mushfiqur123/lychee](https://github.com/MD-Mushfiqur123/lychee)
+- 📦 **Releases**: [github.com/MD-Mushfiqur123/lychee/releases](https://github.com/MD-Mushfiqur123/lychee/releases)
 
 ---
 
