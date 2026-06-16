@@ -43,9 +43,7 @@ func TestEmbedHandler(t *testing.T) {
 
 	// Set host env var so ClientFromEnvironment uses the mock server
 	os.Setenv("LYCHEE_HOST", ts.URL)
-	os.Setenv("OLLAMA_HOST", ts.URL)
 	defer os.Unsetenv("LYCHEE_HOST")
-	defer os.Unsetenv("OLLAMA_HOST")
 
 	// Call embedHandler
 	err := embedHandler(context.Background(), []string{"test input"}, "test-model", "text", true)
@@ -67,9 +65,7 @@ func TestEmbedHandlerJSON(t *testing.T) {
 	defer ts.Close()
 
 	os.Setenv("LYCHEE_HOST", ts.URL)
-	os.Setenv("OLLAMA_HOST", ts.URL)
 	defer os.Unsetenv("LYCHEE_HOST")
-	defer os.Unsetenv("OLLAMA_HOST")
 
 	// Call embedHandler with JSON format
 	err := embedHandler(context.Background(), []string{"test input"}, "test-model", "json", true)

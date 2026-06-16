@@ -1,6 +1,6 @@
 // prompt_cache.go provides helper utilities for prompt prefix hashing.
 // Note: Actual KV cache management and sharing is handled by the upstream
-// Ollama scheduler (server/sched.go). These functions compute SHA256
+// Lychee scheduler (server/sched.go). These functions compute SHA256
 // hashes of message prefixes to enable cache key matching.
 
 package server

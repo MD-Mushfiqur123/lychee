@@ -100,13 +100,13 @@ func NewGenerateClientCmd() *cobra.Command {
 			switch lang {
 			case "python", "py":
 				outputBuilder.WriteString(fmt.Sprintf(`# Python Client Integration
-# Install: pip install ollama
+# Install: pip install lychee-python
 # Model Capabilities: %s
 # Context Length: %s
 
-import ollama
+import lychee
 
-client = ollama.Client()
+client = lychee.Client()
 response = client.chat(
     model="%s",
     messages=[
@@ -118,13 +118,13 @@ print(response['message']['content'])
 
 			case "javascript", "js", "node":
 				outputBuilder.WriteString(fmt.Sprintf(`// JavaScript / Node.js Client Integration
-// Install: npm install ollama
+// Install: npm install lychee-js (or pnpm add lychee-js / yarn add lychee-js)
 // Model Capabilities: %s
 // Context Length: %s
 
-import ollama from 'ollama';
+import lychee from 'lychee-js';
 
-const response = await ollama.chat({
+const response = await lychee.chat({
   model: '%s',
   messages: [
 %s    { role: 'user', content: 'Hello! Describe what you can do.' }

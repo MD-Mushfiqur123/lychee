@@ -51,7 +51,20 @@ func (s *Server) ListConversationsHandler(c *gin.Context) {
 	}
 
 	c.Header("X-Total-Count", strconv.Itoa(total))
-	c.JSON(http.StatusOK, summaries)
+	
+	// Convert to interface{} slice for response
+	var interfaceSummaries []interface{}
+	for _, s := range summaries {
+		interfaceSummaries = append(interfaceSummaries, s)
+	}
+	
+	resp := api.ListConversationsResponse{
+		Conversations: interfaceSummaries,
+		Total:         total,
+		HasMore:       offset+limit < total,
+	}
+
+	c.JSON(http.StatusOK, resp)
 }
 
 // GetConversationHandler loads a specific conversation by ID.

@@ -38,9 +38,7 @@ func TestGenerateClientCmd(t *testing.T) {
 	defer ts.Close()
 
 	os.Setenv("LYCHEE_HOST", ts.URL)
-	os.Setenv("OLLAMA_HOST", ts.URL)
 	defer os.Unsetenv("LYCHEE_HOST")
-	defer os.Unsetenv("OLLAMA_HOST")
 
 	languages := []string{"python", "js", "rs", "go"}
 	for _, lang := range languages {
@@ -61,11 +59,11 @@ func TestGenerateClientCmd(t *testing.T) {
 			if !strings.Contains(output, "test-model") {
 				t.Errorf("expected output to contain model name, got %s", output)
 			}
-			if lang == "python" && !strings.Contains(output, "pip install ollama") {
-				t.Errorf("expected Python installer reference to use ollama, got %s", output)
+			if lang == "python" && !strings.Contains(output, "pip install lychee-python") {
+				t.Errorf("expected Python installer reference to use lychee-python, got %s", output)
 			}
-			if lang == "js" && !strings.Contains(output, "npm install ollama") {
-				t.Errorf("expected JS installer reference to use ollama, got %s", output)
+			if lang == "js" && !strings.Contains(output, "npm install lychee-js") {
+				t.Errorf("expected JS installer reference to use lychee-js, got %s", output)
 			}
 		})
 	}
@@ -84,9 +82,7 @@ func TestGenerateClientCmdNoContextLength(t *testing.T) {
 	defer ts.Close()
 
 	os.Setenv("LYCHEE_HOST", ts.URL)
-	os.Setenv("OLLAMA_HOST", ts.URL)
 	defer os.Unsetenv("LYCHEE_HOST")
-	defer os.Unsetenv("OLLAMA_HOST")
 
 	cmd := NewGenerateClientCmd()
 	buf := new(bytes.Buffer)

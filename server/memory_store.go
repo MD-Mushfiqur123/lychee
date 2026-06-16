@@ -214,7 +214,9 @@ func (ms *MemoryStore) List(limit, offset int) ([]ConversationSummary, int, erro
 
 	if ms.db != nil {
 		var total int
-		_ = ms.db.QueryRow("SELECT COUNT(*) FROM conversations").Scan(&total)
+		if err := ms.db.QueryRow("SELECT COUNT(*) FROM conversations").Scan(&total); err != nil {
+			slog.Warn("memory: failed to count total conversations", "error", err)
+		}
 
 		rows, err := ms.db.Query(`
 			SELECT c.id, c.model, c.title, COUNT(m.id), c.created_at, c.updated_at
@@ -329,7 +331,11 @@ func (ms *MemoryStore) AppendMessage(id string, msg api.Message) error {
 			slog.Warn("memory: insert message failed", "error", err, "id", id)
 			// Fall through to JSON path
 		} else {
-			return nil // SQLite succeeded, skip JSON rewrite
+			// SQLite succeeded, perform background syncing to JSON
+			go func() {
+				_ = ms.syncToJSON(id)
+			}()
+			return nil
 		}
 	}
 
@@ -356,8 +362,32 @@ func (ms *MemoryStore) AppendMessage(id string, msg api.Message) error {
 	return nil
 }
 
+// syncToJSON reads the conversation from SQLite and writes it to JSON in the background.
+func (ms *MemoryStore) syncToJSON(id string) error {
+	conv, err := ms.Load(id)
+	if err != nil {
+		return err
+	}
+	
+	ms.mu.Lock()
+	defer ms.mu.Unlock()
+	
+	jsonPath := filepath.Join(ms.dir, id+".json")
+	jsonData, err := json.MarshalIndent(conv, "", "  ")
+	if err != nil {
+		return err
+	}
+	if err := os.WriteFile(jsonPath, jsonData, 0644); err != nil {
+		slog.Warn("memory: failed to write background json sync", "error", err, "path", jsonPath)
+		return err
+	}
+	return nil
+}
+
 func (ms *MemoryStore) runMigrations(db *sql.DB) error {
-	_, _ = db.Exec("CREATE TABLE IF NOT EXISTS schema_version (version INTEGER NOT NULL)")
+	if _, err := db.Exec("CREATE TABLE IF NOT EXISTS schema_version (version INTEGER NOT NULL)"); err != nil {
+		slog.Warn("memory: failed to create schema_version table", "error", err)
+	}
 
 	var version int
 	row := db.QueryRow("SELECT COALESCE(MAX(version), 0) FROM schema_version")
@@ -382,9 +412,13 @@ func (ms *MemoryStore) runMigrations(db *sql.DB) error {
 					return fmt.Errorf("migration v%d failed: %w", m.version, err)
 				}
 			}
-			_, _ = db.Exec("INSERT INTO schema_version (version) VALUES (?)", m.version)
+			if _, err := db.Exec("INSERT INTO schema_version (version) VALUES (?)", m.version); err != nil {
+				slog.Warn("memory: failed to update schema_version", "error", err, "version", m.version)
+			}
 		} else if m.version > version {
-			_, _ = db.Exec("INSERT INTO schema_version (version) VALUES (?)", m.version)
+			if _, err := db.Exec("INSERT INTO schema_version (version) VALUES (?)", m.version); err != nil {
+				slog.Warn("memory: failed to update schema_version", "error", err, "version", m.version)
+			}
 		}
 	}
 	return nil
@@ -397,10 +431,12 @@ func (ms *MemoryStore) Search(query string, limit, offset int) ([]ConversationSu
 
 	if ms.db != nil {
 		var total int
-		_ = ms.db.QueryRow(`
+		if err := ms.db.QueryRow(`
 			SELECT COUNT(DISTINCT c.id) FROM conversations c
 			JOIN messages m ON c.id = m.conversation_id
-			WHERE m.content LIKE '%' || ? || '%'`, query).Scan(&total)
+			WHERE m.content LIKE '%' || ? || '%'`, query).Scan(&total); err != nil {
+			slog.Warn("memory: failed to count total search results", "error", err)
+		}
 
 		rows, err := ms.db.Query(`
 			SELECT c.id, c.model, c.title, COUNT(m.id), c.created_at, c.updated_at

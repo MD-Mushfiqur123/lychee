@@ -25,10 +25,12 @@ type StructuredOpts struct {
 
 // StructuredResult contains the generation result and retry metadata.
 type StructuredResult struct {
-	Output   string   `json:"output"`
-	Valid    bool     `json:"valid"`
-	Attempts int      `json:"attempts"`
-	Errors   []string `json:"errors,omitempty"`
+	Output               string   `json:"output"`
+	Valid                bool     `json:"valid"`
+	Attempts             int      `json:"attempts"`
+	Errors               []string `json:"errors,omitempty"`
+	TotalEvalCount       int      `json:"total_eval_count,omitempty"`
+	TotalPromptEvalCount int      `json:"total_prompt_eval_count,omitempty"`
 }
 
 // generateStructured runs generation with schema validation and auto-retry.
@@ -68,6 +70,7 @@ func (s *Server) generateStructured(ctx context.Context, opts StructuredOpts) (*
 	currentPrompt := opts.Prompt
 	var errorsList []string
 	var lastOutput string
+	var totalEvalCount, totalPromptEvalCount int
 
 	for attempt := 1; attempt <= opts.MaxRetries; attempt++ {
 		emit(api.StructuredEvent{Event: "attempt_start", Attempt: attempt})
@@ -96,14 +99,22 @@ func (s *Server) generateStructured(ctx context.Context, opts StructuredOpts) (*
 		}
 		attemptCtx, cancelAttempt := context.WithTimeout(ctx, time.Duration(timeoutSec)*time.Second)
 
+		var attemptEvalCount, attemptPromptEvalCount int
 		err = r.Completion(attemptCtx, llm.CompletionRequest{
 			Prompt:     currentPrompt,
 			Options:    attemptOpts,
 			LeadingBOS: leadingBOS,
 		}, func(cr llm.CompletionResponse) {
 			responseSB.WriteString(cr.Content)
+			if cr.Done {
+				attemptEvalCount += cr.EvalCount
+				attemptPromptEvalCount += cr.PromptEvalCount
+			}
 		})
 		cancelAttempt()
+		
+		totalEvalCount += attemptEvalCount
+		totalPromptEvalCount += attemptPromptEvalCount
 
 		if err != nil {
 			errStr := err.Error()
@@ -123,9 +134,11 @@ func (s *Server) generateStructured(ctx context.Context, opts StructuredOpts) (*
 		// If Schema is empty/nil/empty object/null, bypass validation and return success
 		if len(opts.Schema) == 0 || string(opts.Schema) == "null" || string(opts.Schema) == "{}" || string(opts.Schema) == "" {
 			res := &StructuredResult{
-				Output:   lastOutput,
-				Valid:    true,
-				Attempts: attempt,
+				Output:               lastOutput,
+				Valid:                true,
+				Attempts:             attempt,
+				TotalEvalCount:       totalEvalCount,
+				TotalPromptEvalCount: totalPromptEvalCount,
 			}
 			emit(api.StructuredEvent{
 				Event: "complete",
@@ -142,9 +155,11 @@ func (s *Server) generateStructured(ctx context.Context, opts StructuredOpts) (*
 		valErr := ValidateJSONSchema(lastOutput, opts.Schema)
 		if valErr == nil {
 			res := &StructuredResult{
-				Output:   lastOutput,
-				Valid:    true,
-				Attempts: attempt,
+				Output:               lastOutput,
+				Valid:                true,
+				Attempts:             attempt,
+				TotalEvalCount:       totalEvalCount,
+				TotalPromptEvalCount: totalPromptEvalCount,
 			}
 			emit(api.StructuredEvent{
 				Event: "complete",
@@ -168,10 +183,12 @@ func (s *Server) generateStructured(ctx context.Context, opts StructuredOpts) (*
 	}
 
 	res := &StructuredResult{
-		Output:   lastOutput,
-		Valid:    false,
-		Attempts: opts.MaxRetries,
-		Errors:   errorsList,
+		Output:               lastOutput,
+		Valid:                false,
+		Attempts:             opts.MaxRetries,
+		Errors:               errorsList,
+		TotalEvalCount:       totalEvalCount,
+		TotalPromptEvalCount: totalPromptEvalCount,
 	}
 	emit(api.StructuredEvent{
 		Event: "complete",

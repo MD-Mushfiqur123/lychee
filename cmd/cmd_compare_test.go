@@ -44,9 +44,7 @@ func TestCompareHandler(t *testing.T) {
 	defer ts.Close()
 
 	os.Setenv("LYCHEE_HOST", ts.URL)
-	os.Setenv("OLLAMA_HOST", ts.URL)
 	defer os.Unsetenv("LYCHEE_HOST")
-	defer os.Unsetenv("OLLAMA_HOST")
 
 	err := compareHandler(context.Background(), "modelA", "modelB", "test prompt", "system instructions", 100, false)
 	if err != nil {

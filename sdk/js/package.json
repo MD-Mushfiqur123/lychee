@@ -43,7 +43,6 @@
     "llm",
     "local-ai",
     "inference",
-    "ollama",
     "composer"
   ]
 }

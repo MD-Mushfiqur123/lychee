@@ -22,5 +22,5 @@ setup(
         "Programming Language :: Python :: 3.12",
         "Topic :: Scientific/Engineering :: Artificial Intelligence",
     ],
-    keywords=["llm", "ai", "local-ai", "ollama", "anthropic", "openai"],
+    keywords=["llm", "ai", "local-ai", "anthropic", "openai"],
 )
