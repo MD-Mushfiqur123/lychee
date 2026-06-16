@@ -13,9 +13,9 @@ import (
 	"strconv"
 	"strings"
 
-	fsggml "github.com/lychee/lychee/fs/ggml"
-	"github.com/lychee/lychee/llm"
-	"github.com/lychee/lychee/manifest"
+	fsggml "github.com/MD-Mushfiqur123/lychee/fs/ggml"
+	"github.com/MD-Mushfiqur123/lychee/llm"
+	"github.com/MD-Mushfiqur123/lychee/manifest"
 )
 
 // findLlamaQuantize locates the llama-quantize binary (installed alongside llama-server).

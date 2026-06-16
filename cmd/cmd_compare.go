@@ -7,7 +7,7 @@ import (
 	"sync"
 	"time"
 
-	"github.com/lychee/lychee/api"
+	"github.com/MD-Mushfiqur123/lychee/api"
 	"github.com/spf13/cobra"
 )
 

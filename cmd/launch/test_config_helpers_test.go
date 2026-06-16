@@ -4,7 +4,7 @@ import (
 	"strings"
 	"testing"
 
-	"github.com/lychee/lychee/cmd/config"
+	"github.com/MD-Mushfiqur123/lychee/cmd/config"
 )
 
 var (

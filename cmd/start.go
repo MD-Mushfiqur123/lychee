@@ -7,7 +7,7 @@ import (
 	"errors"
 	"time"
 
-	"github.com/lychee/lychee/api"
+	"github.com/MD-Mushfiqur123/lychee/api"
 )
 
 func waitForServer(ctx context.Context, client *api.Client) error {

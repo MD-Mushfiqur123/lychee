@@ -9,8 +9,8 @@ import (
 
 	"github.com/spf13/cobra"
 
-	"github.com/lychee/lychee/api"
-	xcmd "github.com/lychee/lychee/x/cmd"
+	"github.com/MD-Mushfiqur123/lychee/api"
+	xcmd "github.com/MD-Mushfiqur123/lychee/x/cmd"
 )
 
 func NewAgentCmd() *cobra.Command {

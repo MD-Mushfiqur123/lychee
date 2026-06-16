@@ -1,7 +1,7 @@
 package nn
 
 import (
-	"github.com/lychee/lychee/ml"
+	"github.com/MD-Mushfiqur123/lychee/ml"
 )
 
 type LayerNorm struct {

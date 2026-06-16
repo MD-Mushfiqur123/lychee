@@ -14,10 +14,10 @@ import (
 
 	"github.com/spf13/cobra"
 
-	"github.com/lychee/lychee/envconfig"
-	"github.com/lychee/lychee/format"
-	"github.com/lychee/lychee/manifest"
-	"github.com/lychee/lychee/types/model"
+	"github.com/MD-Mushfiqur123/lychee/envconfig"
+	"github.com/MD-Mushfiqur123/lychee/format"
+	"github.com/MD-Mushfiqur123/lychee/manifest"
+	"github.com/MD-Mushfiqur123/lychee/types/model"
 )
 
 func NewExportCmd() *cobra.Command {

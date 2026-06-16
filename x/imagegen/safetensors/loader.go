@@ -5,8 +5,8 @@ import (
 	"reflect"
 	"strings"
 
-	"github.com/lychee/lychee/x/imagegen/mlx"
-	"github.com/lychee/lychee/x/imagegen/nn"
+	"github.com/MD-Mushfiqur123/lychee/x/imagegen/mlx"
+	"github.com/MD-Mushfiqur123/lychee/x/imagegen/nn"
 )
 
 // WeightSource is an interface for loading weights.

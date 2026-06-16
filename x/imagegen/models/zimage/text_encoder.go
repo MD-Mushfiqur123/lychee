@@ -1,7 +1,7 @@
 package zimage
 
 import (
-	"github.com/lychee/lychee/x/imagegen/models/qwen3"
+	"github.com/MD-Mushfiqur123/lychee/x/imagegen/models/qwen3"
 )
 
 // Re-export types from shared qwen3 package for backwards compatibility

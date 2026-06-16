@@ -14,12 +14,12 @@ import (
 	"sync"
 	"time"
 
-	"github.com/lychee/lychee/api"
-	internalcloud "github.com/lychee/lychee/internal/cloud"
-	"github.com/lychee/lychee/internal/modelref"
-	"github.com/lychee/lychee/manifest"
-	"github.com/lychee/lychee/types/model"
-	"github.com/lychee/lychee/version"
+	"github.com/MD-Mushfiqur123/lychee/api"
+	internalcloud "github.com/MD-Mushfiqur123/lychee/internal/cloud"
+	"github.com/MD-Mushfiqur123/lychee/internal/modelref"
+	"github.com/MD-Mushfiqur123/lychee/manifest"
+	"github.com/MD-Mushfiqur123/lychee/types/model"
+	"github.com/MD-Mushfiqur123/lychee/version"
 )
 
 /*

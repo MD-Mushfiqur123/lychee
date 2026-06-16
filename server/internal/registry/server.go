@@ -16,9 +16,9 @@ import (
 	"sync"
 	"time"
 
-	"github.com/lychee/lychee/server/internal/cache/blob"
-	"github.com/lychee/lychee/server/internal/client/lychee"
-	"github.com/lychee/lychee/server/internal/internal/backoff"
+	"github.com/MD-Mushfiqur123/lychee/server/internal/cache/blob"
+	"github.com/MD-Mushfiqur123/lychee/server/internal/client/lychee"
+	"github.com/MD-Mushfiqur123/lychee/server/internal/internal/backoff"
 )
 
 // Local implements an http.Handler for handling local Lychee API model

@@ -24,13 +24,13 @@ import (
 
 	"github.com/gin-gonic/gin"
 	"github.com/google/go-cmp/cmp"
-	"github.com/lychee/lychee/api"
-	"github.com/lychee/lychee/fs/ggml"
-	"github.com/lychee/lychee/manifest"
-	"github.com/lychee/lychee/openai"
-	"github.com/lychee/lychee/server/internal/client/lychee"
-	"github.com/lychee/lychee/types/model"
-	"github.com/lychee/lychee/version"
+	"github.com/MD-Mushfiqur123/lychee/api"
+	"github.com/MD-Mushfiqur123/lychee/fs/ggml"
+	"github.com/MD-Mushfiqur123/lychee/manifest"
+	"github.com/MD-Mushfiqur123/lychee/openai"
+	"github.com/MD-Mushfiqur123/lychee/server/internal/client/lychee"
+	"github.com/MD-Mushfiqur123/lychee/types/model"
+	"github.com/MD-Mushfiqur123/lychee/version"
 )
 
 func createTestFile(t *testing.T, name string) (string, string) {

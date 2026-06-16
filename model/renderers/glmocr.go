@@ -5,7 +5,7 @@ import (
 	"fmt"
 	"strings"
 
-	"github.com/lychee/lychee/api"
+	"github.com/MD-Mushfiqur123/lychee/api"
 )
 
 type GlmOcrRenderer struct {

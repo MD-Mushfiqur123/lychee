@@ -4,7 +4,7 @@ import (
 	"context"
 	"log/slog"
 
-	"github.com/lychee/lychee/ml"
+	"github.com/MD-Mushfiqur123/lychee/ml"
 )
 
 func filterOldCUDADriver(_ context.Context, devices []ml.DeviceInfo) []ml.DeviceInfo {

@@ -7,8 +7,8 @@ import (
 
 	"github.com/spf13/cobra"
 
-	"github.com/lychee/lychee/api"
-	"github.com/lychee/lychee/progress"
+	"github.com/MD-Mushfiqur123/lychee/api"
+	"github.com/MD-Mushfiqur123/lychee/progress"
 )
 
 func PullHandler(cmd *cobra.Command, args []string) error {

@@ -21,7 +21,7 @@ try {
 
 # Install Lychee
 Write-Host "[2/2] Installing Lychee..." -ForegroundColor Yellow
-go install github.com/lychee/lychee@latest
+go install github.com/MD-Mushfiqur123/lychee@latest
 
 if ($LASTEXITCODE -ne 0) {
     Write-Host "  ERROR: Installation failed." -ForegroundColor Red

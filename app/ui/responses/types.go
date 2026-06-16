@@ -5,8 +5,8 @@ package responses
 import (
 	"time"
 
-	"github.com/lychee/lychee/app/store"
-	"github.com/lychee/lychee/types/model"
+	"github.com/MD-Mushfiqur123/lychee/app/store"
+	"github.com/MD-Mushfiqur123/lychee/types/model"
 )
 
 type ChatInfo struct {

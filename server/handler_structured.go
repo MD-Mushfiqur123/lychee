@@ -5,7 +5,7 @@ import (
 	"net/http"
 
 	"github.com/gin-gonic/gin"
-	"github.com/lychee/lychee/api"
+	"github.com/MD-Mushfiqur123/lychee/api"
 )
 
 // StructuredHandler handles structured output generation requests.

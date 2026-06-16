@@ -6,7 +6,7 @@ import (
 	"path/filepath"
 	"testing"
 
-	st "github.com/lychee/lychee/x/safetensors"
+	st "github.com/MD-Mushfiqur123/lychee/x/safetensors"
 )
 
 func TestCreateSafetensorsModel_LagunaHFFP8RespectsSourceTensorPrecision(t *testing.T) {

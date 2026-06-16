@@ -9,8 +9,8 @@ import (
 	"testing"
 	"time"
 
-	"github.com/lychee/lychee/api"
-	"github.com/lychee/lychee/types/model"
+	"github.com/MD-Mushfiqur123/lychee/api"
+	"github.com/MD-Mushfiqur123/lychee/types/model"
 )
 
 // Default set of vision models to test. When LYCHEE_TEST_MODEL is set,

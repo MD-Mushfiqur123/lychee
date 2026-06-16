@@ -7,7 +7,7 @@ import (
 	"path/filepath"
 	"strings"
 
-	"github.com/lychee/lychee/x/safetensors"
+	"github.com/MD-Mushfiqur123/lychee/x/safetensors"
 )
 
 type qwen35ImportTransform struct {

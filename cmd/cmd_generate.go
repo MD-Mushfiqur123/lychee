@@ -6,7 +6,7 @@ import (
 	"strings"
 
 	"github.com/spf13/cobra"
-	"github.com/lychee/lychee/api"
+	"github.com/MD-Mushfiqur123/lychee/api"
 )
 
 func NewGenerateClientCmd() *cobra.Command {
@@ -136,7 +136,7 @@ console.log(response.message.content);
 			case "rust", "rs":
 				outputBuilder.WriteString(fmt.Sprintf(`// Rust SDK Client Integration
 // Cargo.toml:
-// lychee-rs = { git = "https://github.com/lychee/lychee" }
+// lychee-rs = { git = "https://github.com/MD-Mushfiqur123/lychee" }
 // tokio = { version = "1.0", features = ["full"] }
 // Model Capabilities: %s
 // Context Length: %s
@@ -172,7 +172,7 @@ import (
 	"fmt"
 	"log"
 
-	"github.com/lychee/lychee/api"
+	"github.com/MD-Mushfiqur123/lychee/api"
 )
 
 func main() {

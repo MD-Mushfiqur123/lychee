@@ -18,10 +18,10 @@ import (
 	"github.com/gin-gonic/gin"
 	"github.com/klauspost/compress/zstd"
 
-	"github.com/lychee/lychee/auth"
-	"github.com/lychee/lychee/envconfig"
-	internalcloud "github.com/lychee/lychee/internal/cloud"
-	"github.com/lychee/lychee/version"
+	"github.com/MD-Mushfiqur123/lychee/auth"
+	"github.com/MD-Mushfiqur123/lychee/envconfig"
+	internalcloud "github.com/MD-Mushfiqur123/lychee/internal/cloud"
+	"github.com/MD-Mushfiqur123/lychee/version"
 )
 
 const (

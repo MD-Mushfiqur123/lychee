@@ -11,8 +11,8 @@ import (
 	"testing"
 
 	"github.com/gin-gonic/gin"
-	internalcloud "github.com/lychee/lychee/internal/cloud"
-	"github.com/lychee/lychee/version"
+	internalcloud "github.com/MD-Mushfiqur123/lychee/internal/cloud"
+	"github.com/MD-Mushfiqur123/lychee/version"
 )
 
 type webExperimentalUpstreamCapture struct {

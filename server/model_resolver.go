@@ -1,8 +1,8 @@
 package server
 
 import (
-	"github.com/lychee/lychee/internal/modelref"
-	"github.com/lychee/lychee/types/model"
+	"github.com/MD-Mushfiqur123/lychee/internal/modelref"
+	"github.com/MD-Mushfiqur123/lychee/types/model"
 )
 
 type modelSource = modelref.ModelSource

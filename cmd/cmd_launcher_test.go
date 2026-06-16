@@ -6,9 +6,9 @@ import (
 
 	"github.com/spf13/cobra"
 
-	"github.com/lychee/lychee/cmd/config"
-	"github.com/lychee/lychee/cmd/launch"
-	"github.com/lychee/lychee/cmd/tui"
+	"github.com/MD-Mushfiqur123/lychee/cmd/config"
+	"github.com/MD-Mushfiqur123/lychee/cmd/launch"
+	"github.com/MD-Mushfiqur123/lychee/cmd/tui"
 )
 
 func setCmdTestHome(t *testing.T, dir string) {

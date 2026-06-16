@@ -14,7 +14,7 @@ import (
 	"testing"
 
 	"github.com/d4l3k/go-bfloat16"
-	st "github.com/lychee/lychee/x/safetensors"
+	st "github.com/MD-Mushfiqur123/lychee/x/safetensors"
 )
 
 func TestIsTensorModelDir(t *testing.T) {

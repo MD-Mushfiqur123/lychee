@@ -8,9 +8,9 @@ import (
 	"path/filepath"
 	"strings"
 
-	"github.com/lychee/lychee/cmd/internal/fileutil"
-	"github.com/lychee/lychee/envconfig"
-	"github.com/lychee/lychee/types/model"
+	"github.com/MD-Mushfiqur123/lychee/cmd/internal/fileutil"
+	"github.com/MD-Mushfiqur123/lychee/envconfig"
+	"github.com/MD-Mushfiqur123/lychee/types/model"
 	"github.com/pelletier/go-toml/v2"
 	"golang.org/x/mod/semver"
 )

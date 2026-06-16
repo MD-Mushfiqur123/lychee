@@ -6,7 +6,7 @@ import (
 	"strings"
 	"unicode"
 
-	"github.com/lychee/lychee/logutil"
+	"github.com/MD-Mushfiqur123/lychee/logutil"
 )
 
 type WordPiece struct {

@@ -7,7 +7,7 @@ import (
 	"slices"
 	"testing"
 
-	"github.com/lychee/lychee/types/model"
+	"github.com/MD-Mushfiqur123/lychee/types/model"
 )
 
 func createManifest(t *testing.T, path, name string) {

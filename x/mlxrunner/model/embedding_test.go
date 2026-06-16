@@ -3,8 +3,8 @@ package model
 import (
 	"testing"
 
-	"github.com/lychee/lychee/x/mlxrunner/mlx"
-	"github.com/lychee/lychee/x/models/nn"
+	"github.com/MD-Mushfiqur123/lychee/x/mlxrunner/mlx"
+	"github.com/MD-Mushfiqur123/lychee/x/models/nn"
 )
 
 func skipIfNoMLX(t *testing.T) {

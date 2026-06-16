@@ -12,7 +12,7 @@ import (
 	"strings"
 	"time"
 
-	"github.com/lychee/lychee/api"
+	"github.com/MD-Mushfiqur123/lychee/api"
 )
 
 var ErrWebSearchAuthRequired = errors.New("web search requires authentication")

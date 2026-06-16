@@ -22,4 +22,4 @@ This document details the storyboard and script for a 2-minute product showcase 
 ## Part 4: Conclusion (1:30 - 2:00)
 - **Visual**: Swapping the base URL in a Python script using the Anthropic Claude SDK to `http://localhost:11434/anthropic/v1`.
 - **Audio/Voiceover**: "Best of all, Lychee is fully compatible with OpenAI and Anthropic SDKs. Swap your backend URL and target local models in seconds. Accelerate your LLM infrastructure today with Lychee."
-- **Visual**: Show Github repo URL (https://github.com/lychee/lychee) and a call-to-action to star the project.
+- **Visual**: Show Github repo URL (https://github.com/MD-Mushfiqur123/lychee) and a call-to-action to star the project.

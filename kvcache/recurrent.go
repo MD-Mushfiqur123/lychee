@@ -6,8 +6,8 @@ import (
 	"math"
 	"slices"
 
-	"github.com/lychee/lychee/ml"
-	"github.com/lychee/lychee/model/input"
+	"github.com/MD-Mushfiqur123/lychee/ml"
+	"github.com/MD-Mushfiqur123/lychee/model/input"
 )
 
 const (

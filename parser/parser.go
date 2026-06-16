@@ -22,7 +22,7 @@ import (
 	"golang.org/x/text/encoding/unicode"
 	"golang.org/x/text/transform"
 
-	"github.com/lychee/lychee/api"
+	"github.com/MD-Mushfiqur123/lychee/api"
 )
 
 var ErrModelNotFound = errors.New("no Modelfile or safetensors files found")

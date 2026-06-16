@@ -12,7 +12,7 @@ import (
 	"fmt"
 	"strings"
 
-	"github.com/lychee/lychee/api"
+	"github.com/MD-Mushfiqur123/lychee/api"
 )
 
 // HasCacheControlChat checks if the request has cache control enabled.

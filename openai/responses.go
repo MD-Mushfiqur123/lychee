@@ -7,7 +7,7 @@ import (
 	"strings"
 	"time"
 
-	"github.com/lychee/lychee/api"
+	"github.com/MD-Mushfiqur123/lychee/api"
 )
 
 // ResponsesContent is a discriminated union for input content types.

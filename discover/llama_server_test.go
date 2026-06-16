@@ -7,8 +7,8 @@ import (
 	"path/filepath"
 	"testing"
 
-	"github.com/lychee/lychee/logutil"
-	"github.com/lychee/lychee/ml"
+	"github.com/MD-Mushfiqur123/lychee/logutil"
+	"github.com/MD-Mushfiqur123/lychee/ml"
 )
 
 func TestLlamaServerDiscovery(t *testing.T) {

@@ -4,7 +4,7 @@ import (
 	"math"
 	"testing"
 
-	"github.com/lychee/lychee/x/mlxrunner/mlx"
+	"github.com/MD-Mushfiqur123/lychee/x/mlxrunner/mlx"
 )
 
 func skipIfNoMLX(t *testing.T) {

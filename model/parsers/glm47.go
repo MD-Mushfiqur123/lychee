@@ -1,6 +1,6 @@
 package parsers
 
-import "github.com/lychee/lychee/api"
+import "github.com/MD-Mushfiqur123/lychee/api"
 
 // GLM47Parser extends GLM46Parser with thinking-aware initialization.
 // GLM-4.7's prompt ends with <think> when thinking is enabled, so the parser

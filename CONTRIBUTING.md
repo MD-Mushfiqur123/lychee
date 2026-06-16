@@ -25,9 +25,9 @@ go test ./cmd/... -v
 
 ### Ideal issues
 
-* [Bugs](https://github.com/lychee/lychee/issues?q=is%3Aissue+is%3Aopen+label%3Abug): issues where Lychee stops working or where it results in an unexpected error.
-* [Performance](https://github.com/lychee/lychee/issues?q=is%3Aissue+is%3Aopen+label%3Aperformance): issues to make Lychee faster at model inference, downloading or uploading.
-* [Security](https://github.com/lychee/lychee/blob/main/SECURITY.md): issues that could lead to a security vulnerability. As mentioned in [SECURITY.md](https://github.com/lychee/lychee/blob/main/SECURITY.md), please do not disclose security vulnerabilities publicly.
+* [Bugs](https://github.com/MD-Mushfiqur123/lychee/issues?q=is%3Aissue+is%3Aopen+label%3Abug): issues where Lychee stops working or where it results in an unexpected error.
+* [Performance](https://github.com/MD-Mushfiqur123/lychee/issues?q=is%3Aissue+is%3Aopen+label%3Aperformance): issues to make Lychee faster at model inference, downloading or uploading.
+* [Security](https://github.com/MD-Mushfiqur123/lychee/blob/main/SECURITY.md): issues that could lead to a security vulnerability. As mentioned in [SECURITY.md](https://github.com/MD-Mushfiqur123/lychee/blob/main/SECURITY.md), please do not disclose security vulnerabilities publicly.
 
 ### Issues that are harder to review
 

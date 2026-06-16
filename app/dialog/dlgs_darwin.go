@@ -1,7 +1,7 @@
 package dialog
 
 import (
-	"github.com/lychee/lychee/app/dialog/cocoa"
+	"github.com/MD-Mushfiqur123/lychee/app/dialog/cocoa"
 )
 
 func (b *MsgBuilder) yesNo() bool {

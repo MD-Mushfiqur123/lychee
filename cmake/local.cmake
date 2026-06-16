@@ -483,7 +483,7 @@ if(LYCHEE_HAVE_LLAMA_SERVER)
     get_filename_component(LYCHEE_GO_OUTPUT_DIR "${LYCHEE_GO_OUTPUT}" DIRECTORY)
 
     set(LYCHEE_GO_LDFLAGS
-        "-s -w -X=github.com/lychee/lychee/version.Version=${LYCHEE_VERSION} -X=github.com/lychee/lychee/server.mode=release")
+        "-s -w -X=github.com/MD-Mushfiqur123/lychee/version.Version=${LYCHEE_VERSION} -X=github.com/MD-Mushfiqur123/lychee/server.mode=release")
     if(GO_EXECUTABLE)
         add_custom_target(lychee-go ALL
             COMMAND ${CMAKE_COMMAND} -E make_directory "${LYCHEE_GO_OUTPUT_DIR}"

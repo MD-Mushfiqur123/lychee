@@ -9,10 +9,10 @@ import (
 	"testing"
 	"time"
 
-	lychee "github.com/lychee/lychee/server/internal/client/lychee"
-	"github.com/lychee/lychee/anthropic"
-	"github.com/lychee/lychee/api"
-	"github.com/lychee/lychee/llm"
+	lychee "github.com/MD-Mushfiqur123/lychee/server/internal/client/lychee"
+	"github.com/MD-Mushfiqur123/lychee/anthropic"
+	"github.com/MD-Mushfiqur123/lychee/api"
+	"github.com/MD-Mushfiqur123/lychee/llm"
 )
 
 func TestAnthropicMessagesRoute_Integration(t *testing.T) {

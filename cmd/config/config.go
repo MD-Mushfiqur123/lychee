@@ -10,7 +10,7 @@ import (
 	"path/filepath"
 	"strings"
 
-	"github.com/lychee/lychee/cmd/internal/fileutil"
+	"github.com/MD-Mushfiqur123/lychee/cmd/internal/fileutil"
 )
 
 type integration struct {

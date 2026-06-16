@@ -7,7 +7,7 @@ import (
 	"strings"
 
 	"github.com/gin-gonic/gin"
-	"github.com/lychee/lychee/server/webui"
+	"github.com/MD-Mushfiqur123/lychee/server/webui"
 )
 
 // RegisterDashboardRoutes registers the dashboard UI endpoints under /dashboard/*.

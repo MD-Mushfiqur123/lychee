@@ -10,10 +10,10 @@ import (
 	"math"
 	"time"
 
-	"github.com/lychee/lychee/x/imagegen/manifest"
-	"github.com/lychee/lychee/x/imagegen/mlx"
-	"github.com/lychee/lychee/x/imagegen/models/qwen3"
-	"github.com/lychee/lychee/x/imagegen/tokenizer"
+	"github.com/MD-Mushfiqur123/lychee/x/imagegen/manifest"
+	"github.com/MD-Mushfiqur123/lychee/x/imagegen/mlx"
+	"github.com/MD-Mushfiqur123/lychee/x/imagegen/models/qwen3"
+	"github.com/MD-Mushfiqur123/lychee/x/imagegen/tokenizer"
 	"golang.org/x/image/draw"
 )
 

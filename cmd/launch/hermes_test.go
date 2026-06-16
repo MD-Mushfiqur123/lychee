@@ -14,7 +14,7 @@ import (
 
 	"gopkg.in/yaml.v3"
 
-	"github.com/lychee/lychee/cmd/config"
+	"github.com/MD-Mushfiqur123/lychee/cmd/config"
 )
 
 func withHermesPlatform(t *testing.T, goos string) {

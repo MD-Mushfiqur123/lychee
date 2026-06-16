@@ -9,8 +9,8 @@ import (
 
 	"github.com/google/go-cmp/cmp"
 	"github.com/google/go-cmp/cmp/cmpopts"
-	"github.com/lychee/lychee/fs/ggml"
-	"github.com/lychee/lychee/fs/gguf"
+	"github.com/MD-Mushfiqur123/lychee/fs/ggml"
+	"github.com/MD-Mushfiqur123/lychee/fs/gguf"
 )
 
 func createBinFile(tb testing.TB) string {

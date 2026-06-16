@@ -10,7 +10,7 @@ import (
 	"strconv"
 	"strings"
 
-	"github.com/lychee/lychee/fs"
+	"github.com/MD-Mushfiqur123/lychee/fs"
 )
 
 type Backend interface {

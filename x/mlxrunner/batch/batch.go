@@ -1,6 +1,6 @@
 package batch
 
-import "github.com/lychee/lychee/x/mlxrunner/mlx"
+import "github.com/MD-Mushfiqur123/lychee/x/mlxrunner/mlx"
 
 // Batch is the per-forward-pass input handed to a model.
 type Batch struct {

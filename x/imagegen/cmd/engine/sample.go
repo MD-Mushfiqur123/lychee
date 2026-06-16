@@ -2,7 +2,7 @@
 
 package main
 
-import "github.com/lychee/lychee/x/imagegen/mlx"
+import "github.com/MD-Mushfiqur123/lychee/x/imagegen/mlx"
 
 // sampleTopK samples from top-k logits using global random state
 func sampleTopK(scaledLogits *mlx.Array, k int) *mlx.Array {

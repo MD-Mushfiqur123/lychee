@@ -1,6 +1,6 @@
 package parsers
 
-import "github.com/lychee/lychee/api"
+import "github.com/MD-Mushfiqur123/lychee/api"
 
 // GlmOcrParser is the GLM46 parser with thinking disabled.
 type GlmOcrParser struct {

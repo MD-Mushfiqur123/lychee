@@ -14,8 +14,8 @@ import (
 	"strings"
 	"time"
 
-	"github.com/lychee/lychee/api"
-	"github.com/lychee/lychee/types/model"
+	"github.com/MD-Mushfiqur123/lychee/api"
+	"github.com/MD-Mushfiqur123/lychee/types/model"
 )
 
 var finishReasonToolCalls = "tool_calls"
@@ -137,7 +137,7 @@ type ChatCompletionChunk struct {
 	Usage             *Usage        `json:"usage,omitempty"`
 }
 
-// TODO (https://github.com/lychee/lychee/issues/5259): support []string, []int and [][]int
+// TODO (https://github.com/MD-Mushfiqur123/lychee/issues/5259): support []string, []int and [][]int
 type CompletionRequest struct {
 	Model            string         `json:"model"`
 	Prompt           string         `json:"prompt"`

@@ -11,7 +11,7 @@ import (
 	"strings"
 	"testing"
 
-	modelpkg "github.com/lychee/lychee/types/model"
+	modelpkg "github.com/MD-Mushfiqur123/lychee/types/model"
 	"gopkg.in/yaml.v3"
 )
 

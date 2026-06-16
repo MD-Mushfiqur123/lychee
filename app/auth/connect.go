@@ -8,7 +8,7 @@ import (
 	"net/url"
 	"os"
 
-	"github.com/lychee/lychee/auth"
+	"github.com/MD-Mushfiqur123/lychee/auth"
 )
 
 // BuildConnectURL generates the connect URL with the public key and device name

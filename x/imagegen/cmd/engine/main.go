@@ -15,11 +15,11 @@ import (
 	"path/filepath"
 	"runtime/pprof"
 
-	"github.com/lychee/lychee/x/imagegen"
-	"github.com/lychee/lychee/x/imagegen/mlx"
-	"github.com/lychee/lychee/x/imagegen/models/flux2"
-	"github.com/lychee/lychee/x/imagegen/models/zimage"
-	"github.com/lychee/lychee/x/imagegen/safetensors"
+	"github.com/MD-Mushfiqur123/lychee/x/imagegen"
+	"github.com/MD-Mushfiqur123/lychee/x/imagegen/mlx"
+	"github.com/MD-Mushfiqur123/lychee/x/imagegen/models/flux2"
+	"github.com/MD-Mushfiqur123/lychee/x/imagegen/models/zimage"
+	"github.com/MD-Mushfiqur123/lychee/x/imagegen/safetensors"
 )
 
 // stringSlice is a flag type that accumulates multiple values

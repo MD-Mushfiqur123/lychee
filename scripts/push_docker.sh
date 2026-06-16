@@ -3,7 +3,7 @@
 set -eu
 
 export VERSION=${VERSION:-0.0.0}
-export GOFLAGS="'-ldflags=-w -s \"-X=github.com/lychee/lychee/version.Version=$VERSION\" \"-X=github.com/lychee/lychee/server.mode=release\"'"
+export GOFLAGS="'-ldflags=-w -s \"-X=github.com/MD-Mushfiqur123/lychee/version.Version=$VERSION\" \"-X=github.com/MD-Mushfiqur123/lychee/server.mode=release\"'"
 
 docker build \
     --push \

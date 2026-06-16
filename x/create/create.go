@@ -15,8 +15,8 @@ import (
 	"strconv"
 	"strings"
 
-	"github.com/lychee/lychee/envconfig"
-	"github.com/lychee/lychee/x/safetensors"
+	"github.com/MD-Mushfiqur123/lychee/envconfig"
+	"github.com/MD-Mushfiqur123/lychee/x/safetensors"
 )
 
 // ModelConfig represents the config blob stored with a model.

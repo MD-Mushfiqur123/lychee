@@ -7,7 +7,7 @@ import (
 	"path/filepath"
 	"runtime"
 
-	"github.com/lychee/lychee/envconfig"
+	"github.com/MD-Mushfiqur123/lychee/envconfig"
 )
 
 // Copilot implements Runner for GitHub Copilot CLI integration.

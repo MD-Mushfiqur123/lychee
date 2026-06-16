@@ -4,7 +4,7 @@ import (
 	"testing"
 
 	"github.com/google/go-cmp/cmp"
-	"github.com/lychee/lychee/api"
+	"github.com/MD-Mushfiqur123/lychee/api"
 )
 
 func TestQwen3VLNonThinkingRenderer(t *testing.T) {
@@ -127,7 +127,7 @@ Let me analyze this image.`,
 <|im_start|>assistant
 Let me analyze this image.`,
 		},
-		// 		// NOTE: solved with #12518: https://github.com/lychee/lychee/compare/main...drifkin/stable-tool-args
+		// 		// NOTE: solved with #12518: https://github.com/MD-Mushfiqur123/lychee/compare/main...drifkin/stable-tool-args
 		// 		{
 		// 			name: "with tools and response",
 		// 			msgs: []api.Message{
@@ -207,7 +207,7 @@ Let me analyze this image.`,
 		// <|im_start|>assistant
 		// `,
 		// 		},
-		// 		// NOTE: solved with #12518: https://github.com/lychee/lychee/compare/main...drifkin/stable-tool-args
+		// 		// NOTE: solved with #12518: https://github.com/MD-Mushfiqur123/lychee/compare/main...drifkin/stable-tool-args
 		// 		{
 		// 			name: "With tools and response, multiple tool calls",
 		// 			msgs: []api.Message{

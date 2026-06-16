@@ -9,8 +9,8 @@ import (
 	"strings"
 	"time"
 
-	"github.com/lychee/lychee/api"
-	"github.com/lychee/lychee/x/agent"
+	"github.com/MD-Mushfiqur123/lychee/api"
+	"github.com/MD-Mushfiqur123/lychee/x/agent"
 )
 
 const (

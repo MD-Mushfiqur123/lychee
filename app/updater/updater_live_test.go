@@ -11,8 +11,8 @@ import (
 	"testing"
 	"time"
 
-	"github.com/lychee/lychee/app/store"
-	"github.com/lychee/lychee/app/version"
+	"github.com/MD-Mushfiqur123/lychee/app/store"
+	"github.com/MD-Mushfiqur123/lychee/app/version"
 )
 
 // TestLiveAppUpdate exercises the production update endpoint and downloads the

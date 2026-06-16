@@ -22,14 +22,14 @@ import (
 	"time"
 
 	"github.com/google/uuid"
-	"github.com/lychee/lychee/app/auth"
-	"github.com/lychee/lychee/app/logrotate"
-	"github.com/lychee/lychee/app/server"
-	"github.com/lychee/lychee/app/store"
-	"github.com/lychee/lychee/app/tools"
-	"github.com/lychee/lychee/app/ui"
-	"github.com/lychee/lychee/app/updater"
-	"github.com/lychee/lychee/app/version"
+	"github.com/MD-Mushfiqur123/lychee/app/auth"
+	"github.com/MD-Mushfiqur123/lychee/app/logrotate"
+	"github.com/MD-Mushfiqur123/lychee/app/server"
+	"github.com/MD-Mushfiqur123/lychee/app/store"
+	"github.com/MD-Mushfiqur123/lychee/app/tools"
+	"github.com/MD-Mushfiqur123/lychee/app/ui"
+	"github.com/MD-Mushfiqur123/lychee/app/updater"
+	"github.com/MD-Mushfiqur123/lychee/app/version"
 )
 
 var (

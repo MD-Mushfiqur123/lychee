@@ -8,8 +8,8 @@ import (
 	"regexp"
 	"strings"
 
-	"github.com/lychee/lychee/envconfig"
-	"github.com/lychee/lychee/types/model"
+	"github.com/MD-Mushfiqur123/lychee/envconfig"
+	"github.com/MD-Mushfiqur123/lychee/types/model"
 )
 
 var ErrInvalidDigestFormat = errors.New("invalid digest format")

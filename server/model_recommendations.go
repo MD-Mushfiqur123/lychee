@@ -15,9 +15,9 @@ import (
 	"sync"
 	"time"
 
-	"github.com/lychee/lychee/api"
-	"github.com/lychee/lychee/envconfig"
-	"github.com/lychee/lychee/format"
+	"github.com/MD-Mushfiqur123/lychee/api"
+	"github.com/MD-Mushfiqur123/lychee/envconfig"
+	"github.com/MD-Mushfiqur123/lychee/format"
 )
 
 const modelRecommendationsURL = "https://lychee.com/api/experimental/model-recommendations"

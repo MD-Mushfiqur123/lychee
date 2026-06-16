@@ -9,8 +9,8 @@ import (
 	"strings"
 	"time"
 
-	"github.com/lychee/lychee/logutil"
-	"github.com/lychee/lychee/ml"
+	"github.com/MD-Mushfiqur123/lychee/logutil"
+	"github.com/MD-Mushfiqur123/lychee/ml"
 )
 
 // Jetson devices have JETSON_JETPACK="x.y.z" factory set to the Jetpack version installed.

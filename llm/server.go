@@ -10,11 +10,11 @@ import (
 	"strings"
 	"time"
 
-	"github.com/lychee/lychee/api"
-	"github.com/lychee/lychee/envconfig"
-	"github.com/lychee/lychee/format"
-	"github.com/lychee/lychee/fs/ggml"
-	"github.com/lychee/lychee/ml"
+	"github.com/MD-Mushfiqur123/lychee/api"
+	"github.com/MD-Mushfiqur123/lychee/envconfig"
+	"github.com/MD-Mushfiqur123/lychee/format"
+	"github.com/MD-Mushfiqur123/lychee/fs/ggml"
+	"github.com/MD-Mushfiqur123/lychee/ml"
 )
 
 var ErrLoadRequiredFull = errors.New("unable to load full model on GPU")

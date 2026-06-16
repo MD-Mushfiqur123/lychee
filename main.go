@@ -5,7 +5,7 @@ import (
 
 	"github.com/spf13/cobra"
 
-	"github.com/lychee/lychee/cmd"
+	"github.com/MD-Mushfiqur123/lychee/cmd"
 )
 
 func main() {

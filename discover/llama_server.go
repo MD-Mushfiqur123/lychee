@@ -15,9 +15,9 @@ import (
 	"strings"
 	"time"
 
-	"github.com/lychee/lychee/llm"
-	"github.com/lychee/lychee/logutil"
-	"github.com/lychee/lychee/ml"
+	"github.com/MD-Mushfiqur123/lychee/llm"
+	"github.com/MD-Mushfiqur123/lychee/logutil"
+	"github.com/MD-Mushfiqur123/lychee/ml"
 )
 
 // llamaServerDiscoveryWaitDelay bounds how long Wait can hang after we stop

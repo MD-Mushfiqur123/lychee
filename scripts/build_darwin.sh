@@ -206,8 +206,8 @@ _build_macapp() {
     touch dist/Lychee.app
 
     go clean -cache
-    GOARCH=amd64 CGO_ENABLED=1 GOOS=darwin go build -o dist/darwin-app-amd64 -ldflags="-s -w -X=github.com/lychee/lychee/app/version.Version=${VERSION}" ./app/cmd/app
-    GOARCH=arm64 CGO_ENABLED=1 GOOS=darwin go build -o dist/darwin-app-arm64 -ldflags="-s -w -X=github.com/lychee/lychee/app/version.Version=${VERSION}" ./app/cmd/app
+    GOARCH=amd64 CGO_ENABLED=1 GOOS=darwin go build -o dist/darwin-app-amd64 -ldflags="-s -w -X=github.com/MD-Mushfiqur123/lychee/app/version.Version=${VERSION}" ./app/cmd/app
+    GOARCH=arm64 CGO_ENABLED=1 GOOS=darwin go build -o dist/darwin-app-arm64 -ldflags="-s -w -X=github.com/MD-Mushfiqur123/lychee/app/version.Version=${VERSION}" ./app/cmd/app
     mkdir -p dist/Lychee.app/Contents/MacOS
     lipo -create -output dist/Lychee.app/Contents/MacOS/Lychee dist/darwin-app-amd64 dist/darwin-app-arm64
     rm -f dist/darwin-app-amd64 dist/darwin-app-arm64

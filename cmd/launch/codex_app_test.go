@@ -9,8 +9,8 @@ import (
 	"testing"
 	"time"
 
-	"github.com/lychee/lychee/cmd/internal/fileutil"
-	"github.com/lychee/lychee/types/model"
+	"github.com/MD-Mushfiqur123/lychee/cmd/internal/fileutil"
+	"github.com/MD-Mushfiqur123/lychee/types/model"
 )
 
 func withCodexAppPlatform(t *testing.T, goos string) {

@@ -1,6 +1,6 @@
 package nn
 
-import "github.com/lychee/lychee/x/mlxrunner/mlx"
+import "github.com/MD-Mushfiqur123/lychee/x/mlxrunner/mlx"
 
 // Layer is the interface for neural network layers with a Forward method.
 type Layer interface {

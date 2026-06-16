@@ -20,7 +20,7 @@ func NewCommunityCmd() *cobra.Command {
 			fmt.Fprintln(cmd.OutOrStdout(), "────────────────────────────────────────")
 			fmt.Fprintln(cmd.OutOrStdout(), "🌐 Website & Docs: https://lychee.github.io/")
 			fmt.Fprintln(cmd.OutOrStdout(), "💬 Discord Invite: https://discord.gg/lychee-ai")
-			fmt.Fprintln(cmd.OutOrStdout(), "🐙 GitHub Repo:    https://github.com/lychee/lychee")
+			fmt.Fprintln(cmd.OutOrStdout(), "🐙 GitHub Repo:    https://github.com/MD-Mushfiqur123/lychee")
 			fmt.Fprintln(cmd.OutOrStdout(), "────────────────────────────────────────")
 			fmt.Fprintln(cmd.OutOrStdout(), "\nLoading active 'good first issues' from GitHub...")
 
@@ -126,8 +126,8 @@ func NewCommunityFeedbackCmd() *cobra.Command {
 func printStaticIssues(cmd *cobra.Command) {
 	fmt.Fprintln(cmd.OutOrStdout(), "\n🔥 Curated Issues for Beginners:")
 	fmt.Fprintln(cmd.OutOrStdout(), "  [#12] Add shell auto-completions for fish/powershell")
-	fmt.Fprintln(cmd.OutOrStdout(), "      Link: https://github.com/lychee/lychee/issues/12")
+	fmt.Fprintln(cmd.OutOrStdout(), "      Link: https://github.com/MD-Mushfiqur123/lychee/issues/12")
 	fmt.Fprintln(cmd.OutOrStdout(), "  [#18] Implement custom model exporter to portable tarballs")
-	fmt.Fprintln(cmd.OutOrStdout(), "      Link: https://github.com/lychee/lychee/issues/18")
+	fmt.Fprintln(cmd.OutOrStdout(), "      Link: https://github.com/MD-Mushfiqur123/lychee/issues/18")
 	fmt.Fprintln(cmd.OutOrStdout(), "\nJoin our Discord or visit GitHub to browse more open issues!")
 }

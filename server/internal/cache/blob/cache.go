@@ -16,7 +16,7 @@ import (
 	"strings"
 	"time"
 
-	"github.com/lychee/lychee/server/internal/internal/names"
+	"github.com/MD-Mushfiqur123/lychee/server/internal/internal/names"
 )
 
 // Entry contains metadata about a blob in the cache.

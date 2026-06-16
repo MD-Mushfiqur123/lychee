@@ -3,7 +3,7 @@ package flux2
 import (
 	"math"
 
-	"github.com/lychee/lychee/x/imagegen/mlx"
+	"github.com/MD-Mushfiqur123/lychee/x/imagegen/mlx"
 )
 
 // RoPEConfig holds 4D RoPE configuration for Flux2

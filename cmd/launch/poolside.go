@@ -6,7 +6,7 @@ import (
 	"os/exec"
 	"runtime"
 
-	"github.com/lychee/lychee/envconfig"
+	"github.com/MD-Mushfiqur123/lychee/envconfig"
 )
 
 // Poolside implements Runner for Poolside's CLI.

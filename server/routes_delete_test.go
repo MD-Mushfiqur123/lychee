@@ -9,9 +9,9 @@ import (
 
 	"github.com/gin-gonic/gin"
 
-	"github.com/lychee/lychee/api"
-	"github.com/lychee/lychee/manifest"
-	"github.com/lychee/lychee/types/model"
+	"github.com/MD-Mushfiqur123/lychee/api"
+	"github.com/MD-Mushfiqur123/lychee/manifest"
+	"github.com/MD-Mushfiqur123/lychee/types/model"
 )
 
 func TestDelete(t *testing.T) {

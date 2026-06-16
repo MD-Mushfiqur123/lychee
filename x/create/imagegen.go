@@ -9,7 +9,7 @@ import (
 	"path/filepath"
 	"strings"
 
-	"github.com/lychee/lychee/x/safetensors"
+	"github.com/MD-Mushfiqur123/lychee/x/safetensors"
 )
 
 // CreateImageGenModel imports an image generation model from a directory.

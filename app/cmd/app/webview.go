@@ -19,9 +19,9 @@ import (
 	"time"
 	"unsafe"
 
-	"github.com/lychee/lychee/app/dialog"
-	"github.com/lychee/lychee/app/store"
-	"github.com/lychee/lychee/app/webview"
+	"github.com/MD-Mushfiqur123/lychee/app/dialog"
+	"github.com/MD-Mushfiqur123/lychee/app/store"
+	"github.com/MD-Mushfiqur123/lychee/app/webview"
 )
 
 type Webview struct {

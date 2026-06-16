@@ -3,7 +3,7 @@ package zimage
 import (
 	"math"
 
-	"github.com/lychee/lychee/x/imagegen/mlx"
+	"github.com/MD-Mushfiqur123/lychee/x/imagegen/mlx"
 )
 
 // FlowMatchSchedulerConfig holds scheduler configuration

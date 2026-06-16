@@ -6,7 +6,7 @@ import (
 
 	"github.com/google/go-cmp/cmp"
 
-	"github.com/lychee/lychee/api"
+	"github.com/MD-Mushfiqur123/lychee/api"
 )
 
 func TestGemma4Parser(t *testing.T) {
@@ -1307,7 +1307,7 @@ func TestParseGemma4ToolCall_RepairsIssue15315Examples(t *testing.T) {
 	}{
 		{
 			name: "raw multiline string",
-			// Source: https://github.com/lychee/lychee/issues/15315#issue-4203625511
+			// Source: https://github.com/MD-Mushfiqur123/lychee/issues/15315#issue-4203625511
 			content: "call:write{content:" + writeContent,
 			tools:   []api.Tool{gemma4TestStringTool("write", "content")},
 			want: api.ToolCall{
@@ -1323,7 +1323,7 @@ func TestParseGemma4ToolCall_RepairsIssue15315Examples(t *testing.T) {
 			name:    "single quoted value with dangling gemma string delimiter",
 			content: `call:grep{include:<|"|>*.py<|"|>,output_mode:<|"|>content<|"|>,path:<|"|>/data/robotics/experiment1<|"|>,pattern:':\s*\w+'<|"|>}`,
 			tools:   []api.Tool{gemma4TestStringTool("grep", "include", "output_mode", "path", "pattern")},
-			// Source: https://github.com/lychee/lychee/issues/15315#issue-4203625511
+			// Source: https://github.com/MD-Mushfiqur123/lychee/issues/15315#issue-4203625511
 			want: api.ToolCall{
 				Function: api.ToolCallFunction{
 					Name: "grep",
@@ -1340,7 +1340,7 @@ func TestParseGemma4ToolCall_RepairsIssue15315Examples(t *testing.T) {
 			name:    "unclosed gemma string before object close",
 			content: `call:bash{command:<|"|>ls}`,
 			tools:   []api.Tool{gemma4TestStringTool("bash", "command")},
-			// Source: https://github.com/lychee/lychee/issues/15315#issuecomment-4194547092
+			// Source: https://github.com/MD-Mushfiqur123/lychee/issues/15315#issuecomment-4194547092
 			want: api.ToolCall{
 				Function: api.ToolCallFunction{
 					Name: "bash",

@@ -9,8 +9,8 @@ import (
 	"runtime"
 	"slices"
 
-	"github.com/lychee/lychee/cmd/internal/fileutil"
-	"github.com/lychee/lychee/envconfig"
+	"github.com/MD-Mushfiqur123/lychee/cmd/internal/fileutil"
+	"github.com/MD-Mushfiqur123/lychee/envconfig"
 )
 
 // OpenCode implements Runner and Editor for OpenCode integration.

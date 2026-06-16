@@ -11,10 +11,10 @@ import (
 	"sync"
 	"time"
 
-	"github.com/lychee/lychee/x/imagegen/manifest"
-	"github.com/lychee/lychee/x/imagegen/mlx"
-	"github.com/lychee/lychee/x/imagegen/models/flux2"
-	"github.com/lychee/lychee/x/imagegen/models/zimage"
+	"github.com/MD-Mushfiqur123/lychee/x/imagegen/manifest"
+	"github.com/MD-Mushfiqur123/lychee/x/imagegen/mlx"
+	"github.com/MD-Mushfiqur123/lychee/x/imagegen/models/flux2"
+	"github.com/MD-Mushfiqur123/lychee/x/imagegen/models/zimage"
 )
 
 // ImageModel is the interface for image generation models.

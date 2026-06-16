@@ -15,7 +15,7 @@ import (
 	"strconv"
 	"strings"
 
-	"github.com/lychee/lychee/ml"
+	"github.com/MD-Mushfiqur123/lychee/ml"
 )
 
 // vulkanUMARegex matches Vulkan debug lines like:

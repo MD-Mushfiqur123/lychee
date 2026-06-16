@@ -9,11 +9,11 @@ import (
 	"strings"
 	"time"
 
-	"github.com/lychee/lychee/x/mlxrunner/batch"
-	"github.com/lychee/lychee/x/mlxrunner/cache"
-	"github.com/lychee/lychee/x/mlxrunner/mlx"
-	"github.com/lychee/lychee/x/mlxrunner/model/base"
-	sampler "github.com/lychee/lychee/x/mlxrunner/sample"
+	"github.com/MD-Mushfiqur123/lychee/x/mlxrunner/batch"
+	"github.com/MD-Mushfiqur123/lychee/x/mlxrunner/cache"
+	"github.com/MD-Mushfiqur123/lychee/x/mlxrunner/mlx"
+	"github.com/MD-Mushfiqur123/lychee/x/mlxrunner/model/base"
+	sampler "github.com/MD-Mushfiqur123/lychee/x/mlxrunner/sample"
 )
 
 const (

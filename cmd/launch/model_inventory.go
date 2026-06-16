@@ -6,8 +6,8 @@ import (
 	"strings"
 	"sync"
 
-	"github.com/lychee/lychee/api"
-	modelpkg "github.com/lychee/lychee/types/model"
+	"github.com/MD-Mushfiqur123/lychee/api"
+	modelpkg "github.com/MD-Mushfiqur123/lychee/types/model"
 )
 
 // LaunchModel is the model metadata Launch passes to integration config

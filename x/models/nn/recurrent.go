@@ -1,8 +1,8 @@
 package nn
 
 import (
-	"github.com/lychee/lychee/x/mlxrunner/batch"
-	"github.com/lychee/lychee/x/mlxrunner/mlx"
+	"github.com/MD-Mushfiqur123/lychee/x/mlxrunner/batch"
+	"github.com/MD-Mushfiqur123/lychee/x/mlxrunner/mlx"
 )
 
 // RecurrentOption configures a call to CausalConv1D or GatedDelta.

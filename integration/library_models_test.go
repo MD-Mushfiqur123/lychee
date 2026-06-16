@@ -10,7 +10,7 @@ import (
 	"testing"
 	"time"
 
-	"github.com/lychee/lychee/api"
+	"github.com/MD-Mushfiqur123/lychee/api"
 )
 
 // First run of this scenario on a target system will take a long time to download

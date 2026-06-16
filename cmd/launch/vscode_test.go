@@ -9,7 +9,7 @@ import (
 	"testing"
 
 	_ "modernc.org/sqlite"
-	"github.com/lychee/lychee/cmd/internal/fileutil"
+	"github.com/MD-Mushfiqur123/lychee/cmd/internal/fileutil"
 )
 
 func TestVSCodeIntegration(t *testing.T) {

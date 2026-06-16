@@ -3,9 +3,9 @@ package launch
 import (
 	"testing"
 
-	"github.com/lychee/lychee/api"
-	"github.com/lychee/lychee/format"
-	modelpkg "github.com/lychee/lychee/types/model"
+	"github.com/MD-Mushfiqur123/lychee/api"
+	"github.com/MD-Mushfiqur123/lychee/format"
+	modelpkg "github.com/MD-Mushfiqur123/lychee/types/model"
 )
 
 func TestBuildModelList_UsesInventoryMetadataForInstalledModels(t *testing.T) {

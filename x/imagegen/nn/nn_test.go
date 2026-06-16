@@ -8,7 +8,7 @@ import (
 	"runtime"
 	"testing"
 
-	"github.com/lychee/lychee/x/imagegen/mlx"
+	"github.com/MD-Mushfiqur123/lychee/x/imagegen/mlx"
 )
 
 // TestMain initializes MLX before running tests.

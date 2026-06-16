@@ -11,8 +11,8 @@ import (
 	"strings"
 	"time"
 
-	"github.com/lychee/lychee/api"
-	"github.com/lychee/lychee/envconfig"
+	"github.com/MD-Mushfiqur123/lychee/api"
+	"github.com/MD-Mushfiqur123/lychee/envconfig"
 )
 
 // Kimi implements Runner for Kimi Code CLI integration.

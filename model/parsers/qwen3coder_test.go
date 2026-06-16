@@ -4,7 +4,7 @@ import (
 	"reflect"
 	"testing"
 
-	"github.com/lychee/lychee/api"
+	"github.com/MD-Mushfiqur123/lychee/api"
 )
 
 // tool creates a test tool with the given name and properties
@@ -489,7 +489,7 @@ true
 				},
 			},
 		},
-		// regression test for <https://github.com/lychee/lychee/issues/12357>
+		// regression test for <https://github.com/MD-Mushfiqur123/lychee/issues/12357>
 		{
 			name:  "ampersands in parameter values",
 			tools: []api.Tool{},

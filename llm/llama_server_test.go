@@ -21,10 +21,10 @@ import (
 	"testing"
 	"time"
 
-	"github.com/lychee/lychee/fs/ggml"
-	"github.com/lychee/lychee/ml"
+	"github.com/MD-Mushfiqur123/lychee/fs/ggml"
+	"github.com/MD-Mushfiqur123/lychee/ml"
 
-	"github.com/lychee/lychee/api"
+	"github.com/MD-Mushfiqur123/lychee/api"
 	"golang.org/x/sync/semaphore"
 )
 

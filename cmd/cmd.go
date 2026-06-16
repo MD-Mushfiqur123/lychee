@@ -17,16 +17,16 @@ import (
 	"github.com/spf13/cobra"
 	"golang.org/x/term"
 
-	"github.com/lychee/lychee/api"
-	"github.com/lychee/lychee/cmd/config"
-	"github.com/lychee/lychee/cmd/launch"
-	"github.com/lychee/lychee/cmd/tui"
-	"github.com/lychee/lychee/discover"
-	"github.com/lychee/lychee/envconfig"
-	"github.com/lychee/lychee/runner"
-	"github.com/lychee/lychee/version"
-	xcreate "github.com/lychee/lychee/x/create"
-	"github.com/lychee/lychee/x/imagegen"
+	"github.com/MD-Mushfiqur123/lychee/api"
+	"github.com/MD-Mushfiqur123/lychee/cmd/config"
+	"github.com/MD-Mushfiqur123/lychee/cmd/launch"
+	"github.com/MD-Mushfiqur123/lychee/cmd/tui"
+	"github.com/MD-Mushfiqur123/lychee/discover"
+	"github.com/MD-Mushfiqur123/lychee/envconfig"
+	"github.com/MD-Mushfiqur123/lychee/runner"
+	"github.com/MD-Mushfiqur123/lychee/version"
+	xcreate "github.com/MD-Mushfiqur123/lychee/x/create"
+	"github.com/MD-Mushfiqur123/lychee/x/imagegen"
 )
 
 func init() {

@@ -4,10 +4,10 @@ import (
 	"fmt"
 	"math"
 
-	"github.com/lychee/lychee/x/imagegen/manifest"
-	"github.com/lychee/lychee/x/imagegen/mlx"
-	"github.com/lychee/lychee/x/imagegen/safetensors"
-	"github.com/lychee/lychee/x/imagegen/vae"
+	"github.com/MD-Mushfiqur123/lychee/x/imagegen/manifest"
+	"github.com/MD-Mushfiqur123/lychee/x/imagegen/mlx"
+	"github.com/MD-Mushfiqur123/lychee/x/imagegen/safetensors"
+	"github.com/MD-Mushfiqur123/lychee/x/imagegen/vae"
 )
 
 // VAEConfig holds VAE decoder configuration

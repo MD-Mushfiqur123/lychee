@@ -4,7 +4,7 @@ import (
 	"fmt"
 	"unsafe"
 
-	"github.com/lychee/lychee/llm"
+	"github.com/MD-Mushfiqur123/lychee/llm"
 )
 
 const (

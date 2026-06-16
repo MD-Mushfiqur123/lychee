@@ -17,12 +17,12 @@ import (
 	"github.com/ledongthuc/pdf"
 	"github.com/spf13/cobra"
 
-	"github.com/lychee/lychee/api"
-	"github.com/lychee/lychee/envconfig"
-	"github.com/lychee/lychee/internal/modelref"
-	"github.com/lychee/lychee/readline"
-	"github.com/lychee/lychee/types/errtypes"
-	"github.com/lychee/lychee/types/model"
+	"github.com/MD-Mushfiqur123/lychee/api"
+	"github.com/MD-Mushfiqur123/lychee/envconfig"
+	"github.com/MD-Mushfiqur123/lychee/internal/modelref"
+	"github.com/MD-Mushfiqur123/lychee/readline"
+	"github.com/MD-Mushfiqur123/lychee/types/errtypes"
+	"github.com/MD-Mushfiqur123/lychee/types/model"
 )
 
 type MultilineState int

@@ -9,7 +9,7 @@ import (
 	"os"
 	"path/filepath"
 
-	"github.com/lychee/lychee/envconfig"
+	"github.com/MD-Mushfiqur123/lychee/envconfig"
 )
 
 const serverConfigFilename = "server.json"

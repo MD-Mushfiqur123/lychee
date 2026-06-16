@@ -11,7 +11,7 @@ import (
 	"sync"
 	"time"
 
-	"github.com/lychee/lychee/app/ui/responses"
+	"github.com/MD-Mushfiqur123/lychee/app/ui/responses"
 )
 
 type PageType string

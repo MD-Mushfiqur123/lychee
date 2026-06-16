@@ -10,7 +10,7 @@ import (
 	"os"
 	"path/filepath"
 
-	"github.com/lychee/lychee/types/model"
+	"github.com/MD-Mushfiqur123/lychee/types/model"
 )
 
 type Manifest struct {

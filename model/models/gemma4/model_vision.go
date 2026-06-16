@@ -3,10 +3,10 @@ package gemma4
 import (
 	"math"
 
-	"github.com/lychee/lychee/fs"
-	"github.com/lychee/lychee/ml"
-	"github.com/lychee/lychee/ml/nn"
-	"github.com/lychee/lychee/ml/nn/rope"
+	"github.com/MD-Mushfiqur123/lychee/fs"
+	"github.com/MD-Mushfiqur123/lychee/ml"
+	"github.com/MD-Mushfiqur123/lychee/ml/nn"
+	"github.com/MD-Mushfiqur123/lychee/ml/nn/rope"
 )
 
 const batchSize = 1

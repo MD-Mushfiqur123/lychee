@@ -14,10 +14,10 @@ import (
 	"time"
 
 	"github.com/gin-gonic/gin"
-	"github.com/lychee/lychee/api"
-	internalcloud "github.com/lychee/lychee/internal/cloud"
-	"github.com/lychee/lychee/middleware"
-	"github.com/lychee/lychee/version"
+	"github.com/MD-Mushfiqur123/lychee/api"
+	internalcloud "github.com/MD-Mushfiqur123/lychee/internal/cloud"
+	"github.com/MD-Mushfiqur123/lychee/middleware"
+	"github.com/MD-Mushfiqur123/lychee/version"
 )
 
 func TestStatusHandler(t *testing.T) {

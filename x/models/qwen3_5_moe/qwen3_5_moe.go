@@ -2,8 +2,8 @@
 package qwen3_5_moe
 
 import (
-	"github.com/lychee/lychee/x/mlxrunner/model/base"
-	"github.com/lychee/lychee/x/models/qwen3_5"
+	"github.com/MD-Mushfiqur123/lychee/x/mlxrunner/model/base"
+	"github.com/MD-Mushfiqur123/lychee/x/models/qwen3_5"
 )
 
 func init() {

@@ -1,6 +1,6 @@
 package cache
 
-import "github.com/lychee/lychee/x/imagegen/mlx"
+import "github.com/MD-Mushfiqur123/lychee/x/imagegen/mlx"
 
 type Cache interface {
 	Update(k, v *mlx.Array, seqLen int) (*mlx.Array, *mlx.Array)

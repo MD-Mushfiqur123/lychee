@@ -7,8 +7,8 @@ import (
 	"testing"
 	"time"
 
-	"github.com/lychee/lychee/llm"
-	"github.com/lychee/lychee/ml"
+	"github.com/MD-Mushfiqur123/lychee/llm"
+	"github.com/MD-Mushfiqur123/lychee/ml"
 )
 
 func TestFilterOverlapByLibrary(t *testing.T) {

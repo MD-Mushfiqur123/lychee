@@ -7,7 +7,7 @@ import (
 	"sort"
 	"testing"
 
-	"github.com/lychee/lychee/x/mlxrunner/mlx"
+	"github.com/MD-Mushfiqur123/lychee/x/mlxrunner/mlx"
 )
 
 // logprobEntry is the (token id, logprob) pair returned by the sampler's

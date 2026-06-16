@@ -12,7 +12,7 @@ import (
 	"strconv"
 	"strings"
 
-	"github.com/lychee/lychee/fs/ggml"
+	"github.com/MD-Mushfiqur123/lychee/fs/ggml"
 )
 
 type qwen3VLModel struct {

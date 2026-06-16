@@ -6,7 +6,7 @@ import (
 	"fmt"
 	"io"
 
-	"github.com/lychee/lychee/x/create"
+	"github.com/MD-Mushfiqur123/lychee/x/create"
 )
 
 // QuantizeSupported returns false on non-darwin platforms (quantization requires MLX).

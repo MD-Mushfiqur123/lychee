@@ -1,7 +1,7 @@
 # Common environment setup across build*.sh scripts
 
 export VERSION=${VERSION:-$(git describe --tags --first-parent --abbrev=7 --long --dirty --always | sed -e "s/^v//g")}
-export GOFLAGS="'-ldflags=-w -s \"-X=github.com/lychee/lychee/version.Version=$VERSION\" \"-X=github.com/lychee/lychee/server.mode=release\"'"
+export GOFLAGS="'-ldflags=-w -s \"-X=github.com/MD-Mushfiqur123/lychee/version.Version=$VERSION\" \"-X=github.com/MD-Mushfiqur123/lychee/server.mode=release\"'"
 # TODO - consider `docker buildx ls --format=json` to autodiscover platform capability
 PLATFORM=${PLATFORM:-"linux/arm64,linux/amd64"}
 DOCKER_ORG=${DOCKER_ORG:-"lychee"}

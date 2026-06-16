@@ -6,7 +6,7 @@ import (
 
 	"golang.org/x/image/draw"
 
-	"github.com/lychee/lychee/fs"
+	"github.com/MD-Mushfiqur123/lychee/fs"
 )
 
 type ImageProcessor struct {

@@ -8,7 +8,7 @@ import (
 
 	"golang.org/x/term"
 
-	"github.com/lychee/lychee/format"
+	"github.com/MD-Mushfiqur123/lychee/format"
 )
 
 type Bar struct {

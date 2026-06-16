@@ -12,8 +12,8 @@ import (
 	"strings"
 	"unicode"
 
-	"github.com/lychee/lychee/api"
-	"github.com/lychee/lychee/logutil"
+	"github.com/MD-Mushfiqur123/lychee/api"
+	"github.com/MD-Mushfiqur123/lychee/logutil"
 )
 
 type qwenParserState int

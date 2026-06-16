@@ -2,7 +2,7 @@
 package cache
 
 import (
-	"github.com/lychee/lychee/x/imagegen/mlx"
+	"github.com/MD-Mushfiqur123/lychee/x/imagegen/mlx"
 )
 
 // TeaCache implements Timestep Embedding Aware Caching for diffusion models.

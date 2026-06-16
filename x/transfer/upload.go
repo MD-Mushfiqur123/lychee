@@ -20,7 +20,7 @@ import (
 	"sync/atomic"
 	"time"
 
-	"github.com/lychee/lychee/logutil"
+	"github.com/MD-Mushfiqur123/lychee/logutil"
 
 	"golang.org/x/sync/errgroup"
 	"golang.org/x/sync/semaphore"

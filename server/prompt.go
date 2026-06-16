@@ -9,10 +9,10 @@ import (
 	"slices"
 	"strings"
 
-	"github.com/lychee/lychee/api"
-	"github.com/lychee/lychee/llm"
-	"github.com/lychee/lychee/model/renderers"
-	"github.com/lychee/lychee/template"
+	"github.com/MD-Mushfiqur123/lychee/api"
+	"github.com/MD-Mushfiqur123/lychee/llm"
+	"github.com/MD-Mushfiqur123/lychee/model/renderers"
+	"github.com/MD-Mushfiqur123/lychee/template"
 )
 
 type tokenizeFunc func(context.Context, string) ([]int, error)

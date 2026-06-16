@@ -3,7 +3,7 @@ package renderers
 import (
 	"testing"
 
-	"github.com/lychee/lychee/api"
+	"github.com/MD-Mushfiqur123/lychee/api"
 )
 
 type mockRenderer struct{}

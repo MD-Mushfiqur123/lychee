@@ -11,7 +11,7 @@ hero:
       link: /getting-started
     - theme: alt
       text: View on GitHub
-      link: https://github.com/lychee/lychee
+      link: https://github.com/MD-Mushfiqur123/lychee
 
 features:
   - title: Drop-in Ollama Replacement

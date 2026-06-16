@@ -16,11 +16,11 @@ import (
 
 	"github.com/gin-gonic/gin"
 
-	"github.com/lychee/lychee/api"
-	"github.com/lychee/lychee/envconfig"
-	internalcloud "github.com/lychee/lychee/internal/cloud"
-	"github.com/lychee/lychee/manifest"
-	modelpkg "github.com/lychee/lychee/types/model"
+	"github.com/MD-Mushfiqur123/lychee/api"
+	"github.com/MD-Mushfiqur123/lychee/envconfig"
+	internalcloud "github.com/MD-Mushfiqur123/lychee/internal/cloud"
+	"github.com/MD-Mushfiqur123/lychee/manifest"
+	modelpkg "github.com/MD-Mushfiqur123/lychee/types/model"
 )
 
 func TestModelShowCacheLocalHitUsesManifestDigest(t *testing.T) {

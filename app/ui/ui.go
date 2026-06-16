@@ -22,22 +22,22 @@ import (
 	"time"
 
 	"github.com/google/uuid"
-	"github.com/lychee/lychee/api"
-	"github.com/lychee/lychee/app/server"
-	"github.com/lychee/lychee/app/store"
-	"github.com/lychee/lychee/app/tools"
-	"github.com/lychee/lychee/app/types/not"
-	"github.com/lychee/lychee/app/ui/responses"
-	"github.com/lychee/lychee/app/updater"
-	"github.com/lychee/lychee/app/version"
-	lycheeAuth "github.com/lychee/lychee/auth"
-	"github.com/lychee/lychee/envconfig"
-	"github.com/lychee/lychee/manifest"
-	"github.com/lychee/lychee/types/model"
+	"github.com/MD-Mushfiqur123/lychee/api"
+	"github.com/MD-Mushfiqur123/lychee/app/server"
+	"github.com/MD-Mushfiqur123/lychee/app/store"
+	"github.com/MD-Mushfiqur123/lychee/app/tools"
+	"github.com/MD-Mushfiqur123/lychee/app/types/not"
+	"github.com/MD-Mushfiqur123/lychee/app/ui/responses"
+	"github.com/MD-Mushfiqur123/lychee/app/updater"
+	"github.com/MD-Mushfiqur123/lychee/app/version"
+	lycheeAuth "github.com/MD-Mushfiqur123/lychee/auth"
+	"github.com/MD-Mushfiqur123/lychee/envconfig"
+	"github.com/MD-Mushfiqur123/lychee/manifest"
+	"github.com/MD-Mushfiqur123/lychee/types/model"
 	_ "github.com/tkrajina/typescriptify-golang-structs/typescriptify"
 )
 
-//go:generate tscriptify -package=github.com/lychee/lychee/app/ui/responses -target=./app/codegen/gotypes.gen.ts responses/types.go
+//go:generate tscriptify -package=github.com/MD-Mushfiqur123/lychee/app/ui/responses -target=./app/codegen/gotypes.gen.ts responses/types.go
 //go:generate npm --prefix ./app run build
 
 var CORS = envconfig.Bool("LYCHEE_CORS")

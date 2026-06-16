@@ -14,8 +14,8 @@ import (
 	"strings"
 	"time"
 
-	"github.com/lychee/lychee/cmd/config"
-	"github.com/lychee/lychee/cmd/internal/fileutil"
+	"github.com/MD-Mushfiqur123/lychee/cmd/config"
+	"github.com/MD-Mushfiqur123/lychee/cmd/internal/fileutil"
 	"golang.org/x/term"
 )
 

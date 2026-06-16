@@ -7,7 +7,7 @@ import (
 	"regexp"
 	"strconv"
 
-	"github.com/lychee/lychee/fs/ggml"
+	"github.com/MD-Mushfiqur123/lychee/fs/ggml"
 )
 
 type deepseek2Model struct {

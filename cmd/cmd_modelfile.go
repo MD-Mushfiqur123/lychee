@@ -8,7 +8,7 @@ import (
 	"strings"
 
 	"github.com/spf13/cobra"
-	"github.com/lychee/lychee/parser"
+	"github.com/MD-Mushfiqur123/lychee/parser"
 )
 
 func NewModelfileCmd() *cobra.Command {

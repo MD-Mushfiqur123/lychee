@@ -25,9 +25,9 @@ import (
 	"testing"
 	"time"
 
-	"github.com/lychee/lychee/api"
-	"github.com/lychee/lychee/format"
-	"github.com/lychee/lychee/types/model"
+	"github.com/MD-Mushfiqur123/lychee/api"
+	"github.com/MD-Mushfiqur123/lychee/format"
+	"github.com/MD-Mushfiqur123/lychee/types/model"
 )
 
 var (

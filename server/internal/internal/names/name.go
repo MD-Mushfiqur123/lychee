@@ -5,7 +5,7 @@ import (
 	"fmt"
 	"strings"
 
-	"github.com/lychee/lychee/server/internal/internal/stringsx"
+	"github.com/MD-Mushfiqur123/lychee/server/internal/internal/stringsx"
 )
 
 const MaxNameLength = 350 + 1 + 80 + 1 + 80 + 1 + 80 // <host>/<namespace>/<model>:<tag>

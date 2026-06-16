@@ -3,7 +3,7 @@ package main
 import (
 	"os"
 
-	"github.com/lychee/lychee/cmd"
+	"github.com/MD-Mushfiqur123/lychee/cmd"
 )
 
 func main() {

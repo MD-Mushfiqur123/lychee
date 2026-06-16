@@ -13,8 +13,8 @@ import (
 	"slices"
 	"strings"
 
-	ofs "github.com/lychee/lychee/fs"
-	"github.com/lychee/lychee/fs/ggml"
+	ofs "github.com/MD-Mushfiqur123/lychee/fs"
+	"github.com/MD-Mushfiqur123/lychee/fs/ggml"
 )
 
 type ModelParameters struct {

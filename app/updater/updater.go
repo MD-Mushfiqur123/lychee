@@ -24,9 +24,9 @@ import (
 	"sync"
 	"time"
 
-	"github.com/lychee/lychee/app/store"
-	"github.com/lychee/lychee/app/version"
-	"github.com/lychee/lychee/auth"
+	"github.com/MD-Mushfiqur123/lychee/app/store"
+	"github.com/MD-Mushfiqur123/lychee/app/version"
+	"github.com/MD-Mushfiqur123/lychee/auth"
 )
 
 var (

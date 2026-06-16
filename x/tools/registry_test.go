@@ -3,7 +3,7 @@ package tools
 import (
 	"testing"
 
-	"github.com/lychee/lychee/api"
+	"github.com/MD-Mushfiqur123/lychee/api"
 )
 
 func TestRegistry_Register(t *testing.T) {

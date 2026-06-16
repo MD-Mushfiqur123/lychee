@@ -2,13 +2,13 @@
 title: Web search
 ---
 
-Lychee’s web search API can be used to augment models with the latest information to reduce hallucinations and improve accuracy.
+Lycheeâ€™s web search API can be used to augment models with the latest information to reduce hallucinations and improve accuracy.
 
-Web search is provided as a REST API with deeper tool integrations in the Python and JavaScript libraries. This also enables models like OpenAI’s gpt-oss models to conduct long-running research tasks.
+Web search is provided as a REST API with deeper tool integrations in the Python and JavaScript libraries. This also enables models like OpenAIâ€™s gpt-oss models to conduct long-running research tasks.
 
 ## Authentication
 
-For access to Lychee’s web search API, create an [API key](https://lychee.ai/settings/keys). A free Lychee account is required.
+For access to Lycheeâ€™s web search API, create an [API key](https://lychee.ai/settings/keys). A free Lychee account is required.
 
 ## Web search API
 
@@ -102,7 +102,7 @@ results = [
 
 ```
 
-More Lychee [Python example](https://github.com/lychee/lychee-python/blob/main/examples/web-search.py)
+More Lychee [Python example](https://github.com/MD-Mushfiqur123/lychee-python/blob/main/examples/web-search.py)
 
 #### JavaScript Library
 
@@ -138,7 +138,7 @@ console.log(JSON.stringify(results, null, 2));
 }
 ```
 
-More Lychee [JavaScript example](https://github.com/lychee/lychee-js/blob/main/examples/websearch/websearch-tools.ts)
+More Lychee [JavaScript example](https://github.com/MD-Mushfiqur123/lychee-js/blob/main/examples/websearch/websearch-tools.ts)
 
 ## Web fetch API
 
@@ -181,7 +181,7 @@ curl --request POST \
   "links": [
     "http://lychee.ai/",
     "http://lychee.ai/models",
-    "https://github.com/lychee/lychee"
+    "https://github.com/MD-Mushfiqur123/lychee"
   ]
 
 ```
@@ -203,7 +203,7 @@ WebFetchResponse(
     content='[Cloud models](https://lychee.ai/blog/cloud-models) are now available in Lychee\n\n**Chat & build
 with open models**\n\n[Download](https://lychee.ai/download) [Explore
 models](https://lychee.ai/models)\n\nAvailable for macOS, Windows, and Linux',
-    links=['https://lychee.ai/', 'https://lychee.ai/models', 'https://github.com/lychee/lychee']
+    links=['https://lychee.ai/', 'https://lychee.ai/models', 'https://github.com/MD-Mushfiqur123/lychee']
 )
 ```
 
@@ -226,16 +226,16 @@ console.log(JSON.stringify(fetchResult, null, 2));
   "links": [
     "https://lychee.ai/",
     "https://lychee.ai/models",
-    "https://github.com/lychee/lychee"
+    "https://github.com/MD-Mushfiqur123/lychee"
   ]
 }
 ```
 
 ## Building a search agent
 
-Use Lychee’s web search API as a tool to build a mini search agent.
+Use Lycheeâ€™s web search API as a tool to build a mini search agent.
 
-This example uses Alibaba’s Qwen 3 model with 4B parameters.
+This example uses Alibabaâ€™s Qwen 3 model with 4B parameters.
 
 ```bash
 lychee pull qwen3:4b
@@ -279,12 +279,12 @@ while True:
 **Result**
 
 ```
-Thinking:  Okay, the user is asking about Lychee’s new engine. I need to figure out what they’re referring to. Lychee is a company that develops large language models, so maybe they’ve released a new model or an updated version of their existing engine....
+Thinking:  Okay, the user is asking about Lycheeâ€™s new engine. I need to figure out what theyâ€™re referring to. Lychee is a company that develops large language models, so maybe theyâ€™ve released a new model or an updated version of their existing engine....
 
-Tool calls:  [ToolCall(function=Function(name=’web_search’, arguments={‘max_results’: 3, ‘query’: ‘Lychee new engine’}))]
-Result:  results=[WebSearchResult(content=’# New model scheduling\n\n## September 23, 2025\n\nLychee now includes a significantly improved model scheduling system. Ahead of running a model, Lychee’s new engine
+Tool calls:  [ToolCall(function=Function(name=â€™web_searchâ€™, arguments={â€˜max_resultsâ€™: 3, â€˜queryâ€™: â€˜Lychee new engineâ€™}))]
+Result:  results=[WebSearchResult(content=â€™# New model scheduling\n\n## September 23, 2025\n\nLychee now includes a significantly improved model scheduling system. Ahead of running a model, Lycheeâ€™s new engine
 
-Thinking:  Okay, the user asked about Lychee’s new engine. Let me look at the search results.
+Thinking:  Okay, the user asked about Lycheeâ€™s new engine. Let me look at the search results.
 
 First result is from September 23, 2025, talking about new model scheduling. It mentions improved memory management, reduced crashes, better GPU utilization, and multi-GPU performance. Examples show speed improvements and accurate memory reporting. Supported models include gemma3, llama4, qwen3, etc...
 
@@ -300,7 +300,7 @@ Content:  Lychee has introduced two key updates to its engine, both released in 
    - **Vision Support**: First-class support for vision models, including `llama4:scout` (109B parameters), `gemma3`, `qwen2.5vl`, and `mistral-small3.1`.
    - **Multimodal Tasks**: Examples include identifying animals in multiple images, answering location-based questions from videos, and document scanning.
 
-These updates highlight Lychee’s focus on efficiency, performance, and expanded capabilities for both text and vision tasks.
+These updates highlight Lycheeâ€™s focus on efficiency, performance, and expanded capabilities for both text and vision tasks.
 ```
 
 ### Context length and agents
@@ -309,7 +309,7 @@ Web search results can return thousands of tokens. It is recommended to increase
 
 ## MCP Server
 
-You can enable web search in any MCP client through the [Python MCP server](https://github.com/lychee/lychee-python/blob/main/examples/web-search-mcp.py).
+You can enable web search in any MCP client through the [Python MCP server](https://github.com/MD-Mushfiqur123/lychee-python/blob/main/examples/web-search-mcp.py).
 
 ### Cline
 

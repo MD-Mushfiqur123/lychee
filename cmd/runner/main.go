@@ -6,7 +6,7 @@ import (
 	"fmt"
 	"os"
 
-	"github.com/lychee/lychee/runner"
+	"github.com/MD-Mushfiqur123/lychee/runner"
 )
 
 func main() {

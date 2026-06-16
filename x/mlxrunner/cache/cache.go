@@ -3,10 +3,10 @@ package cache
 import (
 	"fmt"
 
-	"github.com/lychee/lychee/logutil"
-	"github.com/lychee/lychee/x/mlxrunner/batch"
-	"github.com/lychee/lychee/x/mlxrunner/mlx"
-	"github.com/lychee/lychee/x/models/nn"
+	"github.com/MD-Mushfiqur123/lychee/logutil"
+	"github.com/MD-Mushfiqur123/lychee/x/mlxrunner/batch"
+	"github.com/MD-Mushfiqur123/lychee/x/mlxrunner/mlx"
+	"github.com/MD-Mushfiqur123/lychee/x/models/nn"
 )
 
 // Cache is common state management shared by every cache kind. Writers

@@ -14,8 +14,8 @@ import (
 	"github.com/spf13/cobra"
 	"golang.org/x/crypto/ssh"
 
-	"github.com/lychee/lychee/envconfig"
-	"github.com/lychee/lychee/server"
+	"github.com/MD-Mushfiqur123/lychee/envconfig"
+	"github.com/MD-Mushfiqur123/lychee/server"
 )
 
 func RunServer(cmd *cobra.Command, _ []string) error {

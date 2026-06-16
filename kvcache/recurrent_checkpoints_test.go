@@ -6,7 +6,7 @@ import (
 	"slices"
 	"testing"
 
-	"github.com/lychee/lychee/ml"
+	"github.com/MD-Mushfiqur123/lychee/ml"
 )
 
 func newTestCache() *Recurrent {

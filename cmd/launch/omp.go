@@ -9,10 +9,10 @@ import (
 	"slices"
 	"strings"
 
-	"github.com/lychee/lychee/cmd/config"
-	"github.com/lychee/lychee/cmd/internal/fileutil"
-	"github.com/lychee/lychee/envconfig"
-	"github.com/lychee/lychee/types/model"
+	"github.com/MD-Mushfiqur123/lychee/cmd/config"
+	"github.com/MD-Mushfiqur123/lychee/cmd/internal/fileutil"
+	"github.com/MD-Mushfiqur123/lychee/envconfig"
+	"github.com/MD-Mushfiqur123/lychee/types/model"
 	"gopkg.in/yaml.v3"
 )
 

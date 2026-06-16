@@ -1,7 +1,7 @@
 // Package rope provides options for RoPE
 package rope
 
-import "github.com/lychee/lychee/ml"
+import "github.com/MD-Mushfiqur123/lychee/ml"
 
 // Options contains optional parameters for RoPE function
 type Options struct {

@@ -9,7 +9,7 @@ import (
 	"slices"
 	"strings"
 
-	"github.com/lychee/lychee/fs/ggml"
+	"github.com/MD-Mushfiqur123/lychee/fs/ggml"
 )
 
 // lfm2VLTextModel converts the language model component of LFM2 VL checkpoints.

@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Documentation – Lychee</title>
+  <title>Documentation â€“ Lychee</title>
   <style>
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
@@ -38,7 +38,7 @@
       overflow-x: hidden;
     }
 
-    /* ── NAV ── */
+    /* â”€â”€ NAV â”€â”€ */
     nav {
       position: fixed; top: 0; left: 0; right: 0; z-index: 100;
       background: rgba(10,10,10,0.9); backdrop-filter: blur(20px);
@@ -58,14 +58,14 @@
       font-size: 0.85rem !important;
     }
 
-    /* ── DOCS LAYOUT ── */
+    /* â”€â”€ DOCS LAYOUT â”€â”€ */
     .docs-layout {
       display: flex;
       padding-top: 60px;
       min-height: 100vh;
     }
 
-    /* ── LEFT SIDEBAR ── */
+    /* â”€â”€ LEFT SIDEBAR â”€â”€ */
     .docs-sidebar {
       width: var(--sidebar-w);
       flex-shrink: 0;
@@ -96,14 +96,14 @@
     .sidebar-nav li a:hover { color: var(--text); background: var(--bg2); }
     .sidebar-nav li a.active { color: var(--accent2); background: rgba(232,67,147,0.08); }
 
-    /* ── MAIN CONTENT ── */
+    /* â”€â”€ MAIN CONTENT â”€â”€ */
     .docs-main {
       flex: 1; min-width: 0;
       padding: 3rem 2.5rem;
       max-width: 820px;
     }
 
-    /* ── RIGHT TOC ── */
+    /* â”€â”€ RIGHT TOC â”€â”€ */
     .docs-toc {
       width: var(--toc-w);
       flex-shrink: 0;
@@ -129,7 +129,7 @@
     .toc-nav li a.active { color: var(--accent2); border-left-color: var(--accent); }
     .toc-nav .toc-sub a { padding-left: 22px; font-size: 0.75rem; }
 
-    /* ── CONTENT STYLES ── */
+    /* â”€â”€ CONTENT STYLES â”€â”€ */
     .doc-section { margin-bottom: 4rem; scroll-margin-top: 80px; }
 
     h1.doc-title {
@@ -155,7 +155,7 @@
     .doc-p a { color: var(--accent2); text-decoration: none; }
     .doc-p a:hover { text-decoration: underline; }
 
-    /* ── CALLOUT ── */
+    /* â”€â”€ CALLOUT â”€â”€ */
     .callout {
       padding: 1rem 1.25rem; border-radius: 10px;
       margin-bottom: 1.25rem; display: flex; gap: 12px; align-items: flex-start;
@@ -167,7 +167,7 @@
     .callout-body { font-size: 0.875rem; color: var(--muted); }
     .callout-body strong { color: var(--text); }
 
-    /* ── CODE BLOCK ── */
+    /* â”€â”€ CODE BLOCK â”€â”€ */
     .code-block {
       background: var(--bg2); border: 1px solid var(--border);
       border-radius: var(--radius); overflow: hidden; margin-bottom: 1.25rem;
@@ -208,7 +208,7 @@
       font-family: var(--mono); font-size: 0.82em; color: var(--green);
     }
 
-    /* ── TABS ── */
+    /* â”€â”€ TABS â”€â”€ */
     .platform-tabs { display: flex; gap: 0; border-bottom: 1px solid var(--border); margin-bottom: 0; }
     .ptab {
       padding: 10px 22px; font-size: 0.82rem; font-weight: 600;
@@ -221,7 +221,7 @@
     .ptab-panel { display: none; }
     .ptab-panel.active { display: block; }
 
-    /* ── TABLE ── */
+    /* â”€â”€ TABLE â”€â”€ */
     .doc-table-wrap { overflow-x: auto; margin-bottom: 1.5rem; }
     table.doc-table {
       width: 100%; border-collapse: collapse; font-size: 0.875rem;
@@ -239,7 +239,7 @@
     table.doc-table td:first-child { font-family: var(--mono); font-size: 0.8rem; color: var(--green); }
     table.doc-table tr:hover td { background: rgba(255,255,255,0.02); }
 
-    /* ── METHOD BADGES ── */
+    /* â”€â”€ METHOD BADGES â”€â”€ */
     .method {
       display: inline-block; padding: 2px 8px; border-radius: 5px;
       font-size: 0.7rem; font-weight: 700; font-family: var(--mono); margin-right: 8px;
@@ -248,10 +248,10 @@
     .method-get  { background: rgba(96,165,250,0.15); color: var(--blue); }
     .method-del  { background: rgba(248,113,113,0.15); color: #f87171; }
 
-    /* ── MODELFILE ── */
+    /* â”€â”€ MODELFILE â”€â”€ */
     .modelfile-table td:first-child { color: var(--purple); }
 
-    /* ── BREADCRUMB ── */
+    /* â”€â”€ BREADCRUMB â”€â”€ */
     .breadcrumb {
       font-size: 0.8rem; color: var(--muted); margin-bottom: 2rem;
       display: flex; align-items: center; gap: 6px;
@@ -259,7 +259,7 @@
     .breadcrumb a { color: var(--muted); text-decoration: none; }
     .breadcrumb a:hover { color: var(--text); }
 
-    /* ── FOOTER ── */
+    /* â”€â”€ FOOTER â”€â”€ */
     footer {
       padding: 3rem 2rem; border-top: 1px solid var(--border);
       display: flex; align-items: center; justify-content: space-between;
@@ -271,7 +271,7 @@
     .footer-links a:hover { color: var(--text); }
     .footer-copy { color: var(--muted); font-size: 0.8rem; }
 
-    /* ── RESPONSIVE ── */
+    /* â”€â”€ RESPONSIVE â”€â”€ */
     @media (max-width: 1100px) { .docs-toc { display: none; } }
     @media (max-width: 760px) {
       .docs-sidebar { display: none; }
@@ -295,7 +295,7 @@
     <li><a href="models.html">Models</a></li>
     <li><a href="docs.html" class="active">Docs</a></li>
     <li><a href="blog.html">Blog</a></li>
-    <li><a href="https://github.com/lychee/lychee" target="_blank"><img src="https://cdn.simpleicons.org/github/888888" width="14" height="14" alt="" style="vertical-align:middle;margin-right:4px">GitHub</a></li>
+    <li><a href="https://github.com/MD-Mushfiqur123/lychee" target="_blank"><img src="https://cdn.simpleicons.org/github/888888" width="14" height="14" alt="" style="vertical-align:middle;margin-right:4px">GitHub</a></li>
     <li><a href="download.html" class="nav-cta">Download</a></li>
   </ul>
 </nav>
@@ -356,7 +356,7 @@
     </div>
 
     <h1 class="doc-title">Documentation</h1>
-    <p class="doc-subtitle">Everything you need to get Lychee up and running — from installation to advanced configuration.</p>
+    <p class="doc-subtitle">Everything you need to get Lychee up and running â€” from installation to advanced configuration.</p>
 
     <!-- QUICK START -->
     <div class="doc-section" id="quickstart">
@@ -364,7 +364,7 @@
       <p class="doc-p">Get up and running with Lychee in under a minute. The fastest way is a single install command:</p>
 
       <div class="callout callout-tip">
-        <span class="callout-icon">💡</span>
+        <span class="callout-icon">ðŸ’¡</span>
         <div class="callout-body"><strong>Tip:</strong> Lychee requires macOS 11+, Ubuntu 20.04+, or Windows 10/11. GPU acceleration is automatic when available.</div>
       </div>
 
@@ -424,7 +424,7 @@ chmod +x lychee
 <span class="fn">sudo</span> systemctl start lychee</pre>
         </div>
         <div class="callout callout-info">
-          <span class="callout-icon">ℹ️</span>
+          <span class="callout-icon">â„¹ï¸</span>
           <div class="callout-body"><strong>NVIDIA GPU:</strong> Install <a href="#">CUDA 11.8+</a> for GPU acceleration. AMD GPU: ROCm 5.6+ is supported on Linux.</div>
         </div>
       </div>
@@ -511,7 +511,7 @@ lychee run llama3.1:8b "Explain quantum entanglement"
       <p class="doc-p">Lychee runs a local REST API on <code class="inline">http://localhost:11434</code>. It is fully compatible with the OpenAI API spec, so any OpenAI SDK works out of the box by setting <code class="inline">base_url</code>.</p>
 
       <div class="callout callout-info">
-        <span class="callout-icon">ℹ️</span>
+        <span class="callout-icon">â„¹ï¸</span>
         <div class="callout-body"><strong>OpenAI compatibility:</strong> Use <code class="inline">/v1/chat/completions</code>, <code class="inline">/v1/embeddings</code>, and <code class="inline">/v1/models</code> endpoints with any OpenAI SDK. Set <code class="inline">OPENAI_BASE_URL=http://localhost:11434/v1</code> and <code class="inline">OPENAI_API_KEY=lychee</code>.</div>
       </div>
 
@@ -638,7 +638,7 @@ lychee run llama3.1:8b "Explain quantum entanglement"
             <tr><td>lychee create &lt;name&gt;</td><td style="color:var(--text)">Create a model from a Modelfile</td></tr>
             <tr><td>lychee hf pull &lt;repo&gt;</td><td style="color:var(--text)">Pull a GGUF model from HuggingFace Hub</td></tr>
             <tr><td>lychee stop &lt;model&gt;</td><td style="color:var(--text)">Stop a running model and free memory</td></tr>
-            <tr><td style="color:var(--accent2)">lychee embed [text...]</td><td style="color:var(--text)">Generate vector embeddings — text, JSON, or CSV output</td></tr>
+            <tr><td style="color:var(--accent2)">lychee embed [text...]</td><td style="color:var(--text)">Generate vector embeddings â€” text, JSON, or CSV output</td></tr>
             <tr><td style="color:var(--accent2)">lychee scan</td><td style="color:var(--text)">Detect hardware and recommend compatible models</td></tr>
             <tr><td style="color:var(--accent2)">lychee compare &lt;m1&gt; &lt;m2&gt;</td><td style="color:var(--text)">Run two models on the same prompt and compare side-by-side</td></tr>
             <tr><td style="color:var(--accent2)">lychee stats</td><td style="color:var(--text)">Live dashboard of running models: VRAM, tok/s, context</td></tr>
@@ -650,10 +650,10 @@ lychee run llama3.1:8b "Explain quantum entanglement"
     <!-- EXCLUSIVE COMMANDS -->
     <div class="doc-section" id="cmd-embed">
       <h2 class="doc-h2">lychee embed</h2>
-      <p class="doc-p">Generate vector embeddings for one or more text inputs. Outputs to text, JSON, or CSV. Reads from stdin when no arguments are given — perfect for piping into RAG pipelines.</p>
+      <p class="doc-p">Generate vector embeddings for one or more text inputs. Outputs to text, JSON, or CSV. Reads from stdin when no arguments are given â€” perfect for piping into RAG pipelines.</p>
 
       <div class="callout callout-tip">
-        <span class="callout-icon">💡</span>
+        <span class="callout-icon">ðŸ’¡</span>
         <div class="callout-body"><strong>Requires:</strong> an embedding model loaded locally. Pull <code class="inline">nomic-embed-text</code> (the default) with <code class="inline">lychee pull nomic-embed-text</code>.</div>
       </div>
 
@@ -701,7 +701,7 @@ lychee embed <span class="str">"hello"</span> <span class="kw">--model</span> mx
 
     <div class="doc-section" id="cmd-scan">
       <h2 class="doc-h2">lychee scan</h2>
-      <p class="doc-p">Detect your hardware — CPU, RAM, GPU, VRAM — and get a ranked list of models that fit and will run well. Saves you from guessing which model to pull.</p>
+      <p class="doc-p">Detect your hardware â€” CPU, RAM, GPU, VRAM â€” and get a ranked list of models that fit and will run well. Saves you from guessing which model to pull.</p>
 
       <h3 class="doc-h3">Usage</h3>
       <div class="code-block">
@@ -723,16 +723,16 @@ lychee embed <span class="str">"hello"</span> <span class="kw">--model</span> mx
   Recommended models for your hardware:
 
   MODEL                        SIZE       FITS     NOTES
-  ────────────────────────────────────────────────────────────────────────
-  qwen3:0.6b                   400.0 MB   ✓        any hardware, fastest
-  llama3.2:1b                  800.0 MB   ✓        edge device / low RAM
-  qwen3:1.7b                   1.1 GB     ✓        good quality, very fast
-  llama3.2:3b                  2.0 GB     ✓        great balance
-  mistral:7b                   4.4 GB     ✓        workhorse model
-  llama3.1:8b                  4.9 GB     ✓        best 8B model
-  phi4:14b                     8.6 GB     ✓        Microsoft, very capable
-  qwen3:32b                    20.4 GB    ✓        top open model
-  llama3.3:70b                 43.0 GB    ✗        frontier quality
+  â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
+  qwen3:0.6b                   400.0 MB   âœ“        any hardware, fastest
+  llama3.2:1b                  800.0 MB   âœ“        edge device / low RAM
+  qwen3:1.7b                   1.1 GB     âœ“        good quality, very fast
+  llama3.2:3b                  2.0 GB     âœ“        great balance
+  mistral:7b                   4.4 GB     âœ“        workhorse model
+  llama3.1:8b                  4.9 GB     âœ“        best 8B model
+  phi4:14b                     8.6 GB     âœ“        Microsoft, very capable
+  qwen3:32b                    20.4 GB    âœ“        top open model
+  llama3.3:70b                 43.0 GB    âœ—        frontier quality
 
   Pull any model with:  lychee hf pull &lt;repo&gt;</pre>
       </div>
@@ -773,9 +773,9 @@ lychee compare phi4:14b deepseek-r1:14b \
       <h3 class="doc-h3">Summary Output</h3>
       <div class="code-block">
         <div class="code-header"><span class="code-lang">OUTPUT</span><button class="code-copy-btn" onclick="copyBlock(this,'')">Copy</button></div>
-        <pre class="doc-pre">  ── Summary ───────────────────────────────────────────────────
+        <pre class="doc-pre">  â”€â”€ Summary â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
   Metric               llama3.2:3b   mistral:7b    Winner
-  ──────────────────────────────────────────────────────────────
+  â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
   Speed                <span class="num">38.2</span> tok/s    <span class="num">22.1</span> tok/s    llama3.2:3b (faster)
   Response length      <span class="num">412</span> chars     <span class="num">587</span> chars     mistral:7b (longer)</pre>
       </div>
@@ -798,15 +798,15 @@ lychee compare phi4:14b deepseek-r1:14b \
       <div class="code-block">
         <div class="code-header"><span class="code-lang">OUTPUT</span><button class="code-copy-btn" onclick="copyBlock(this,'')">Copy</button></div>
         <pre class="doc-pre">  Lychee Stats  [14:22:07]  Ctrl+C to exit
-  ────────────────────────────────────────────────────────────────────────────
+  â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
   MODEL                        VRAM       RAM        CTX        EXPIRES
-  ────────────────────────────────────────────────────────────────────────────
-  llama3.1:8b                  4.7 GB     ─          8k         4m32s
-  nomic-embed-text             274.0 MB   ─          ─          2m18s</pre>
+  â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
+  llama3.1:8b                  4.7 GB     â”€          8k         4m32s
+  nomic-embed-text             274.0 MB   â”€          â”€          2m18s</pre>
       </div>
 
       <div class="callout callout-info">
-        <span class="callout-icon">ℹ️</span>
+        <span class="callout-icon">â„¹ï¸</span>
         <div class="callout-body">The dashboard refreshes in-place using ANSI escape codes. Works in any modern terminal on macOS, Linux, and Windows Terminal.</div>
       </div>
     </div>
@@ -839,7 +839,7 @@ lychee compare phi4:14b deepseek-r1:14b \
             </tr>
             <tr>
               <td>LYCHEE_HF_TOKEN</td>
-              <td style="color:var(--muted);font-family:var(--mono);font-size:0.8rem">—</td>
+              <td style="color:var(--muted);font-family:var(--mono);font-size:0.8rem">â€”</td>
               <td style="color:var(--text)">HuggingFace access token for downloading gated/private models.</td>
             </tr>
             <tr>
@@ -952,7 +952,7 @@ lychee run aria</pre>
           <tbody>
             <tr><td>LangChain</td><td style="color:var(--text)"><code class="inline">ChatOllama(model="llama3.1:8b", base_url="http://localhost:11434")</code></td></tr>
             <tr><td>LlamaIndex</td><td style="color:var(--text)"><code class="inline">Ollama(model="llama3.1:8b", base_url="http://localhost:11434")</code></td></tr>
-            <tr><td>Continue (VS Code)</td><td style="color:var(--text)">Select "Lychee" in the Continue config panel — zero configuration needed</td></tr>
+            <tr><td>Continue (VS Code)</td><td style="color:var(--text)">Select "Lychee" in the Continue config panel â€” zero configuration needed</td></tr>
             <tr><td>Open WebUI</td><td style="color:var(--text)">Set Lychee API URL to <code class="inline">http://localhost:11434</code> in Open WebUI settings</td></tr>
             <tr><td>Cline</td><td style="color:var(--text)">Select "Ollama (Local)" provider, set base URL to <code class="inline">http://localhost:11434</code></td></tr>
             <tr><td>AnythingLLM</td><td style="color:var(--text)">Choose "Ollama" as LLM provider and set the host URL</td></tr>
@@ -997,7 +997,7 @@ lychee run aria</pre>
       </div>
 
       <div class="callout callout-warn">
-        <span class="callout-icon">⚠️</span>
+        <span class="callout-icon">âš ï¸</span>
         <div class="callout-body"><strong>VRAM:</strong> Ensure you have enough VRAM for the model. A 7B Q4 model needs ~4GB, a 13B needs ~8GB, a 70B needs ~40GB. Use <code class="inline">lychee ps</code> to check current GPU memory usage.</div>
       </div>
     </div>
@@ -1009,7 +1009,7 @@ lychee run aria</pre>
 
       <h3 class="doc-h3">Server not running</h3>
       <div class="callout callout-warn">
-        <span class="callout-icon">⚠️</span>
+        <span class="callout-icon">âš ï¸</span>
         <div class="callout-body"><strong>Error:</strong> <code class="inline">dial tcp 127.0.0.1:11434: connect: connection refused</code></div>
       </div>
       <div class="code-block">
@@ -1026,7 +1026,7 @@ lychee serve
 
       <h3 class="doc-h3">Model not found</h3>
       <div class="callout callout-warn">
-        <span class="callout-icon">⚠️</span>
+        <span class="callout-icon">âš ï¸</span>
         <div class="callout-body"><strong>Error:</strong> <code class="inline">model "xyz" not found, try pulling it first</code></div>
       </div>
       <div class="code-block">
@@ -1060,7 +1060,7 @@ lychee scan</pre>
       <h3 class="doc-h3">Download stuck or corrupt</h3>
       <div class="code-block">
         <div class="code-header"><span class="code-lang">BASH</span><button class="code-copy-btn" onclick="copyBlock(this,'')">Copy</button></div>
-        <pre class="doc-pre"><span class="cm"># Lychee downloads are resumable — just re-run to continue</span>
+        <pre class="doc-pre"><span class="cm"># Lychee downloads are resumable â€” just re-run to continue</span>
 lychee hf pull bartowski/Meta-Llama-3.1-8B-Instruct-GGUF
 
 <span class="cm"># If a file is corrupt, delete the .part file and retry</span>
@@ -1094,7 +1094,7 @@ rocminfo | <span class="fn">grep</span> <span class="str">"Agent Type"</span>
           Is Lychee free?
           <span style="color:var(--muted);font-size:1.2rem">+</span>
         </summary>
-        <p style="margin-top:.85rem;color:var(--muted);font-size:.9rem;line-height:1.65">Yes. Lychee is free, open source (MIT license), and always will be. The models you download are also free — no subscriptions, no API keys, no usage limits.</p>
+        <p style="margin-top:.85rem;color:var(--muted);font-size:.9rem;line-height:1.65">Yes. Lychee is free, open source (MIT license), and always will be. The models you download are also free â€” no subscriptions, no API keys, no usage limits.</p>
       </details>
 
       <details style="border:1px solid var(--border);border-radius:10px;padding:1.1rem 1.25rem;margin-bottom:.75rem;cursor:pointer">
@@ -1102,7 +1102,7 @@ rocminfo | <span class="fn">grep</span> <span class="str">"Agent Type"</span>
           Do I need a GPU?
           <span style="color:var(--muted);font-size:1.2rem">+</span>
         </summary>
-        <p style="margin-top:.85rem;color:var(--muted);font-size:.9rem;line-height:1.65">No. Lychee runs on CPU-only machines. GPU acceleration is automatic when available and makes inference significantly faster — but small models (1-3B) run fine on modern CPUs. Run <code class="inline">lychee scan</code> to see what fits your hardware.</p>
+        <p style="margin-top:.85rem;color:var(--muted);font-size:.9rem;line-height:1.65">No. Lychee runs on CPU-only machines. GPU acceleration is automatic when available and makes inference significantly faster â€” but small models (1-3B) run fine on modern CPUs. Run <code class="inline">lychee scan</code> to see what fits your hardware.</p>
       </details>
 
       <details style="border:1px solid var(--border);border-radius:10px;padding:1.1rem 1.25rem;margin-bottom:.75rem;cursor:pointer">
@@ -1134,7 +1134,7 @@ rocminfo | <span class="fn">grep</span> <span class="str">"Agent Type"</span>
           What model format does Lychee use?
           <span style="color:var(--muted);font-size:1.2rem">+</span>
         </summary>
-        <p style="margin-top:.85rem;color:var(--muted);font-size:.9rem;line-height:1.65">Lychee uses GGUF format models for local inference via llama.cpp. When pulling from HuggingFace, only <code class="inline">.gguf</code> files are downloaded. GGUF supports Q2–Q8 quantizations and FP16/BF16 for high-precision inference.</p>
+        <p style="margin-top:.85rem;color:var(--muted);font-size:.9rem;line-height:1.65">Lychee uses GGUF format models for local inference via llama.cpp. When pulling from HuggingFace, only <code class="inline">.gguf</code> files are downloaded. GGUF supports Q2â€“Q8 quantizations and FP16/BF16 for high-precision inference.</p>
       </details>
 
       <details style="border:1px solid var(--border);border-radius:10px;padding:1.1rem 1.25rem;margin-bottom:.75rem;cursor:pointer">
@@ -1149,15 +1149,15 @@ rocminfo | <span class="fn">grep</span> <span class="str">"Agent Type"</span>
     <!-- NEXT / PREV -->
     <div style="display:flex;justify-content:space-between;padding-top:3rem;border-top:1px solid var(--border);margin-top:2rem;gap:1rem;flex-wrap:wrap;">
       <a href="download.html" style="background:var(--bg2);border:1px solid var(--border);border-radius:10px;padding:14px 20px;text-decoration:none;color:var(--text);transition:border-color 0.2s;font-size:0.9rem;" onmouseover="this.style.borderColor='#555'" onmouseout="this.style.borderColor='var(--border)'">
-        ← Download Lychee
+        â† Download Lychee
       </a>
       <a href="models.html" style="background:var(--bg2);border:1px solid var(--border);border-radius:10px;padding:14px 20px;text-decoration:none;color:var(--text);transition:border-color 0.2s;font-size:0.9rem;" onmouseover="this.style.borderColor='#555'" onmouseout="this.style.borderColor='var(--border)'">
-        Browse Model Library →
+        Browse Model Library â†’
       </a>
     </div>
 
     <div style="text-align:center;padding:2rem;border-top:1px solid var(--border)">
-      <a href="https://github.com/lychee/lychee/tree/main/docs" target="_blank" style="display:inline-flex;align-items:center;gap:8px;color:var(--muted);text-decoration:none;font-size:.85rem;transition:color .2s" onmouseover="this.style.color='var(--text)'" onmouseout="this.style.color='var(--muted)'"><img src="https://cdn.simpleicons.org/github/888888" width="14" height="14" alt=""> Edit this page on GitHub</a>
+      <a href="https://github.com/MD-Mushfiqur123/lychee/tree/main/docs" target="_blank" style="display:inline-flex;align-items:center;gap:8px;color:var(--muted);text-decoration:none;font-size:.85rem;transition:color .2s" onmouseover="this.style.color='var(--text)'" onmouseout="this.style.color='var(--muted)'"><img src="https://cdn.simpleicons.org/github/888888" width="14" height="14" alt=""> Edit this page on GitHub</a>
     </div>
   </main>
 
@@ -1200,11 +1200,11 @@ rocminfo | <span class="fn">grep</span> <span class="str">"Agent Type"</span>
   <div class="footer-links">
     <a href="docs.html">Docs</a>
     <a href="blog.html">Blog</a>
-    <a href="https://github.com/lychee/lychee" target="_blank">GitHub</a>
+    <a href="https://github.com/MD-Mushfiqur123/lychee" target="_blank">GitHub</a>
     <a href="#">Discord</a>
     <a href="models.html">Models</a>
   </div>
-  <div class="footer-copy">© 2025 Lychee. Open source.</div>
+  <div class="footer-copy">Â© 2025 Lychee. Open source.</div>
 </footer>
 
 <script>

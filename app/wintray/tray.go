@@ -14,7 +14,7 @@ import (
 	"syscall"
 	"unsafe"
 
-	"github.com/lychee/lychee/app/assets"
+	"github.com/MD-Mushfiqur123/lychee/app/assets"
 	"golang.org/x/sys/windows"
 )
 

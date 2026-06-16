@@ -3,7 +3,7 @@ package server
 import (
 	"testing"
 
-	"github.com/lychee/lychee/api"
+	"github.com/MD-Mushfiqur123/lychee/api"
 )
 
 func TestPromptCache(t *testing.T) {

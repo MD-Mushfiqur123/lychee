@@ -8,7 +8,7 @@ import (
 	"runtime"
 	"testing"
 
-	"github.com/lychee/lychee/types/model"
+	"github.com/MD-Mushfiqur123/lychee/types/model"
 )
 
 func TestOpenCodeIntegration(t *testing.T) {

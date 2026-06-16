@@ -5,7 +5,7 @@ import (
 	"testing"
 
 	tea "github.com/charmbracelet/bubbletea"
-	"github.com/lychee/lychee/cmd/launch"
+	"github.com/MD-Mushfiqur123/lychee/cmd/launch"
 )
 
 func TestRenderSignIn_ContainsModelName(t *testing.T) {

@@ -54,7 +54,7 @@ import (
 	"time"
 	"unsafe"
 
-	mlxrunnermlx "github.com/lychee/lychee/x/mlxrunner/mlx"
+	mlxrunnermlx "github.com/MD-Mushfiqur123/lychee/x/mlxrunner/mlx"
 )
 
 // Dtype represents MLX data types

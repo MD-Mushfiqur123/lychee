@@ -414,7 +414,7 @@ func TestSentencePieceBPE(t *testing.T) {
 	// When a character (e.g. "ą" = U+0105 = C4 85) isn't in the vocab as a
 	// direct token, the encoder must fall back to its UTF-8 bytes:
 	// <0xC4> <0x85>. Without this fallback, the character is silently dropped.
-	// See: https://github.com/lychee/lychee/issues/15229
+	// See: https://github.com/MD-Mushfiqur123/lychee/issues/15229
 	t.Run("byte fallback for unknown chars", func(t *testing.T) {
 		t.Parallel()
 

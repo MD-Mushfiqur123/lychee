@@ -6,7 +6,7 @@ import (
 	"sync"
 	"testing"
 
-	"github.com/lychee/lychee/x/internal/mlxthread"
+	"github.com/MD-Mushfiqur123/lychee/x/internal/mlxthread"
 )
 
 func skipIfNoMLX(t *testing.T) {

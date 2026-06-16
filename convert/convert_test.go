@@ -19,8 +19,8 @@ import (
 	"testing"
 
 	"github.com/google/go-cmp/cmp"
-	fsc "github.com/lychee/lychee/fs"
-	"github.com/lychee/lychee/fs/ggml"
+	fsc "github.com/MD-Mushfiqur123/lychee/fs"
+	"github.com/MD-Mushfiqur123/lychee/fs/ggml"
 )
 
 type tensorData struct {

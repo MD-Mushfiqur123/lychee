@@ -3,7 +3,7 @@ package gemma4
 import (
 	"testing"
 
-	"github.com/lychee/lychee/x/mlxrunner/mlx"
+	"github.com/MD-Mushfiqur123/lychee/x/mlxrunner/mlx"
 )
 
 // onesLike creates a tensor of the given shape filled with a small constant.

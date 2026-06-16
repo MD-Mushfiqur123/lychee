@@ -20,10 +20,10 @@ import (
 
 	"github.com/spf13/cobra"
 
-	"github.com/lychee/lychee/api"
-	"github.com/lychee/lychee/envconfig"
-	"github.com/lychee/lychee/progress"
-	"github.com/lychee/lychee/readline"
+	"github.com/MD-Mushfiqur123/lychee/api"
+	"github.com/MD-Mushfiqur123/lychee/envconfig"
+	"github.com/MD-Mushfiqur123/lychee/progress"
+	"github.com/MD-Mushfiqur123/lychee/readline"
 )
 
 // ImageGenOptions holds options for image generation.

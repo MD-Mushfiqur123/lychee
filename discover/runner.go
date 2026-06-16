@@ -14,11 +14,11 @@ import (
 	"sync"
 	"time"
 
-	"github.com/lychee/lychee/envconfig"
-	"github.com/lychee/lychee/format"
-	"github.com/lychee/lychee/llm"
-	"github.com/lychee/lychee/logutil"
-	"github.com/lychee/lychee/ml"
+	"github.com/MD-Mushfiqur123/lychee/envconfig"
+	"github.com/MD-Mushfiqur123/lychee/format"
+	"github.com/MD-Mushfiqur123/lychee/llm"
+	"github.com/MD-Mushfiqur123/lychee/logutil"
+	"github.com/MD-Mushfiqur123/lychee/ml"
 )
 
 var (

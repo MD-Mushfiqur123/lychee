@@ -13,7 +13,7 @@ import (
 	"slices"
 	"strings"
 
-	"github.com/lychee/lychee/fs"
+	"github.com/MD-Mushfiqur123/lychee/fs"
 	"golang.org/x/sync/errgroup"
 )
 

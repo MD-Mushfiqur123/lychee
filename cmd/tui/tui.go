@@ -5,8 +5,8 @@ import (
 
 	tea "github.com/charmbracelet/bubbletea"
 	"github.com/charmbracelet/lipgloss"
-	"github.com/lychee/lychee/cmd/launch"
-	"github.com/lychee/lychee/version"
+	"github.com/MD-Mushfiqur123/lychee/cmd/launch"
+	"github.com/MD-Mushfiqur123/lychee/version"
 )
 
 var (

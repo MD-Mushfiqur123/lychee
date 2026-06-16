@@ -3,8 +3,8 @@ package nn
 import (
 	"fmt"
 
-	"github.com/lychee/lychee/kvcache"
-	"github.com/lychee/lychee/ml"
+	"github.com/MD-Mushfiqur123/lychee/kvcache"
+	"github.com/MD-Mushfiqur123/lychee/ml"
 )
 
 // Attention implements scaled dot-product attention for transformer models:

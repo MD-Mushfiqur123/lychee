@@ -9,8 +9,8 @@ import (
 
 	"github.com/spf13/cobra"
 
-	"github.com/lychee/lychee/api"
-	"github.com/lychee/lychee/format"
+	"github.com/MD-Mushfiqur123/lychee/api"
+	"github.com/MD-Mushfiqur123/lychee/format"
 )
 
 type CatalogItem struct {

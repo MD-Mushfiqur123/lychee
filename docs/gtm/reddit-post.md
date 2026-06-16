@@ -2,7 +2,7 @@
 
 Hey r/LocalLLaMA,
 
-We've built and released Lychee (https://github.com/lychee/lychee), which is a 100% backward-compatible, drop-in fork of Ollama optimized for multi-user/production workloads, advanced agent behaviors, and OpenAI/Anthropic API drop-in compatibility.
+We've built and released Lychee (https://github.com/MD-Mushfiqur123/lychee), which is a 100% backward-compatible, drop-in fork of Ollama optimized for multi-user/production workloads, advanced agent behaviors, and OpenAI/Anthropic API drop-in compatibility.
 
 ### Why fork Ollama?
 Ollama is a stellar tool for running local LLMs, but we faced several limitations when deploying it as a backend engine for team applications:
@@ -20,4 +20,4 @@ Ollama is a stellar tool for running local LLMs, but we faced several limitation
 
 It compiles to a single binary just like Ollama. We'd love for you to try it out, check the benchmarks, and let us know what you think!
 
-Github: https://github.com/lychee/lychee
+Github: https://github.com/MD-Mushfiqur123/lychee

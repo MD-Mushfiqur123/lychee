@@ -15,15 +15,15 @@ import (
 	"time"
 
 	"github.com/gin-gonic/gin"
-	"github.com/lychee/lychee/api"
-	"github.com/lychee/lychee/envconfig"
-	internalcloud "github.com/lychee/lychee/internal/cloud"
-	"github.com/lychee/lychee/llm"
-	"github.com/lychee/lychee/model/parsers"
-	"github.com/lychee/lychee/template"
-	"github.com/lychee/lychee/thinking"
-	"github.com/lychee/lychee/types/errtypes"
-	"github.com/lychee/lychee/types/model"
+	"github.com/MD-Mushfiqur123/lychee/api"
+	"github.com/MD-Mushfiqur123/lychee/envconfig"
+	internalcloud "github.com/MD-Mushfiqur123/lychee/internal/cloud"
+	"github.com/MD-Mushfiqur123/lychee/llm"
+	"github.com/MD-Mushfiqur123/lychee/model/parsers"
+	"github.com/MD-Mushfiqur123/lychee/template"
+	"github.com/MD-Mushfiqur123/lychee/thinking"
+	"github.com/MD-Mushfiqur123/lychee/types/errtypes"
+	"github.com/MD-Mushfiqur123/lychee/types/model"
 )
 
 func validateGenerateRequest(req *api.GenerateRequest) error {

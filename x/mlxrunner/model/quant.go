@@ -3,7 +3,7 @@ package model
 import (
 	"strings"
 
-	"github.com/lychee/lychee/x/mlxrunner/mlx"
+	"github.com/MD-Mushfiqur123/lychee/x/mlxrunner/mlx"
 )
 
 // QuantizationParams returns default groupSize, bits, and mode for a quantization type.

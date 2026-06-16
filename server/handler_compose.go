@@ -7,11 +7,11 @@ import (
 	"strings"
 
 	"github.com/gin-gonic/gin"
-	"github.com/lychee/lychee/api"
-	"github.com/lychee/lychee/llm"
-	chainmodel "github.com/lychee/lychee/model"
-	"github.com/lychee/lychee/template"
-	"github.com/lychee/lychee/types/model"
+	"github.com/MD-Mushfiqur123/lychee/api"
+	"github.com/MD-Mushfiqur123/lychee/llm"
+	chainmodel "github.com/MD-Mushfiqur123/lychee/model"
+	"github.com/MD-Mushfiqur123/lychee/template"
+	"github.com/MD-Mushfiqur123/lychee/types/model"
 )
 
 // ComposeHandler handles sequentially executing multiple models.

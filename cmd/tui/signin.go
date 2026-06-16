@@ -8,8 +8,8 @@ import (
 
 	tea "github.com/charmbracelet/bubbletea"
 	"github.com/charmbracelet/lipgloss"
-	"github.com/lychee/lychee/api"
-	"github.com/lychee/lychee/cmd/launch"
+	"github.com/MD-Mushfiqur123/lychee/api"
+	"github.com/MD-Mushfiqur123/lychee/cmd/launch"
 )
 
 type signInTickMsg struct{}

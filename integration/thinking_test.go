@@ -8,7 +8,7 @@ import (
 	"testing"
 	"time"
 
-	"github.com/lychee/lychee/api"
+	"github.com/MD-Mushfiqur123/lychee/api"
 )
 
 // TestThinkingEnabled verifies that when thinking is requested, the model

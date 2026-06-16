@@ -12,8 +12,8 @@ import (
 	"strings"
 	"time"
 
-	"github.com/lychee/lychee/llm"
-	"github.com/lychee/lychee/ml"
+	"github.com/MD-Mushfiqur123/lychee/llm"
+	"github.com/MD-Mushfiqur123/lychee/ml"
 )
 
 // Native GPU discovery runs in a short-lived Lychee subprocess so loading GGML

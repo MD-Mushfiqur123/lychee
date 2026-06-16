@@ -10,8 +10,8 @@ import (
 	"strconv"
 	"strings"
 
-	modeltypes "github.com/lychee/lychee/types/model"
-	"github.com/lychee/lychee/x/imagegen/manifest"
+	modeltypes "github.com/MD-Mushfiqur123/lychee/types/model"
+	"github.com/MD-Mushfiqur123/lychee/x/imagegen/manifest"
 )
 
 // TensorQuantInfo describes per-tensor quantization metadata.

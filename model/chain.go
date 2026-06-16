@@ -7,7 +7,7 @@ import (
 	"sync"
 	"time"
 
-	"github.com/lychee/lychee/api"
+	"github.com/MD-Mushfiqur123/lychee/api"
 )
 
 // evaluateCondition checks whether a step's condition is satisfied

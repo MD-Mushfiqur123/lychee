@@ -6,8 +6,8 @@ import (
 	"github.com/pdevine/tensor"
 	"github.com/pdevine/tensor/native"
 
-	"github.com/lychee/lychee/fs"
-	"github.com/lychee/lychee/fs/ggml"
+	"github.com/MD-Mushfiqur123/lychee/fs"
+	"github.com/MD-Mushfiqur123/lychee/fs/ggml"
 )
 
 type gemma2Adapter struct {

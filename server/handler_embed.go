@@ -13,8 +13,8 @@ import (
 	"github.com/gin-gonic/gin"
 	"golang.org/x/sync/errgroup"
 
-	"github.com/lychee/lychee/api"
-	"github.com/lychee/lychee/types/model"
+	"github.com/MD-Mushfiqur123/lychee/api"
+	"github.com/MD-Mushfiqur123/lychee/types/model"
 )
 
 func (s *Server) EmbedHandler(c *gin.Context) {

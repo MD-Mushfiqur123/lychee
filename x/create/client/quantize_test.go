@@ -5,7 +5,7 @@ package client
 import (
 	"testing"
 
-	"github.com/lychee/lychee/x/mlxrunner/mlx"
+	"github.com/MD-Mushfiqur123/lychee/x/mlxrunner/mlx"
 )
 
 func TestDecodeSourceFP8TensorAcceptsWeightScale(t *testing.T) {

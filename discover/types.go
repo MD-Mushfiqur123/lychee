@@ -6,8 +6,8 @@ import (
 	"sort"
 	"strings"
 
-	"github.com/lychee/lychee/format"
-	"github.com/lychee/lychee/ml"
+	"github.com/MD-Mushfiqur123/lychee/format"
+	"github.com/MD-Mushfiqur123/lychee/ml"
 )
 
 type memInfo struct {

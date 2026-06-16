@@ -18,13 +18,13 @@ import (
 	"github.com/gin-gonic/gin"
 	"github.com/google/go-cmp/cmp"
 
-	"github.com/lychee/lychee/api"
-	"github.com/lychee/lychee/fs/ggml"
-	"github.com/lychee/lychee/llm"
-	"github.com/lychee/lychee/manifest"
-	"github.com/lychee/lychee/ml"
-	lycheetemplate "github.com/lychee/lychee/template"
-	"github.com/lychee/lychee/types/model"
+	"github.com/MD-Mushfiqur123/lychee/api"
+	"github.com/MD-Mushfiqur123/lychee/fs/ggml"
+	"github.com/MD-Mushfiqur123/lychee/llm"
+	"github.com/MD-Mushfiqur123/lychee/manifest"
+	"github.com/MD-Mushfiqur123/lychee/ml"
+	lycheetemplate "github.com/MD-Mushfiqur123/lychee/template"
+	"github.com/MD-Mushfiqur123/lychee/types/model"
 )
 
 // testPropsMap creates a ToolPropertiesMap from a map (convenience function for tests)
@@ -2614,7 +2614,7 @@ func TestChatWithPromptEndingInThinkTag(t *testing.T) {
 // first and only completion call. Previously, format was deferred for all
 // thinking-capable parsers and only re-applied after an end-of-thinking
 // transition — a transition that never fires when thinking is off. See
-// https://github.com/lychee/lychee/issues/15260.
+// https://github.com/MD-Mushfiqur123/lychee/issues/15260.
 func TestChatFormatWithThinkFalse(t *testing.T) {
 	gin.SetMode(gin.TestMode)
 

@@ -1,7 +1,7 @@
 package pooling
 
 import (
-	"github.com/lychee/lychee/ml"
+	"github.com/MD-Mushfiqur123/lychee/ml"
 )
 
 type Type uint32

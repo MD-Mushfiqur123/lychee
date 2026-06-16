@@ -4,7 +4,7 @@ import (
 	"strconv"
 	"strings"
 
-	"github.com/lychee/lychee/format"
+	"github.com/MD-Mushfiqur123/lychee/format"
 )
 
 const (

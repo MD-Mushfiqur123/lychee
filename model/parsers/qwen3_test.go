@@ -3,7 +3,7 @@ package parsers
 import (
 	"testing"
 
-	"github.com/lychee/lychee/api"
+	"github.com/MD-Mushfiqur123/lychee/api"
 )
 
 func TestQwen3ParserThinkingEnabled(t *testing.T) {

@@ -1,7 +1,7 @@
 package cloud
 
 import (
-	"github.com/lychee/lychee/envconfig"
+	"github.com/MD-Mushfiqur123/lychee/envconfig"
 )
 
 const DisabledMessagePrefix = "lychee cloud is disabled"

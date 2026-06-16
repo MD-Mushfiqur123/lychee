@@ -496,7 +496,7 @@ function rocm7 {
 function vulkan {
     if ($env:VULKAN_SDK) {
         Write-Output "Building llama-server Vulkan backend"
-        # Use short build path to avoid Windows MAX_PATH issues — the Vulkan
+        # Use short build path to avoid Windows MAX_PATH issues â€” the Vulkan
         # shader generator uses ExternalProject_Add which creates deep nesting
         & cmake -S llama\server --preset vulkan -B build\ls-vk --install-prefix $script:DIST_DIR
         if ($LASTEXITCODE -ne 0) { exit($LASTEXITCODE)}
@@ -611,7 +611,7 @@ function buildLycheeCLI {
         [string]$distDir
     )
     mkdir -Force -path "${distDir}\" | Out-Null
-    & go build -trimpath -ldflags "-s -w -X=github.com/lychee/lychee/version.Version=$script:VERSION -X=github.com/lychee/lychee/server.mode=release" -o "${distDir}\lychee.exe" .
+    & go build -trimpath -ldflags "-s -w -X=github.com/MD-Mushfiqur123/lychee/version.Version=$script:VERSION -X=github.com/MD-Mushfiqur123/lychee/server.mode=release" -o "${distDir}\lychee.exe" .
     if ($LASTEXITCODE -ne 0) { exit($LASTEXITCODE)}
 }
 
@@ -695,7 +695,7 @@ function buildApp {
     param (
         [string]$arch
     )
-	& go build -trimpath -ldflags "-s -w -H windowsgui -X=github.com/lychee/lychee/app/version.Version=$script:VERSION" -o .\dist\windows-lychee-app-${arch}.exe ./app/cmd/app/
+	& go build -trimpath -ldflags "-s -w -H windowsgui -X=github.com/MD-Mushfiqur123/lychee/app/version.Version=$script:VERSION" -o .\dist\windows-lychee-app-${arch}.exe ./app/cmd/app/
     if ($LASTEXITCODE -ne 0) { exit($LASTEXITCODE)}
 }
 

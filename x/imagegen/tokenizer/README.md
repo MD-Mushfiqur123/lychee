@@ -5,7 +5,7 @@ Tokenizer for LLM inference supporting BPE, SentencePiece, and WordPiece algorit
 ## Features
 
 - **BPE (Byte Pair Encoding)** - GPT-2/Llama style with byte-level encoding
-- **SentencePiece** - Gemma style with `▁` space handling
+- **SentencePiece** - Gemma style with `â–` space handling
 - **WordPiece** - BERT style with `##` continuation tokens
 - **Parallel encoding** - Automatic parallelization for inputs >4KB
 - **HuggingFace compatible** - Loads `tokenizer.json` directly
@@ -13,7 +13,7 @@ Tokenizer for LLM inference supporting BPE, SentencePiece, and WordPiece algorit
 ## Usage
 
 ```go
-import "github.com/lychee/lychee/x/imagegen/tokenizer"
+import "github.com/MD-Mushfiqur123/lychee/x/imagegen/tokenizer"
 
 // Load from HuggingFace model directory
 tok, err := tokenizer.Load("./weights/Llama-3.2-1B")

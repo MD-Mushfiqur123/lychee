@@ -14,9 +14,9 @@ import (
 	"time"
 
 	_ "modernc.org/sqlite"
-	"github.com/lychee/lychee/api"
-	"github.com/lychee/lychee/cmd/internal/fileutil"
-	"github.com/lychee/lychee/envconfig"
+	"github.com/MD-Mushfiqur123/lychee/api"
+	"github.com/MD-Mushfiqur123/lychee/cmd/internal/fileutil"
+	"github.com/MD-Mushfiqur123/lychee/envconfig"
 )
 
 // VSCode implements Runner and Editor for Visual Studio Code integration.

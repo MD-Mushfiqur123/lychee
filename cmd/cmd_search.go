@@ -9,7 +9,7 @@ import (
 	"strings"
 	"time"
 
-	"github.com/lychee/lychee/cmd/launch"
+	"github.com/MD-Mushfiqur123/lychee/cmd/launch"
 	"github.com/spf13/cobra"
 	"golang.org/x/term"
 )

@@ -4,9 +4,9 @@ import (
 	"math"
 	"testing"
 
-	"github.com/lychee/lychee/x/mlxrunner/batch"
-	"github.com/lychee/lychee/x/mlxrunner/mlx"
-	"github.com/lychee/lychee/x/models/nn"
+	"github.com/MD-Mushfiqur123/lychee/x/mlxrunner/batch"
+	"github.com/MD-Mushfiqur123/lychee/x/mlxrunner/mlx"
+	"github.com/MD-Mushfiqur123/lychee/x/models/nn"
 )
 
 // TestRotatingKVCacheDecodeParity drives a rotating cache past its

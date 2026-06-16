@@ -8,9 +8,9 @@ import (
 	"time"
 	"unicode/utf8"
 
-	"github.com/lychee/lychee/x/imagegen/cache"
-	"github.com/lychee/lychee/x/imagegen/mlx"
-	"github.com/lychee/lychee/x/imagegen/tokenizer"
+	"github.com/MD-Mushfiqur123/lychee/x/imagegen/cache"
+	"github.com/MD-Mushfiqur123/lychee/x/imagegen/mlx"
+	"github.com/MD-Mushfiqur123/lychee/x/imagegen/tokenizer"
 )
 
 // Dedicated stream for generation (like mlx-lm's generation_stream)

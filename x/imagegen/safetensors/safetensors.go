@@ -9,7 +9,7 @@ import (
 	"sort"
 	"strings"
 
-	"github.com/lychee/lychee/x/imagegen/mlx"
+	"github.com/MD-Mushfiqur123/lychee/x/imagegen/mlx"
 )
 
 // SafetensorHeader represents the JSON header of a safetensors file

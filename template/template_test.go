@@ -14,8 +14,8 @@ import (
 
 	"github.com/google/go-cmp/cmp"
 
-	"github.com/lychee/lychee/api"
-	"github.com/lychee/lychee/fs/ggml"
+	"github.com/MD-Mushfiqur123/lychee/api"
+	"github.com/MD-Mushfiqur123/lychee/fs/ggml"
 )
 
 func TestNamed(t *testing.T) {

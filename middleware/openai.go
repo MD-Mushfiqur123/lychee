@@ -14,8 +14,8 @@ import (
 	"github.com/gin-gonic/gin"
 	"github.com/klauspost/compress/zstd"
 
-	"github.com/lychee/lychee/api"
-	"github.com/lychee/lychee/openai"
+	"github.com/MD-Mushfiqur123/lychee/api"
+	"github.com/MD-Mushfiqur123/lychee/openai"
 )
 
 // maxDecompressedBodySize limits the size of a decompressed request body

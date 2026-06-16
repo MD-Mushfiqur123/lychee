@@ -11,7 +11,7 @@ import (
 
 	"github.com/dlclark/regexp2"
 	heap "github.com/emirpasic/gods/v2/trees/binaryheap"
-	"github.com/lychee/lychee/logutil"
+	"github.com/MD-Mushfiqur123/lychee/logutil"
 )
 
 type BytePairEncoding struct {

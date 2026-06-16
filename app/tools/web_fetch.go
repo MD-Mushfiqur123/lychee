@@ -13,7 +13,7 @@ import (
 	"strings"
 	"time"
 
-	"github.com/lychee/lychee/auth"
+	"github.com/MD-Mushfiqur123/lychee/auth"
 )
 
 type WebFetch struct{}

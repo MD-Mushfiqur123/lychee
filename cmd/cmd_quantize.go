@@ -12,8 +12,8 @@ import (
 
 	"github.com/spf13/cobra"
 
-	"github.com/lychee/lychee/llm"
-	"github.com/lychee/lychee/progress"
+	"github.com/MD-Mushfiqur123/lychee/llm"
+	"github.com/MD-Mushfiqur123/lychee/progress"
 )
 
 type QuantizeProgress struct {

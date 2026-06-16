@@ -20,9 +20,9 @@ import (
 	"golang.org/x/text/encoding"
 	"golang.org/x/text/encoding/unicode"
 
-	"github.com/lychee/lychee/api"
-	"github.com/lychee/lychee/convert"
-	"github.com/lychee/lychee/fs/ggml"
+	"github.com/MD-Mushfiqur123/lychee/api"
+	"github.com/MD-Mushfiqur123/lychee/convert"
+	"github.com/MD-Mushfiqur123/lychee/fs/ggml"
 )
 
 func TestParseFileFile(t *testing.T) {

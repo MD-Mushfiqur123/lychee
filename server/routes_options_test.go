@@ -3,8 +3,8 @@ package server
 import (
 	"testing"
 
-	"github.com/lychee/lychee/llm"
-	"github.com/lychee/lychee/types/model"
+	"github.com/MD-Mushfiqur123/lychee/llm"
+	"github.com/MD-Mushfiqur123/lychee/types/model"
 )
 
 func TestModelOptionsNumCtxPriority(t *testing.T) {

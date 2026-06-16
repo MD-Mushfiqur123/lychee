@@ -1,8 +1,8 @@
 package model
 
 import (
-	"github.com/lychee/lychee/x/mlxrunner/mlx"
-	"github.com/lychee/lychee/x/models/nn"
+	"github.com/MD-Mushfiqur123/lychee/x/mlxrunner/mlx"
+	"github.com/MD-Mushfiqur123/lychee/x/models/nn"
 )
 
 // LinearFactory builds linear layers using shared tensor maps and quant defaults.

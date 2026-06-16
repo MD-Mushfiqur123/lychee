@@ -6,7 +6,7 @@ import (
 	"errors"
 	"fmt"
 
-	"github.com/lychee/lychee/app/types/not"
+	"github.com/MD-Mushfiqur123/lychee/app/types/not"
 )
 
 func ExampleValids() {

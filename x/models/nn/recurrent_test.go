@@ -4,8 +4,8 @@ import (
 	"math"
 	"testing"
 
-	"github.com/lychee/lychee/x/mlxrunner/batch"
-	"github.com/lychee/lychee/x/mlxrunner/mlx"
+	"github.com/MD-Mushfiqur123/lychee/x/mlxrunner/batch"
+	"github.com/MD-Mushfiqur123/lychee/x/mlxrunner/mlx"
 )
 
 func ones(dtype mlx.DType, shape ...int) *mlx.Array {

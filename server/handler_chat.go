@@ -16,16 +16,16 @@ import (
 
 	"github.com/gin-gonic/gin"
 
-	"github.com/lychee/lychee/api"
-	"github.com/lychee/lychee/envconfig"
-	internalcloud "github.com/lychee/lychee/internal/cloud"
-	"github.com/lychee/lychee/llm"
-	"github.com/lychee/lychee/logutil"
-	"github.com/lychee/lychee/model/parsers"
-	"github.com/lychee/lychee/thinking"
-	"github.com/lychee/lychee/tools"
-	"github.com/lychee/lychee/types/errtypes"
-	"github.com/lychee/lychee/types/model"
+	"github.com/MD-Mushfiqur123/lychee/api"
+	"github.com/MD-Mushfiqur123/lychee/envconfig"
+	internalcloud "github.com/MD-Mushfiqur123/lychee/internal/cloud"
+	"github.com/MD-Mushfiqur123/lychee/llm"
+	"github.com/MD-Mushfiqur123/lychee/logutil"
+	"github.com/MD-Mushfiqur123/lychee/model/parsers"
+	"github.com/MD-Mushfiqur123/lychee/thinking"
+	"github.com/MD-Mushfiqur123/lychee/tools"
+	"github.com/MD-Mushfiqur123/lychee/types/errtypes"
+	"github.com/MD-Mushfiqur123/lychee/types/model"
 )
 
 func writeChatResponseInternal(c *gin.Context, req api.ChatRequest, ch chan any) {
@@ -546,7 +546,7 @@ func (s *Server) ChatHandler(c *gin.Context) {
 			// current approach uses the transition from parsed thinking content to
 			// parsed non-thinking content as the signal to turn constraining on
 
-			// TODO(parthsareen): temporary fix for https://github.com/lychee/lychee/issues/15260.
+			// TODO(parthsareen): temporary fix for https://github.com/MD-Mushfiqur123/lychee/issues/15260.
 			// To revisit for other models and have a consistent pattern across models through parsers.
 			forceImmediate := m.Config.Parser == "gemma4" && req.Think != nil && !req.Think.Bool()
 			if req.Format != nil && structuredOutputsState == structuredOutputsState_None && !forceImmediate && ((builtinParser != nil || thinkingState != nil) && slices.Contains(m.Capabilities(), model.CapabilityThinking)) {

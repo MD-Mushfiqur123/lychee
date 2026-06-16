@@ -1,4 +1,4 @@
-module github.com/lychee/lychee
+module github.com/MD-Mushfiqur123/lychee
 
 go 1.25.12
 

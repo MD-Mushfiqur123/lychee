@@ -8,7 +8,7 @@ import (
 	"slices"
 	"strings"
 
-	"github.com/lychee/lychee/ml"
+	"github.com/MD-Mushfiqur123/lychee/ml"
 )
 
 type llamaCppBinarySearch struct {

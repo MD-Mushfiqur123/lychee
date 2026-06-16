@@ -14,9 +14,9 @@ import (
 	"strconv"
 	"strings"
 
-	"github.com/lychee/lychee/x/create"
-	"github.com/lychee/lychee/x/mlxrunner/mlx"
-	"github.com/lychee/lychee/x/mlxrunner/model"
+	"github.com/MD-Mushfiqur123/lychee/x/create"
+	"github.com/MD-Mushfiqur123/lychee/x/mlxrunner/mlx"
+	"github.com/MD-Mushfiqur123/lychee/x/mlxrunner/model"
 )
 
 // loadAndQuantizeArray writes a safetensors reader to a temp file, loads it with MLX,

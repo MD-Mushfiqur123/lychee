@@ -3,8 +3,8 @@ package kvcache
 import (
 	"math"
 
-	"github.com/lychee/lychee/ml"
-	"github.com/lychee/lychee/model/input"
+	"github.com/MD-Mushfiqur123/lychee/ml"
+	"github.com/MD-Mushfiqur123/lychee/model/input"
 )
 
 // Wrapper cache is a container for multiple types of caches,

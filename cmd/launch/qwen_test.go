@@ -10,8 +10,8 @@ import (
 	"strings"
 	"testing"
 
-	"github.com/lychee/lychee/cmd/config"
-	"github.com/lychee/lychee/cmd/internal/fileutil"
+	"github.com/MD-Mushfiqur123/lychee/cmd/config"
+	"github.com/MD-Mushfiqur123/lychee/cmd/internal/fileutil"
 )
 
 func setQwenTestHome(t *testing.T, home string) {

@@ -14,12 +14,12 @@ import (
 	"sync"
 	"time"
 
-	"github.com/lychee/lychee/api"
-	"github.com/lychee/lychee/cmd/config"
-	"github.com/lychee/lychee/format"
-	internalcloud "github.com/lychee/lychee/internal/cloud"
-	"github.com/lychee/lychee/internal/modelref"
-	"github.com/lychee/lychee/progress"
+	"github.com/MD-Mushfiqur123/lychee/api"
+	"github.com/MD-Mushfiqur123/lychee/cmd/config"
+	"github.com/MD-Mushfiqur123/lychee/format"
+	internalcloud "github.com/MD-Mushfiqur123/lychee/internal/cloud"
+	"github.com/MD-Mushfiqur123/lychee/internal/modelref"
+	"github.com/MD-Mushfiqur123/lychee/progress"
 )
 
 var recommendedModels = []ModelItem{

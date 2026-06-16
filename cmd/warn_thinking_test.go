@@ -9,8 +9,8 @@ import (
 	"strings"
 	"testing"
 
-	"github.com/lychee/lychee/api"
-	"github.com/lychee/lychee/types/model"
+	"github.com/MD-Mushfiqur123/lychee/api"
+	"github.com/MD-Mushfiqur123/lychee/types/model"
 )
 
 // Test that a warning is printed when thinking is requested but not supported.

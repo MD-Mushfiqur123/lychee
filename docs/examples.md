@@ -3,11 +3,11 @@
 This directory contains different examples of using Lychee.
 
 ## Python examples
-Lychee Python examples at [lychee-python/examples](https://github.com/lychee/lychee-python/tree/main/examples)
+Lychee Python examples at [lychee-python/examples](https://github.com/MD-Mushfiqur123/lychee-python/tree/main/examples)
 
 
 ## JavaScript examples
-Lychee JavaScript examples at [lychee-js/examples](https://github.com/lychee/lychee-js/tree/main/examples)
+Lychee JavaScript examples at [lychee-js/examples](https://github.com/MD-Mushfiqur123/lychee-js/tree/main/examples)
 
 
 ## OpenAI compatibility examples

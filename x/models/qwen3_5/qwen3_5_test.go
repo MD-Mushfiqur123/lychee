@@ -3,8 +3,8 @@ package qwen3_5
 import (
 	"testing"
 
-	"github.com/lychee/lychee/x/mlxrunner/cache"
-	"github.com/lychee/lychee/x/mlxrunner/mlx"
+	"github.com/MD-Mushfiqur123/lychee/x/mlxrunner/cache"
+	"github.com/MD-Mushfiqur123/lychee/x/mlxrunner/mlx"
 )
 
 func skipIfNoMLX(t *testing.T) {

@@ -3,7 +3,7 @@ package glm4_moe_lite
 import (
 	"testing"
 
-	"github.com/lychee/lychee/api"
+	"github.com/MD-Mushfiqur123/lychee/api"
 )
 
 func TestParserThinking(t *testing.T) {

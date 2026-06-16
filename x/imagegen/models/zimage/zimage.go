@@ -6,11 +6,11 @@ import (
 	"fmt"
 	"time"
 
-	"github.com/lychee/lychee/x/imagegen/cache"
-	"github.com/lychee/lychee/x/imagegen/manifest"
-	"github.com/lychee/lychee/x/imagegen/mlx"
-	"github.com/lychee/lychee/x/imagegen/tokenizer"
-	"github.com/lychee/lychee/x/imagegen/vae"
+	"github.com/MD-Mushfiqur123/lychee/x/imagegen/cache"
+	"github.com/MD-Mushfiqur123/lychee/x/imagegen/manifest"
+	"github.com/MD-Mushfiqur123/lychee/x/imagegen/mlx"
+	"github.com/MD-Mushfiqur123/lychee/x/imagegen/tokenizer"
+	"github.com/MD-Mushfiqur123/lychee/x/imagegen/vae"
 )
 
 // GenerateConfig holds all options for image generation.

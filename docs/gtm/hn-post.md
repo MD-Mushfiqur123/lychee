@@ -1,8 +1,8 @@
-# Show HN: Lychee – A performance-optimized Ollama fork with HTTP/2, Anthropic compatibility, and built-in agents
+# Show HN: Lychee â€“ A performance-optimized Ollama fork with HTTP/2, Anthropic compatibility, and built-in agents
 
 Hi HN,
 
-We've been working on Lychee (https://github.com/lychee/lychee), a fork of Ollama designed for production environments requiring high-concurrency streaming, cross-provider compatibility, and extensible agentic tools.
+We've been working on Lychee (https://github.com/MD-Mushfiqur123/lychee), a fork of Ollama designed for production environments requiring high-concurrency streaming, cross-provider compatibility, and extensible agentic tools.
 
 While Ollama is fantastic for local development, we ran into severe scaling bottlenecks and protocol limitations when trying to deploy it as a multi-user backend:
 1. **HTTP/1.1 Head-of-Line Blocking**: Ollama serializes concurrent streamed chat responses because it lacks HTTP/2 multiplexing. Under heavy load, response streams stall.
@@ -21,4 +21,4 @@ The codebase compiles to a single static binary and maintains 100% backward comp
 
 We'd love to hear your feedback, bug reports, and suggestions for future optimization!
 
-Github: https://github.com/lychee/lychee
+Github: https://github.com/MD-Mushfiqur123/lychee

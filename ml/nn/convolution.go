@@ -1,6 +1,6 @@
 package nn
 
-import "github.com/lychee/lychee/ml"
+import "github.com/MD-Mushfiqur123/lychee/ml"
 
 type Conv2D struct {
 	Weight ml.Tensor `gguf:"weight"`

@@ -8,8 +8,8 @@ import (
 	"net/url"
 	"testing"
 
-	"github.com/lychee/lychee/api"
-	modelpkg "github.com/lychee/lychee/types/model"
+	"github.com/MD-Mushfiqur123/lychee/api"
+	modelpkg "github.com/MD-Mushfiqur123/lychee/types/model"
 )
 
 func TestModelInventoryResolveRefreshesLocalMiss(t *testing.T) {

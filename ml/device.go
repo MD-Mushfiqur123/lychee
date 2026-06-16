@@ -18,8 +18,8 @@ import (
 	"strings"
 	"time"
 
-	"github.com/lychee/lychee/format"
-	"github.com/lychee/lychee/logutil"
+	"github.com/MD-Mushfiqur123/lychee/format"
+	"github.com/MD-Mushfiqur123/lychee/logutil"
 )
 
 // GPULayers is a set of layers to be allocated on a single GPU

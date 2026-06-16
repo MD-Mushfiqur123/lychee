@@ -13,7 +13,7 @@ import (
 
 	"google.golang.org/protobuf/proto"
 
-	"github.com/lychee/lychee/convert/sentencepiece"
+	"github.com/MD-Mushfiqur123/lychee/convert/sentencepiece"
 )
 
 func parseSentencePiece(fsys fs.FS) (*Vocabulary, error) {

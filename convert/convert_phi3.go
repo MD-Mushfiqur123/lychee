@@ -8,7 +8,7 @@ import (
 	"strings"
 	"sync"
 
-	"github.com/lychee/lychee/fs/ggml"
+	"github.com/MD-Mushfiqur123/lychee/fs/ggml"
 )
 
 type phi3Model struct {

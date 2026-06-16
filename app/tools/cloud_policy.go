@@ -6,8 +6,8 @@ import (
 	"context"
 	"errors"
 
-	"github.com/lychee/lychee/api"
-	internalcloud "github.com/lychee/lychee/internal/cloud"
+	"github.com/MD-Mushfiqur123/lychee/api"
+	internalcloud "github.com/MD-Mushfiqur123/lychee/internal/cloud"
 )
 
 // ensureCloudEnabledForTool checks cloud policy from the connected Lychee server.

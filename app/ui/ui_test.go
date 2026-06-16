@@ -15,9 +15,9 @@ import (
 	"sync/atomic"
 	"testing"
 
-	"github.com/lychee/lychee/api"
-	"github.com/lychee/lychee/app/store"
-	"github.com/lychee/lychee/app/updater"
+	"github.com/MD-Mushfiqur123/lychee/api"
+	"github.com/MD-Mushfiqur123/lychee/app/store"
+	"github.com/MD-Mushfiqur123/lychee/app/updater"
 )
 
 func TestHandlePostApiSettings(t *testing.T) {

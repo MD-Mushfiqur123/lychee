@@ -7,7 +7,7 @@ export default defineConfig({
     nav: [
       { text: 'Home', link: '/' },
       { text: 'Guide', link: '/getting-started' },
-      { text: 'GitHub', link: 'https://github.com/lychee/lychee' }
+      { text: 'GitHub', link: 'https://github.com/MD-Mushfiqur123/lychee' }
     ],
     sidebar: [
       {

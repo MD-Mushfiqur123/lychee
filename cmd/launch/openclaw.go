@@ -12,8 +12,8 @@ import (
 	"strings"
 	"time"
 
-	"github.com/lychee/lychee/cmd/internal/fileutil"
-	"github.com/lychee/lychee/envconfig"
+	"github.com/MD-Mushfiqur123/lychee/cmd/internal/fileutil"
+	"github.com/MD-Mushfiqur123/lychee/envconfig"
 )
 
 const defaultGatewayPort = 18789

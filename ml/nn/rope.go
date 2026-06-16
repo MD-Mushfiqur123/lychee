@@ -1,8 +1,8 @@
 package nn
 
 import (
-	"github.com/lychee/lychee/ml"
-	"github.com/lychee/lychee/ml/nn/rope"
+	"github.com/MD-Mushfiqur123/lychee/ml"
+	"github.com/MD-Mushfiqur123/lychee/ml/nn/rope"
 )
 
 // fastRoPE is an interface for tensors that support fast rotary positional embedding.

@@ -3,7 +3,7 @@ package renderers
 import (
 	"encoding/json"
 
-	"github.com/lychee/lychee/api"
+	"github.com/MD-Mushfiqur123/lychee/api"
 )
 
 func args(s string) api.ToolCallFunctionArguments {

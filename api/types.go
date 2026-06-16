@@ -14,9 +14,9 @@ import (
 
 	"github.com/google/uuid"
 
-	"github.com/lychee/lychee/envconfig"
-	"github.com/lychee/lychee/internal/orderedmap"
-	"github.com/lychee/lychee/types/model"
+	"github.com/MD-Mushfiqur123/lychee/envconfig"
+	"github.com/MD-Mushfiqur123/lychee/internal/orderedmap"
+	"github.com/MD-Mushfiqur123/lychee/types/model"
 )
 
 // StatusError is an error with an HTTP status code and message.

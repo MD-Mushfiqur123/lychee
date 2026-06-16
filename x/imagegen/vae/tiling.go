@@ -2,7 +2,7 @@
 package vae
 
 import (
-	"github.com/lychee/lychee/x/imagegen/mlx"
+	"github.com/MD-Mushfiqur123/lychee/x/imagegen/mlx"
 )
 
 // TilingConfig holds configuration for tiled VAE decoding.

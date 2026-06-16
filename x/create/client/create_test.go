@@ -8,10 +8,10 @@ import (
 	"strings"
 	"testing"
 
-	"github.com/lychee/lychee/manifest"
-	"github.com/lychee/lychee/parser"
-	"github.com/lychee/lychee/types/model"
-	"github.com/lychee/lychee/x/create"
+	"github.com/MD-Mushfiqur123/lychee/manifest"
+	"github.com/MD-Mushfiqur123/lychee/parser"
+	"github.com/MD-Mushfiqur123/lychee/types/model"
+	"github.com/MD-Mushfiqur123/lychee/x/create"
 )
 
 func TestModelfileConfig(t *testing.T) {

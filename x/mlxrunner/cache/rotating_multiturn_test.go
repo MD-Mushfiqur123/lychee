@@ -3,7 +3,7 @@ package cache
 import (
 	"testing"
 
-	"github.com/lychee/lychee/x/mlxrunner/mlx"
+	"github.com/MD-Mushfiqur123/lychee/x/mlxrunner/mlx"
 )
 
 // singleTokenKV and multiTokenKV fabricate [B=1, H=1, L, D=2] key/value

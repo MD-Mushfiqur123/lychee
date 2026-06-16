@@ -7,9 +7,9 @@ import (
 	"strings"
 	"time"
 
-	"github.com/lychee/lychee/api"
-	"github.com/lychee/lychee/llm"
-	"github.com/lychee/lychee/types/model"
+	"github.com/MD-Mushfiqur123/lychee/api"
+	"github.com/MD-Mushfiqur123/lychee/llm"
+	"github.com/MD-Mushfiqur123/lychee/types/model"
 )
 
 // StructuredOpts configures structured output generation with retries.

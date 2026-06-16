@@ -1,8 +1,8 @@
 package server
 
 import (
-	"github.com/lychee/lychee/api"
-	"github.com/lychee/lychee/llm"
+	"github.com/MD-Mushfiqur123/lychee/api"
+	"github.com/MD-Mushfiqur123/lychee/llm"
 )
 
 // toAPILogprobs converts llm.Logprobs to api.Logprobs

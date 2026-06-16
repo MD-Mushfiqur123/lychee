@@ -18,8 +18,8 @@ import (
 	"strings"
 	"time"
 
-	"github.com/lychee/lychee/app/logrotate"
-	"github.com/lychee/lychee/app/store"
+	"github.com/MD-Mushfiqur123/lychee/app/logrotate"
+	"github.com/MD-Mushfiqur123/lychee/app/store"
 )
 
 const restartDelay = time.Second

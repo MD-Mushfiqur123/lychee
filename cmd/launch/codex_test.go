@@ -10,9 +10,9 @@ import (
 	"strings"
 	"testing"
 
-	"github.com/lychee/lychee/api"
-	"github.com/lychee/lychee/cmd/internal/fileutil"
-	modelpkg "github.com/lychee/lychee/types/model"
+	"github.com/MD-Mushfiqur123/lychee/api"
+	"github.com/MD-Mushfiqur123/lychee/cmd/internal/fileutil"
+	modelpkg "github.com/MD-Mushfiqur123/lychee/types/model"
 )
 
 func TestCodexIntegration(t *testing.T) {

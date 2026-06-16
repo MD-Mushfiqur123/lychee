@@ -16,8 +16,8 @@ import (
 	"github.com/google/go-cmp/cmp"
 	"github.com/klauspost/compress/zstd"
 
-	"github.com/lychee/lychee/api"
-	"github.com/lychee/lychee/openai"
+	"github.com/MD-Mushfiqur123/lychee/api"
+	"github.com/MD-Mushfiqur123/lychee/openai"
 )
 
 // testPropsMap creates a ToolPropertiesMap from a map (convenience function for tests)

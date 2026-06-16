@@ -3,7 +3,7 @@ package create
 import (
 	"strings"
 
-	"github.com/lychee/lychee/x/safetensors"
+	"github.com/MD-Mushfiqur123/lychee/x/safetensors"
 )
 
 type lagunaImportTransform struct{}

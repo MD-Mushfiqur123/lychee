@@ -7,7 +7,7 @@ import (
 	"testing"
 	"time"
 
-	"github.com/lychee/lychee/api"
+	"github.com/MD-Mushfiqur123/lychee/api"
 )
 
 func TestModelRouter(t *testing.T) {

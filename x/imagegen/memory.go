@@ -15,7 +15,7 @@ import (
 	"fmt"
 	"runtime"
 
-	"github.com/lychee/lychee/x/imagegen/manifest"
+	"github.com/MD-Mushfiqur123/lychee/x/imagegen/manifest"
 )
 
 // SupportedBackends lists the backends that support image generation.

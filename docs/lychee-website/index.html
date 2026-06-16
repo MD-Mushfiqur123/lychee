@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Lychee – Run AI Models Locally</title>
+  <title>Lychee â€“ Run AI Models Locally</title>
   <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.min.js"></script>
   <style>
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
@@ -37,7 +37,7 @@
       overflow-x: hidden;
     }
 
-    /* ── NAV ── */
+    /* â”€â”€ NAV â”€â”€ */
     nav {
       position: fixed;
       top: 0; left: 0; right: 0;
@@ -94,7 +94,7 @@
     }
     .nav-cta:hover { opacity: 0.85; }
 
-    /* ── HERO ── */
+    /* â”€â”€ HERO â”€â”€ */
     .hero {
       min-height: 100vh;
       display: flex;
@@ -211,7 +211,7 @@
     }
     .btn-secondary:hover { border-color: #555; background: rgba(255,255,255,0.05); }
 
-    /* ── TERMINAL ── */
+    /* â”€â”€ TERMINAL â”€â”€ */
     .terminal {
       background: var(--bg2);
       border: 1px solid var(--border);
@@ -267,7 +267,7 @@
     }
     @keyframes blink { 0%,100% { opacity: 1; } 50% { opacity: 0; } }
 
-    /* ── STATS ── */
+    /* â”€â”€ STATS â”€â”€ */
     .stats {
       padding: 4rem 2rem;
       display: flex;
@@ -290,7 +290,7 @@
     }
     .stat-label { color: var(--muted); font-size: 0.9rem; margin-top: 4px; }
 
-    /* ── SECTIONS ── */
+    /* â”€â”€ SECTIONS â”€â”€ */
     section { padding: 6rem 2rem; }
 
     .section-label {
@@ -319,7 +319,7 @@
 
     .container { max-width: 1100px; margin: 0 auto; }
 
-    /* ── FEATURES ── */
+    /* â”€â”€ FEATURES â”€â”€ */
     .features-grid {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
@@ -363,7 +363,7 @@
     .feature-card h3 { font-size: 1.1rem; font-weight: 700; margin-bottom: 0.5rem; }
     .feature-card p { color: var(--muted); font-size: 0.9rem; line-height: 1.6; }
 
-    /* ── MODELS ── */
+    /* â”€â”€ MODELS â”€â”€ */
     .models-section { background: linear-gradient(180deg, var(--bg) 0%, var(--bg2) 50%, var(--bg) 100%); }
 
     .models-grid {
@@ -411,7 +411,7 @@
     .models-count a { color: var(--accent2); text-decoration: none; }
     .models-count a:hover { text-decoration: underline; }
 
-    /* ── CODE TABS ── */
+    /* â”€â”€ CODE TABS â”€â”€ */
     .code-section { display: flex; gap: 4rem; align-items: flex-start; flex-wrap: wrap; }
     .code-text { flex: 1; min-width: 280px; }
     .code-block-wrap { flex: 1; min-width: 320px; }
@@ -470,7 +470,7 @@
     .py-kw { color: #ff79c6; }
     .py-fn { color: #50fa7b; }
 
-    /* ── HOW IT WORKS ── */
+    /* â”€â”€ HOW IT WORKS â”€â”€ */
     .steps {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
@@ -513,7 +513,7 @@
       display: inline-block;
     }
 
-    /* ── INTEGRATIONS ── */
+    /* â”€â”€ INTEGRATIONS â”€â”€ */
     .integrations-grid {
       display: grid;
       grid-template-columns: repeat(auto-fill, minmax(130px, 1fr));
@@ -534,7 +534,7 @@
     .integration-chip .int-icon { font-size: 1.8rem; margin-bottom: 0.5rem; }
     .integration-chip .int-name { font-size: 0.8rem; font-weight: 600; color: var(--muted); }
 
-    /* ── CTA ── */
+    /* â”€â”€ CTA â”€â”€ */
     .cta-section {
       text-align: center;
       background: linear-gradient(135deg, rgba(232,67,147,0.08) 0%, transparent 60%);
@@ -550,7 +550,7 @@
     }
     .cta-section p { color: var(--muted); font-size: 1.1rem; margin-bottom: 2.5rem; }
 
-    /* ── FOOTER ── */
+    /* â”€â”€ FOOTER â”€â”€ */
     footer {
       padding: 3rem 2rem;
       border-top: 1px solid var(--border);
@@ -586,7 +586,7 @@
 
     .footer-copy { color: var(--muted); font-size: 0.8rem; }
 
-    /* ── SCROLL ANIMATIONS ── */
+    /* â”€â”€ SCROLL ANIMATIONS â”€â”€ */
     .fade-in {
       opacity: 0;
       transform: translateY(24px);
@@ -597,7 +597,7 @@
       transform: none;
     }
 
-    /* ── RESPONSIVE ── */
+    /* â”€â”€ RESPONSIVE â”€â”€ */
     @media (max-width: 600px) {
       .nav-links { display: none; }
       .stats { gap: 2rem; }
@@ -667,8 +667,8 @@
     <li><a href="docs.html">Docs</a></li>
     <li><a href="blog.html">Blog</a></li>
     <li><a href="#integrations">Integrations</a></li>
-    <li><a href="https://github.com/lychee/lychee" target="_blank">GitHub</a></li>
-    <li><a href="https://github.com/lychee/lychee" target="_blank" style="display:inline-flex;align-items:center;gap:6px;background:var(--bg3);border:1px solid var(--border);border-radius:8px;padding:5px 12px;font-size:.8rem;color:var(--muted);text-decoration:none;transition:all .2s" onmouseover="this.style.borderColor='#555';this.style.color='var(--text)'" onmouseout="this.style.borderColor='var(--border)';this.style.color='var(--muted)'"><img src="https://cdn.simpleicons.org/github/888888" width="14" height="14" alt=""> Star</a></li>
+    <li><a href="https://github.com/MD-Mushfiqur123/lychee" target="_blank">GitHub</a></li>
+    <li><a href="https://github.com/MD-Mushfiqur123/lychee" target="_blank" style="display:inline-flex;align-items:center;gap:6px;background:var(--bg3);border:1px solid var(--border);border-radius:8px;padding:5px 12px;font-size:.8rem;color:var(--muted);text-decoration:none;transition:all .2s" onmouseover="this.style.borderColor='#555';this.style.color='var(--text)'" onmouseout="this.style.borderColor='var(--border)';this.style.color='var(--muted)'"><img src="https://cdn.simpleicons.org/github/888888" width="14" height="14" alt=""> Star</a></li>
     <li><a href="download.html" class="nav-cta">Download</a></li>
   </ul>
 </nav>
@@ -679,7 +679,7 @@
 
   <div class="hero-badge">
     <span></span>
-    731+ Models Available &nbsp;·&nbsp; No API Key Needed
+    731+ Models Available &nbsp;Â·&nbsp; No API Key Needed
   </div>
 
   <svg class="hero-logo" viewBox="0 0 200 200" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -766,8 +766,8 @@
     <div class="terminal-body">
       <div><span class="t-prompt">$ </span><span class="t-cmd">lychee run llama3.1:8b</span></div>
       <div class="t-output">pulling manifest...</div>
-      <div class="t-output">pulling ━━━━━━━━━━━━━━━━━━━━━ 100% <span class="t-accent">4.9 GB</span></div>
-      <div class="t-output">verifying sha256 digest ✓</div>
+      <div class="t-output">pulling â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â” 100% <span class="t-accent">4.9 GB</span></div>
+      <div class="t-output">verifying sha256 digest âœ“</div>
       <div class="t-output">success</div>
       <div>&nbsp;</div>
       <div><span class="t-accent">&gt;&gt;&gt; </span><span class="t-cmd">Tell me about lychee fruit</span></div>
@@ -850,14 +850,14 @@
         <h2 class="section-title">OpenAI-Compatible<br>Drop-in API</h2>
         <p class="section-sub" style="margin-bottom:2rem">Switch any OpenAI app to run locally in 2 seconds. Same API, same SDK, zero cloud costs.</p>
         <div style="display:flex;flex-direction:column;gap:1rem">
-          <div style="display:flex;align-items:center;gap:12px"><i data-lucide="check-circle-2" style="color:var(--green);width:20px;height:20px;flex-shrink:0"></i><span>Port 11434 — same as OpenAI's format</span></div>
+          <div style="display:flex;align-items:center;gap:12px"><i data-lucide="check-circle-2" style="color:var(--green);width:20px;height:20px;flex-shrink:0"></i><span>Port 11434 â€” same as OpenAI's format</span></div>
           <div style="display:flex;align-items:center;gap:12px"><i data-lucide="check-circle-2" style="color:var(--green);width:20px;height:20px;flex-shrink:0"></i><span>Streaming responses with SSE</span></div>
           <div style="display:flex;align-items:center;gap:12px"><i data-lucide="check-circle-2" style="color:var(--green);width:20px;height:20px;flex-shrink:0"></i><span>Embeddings endpoint built-in</span></div>
           <div style="display:flex;align-items:center;gap:12px"><i data-lucide="check-circle-2" style="color:var(--green);width:20px;height:20px;flex-shrink:0"></i><span>Function calling &amp; tool use</span></div>
         </div>
         <div style="margin-top:2rem;display:flex;gap:1rem;flex-wrap:wrap">
           <a href="docs.html#api" style="display:inline-flex;align-items:center;gap:8px;background:var(--accent);color:#fff;padding:11px 22px;border-radius:9px;font-weight:700;text-decoration:none;font-size:.95rem"><i data-lucide="book-open" style="width:16px;height:16px"></i> API Docs</a>
-          <a href="https://github.com/lychee/lychee" target="_blank" style="display:inline-flex;align-items:center;gap:8px;background:var(--bg3);color:var(--text);padding:11px 22px;border-radius:9px;font-weight:600;text-decoration:none;border:1px solid var(--border);font-size:.95rem"><img src="https://cdn.simpleicons.org/github/ffffff" width="16" height="16" alt="GitHub"> GitHub</a>
+          <a href="https://github.com/MD-Mushfiqur123/lychee" target="_blank" style="display:inline-flex;align-items:center;gap:8px;background:var(--bg3);color:var(--text);padding:11px 22px;border-radius:9px;font-weight:600;text-decoration:none;border:1px solid var(--border);font-size:.95rem"><img src="https://cdn.simpleicons.org/github/ffffff" width="16" height="16" alt="GitHub"> GitHub</a>
         </div>
       </div>
       <div class="fade-in">
@@ -923,70 +923,70 @@
         <div style="position:absolute;top:-12px;left:50%;transform:translateX(-50%);background:var(--accent);color:#fff;font-size:.65rem;font-weight:700;padding:3px 10px;border-radius:100px;white-space:nowrap">BEST CHOICE</div>
         <div style="font-size:1rem;font-weight:800;margin-bottom:1.1rem;text-align:center;display:flex;align-items:center;justify-content:center;gap:6px"><i data-lucide="cpu" style="width:20px;height:20px;color:#e84393"></i> Lychee</div>
         <div style="display:flex;flex-direction:column;gap:.65rem">
-          <div style="display:flex;justify-content:space-between;font-size:.78rem"><span style="color:var(--muted)">Privacy</span><span style="color:var(--green);font-weight:700">✓ 100% Local</span></div>
-          <div style="display:flex;justify-content:space-between;font-size:.78rem"><span style="color:var(--muted)">Cost</span><span style="color:var(--green);font-weight:700">✓ Free</span></div>
-          <div style="display:flex;justify-content:space-between;font-size:.78rem"><span style="color:var(--muted)">HF Pull</span><span style="color:var(--green);font-weight:700">✓ Built-in</span></div>
-          <div style="display:flex;justify-content:space-between;font-size:.78rem"><span style="color:var(--muted)">Models</span><span style="color:var(--green);font-weight:700">✓ 731+</span></div>
-          <div style="display:flex;justify-content:space-between;font-size:.78rem"><span style="color:var(--muted)">Embeddings</span><span style="color:var(--green);font-weight:700">✓ Included</span></div>
-          <div style="display:flex;justify-content:space-between;font-size:.78rem"><span style="color:var(--muted)">SHA256</span><span style="color:var(--green);font-weight:700">✓ Verified</span></div>
-          <div style="display:flex;justify-content:space-between;font-size:.78rem"><span style="color:var(--muted)">HW Scanner</span><span style="color:var(--green);font-weight:700">✓ Exclusive</span></div>
-          <div style="display:flex;justify-content:space-between;font-size:.78rem"><span style="color:var(--muted)">Open Source</span><span style="color:var(--green);font-weight:700">✓ Yes</span></div>
+          <div style="display:flex;justify-content:space-between;font-size:.78rem"><span style="color:var(--muted)">Privacy</span><span style="color:var(--green);font-weight:700">âœ“ 100% Local</span></div>
+          <div style="display:flex;justify-content:space-between;font-size:.78rem"><span style="color:var(--muted)">Cost</span><span style="color:var(--green);font-weight:700">âœ“ Free</span></div>
+          <div style="display:flex;justify-content:space-between;font-size:.78rem"><span style="color:var(--muted)">HF Pull</span><span style="color:var(--green);font-weight:700">âœ“ Built-in</span></div>
+          <div style="display:flex;justify-content:space-between;font-size:.78rem"><span style="color:var(--muted)">Models</span><span style="color:var(--green);font-weight:700">âœ“ 731+</span></div>
+          <div style="display:flex;justify-content:space-between;font-size:.78rem"><span style="color:var(--muted)">Embeddings</span><span style="color:var(--green);font-weight:700">âœ“ Included</span></div>
+          <div style="display:flex;justify-content:space-between;font-size:.78rem"><span style="color:var(--muted)">SHA256</span><span style="color:var(--green);font-weight:700">âœ“ Verified</span></div>
+          <div style="display:flex;justify-content:space-between;font-size:.78rem"><span style="color:var(--muted)">HW Scanner</span><span style="color:var(--green);font-weight:700">âœ“ Exclusive</span></div>
+          <div style="display:flex;justify-content:space-between;font-size:.78rem"><span style="color:var(--muted)">Open Source</span><span style="color:var(--green);font-weight:700">âœ“ Yes</span></div>
         </div>
       </div>
       <!-- Ollama -->
       <div style="background:var(--bg3);border:1px solid var(--border);border-radius:var(--radius);padding:1.25rem">
         <div style="font-size:1rem;font-weight:800;margin-bottom:1.1rem;text-align:center;display:flex;align-items:center;justify-content:center;gap:6px"><img src="https://cdn.simpleicons.org/ollama/ffffff" width="20" height="20" alt="Ollama"> Ollama</div>
         <div style="display:flex;flex-direction:column;gap:.65rem">
-          <div style="display:flex;justify-content:space-between;font-size:.78rem"><span style="color:var(--muted)">Privacy</span><span style="color:var(--green);font-weight:700">✓ Local</span></div>
-          <div style="display:flex;justify-content:space-between;font-size:.78rem"><span style="color:var(--muted)">Cost</span><span style="color:var(--green);font-weight:700">✓ Free</span></div>
-          <div style="display:flex;justify-content:space-between;font-size:.78rem"><span style="color:var(--muted)">HF Pull</span><span style="color:#f87171;font-weight:700">✗ No</span></div>
+          <div style="display:flex;justify-content:space-between;font-size:.78rem"><span style="color:var(--muted)">Privacy</span><span style="color:var(--green);font-weight:700">âœ“ Local</span></div>
+          <div style="display:flex;justify-content:space-between;font-size:.78rem"><span style="color:var(--muted)">Cost</span><span style="color:var(--green);font-weight:700">âœ“ Free</span></div>
+          <div style="display:flex;justify-content:space-between;font-size:.78rem"><span style="color:var(--muted)">HF Pull</span><span style="color:#f87171;font-weight:700">âœ— No</span></div>
           <div style="display:flex;justify-content:space-between;font-size:.78rem"><span style="color:var(--muted)">Models</span><span style="color:var(--muted);font-weight:700">~200</span></div>
           <div style="display:flex;justify-content:space-between;font-size:.78rem"><span style="color:var(--muted)">Embeddings</span><span style="color:var(--yellow);font-weight:700">~ Basic</span></div>
           <div style="display:flex;justify-content:space-between;font-size:.78rem"><span style="color:var(--muted)">SHA256</span><span style="color:var(--yellow);font-weight:700">~ Partial</span></div>
-          <div style="display:flex;justify-content:space-between;font-size:.78rem"><span style="color:var(--muted)">HW Scanner</span><span style="color:#f87171;font-weight:700">✗ No</span></div>
-          <div style="display:flex;justify-content:space-between;font-size:.78rem"><span style="color:var(--muted)">Open Source</span><span style="color:var(--green);font-weight:700">✓ Yes</span></div>
+          <div style="display:flex;justify-content:space-between;font-size:.78rem"><span style="color:var(--muted)">HW Scanner</span><span style="color:#f87171;font-weight:700">âœ— No</span></div>
+          <div style="display:flex;justify-content:space-between;font-size:.78rem"><span style="color:var(--muted)">Open Source</span><span style="color:var(--green);font-weight:700">âœ“ Yes</span></div>
         </div>
       </div>
       <!-- LM Studio -->
       <div style="background:var(--bg3);border:1px solid var(--border);border-radius:var(--radius);padding:1.25rem">
         <div style="font-size:1rem;font-weight:800;margin-bottom:1.1rem;text-align:center;display:flex;align-items:center;justify-content:center;gap:6px"><i data-lucide="monitor" style="width:20px;height:20px;color:#a78bfa"></i> LM Studio</div>
         <div style="display:flex;flex-direction:column;gap:.65rem">
-          <div style="display:flex;justify-content:space-between;font-size:.78rem"><span style="color:var(--muted)">Privacy</span><span style="color:var(--green);font-weight:700">✓ Local</span></div>
+          <div style="display:flex;justify-content:space-between;font-size:.78rem"><span style="color:var(--muted)">Privacy</span><span style="color:var(--green);font-weight:700">âœ“ Local</span></div>
           <div style="display:flex;justify-content:space-between;font-size:.78rem"><span style="color:var(--muted)">Cost</span><span style="color:var(--yellow);font-weight:700">~ Free/Pro</span></div>
           <div style="display:flex;justify-content:space-between;font-size:.78rem"><span style="color:var(--muted)">HF Pull</span><span style="color:var(--yellow);font-weight:700">~ Manual UI</span></div>
           <div style="display:flex;justify-content:space-between;font-size:.78rem"><span style="color:var(--muted)">Models</span><span style="color:var(--muted);font-weight:700">HF browse</span></div>
-          <div style="display:flex;justify-content:space-between;font-size:.78rem"><span style="color:var(--muted)">Embeddings</span><span style="color:var(--green);font-weight:700">✓ Yes</span></div>
-          <div style="display:flex;justify-content:space-between;font-size:.78rem"><span style="color:var(--muted)">SHA256</span><span style="color:#f87171;font-weight:700">✗ No</span></div>
-          <div style="display:flex;justify-content:space-between;font-size:.78rem"><span style="color:var(--muted)">HW Scanner</span><span style="color:#f87171;font-weight:700">✗ No</span></div>
-          <div style="display:flex;justify-content:space-between;font-size:.78rem"><span style="color:var(--muted)">Open Source</span><span style="color:#f87171;font-weight:700">✗ No</span></div>
+          <div style="display:flex;justify-content:space-between;font-size:.78rem"><span style="color:var(--muted)">Embeddings</span><span style="color:var(--green);font-weight:700">âœ“ Yes</span></div>
+          <div style="display:flex;justify-content:space-between;font-size:.78rem"><span style="color:var(--muted)">SHA256</span><span style="color:#f87171;font-weight:700">âœ— No</span></div>
+          <div style="display:flex;justify-content:space-between;font-size:.78rem"><span style="color:var(--muted)">HW Scanner</span><span style="color:#f87171;font-weight:700">âœ— No</span></div>
+          <div style="display:flex;justify-content:space-between;font-size:.78rem"><span style="color:var(--muted)">Open Source</span><span style="color:#f87171;font-weight:700">âœ— No</span></div>
         </div>
       </div>
       <!-- Jan -->
       <div style="background:var(--bg3);border:1px solid var(--border);border-radius:var(--radius);padding:1.25rem">
         <div style="font-size:1rem;font-weight:800;margin-bottom:1.1rem;text-align:center;display:flex;align-items:center;justify-content:center;gap:6px"><i data-lucide="cpu" style="width:20px;height:20px;color:#4ade80"></i> Jan</div>
         <div style="display:flex;flex-direction:column;gap:.65rem">
-          <div style="display:flex;justify-content:space-between;font-size:.78rem"><span style="color:var(--muted)">Privacy</span><span style="color:var(--green);font-weight:700">✓ Local</span></div>
-          <div style="display:flex;justify-content:space-between;font-size:.78rem"><span style="color:var(--muted)">Cost</span><span style="color:var(--green);font-weight:700">✓ Free</span></div>
+          <div style="display:flex;justify-content:space-between;font-size:.78rem"><span style="color:var(--muted)">Privacy</span><span style="color:var(--green);font-weight:700">âœ“ Local</span></div>
+          <div style="display:flex;justify-content:space-between;font-size:.78rem"><span style="color:var(--muted)">Cost</span><span style="color:var(--green);font-weight:700">âœ“ Free</span></div>
           <div style="display:flex;justify-content:space-between;font-size:.78rem"><span style="color:var(--muted)">HF Pull</span><span style="color:var(--yellow);font-weight:700">~ Manual UI</span></div>
           <div style="display:flex;justify-content:space-between;font-size:.78rem"><span style="color:var(--muted)">Models</span><span style="color:var(--muted);font-weight:700">Limited</span></div>
           <div style="display:flex;justify-content:space-between;font-size:.78rem"><span style="color:var(--muted)">Embeddings</span><span style="color:var(--yellow);font-weight:700">~ Basic</span></div>
-          <div style="display:flex;justify-content:space-between;font-size:.78rem"><span style="color:var(--muted)">SHA256</span><span style="color:#f87171;font-weight:700">✗ No</span></div>
-          <div style="display:flex;justify-content:space-between;font-size:.78rem"><span style="color:var(--muted)">HW Scanner</span><span style="color:#f87171;font-weight:700">✗ No</span></div>
-          <div style="display:flex;justify-content:space-between;font-size:.78rem"><span style="color:var(--muted)">Open Source</span><span style="color:var(--green);font-weight:700">✓ Yes</span></div>
+          <div style="display:flex;justify-content:space-between;font-size:.78rem"><span style="color:var(--muted)">SHA256</span><span style="color:#f87171;font-weight:700">âœ— No</span></div>
+          <div style="display:flex;justify-content:space-between;font-size:.78rem"><span style="color:var(--muted)">HW Scanner</span><span style="color:#f87171;font-weight:700">âœ— No</span></div>
+          <div style="display:flex;justify-content:space-between;font-size:.78rem"><span style="color:var(--muted)">Open Source</span><span style="color:var(--green);font-weight:700">âœ“ Yes</span></div>
         </div>
       </div>
       <!-- ChatGPT API -->
       <div style="background:var(--bg3);border:1px solid var(--border);border-radius:var(--radius);padding:1.25rem">
         <div style="font-size:1rem;font-weight:800;margin-bottom:1.1rem;text-align:center;display:flex;align-items:center;justify-content:center;gap:6px"><img src="https://cdn.simpleicons.org/openai/888888" width="18" height="18" alt="OpenAI"> ChatGPT API</div>
         <div style="display:flex;flex-direction:column;gap:.65rem">
-          <div style="display:flex;justify-content:space-between;font-size:.78rem"><span style="color:var(--muted)">Privacy</span><span style="color:#f87171;font-weight:700">✗ Cloud</span></div>
-          <div style="display:flex;justify-content:space-between;font-size:.78rem"><span style="color:var(--muted)">Cost</span><span style="color:#f87171;font-weight:700">✗ Paid</span></div>
-          <div style="display:flex;justify-content:space-between;font-size:.78rem"><span style="color:var(--muted)">HF Pull</span><span style="color:#f87171;font-weight:700">✗ No</span></div>
+          <div style="display:flex;justify-content:space-between;font-size:.78rem"><span style="color:var(--muted)">Privacy</span><span style="color:#f87171;font-weight:700">âœ— Cloud</span></div>
+          <div style="display:flex;justify-content:space-between;font-size:.78rem"><span style="color:var(--muted)">Cost</span><span style="color:#f87171;font-weight:700">âœ— Paid</span></div>
+          <div style="display:flex;justify-content:space-between;font-size:.78rem"><span style="color:var(--muted)">HF Pull</span><span style="color:#f87171;font-weight:700">âœ— No</span></div>
           <div style="display:flex;justify-content:space-between;font-size:.78rem"><span style="color:var(--muted)">Models</span><span style="color:var(--muted);font-weight:700">~5 models</span></div>
           <div style="display:flex;justify-content:space-between;font-size:.78rem"><span style="color:var(--muted)">Embeddings</span><span style="color:var(--yellow);font-weight:700">~ Paid add-on</span></div>
-          <div style="display:flex;justify-content:space-between;font-size:.78rem"><span style="color:var(--muted)">SHA256</span><span style="color:#f87171;font-weight:700">✗ No</span></div>
-          <div style="display:flex;justify-content:space-between;font-size:.78rem"><span style="color:var(--muted)">HW Scanner</span><span style="color:#f87171;font-weight:700">✗ No</span></div>
-          <div style="display:flex;justify-content:space-between;font-size:.78rem"><span style="color:var(--muted)">Open Source</span><span style="color:#f87171;font-weight:700">✗ No</span></div>
+          <div style="display:flex;justify-content:space-between;font-size:.78rem"><span style="color:var(--muted)">SHA256</span><span style="color:#f87171;font-weight:700">âœ— No</span></div>
+          <div style="display:flex;justify-content:space-between;font-size:.78rem"><span style="color:var(--muted)">HW Scanner</span><span style="color:#f87171;font-weight:700">âœ— No</span></div>
+          <div style="display:flex;justify-content:space-between;font-size:.78rem"><span style="color:var(--muted)">Open Source</span><span style="color:#f87171;font-weight:700">âœ— No</span></div>
         </div>
       </div>
     </div>
@@ -1018,63 +1018,63 @@
     <div class="fade-in" style="text-align:center; margin-bottom:0">
       <div class="section-label">Model Library</div>
       <h2 class="section-title">731+ Models Ready to Run</h2>
-      <p class="section-sub" style="margin:0 auto">From tiny edge models to massive frontier models — all one command away.</p>
+      <p class="section-sub" style="margin:0 auto">From tiny edge models to massive frontier models â€” all one command away.</p>
     </div>
 
     <div class="models-grid fade-in">
       <a class="model-chip" href="#">
         <div class="model-chip-name">Llama 3.1</div>
-        <div class="model-chip-meta">8B · 70B · 405B</div>
+        <div class="model-chip-meta">8B Â· 70B Â· 405B</div>
         <span class="model-chip-tag">chat</span>
       </a>
       <a class="model-chip" href="#">
         <div class="model-chip-name">Qwen 3</div>
-        <div class="model-chip-meta">0.6B – 32B</div>
+        <div class="model-chip-meta">0.6B â€“ 32B</div>
         <span class="model-chip-tag tag-reasoning">reasoning</span>
       </a>
       <a class="model-chip" href="#">
         <div class="model-chip-name">DeepSeek-R1</div>
-        <div class="model-chip-meta">7B · 14B · 70B</div>
+        <div class="model-chip-meta">7B Â· 14B Â· 70B</div>
         <span class="model-chip-tag tag-reasoning">reasoning</span>
       </a>
       <a class="model-chip" href="#">
         <div class="model-chip-name">Gemma 3</div>
-        <div class="model-chip-meta">1B · 4B · 12B · 27B</div>
+        <div class="model-chip-meta">1B Â· 4B Â· 12B Â· 27B</div>
         <span class="model-chip-tag">chat</span>
       </a>
       <a class="model-chip" href="#">
         <div class="model-chip-name">Mistral</div>
-        <div class="model-chip-meta">7B · 22B · 123B</div>
+        <div class="model-chip-meta">7B Â· 22B Â· 123B</div>
         <span class="model-chip-tag">chat</span>
       </a>
       <a class="model-chip" href="#">
         <div class="model-chip-name">Phi 4</div>
-        <div class="model-chip-meta">3.8B · 14B</div>
+        <div class="model-chip-meta">3.8B Â· 14B</div>
         <span class="model-chip-tag tag-reasoning">reasoning</span>
       </a>
       <a class="model-chip" href="#">
         <div class="model-chip-name">Qwen 2.5 Coder</div>
-        <div class="model-chip-meta">1.5B · 7B · 32B</div>
+        <div class="model-chip-meta">1.5B Â· 7B Â· 32B</div>
         <span class="model-chip-tag tag-code">code</span>
       </a>
       <a class="model-chip" href="#">
         <div class="model-chip-name">CodeLlama</div>
-        <div class="model-chip-meta">7B · 13B · 70B</div>
+        <div class="model-chip-meta">7B Â· 13B Â· 70B</div>
         <span class="model-chip-tag tag-code">code</span>
       </a>
       <a class="model-chip" href="#">
         <div class="model-chip-name">Llama 3.2 Vision</div>
-        <div class="model-chip-meta">11B · 90B</div>
+        <div class="model-chip-meta">11B Â· 90B</div>
         <span class="model-chip-tag tag-vision">vision</span>
       </a>
       <a class="model-chip" href="#">
         <div class="model-chip-name">Mixtral</div>
-        <div class="model-chip-meta">8x7B · 8x22B</div>
+        <div class="model-chip-meta">8x7B Â· 8x22B</div>
         <span class="model-chip-tag">chat</span>
       </a>
       <a class="model-chip" href="#">
         <div class="model-chip-name">Falcon 3</div>
-        <div class="model-chip-meta">1B · 3B · 7B · 10B</div>
+        <div class="model-chip-meta">1B Â· 3B Â· 7B Â· 10B</div>
         <span class="model-chip-tag">chat</span>
       </a>
       <a class="model-chip" href="#">
@@ -1094,7 +1094,7 @@
       </a>
       <a class="model-chip" href="#">
         <div class="model-chip-name">Gemma 3n</div>
-        <div class="model-chip-meta">E2B · E4B</div>
+        <div class="model-chip-meta">E2B Â· E4B</div>
         <span class="model-chip-tag">edge</span>
       </a>
       <a class="model-chip" href="#" style="border-style:dashed; display:flex; align-items:center; justify-content:center; min-height:90px; color:var(--muted); font-size:0.85rem; gap:6px;">
@@ -1103,7 +1103,7 @@
     </div>
 
     <div class="models-count fade-in">
-      Also pull any model directly from HuggingFace →
+      Also pull any model directly from HuggingFace â†’
       <code style="background:var(--bg3); padding:3px 8px; border-radius:6px; font-family:var(--mono); font-size:0.8rem; color:var(--green)">lychee hf pull username/repo</code>
     </div>
   </div>
@@ -1119,19 +1119,19 @@
         <p class="section-sub">Lychee exposes an OpenAI-compatible REST API and official SDKs for Python and JavaScript.</p>
         <div style="margin-top:2rem; display:flex; flex-direction:column; gap:0.75rem;">
           <div style="display:flex; align-items:center; gap:10px; color:var(--muted); font-size:0.9rem">
-            <span style="color:var(--green)">✓</span> Streaming responses
+            <span style="color:var(--green)">âœ“</span> Streaming responses
           </div>
           <div style="display:flex; align-items:center; gap:10px; color:var(--muted); font-size:0.9rem">
-            <span style="color:var(--green)">✓</span> Tool / function calling
+            <span style="color:var(--green)">âœ“</span> Tool / function calling
           </div>
           <div style="display:flex; align-items:center; gap:10px; color:var(--muted); font-size:0.9rem">
-            <span style="color:var(--green)">✓</span> Vision &amp; multimodal
+            <span style="color:var(--green)">âœ“</span> Vision &amp; multimodal
           </div>
           <div style="display:flex; align-items:center; gap:10px; color:var(--muted); font-size:0.9rem">
-            <span style="color:var(--green)">✓</span> Embeddings
+            <span style="color:var(--green)">âœ“</span> Embeddings
           </div>
           <div style="display:flex; align-items:center; gap:10px; color:var(--muted); font-size:0.9rem">
-            <span style="color:var(--green)">✓</span> Structured outputs (JSON schema)
+            <span style="color:var(--green)">âœ“</span> Structured outputs (JSON schema)
           </div>
         </div>
       </div>
@@ -1202,14 +1202,14 @@ console.<span class="fn">log</span>(<span class="var">response</span>.message.co
     <div class="fade-in" style="text-align:center;margin-bottom:3rem">
       <div class="section-label">Exclusive Commands</div>
       <h2 class="section-title">Tools built for power users</h2>
-      <p class="section-sub" style="margin:0 auto;max-width:560px">Four commands you won't find anywhere else — available only in Lychee.</p>
+      <p class="section-sub" style="margin:0 auto;max-width:560px">Four commands you won't find anywhere else â€” available only in Lychee.</p>
     </div>
 
     <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:1.5rem">
 
       <!-- embed -->
       <div class="feature-card fade-in" style="border-color:rgba(96,165,250,0.3)">
-        <div class="feature-icon" style="background:rgba(96,165,250,0.1);color:var(--blue)">⟨⟩</div>
+        <div class="feature-icon" style="background:rgba(96,165,250,0.1);color:var(--blue)">âŸ¨âŸ©</div>
         <h3 class="feature-title">lychee embed</h3>
         <p class="feature-desc">Generate vector embeddings from stdin or arguments. Output as JSON, CSV, or a human-readable preview. Pipe directly into your RAG pipeline.</p>
         <div style="background:var(--bg3);border:1px solid var(--border);border-radius:8px;padding:.85rem 1rem;font-family:var(--mono);font-size:.78rem;color:var(--green);margin-top:.75rem;overflow-x:auto">lychee embed "hello world" --output json</div>
@@ -1217,15 +1217,15 @@ console.<span class="fn">log</span>(<span class="var">response</span>.message.co
 
       <!-- scan -->
       <div class="feature-card fade-in" style="border-color:rgba(74,222,128,0.3)">
-        <div class="feature-icon" style="background:rgba(74,222,128,0.1);color:var(--green)">⌗</div>
+        <div class="feature-icon" style="background:rgba(74,222,128,0.1);color:var(--green)">âŒ—</div>
         <h3 class="feature-title">lychee scan</h3>
-        <p class="feature-desc">Detect your GPU, VRAM, and system RAM then get a ranked list of models that will run smoothly on your hardware — no guessing.</p>
+        <p class="feature-desc">Detect your GPU, VRAM, and system RAM then get a ranked list of models that will run smoothly on your hardware â€” no guessing.</p>
         <div style="background:var(--bg3);border:1px solid var(--border);border-radius:8px;padding:.85rem 1rem;font-family:var(--mono);font-size:.78rem;color:var(--green);margin-top:.75rem;overflow-x:auto">lychee scan</div>
       </div>
 
       <!-- compare -->
       <div class="feature-card fade-in" style="border-color:rgba(232,67,147,0.3)">
-        <div class="feature-icon" style="background:rgba(232,67,147,0.1);color:var(--accent)">⟺</div>
+        <div class="feature-icon" style="background:rgba(232,67,147,0.1);color:var(--accent)">âŸº</div>
         <h3 class="feature-title">lychee compare</h3>
         <p class="feature-desc">Run two models on the same prompt simultaneously and see outputs + speed + token counts side by side. Pick the right model for each task.</p>
         <div style="background:var(--bg3);border:1px solid var(--border);border-radius:8px;padding:.85rem 1rem;font-family:var(--mono);font-size:.78rem;color:var(--green);margin-top:.75rem;overflow-x:auto">lychee compare llama3.2:3b qwen3:4b</div>
@@ -1233,9 +1233,9 @@ console.<span class="fn">log</span>(<span class="var">response</span>.message.co
 
       <!-- stats -->
       <div class="feature-card fade-in" style="border-color:rgba(250,204,21,0.3)">
-        <div class="feature-icon" style="background:rgba(250,204,21,0.1);color:var(--yellow)">◈</div>
+        <div class="feature-icon" style="background:rgba(250,204,21,0.1);color:var(--yellow)">â—ˆ</div>
         <h3 class="feature-title">lychee stats</h3>
-        <p class="feature-desc">Live dashboard showing all running models — VRAM used, tokens/second, context length, and time until unload. Like htop for your AI.</p>
+        <p class="feature-desc">Live dashboard showing all running models â€” VRAM used, tokens/second, context length, and time until unload. Like htop for your AI.</p>
         <div style="background:var(--bg3);border:1px solid var(--border);border-radius:8px;padding:.85rem 1rem;font-family:var(--mono);font-size:.78rem;color:var(--green);margin-top:.75rem;overflow-x:auto">lychee stats --interval 1</div>
       </div>
 
@@ -1300,7 +1300,7 @@ console.<span class="fn">log</span>(<span class="var">response</span>.message.co
         <div>
           <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:1rem">
             <span style="font-family:var(--mono);font-size:1rem;font-weight:700;color:var(--accent2)">llama3-coder-super</span>
-            <span style="font-size:0.8rem;background:rgba(74,222,128,0.15);color:var(--green);padding:2px 8px;border-radius:100px;font-weight:600">👍 42 upvotes</span>
+            <span style="font-size:0.8rem;background:rgba(74,222,128,0.15);color:var(--green);padding:2px 8px;border-radius:100px;font-weight:600">ðŸ‘ 42 upvotes</span>
           </div>
           <p style="color:var(--muted);font-size:0.875rem;line-height:1.5;margin-bottom:1rem">Fine-tuned Llama 3 for extreme quality python completions and code generation. Ready for offline SDK use.</p>
         </div>
@@ -1315,7 +1315,7 @@ console.<span class="fn">log</span>(<span class="var">response</span>.message.co
         <div>
           <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:1rem">
             <span style="font-family:var(--mono);font-size:1rem;font-weight:700;color:var(--accent2)">qwen-3b-uncensored</span>
-            <span style="font-size:0.8rem;background:rgba(74,222,128,0.15);color:var(--green);padding:2px 8px;border-radius:100px;font-weight:600">👍 28 upvotes</span>
+            <span style="font-size:0.8rem;background:rgba(74,222,128,0.15);color:var(--green);padding:2px 8px;border-radius:100px;font-weight:600">ðŸ‘ 28 upvotes</span>
           </div>
           <p style="color:var(--muted);font-size:0.875rem;line-height:1.5;margin-bottom:1rem">Uncensored assistant model with dynamic context scaling. Ideal for local edge device agents.</p>
         </div>
@@ -1354,57 +1354,57 @@ console.<span class="fn">log</span>(<span class="var">response</span>.message.co
         <tbody>
           <tr style="border-bottom:1px solid rgba(255,255,255,0.04)">
             <td style="padding:12px 16px;color:var(--text)">100% Local / Private</td>
-            <td style="text-align:center;padding:12px 16px;color:var(--green)">✓</td>
-            <td style="text-align:center;padding:12px 16px;color:#f87171">✗</td>
-            <td style="text-align:center;padding:12px 16px;color:var(--green)">✓</td>
-            <td style="text-align:center;padding:12px 16px;color:var(--green)">✓</td>
+            <td style="text-align:center;padding:12px 16px;color:var(--green)">âœ“</td>
+            <td style="text-align:center;padding:12px 16px;color:#f87171">âœ—</td>
+            <td style="text-align:center;padding:12px 16px;color:var(--green)">âœ“</td>
+            <td style="text-align:center;padding:12px 16px;color:var(--green)">âœ“</td>
           </tr>
           <tr style="border-bottom:1px solid rgba(255,255,255,0.04)">
             <td style="padding:12px 16px;color:var(--text)">No API Key Required</td>
-            <td style="text-align:center;padding:12px 16px;color:var(--green)">✓</td>
-            <td style="text-align:center;padding:12px 16px;color:#f87171">✗</td>
-            <td style="text-align:center;padding:12px 16px;color:var(--green)">✓</td>
-            <td style="text-align:center;padding:12px 16px;color:var(--green)">✓</td>
+            <td style="text-align:center;padding:12px 16px;color:var(--green)">âœ“</td>
+            <td style="text-align:center;padding:12px 16px;color:#f87171">âœ—</td>
+            <td style="text-align:center;padding:12px 16px;color:var(--green)">âœ“</td>
+            <td style="text-align:center;padding:12px 16px;color:var(--green)">âœ“</td>
           </tr>
           <tr style="border-bottom:1px solid rgba(255,255,255,0.04)">
             <td style="padding:12px 16px;color:var(--text)">Direct HuggingFace Pull</td>
-            <td style="text-align:center;padding:12px 16px;color:var(--green)">✓</td>
-            <td style="text-align:center;padding:12px 16px;color:#f87171">✗</td>
-            <td style="text-align:center;padding:12px 16px;color:var(--green)">✓</td>
-            <td style="text-align:center;padding:12px 16px;color:#f87171">✗</td>
+            <td style="text-align:center;padding:12px 16px;color:var(--green)">âœ“</td>
+            <td style="text-align:center;padding:12px 16px;color:#f87171">âœ—</td>
+            <td style="text-align:center;padding:12px 16px;color:var(--green)">âœ“</td>
+            <td style="text-align:center;padding:12px 16px;color:#f87171">âœ—</td>
           </tr>
           <tr style="border-bottom:1px solid rgba(255,255,255,0.04)">
             <td style="padding:12px 16px;color:var(--text)">275+ Built-in Model Catalog</td>
-            <td style="text-align:center;padding:12px 16px;color:var(--green)">✓</td>
-            <td style="text-align:center;padding:12px 16px;color:#f87171">✗</td>
-            <td style="text-align:center;padding:12px 16px;color:var(--muted)">–</td>
+            <td style="text-align:center;padding:12px 16px;color:var(--green)">âœ“</td>
+            <td style="text-align:center;padding:12px 16px;color:#f87171">âœ—</td>
+            <td style="text-align:center;padding:12px 16px;color:var(--muted)">â€“</td>
             <td style="text-align:center;padding:12px 16px;color:var(--muted)">~200</td>
           </tr>
           <tr style="border-bottom:1px solid rgba(255,255,255,0.04)">
             <td style="padding:12px 16px;color:var(--text)">lychee compare / scan / stats</td>
-            <td style="text-align:center;padding:12px 16px;color:var(--green)">✓</td>
-            <td style="text-align:center;padding:12px 16px;color:#f87171">✗</td>
-            <td style="text-align:center;padding:12px 16px;color:#f87171">✗</td>
-            <td style="text-align:center;padding:12px 16px;color:#f87171">✗</td>
+            <td style="text-align:center;padding:12px 16px;color:var(--green)">âœ“</td>
+            <td style="text-align:center;padding:12px 16px;color:#f87171">âœ—</td>
+            <td style="text-align:center;padding:12px 16px;color:#f87171">âœ—</td>
+            <td style="text-align:center;padding:12px 16px;color:#f87171">âœ—</td>
           </tr>
           <tr style="border-bottom:1px solid rgba(255,255,255,0.04)">
             <td style="padding:12px 16px;color:var(--text)">OpenAI-compatible API</td>
-            <td style="text-align:center;padding:12px 16px;color:var(--green)">✓</td>
-            <td style="text-align:center;padding:12px 16px;color:var(--green)">✓</td>
-            <td style="text-align:center;padding:12px 16px;color:var(--green)">✓</td>
-            <td style="text-align:center;padding:12px 16px;color:var(--green)">✓</td>
+            <td style="text-align:center;padding:12px 16px;color:var(--green)">âœ“</td>
+            <td style="text-align:center;padding:12px 16px;color:var(--green)">âœ“</td>
+            <td style="text-align:center;padding:12px 16px;color:var(--green)">âœ“</td>
+            <td style="text-align:center;padding:12px 16px;color:var(--green)">âœ“</td>
           </tr>
           <tr style="border-bottom:1px solid rgba(255,255,255,0.04)">
             <td style="padding:12px 16px;color:var(--text)">SHA256 Verified Downloads</td>
-            <td style="text-align:center;padding:12px 16px;color:var(--green)">✓</td>
-            <td style="text-align:center;padding:12px 16px;color:var(--muted)">–</td>
-            <td style="text-align:center;padding:12px 16px;color:var(--muted)">–</td>
-            <td style="text-align:center;padding:12px 16px;color:#f87171">✗</td>
+            <td style="text-align:center;padding:12px 16px;color:var(--green)">âœ“</td>
+            <td style="text-align:center;padding:12px 16px;color:var(--muted)">â€“</td>
+            <td style="text-align:center;padding:12px 16px;color:var(--muted)">â€“</td>
+            <td style="text-align:center;padding:12px 16px;color:#f87171">âœ—</td>
           </tr>
           <tr>
             <td style="padding:12px 16px;color:var(--text)">Monthly Cost</td>
             <td style="text-align:center;padding:12px 16px;color:var(--green);font-weight:700">$0</td>
-            <td style="text-align:center;padding:12px 16px;color:var(--muted)">$20–$200+</td>
+            <td style="text-align:center;padding:12px 16px;color:var(--muted)">$20â€“$200+</td>
             <td style="text-align:center;padding:12px 16px;color:var(--green)">$0</td>
             <td style="text-align:center;padding:12px 16px;color:var(--green)">$0</td>
           </tr>
@@ -1427,9 +1427,9 @@ console.<span class="fn">log</span>(<span class="var">response</span>.message.co
         <h3 style="font-size:1rem;font-weight:700;margin-bottom:.5rem">Developers</h3>
         <p style="color:var(--muted);font-size:.875rem;line-height:1.6">Build AI-powered apps with zero API costs. Use the OpenAI-compatible endpoint to drop in local inference with no code changes.</p>
         <ul style="margin-top:1rem;list-style:none;color:var(--muted);font-size:.82rem;display:flex;flex-direction:column;gap:.3rem">
-          <li style="display:flex;gap:.5rem"><span style="color:var(--green)">→</span>Code review & autocomplete</li>
-          <li style="display:flex;gap:.5rem"><span style="color:var(--green)">→</span>Chat bots & RAG pipelines</li>
-          <li style="display:flex;gap:.5rem"><span style="color:var(--green)">→</span>Test generation</li>
+          <li style="display:flex;gap:.5rem"><span style="color:var(--green)">â†’</span>Code review & autocomplete</li>
+          <li style="display:flex;gap:.5rem"><span style="color:var(--green)">â†’</span>Chat bots & RAG pipelines</li>
+          <li style="display:flex;gap:.5rem"><span style="color:var(--green)">â†’</span>Test generation</li>
         </ul>
       </div>
       <div class="fade-in" style="background:var(--bg3);border:1px solid var(--border);border-radius:var(--radius);padding:1.75rem">
@@ -1437,29 +1437,29 @@ console.<span class="fn">log</span>(<span class="var">response</span>.message.co
         <h3 style="font-size:1rem;font-weight:700;margin-bottom:.5rem">Researchers</h3>
         <p style="color:var(--muted);font-size:.875rem;line-height:1.6">Run experiments on frontier models without cloud bills. Compare models head-to-head with <code style="font-family:var(--mono);font-size:.8em;background:var(--bg);padding:1px 5px;border-radius:4px">lychee compare</code> and benchmark at scale.</p>
         <ul style="margin-top:1rem;list-style:none;color:var(--muted);font-size:.82rem;display:flex;flex-direction:column;gap:.3rem">
-          <li style="display:flex;gap:.5rem"><span style="color:var(--green)">→</span>Model benchmarking</li>
-          <li style="display:flex;gap:.5rem"><span style="color:var(--green)">→</span>Embedding & similarity</li>
-          <li style="display:flex;gap:.5rem"><span style="color:var(--green)">→</span>Offline experimentation</li>
+          <li style="display:flex;gap:.5rem"><span style="color:var(--green)">â†’</span>Model benchmarking</li>
+          <li style="display:flex;gap:.5rem"><span style="color:var(--green)">â†’</span>Embedding & similarity</li>
+          <li style="display:flex;gap:.5rem"><span style="color:var(--green)">â†’</span>Offline experimentation</li>
         </ul>
       </div>
       <div class="fade-in" style="background:var(--bg3);border:1px solid var(--border);border-radius:var(--radius);padding:1.75rem">
         <div style="font-size:2rem;margin-bottom:.75rem"><i data-lucide="building-2" style="width:36px;height:36px;color:#f59e0b"></i></div>
         <h3 style="font-size:1rem;font-weight:700;margin-bottom:.5rem">Enterprises</h3>
-        <p style="color:var(--muted);font-size:.875rem;line-height:1.6">Deploy AI on-premise for complete data control. No data ever leaves your infrastructure — compliant with GDPR, HIPAA, and SOC2 requirements.</p>
+        <p style="color:var(--muted);font-size:.875rem;line-height:1.6">Deploy AI on-premise for complete data control. No data ever leaves your infrastructure â€” compliant with GDPR, HIPAA, and SOC2 requirements.</p>
         <ul style="margin-top:1rem;list-style:none;color:var(--muted);font-size:.82rem;display:flex;flex-direction:column;gap:.3rem">
-          <li style="display:flex;gap:.5rem"><span style="color:var(--green)">→</span>Air-gapped deployments</li>
-          <li style="display:flex;gap:.5rem"><span style="color:var(--green)">→</span>Internal knowledge bases</li>
-          <li style="display:flex;gap:.5rem"><span style="color:var(--green)">→</span>Document processing</li>
+          <li style="display:flex;gap:.5rem"><span style="color:var(--green)">â†’</span>Air-gapped deployments</li>
+          <li style="display:flex;gap:.5rem"><span style="color:var(--green)">â†’</span>Internal knowledge bases</li>
+          <li style="display:flex;gap:.5rem"><span style="color:var(--green)">â†’</span>Document processing</li>
         </ul>
       </div>
       <div class="fade-in" style="background:var(--bg3);border:1px solid var(--border);border-radius:var(--radius);padding:1.75rem">
         <div style="font-size:2rem;margin-bottom:.75rem"><i data-lucide="graduation-cap" style="width:36px;height:36px;color:#2dd4bf"></i></div>
         <h3 style="font-size:1rem;font-weight:700;margin-bottom:.5rem">Students & Educators</h3>
-        <p style="color:var(--muted);font-size:.875rem;line-height:1.6">Learn how LLMs work without cloud subscriptions. Experiment freely — every model runs on your laptop, offline, at no cost.</p>
+        <p style="color:var(--muted);font-size:.875rem;line-height:1.6">Learn how LLMs work without cloud subscriptions. Experiment freely â€” every model runs on your laptop, offline, at no cost.</p>
         <ul style="margin-top:1rem;list-style:none;color:var(--muted);font-size:.82rem;display:flex;flex-direction:column;gap:.3rem">
-          <li style="display:flex;gap:.5rem"><span style="color:var(--green)">→</span>Free forever</li>
-          <li style="display:flex;gap:.5rem"><span style="color:var(--green)">→</span>Works offline</li>
-          <li style="display:flex;gap:.5rem"><span style="color:var(--green)">→</span>250+ models to explore</li>
+          <li style="display:flex;gap:.5rem"><span style="color:var(--green)">â†’</span>Free forever</li>
+          <li style="display:flex;gap:.5rem"><span style="color:var(--green)">â†’</span>Works offline</li>
+          <li style="display:flex;gap:.5rem"><span style="color:var(--green)">â†’</span>250+ models to explore</li>
         </ul>
       </div>
     </div>
@@ -1503,7 +1503,7 @@ console.<span class="fn">log</span>(<span class="var">response</span>.message.co
     <div class="fade-in" style="text-align:center">
       <div class="section-label">Integrations</div>
       <h2 class="section-title">Works with your favorite tools</h2>
-      <p class="section-sub" style="margin:0 auto">Lychee integrates with the tools you already use — no configuration needed.</p>
+      <p class="section-sub" style="margin:0 auto">Lychee integrates with the tools you already use â€” no configuration needed.</p>
     </div>
 
     <div class="integrations-grid fade-in">
@@ -1593,12 +1593,12 @@ console.<span class="fn">log</span>(<span class="var">response</span>.message.co
   <div class="footer-links">
     <a href="#">Docs</a>
     <a href="#">Blog</a>
-    <a href="https://github.com/lychee/lychee" target="_blank">GitHub</a>
+    <a href="https://github.com/MD-Mushfiqur123/lychee" target="_blank">GitHub</a>
     <a href="#">Discord</a>
     <a href="#">Models</a>
     <a href="#">API</a>
   </div>
-  <div class="footer-copy">© 2025 Lychee. Open source.</div>
+  <div class="footer-copy">Â© 2025 Lychee. Open source.</div>
 </footer>
 
 <script>

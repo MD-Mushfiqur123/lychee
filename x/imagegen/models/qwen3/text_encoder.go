@@ -5,11 +5,11 @@ import (
 	"fmt"
 	"math"
 
-	"github.com/lychee/lychee/x/imagegen/manifest"
-	"github.com/lychee/lychee/x/imagegen/mlx"
-	"github.com/lychee/lychee/x/imagegen/nn"
-	"github.com/lychee/lychee/x/imagegen/safetensors"
-	"github.com/lychee/lychee/x/imagegen/tokenizer"
+	"github.com/MD-Mushfiqur123/lychee/x/imagegen/manifest"
+	"github.com/MD-Mushfiqur123/lychee/x/imagegen/mlx"
+	"github.com/MD-Mushfiqur123/lychee/x/imagegen/nn"
+	"github.com/MD-Mushfiqur123/lychee/x/imagegen/safetensors"
+	"github.com/MD-Mushfiqur123/lychee/x/imagegen/tokenizer"
 )
 
 // Config holds Qwen3 text encoder configuration

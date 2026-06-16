@@ -9,7 +9,7 @@ import (
 	_ "image/png"
 	"os"
 
-	"github.com/lychee/lychee/x/imagegen/mlx"
+	"github.com/MD-Mushfiqur123/lychee/x/imagegen/mlx"
 	"golang.org/x/image/draw"
 )
 

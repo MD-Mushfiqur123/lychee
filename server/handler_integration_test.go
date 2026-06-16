@@ -9,8 +9,8 @@ import (
 	"testing"
 
 	"github.com/gin-gonic/gin"
-	"github.com/lychee/lychee/api"
-	"github.com/lychee/lychee/llm"
+	"github.com/MD-Mushfiqur123/lychee/api"
+	"github.com/MD-Mushfiqur123/lychee/llm"
 )
 
 func TestHTTPIntegration(t *testing.T) {

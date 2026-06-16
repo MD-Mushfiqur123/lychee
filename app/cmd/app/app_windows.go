@@ -17,9 +17,9 @@ import (
 	"syscall"
 	"unsafe"
 
-	"github.com/lychee/lychee/app/updater"
-	"github.com/lychee/lychee/app/version"
-	"github.com/lychee/lychee/app/wintray"
+	"github.com/MD-Mushfiqur123/lychee/app/updater"
+	"github.com/MD-Mushfiqur123/lychee/app/version"
+	"github.com/MD-Mushfiqur123/lychee/app/wintray"
 	"golang.org/x/sys/windows"
 )
 

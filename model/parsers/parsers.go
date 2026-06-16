@@ -5,8 +5,8 @@ import (
 	"unicode"
 	"unicode/utf8"
 
-	"github.com/lychee/lychee/api"
-	"github.com/lychee/lychee/harmony"
+	"github.com/MD-Mushfiqur123/lychee/api"
+	"github.com/MD-Mushfiqur123/lychee/harmony"
 )
 
 type Parser interface {

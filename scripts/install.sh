@@ -40,12 +40,12 @@ case "$ARCH" in
 esac
 
 if [ -n "${LYCHEE_VERSION:-}" ]; then
-    DOWNLOAD_URL="https://github.com/lychee/lychee/releases/download/v${LYCHEE_VERSION}/Lychee-darwin.zip"
-    BASE_URL="https://github.com/lychee/lychee/releases/download/v${LYCHEE_VERSION}"
+    DOWNLOAD_URL="https://github.com/MD-Mushfiqur123/lychee/releases/download/v${LYCHEE_VERSION}/Lychee-darwin.zip"
+    BASE_URL="https://github.com/MD-Mushfiqur123/lychee/releases/download/v${LYCHEE_VERSION}"
     VER_PARAM=""
 else
-    DOWNLOAD_URL="https://github.com/lychee/lychee/releases/latest/download/Lychee-darwin.zip"
-    BASE_URL="https://github.com/lychee/lychee/releases/latest/download"
+    DOWNLOAD_URL="https://github.com/MD-Mushfiqur123/lychee/releases/latest/download/Lychee-darwin.zip"
+    BASE_URL="https://github.com/MD-Mushfiqur123/lychee/releases/latest/download"
     VER_PARAM=""
 fi
 

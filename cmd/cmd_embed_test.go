@@ -8,7 +8,7 @@ import (
 	"os"
 	"testing"
 
-	"github.com/lychee/lychee/api"
+	"github.com/MD-Mushfiqur123/lychee/api"
 )
 
 func TestEmbedHandler(t *testing.T) {

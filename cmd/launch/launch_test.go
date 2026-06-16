@@ -16,7 +16,7 @@ import (
 	"time"
 
 	"github.com/google/go-cmp/cmp"
-	"github.com/lychee/lychee/cmd/config"
+	"github.com/MD-Mushfiqur123/lychee/cmd/config"
 )
 
 type launcherEditorRunner struct {

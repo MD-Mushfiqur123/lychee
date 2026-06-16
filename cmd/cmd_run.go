@@ -19,15 +19,15 @@ import (
 	"github.com/spf13/cobra"
 	"golang.org/x/term"
 
-	"github.com/lychee/lychee/api"
-	"github.com/lychee/lychee/internal/modelref"
-	"github.com/lychee/lychee/logutil"
-	"github.com/lychee/lychee/progress"
-	"github.com/lychee/lychee/readline"
-	"github.com/lychee/lychee/types/model"
-	"github.com/lychee/lychee/cmd/config"
-	xcmd "github.com/lychee/lychee/x/cmd"
-	"github.com/lychee/lychee/x/imagegen"
+	"github.com/MD-Mushfiqur123/lychee/api"
+	"github.com/MD-Mushfiqur123/lychee/internal/modelref"
+	"github.com/MD-Mushfiqur123/lychee/logutil"
+	"github.com/MD-Mushfiqur123/lychee/progress"
+	"github.com/MD-Mushfiqur123/lychee/readline"
+	"github.com/MD-Mushfiqur123/lychee/types/model"
+	"github.com/MD-Mushfiqur123/lychee/cmd/config"
+	xcmd "github.com/MD-Mushfiqur123/lychee/x/cmd"
+	"github.com/MD-Mushfiqur123/lychee/x/imagegen"
 )
 
 type generateContextKey string
@@ -856,7 +856,7 @@ func RunHandler(cmd *cobra.Command, args []string) error {
 		}
 		if runErr == nil {
 			if term.IsTerminal(int(os.Stdout.Fd())) && !config.ShowedStarPrompt() {
-				fmt.Fprintf(cmd.OutOrStdout(), "\n⭐ If you find Lychee useful, give us a star: https://github.com/lychee/lychee\n")
+				fmt.Fprintf(cmd.OutOrStdout(), "\n⭐ If you find Lychee useful, give us a star: https://github.com/MD-Mushfiqur123/lychee\n")
 				_ = config.SetShowedStarPrompt(true)
 			}
 		}
@@ -869,7 +869,7 @@ func RunHandler(cmd *cobra.Command, args []string) error {
 		return err
 	}
 	if term.IsTerminal(int(os.Stdout.Fd())) && !config.ShowedStarPrompt() {
-		fmt.Fprintf(cmd.OutOrStdout(), "\n⭐ If you find Lychee useful, give us a star: https://github.com/lychee/lychee\n")
+		fmt.Fprintf(cmd.OutOrStdout(), "\n⭐ If you find Lychee useful, give us a star: https://github.com/MD-Mushfiqur123/lychee\n")
 		_ = config.SetShowedStarPrompt(true)
 	}
 	return nil

@@ -9,8 +9,8 @@
 // Several examples of using this package are available [in the GitHub
 // repository].
 //
-// [the API documentation]: https://github.com/lychee/lychee/blob/main/docs/api.md
-// [in the GitHub repository]: https://github.com/lychee/lychee/tree/main/api/examples
+// [the API documentation]: https://github.com/MD-Mushfiqur123/lychee/blob/main/docs/api.md
+// [in the GitHub repository]: https://github.com/MD-Mushfiqur123/lychee/tree/main/api/examples
 package api
 
 import (
@@ -27,10 +27,10 @@ import (
 	"strconv"
 	"time"
 
-	"github.com/lychee/lychee/auth"
-	"github.com/lychee/lychee/envconfig"
-	"github.com/lychee/lychee/format"
-	"github.com/lychee/lychee/version"
+	"github.com/MD-Mushfiqur123/lychee/auth"
+	"github.com/MD-Mushfiqur123/lychee/envconfig"
+	"github.com/MD-Mushfiqur123/lychee/format"
+	"github.com/MD-Mushfiqur123/lychee/version"
 )
 
 // Client encapsulates client state for interacting with the lychee
@@ -351,7 +351,7 @@ type CreateProgressFunc func(ProgressResponse) error
 // Create creates a model from a [Modelfile]. fn is a progress function that
 // behaves similarly to other methods (see [Client.Pull]).
 //
-// [Modelfile]: https://github.com/lychee/lychee/blob/main/docs/modelfile.mdx
+// [Modelfile]: https://github.com/MD-Mushfiqur123/lychee/blob/main/docs/modelfile.mdx
 func (c *Client) Create(ctx context.Context, req *CreateRequest, fn CreateProgressFunc) error {
 	return c.stream(ctx, http.MethodPost, "/api/create", req, func(bts []byte) error {
 		var resp ProgressResponse

@@ -13,10 +13,10 @@ import (
 	"slices"
 	"strings"
 
-	"github.com/lychee/lychee/format"
-	"github.com/lychee/lychee/fs/util/bufioutil"
-	"github.com/lychee/lychee/logutil"
-	"github.com/lychee/lychee/ml"
+	"github.com/MD-Mushfiqur123/lychee/format"
+	"github.com/MD-Mushfiqur123/lychee/fs/util/bufioutil"
+	"github.com/MD-Mushfiqur123/lychee/logutil"
+	"github.com/MD-Mushfiqur123/lychee/ml"
 )
 
 type GGML struct {

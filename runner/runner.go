@@ -5,8 +5,8 @@ package runner
 import (
 	"fmt"
 
-	"github.com/lychee/lychee/x/imagegen"
-	"github.com/lychee/lychee/x/mlxrunner"
+	"github.com/MD-Mushfiqur123/lychee/x/imagegen"
+	"github.com/MD-Mushfiqur123/lychee/x/mlxrunner"
 )
 
 func Execute(args []string) error {

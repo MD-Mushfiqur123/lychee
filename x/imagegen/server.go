@@ -21,11 +21,11 @@ import (
 	"sync"
 	"time"
 
-	"github.com/lychee/lychee/envconfig"
-	"github.com/lychee/lychee/format"
-	"github.com/lychee/lychee/llm"
-	"github.com/lychee/lychee/ml"
-	"github.com/lychee/lychee/x/imagegen/manifest"
+	"github.com/MD-Mushfiqur123/lychee/envconfig"
+	"github.com/MD-Mushfiqur123/lychee/format"
+	"github.com/MD-Mushfiqur123/lychee/llm"
+	"github.com/MD-Mushfiqur123/lychee/ml"
+	"github.com/MD-Mushfiqur123/lychee/x/imagegen/manifest"
 )
 
 // Server wraps an MLX runner subprocess to implement llm.LlamaServer.

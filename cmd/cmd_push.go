@@ -9,9 +9,9 @@ import (
 
 	"github.com/spf13/cobra"
 
-	"github.com/lychee/lychee/api"
-	"github.com/lychee/lychee/progress"
-	"github.com/lychee/lychee/types/model"
+	"github.com/MD-Mushfiqur123/lychee/api"
+	"github.com/MD-Mushfiqur123/lychee/progress"
+	"github.com/MD-Mushfiqur123/lychee/types/model"
 )
 
 func PushHandler(cmd *cobra.Command, args []string) error {

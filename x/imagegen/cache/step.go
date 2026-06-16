@@ -1,6 +1,6 @@
 package cache
 
-import "github.com/lychee/lychee/x/imagegen/mlx"
+import "github.com/MD-Mushfiqur123/lychee/x/imagegen/mlx"
 
 // StepCache caches layer outputs across diffusion denoising steps.
 // Based on DeepCache (CVPR 2024) and Learning-to-Cache (NeurIPS 2024):

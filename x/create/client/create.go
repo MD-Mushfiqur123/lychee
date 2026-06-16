@@ -18,15 +18,15 @@ import (
 
 	"golang.org/x/mod/semver"
 
-	"github.com/lychee/lychee/api"
-	"github.com/lychee/lychee/manifest"
-	modelparsers "github.com/lychee/lychee/model/parsers"
-	"github.com/lychee/lychee/parser"
-	"github.com/lychee/lychee/progress"
-	"github.com/lychee/lychee/types/model"
-	"github.com/lychee/lychee/x/create"
-	imagemanifest "github.com/lychee/lychee/x/imagegen/manifest"
-	"github.com/lychee/lychee/x/safetensors"
+	"github.com/MD-Mushfiqur123/lychee/api"
+	"github.com/MD-Mushfiqur123/lychee/manifest"
+	modelparsers "github.com/MD-Mushfiqur123/lychee/model/parsers"
+	"github.com/MD-Mushfiqur123/lychee/parser"
+	"github.com/MD-Mushfiqur123/lychee/progress"
+	"github.com/MD-Mushfiqur123/lychee/types/model"
+	"github.com/MD-Mushfiqur123/lychee/x/create"
+	imagemanifest "github.com/MD-Mushfiqur123/lychee/x/imagegen/manifest"
+	"github.com/MD-Mushfiqur123/lychee/x/safetensors"
 )
 
 // MinLycheeVersion is the minimum Lychee version required for safetensors models.

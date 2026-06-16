@@ -10,9 +10,9 @@ import (
 	"slices"
 	"strings"
 
-	"github.com/lychee/lychee/api"
-	"github.com/lychee/lychee/cmd/config"
-	modelpkg "github.com/lychee/lychee/types/model"
+	"github.com/MD-Mushfiqur123/lychee/api"
+	"github.com/MD-Mushfiqur123/lychee/cmd/config"
+	modelpkg "github.com/MD-Mushfiqur123/lychee/types/model"
 	"github.com/spf13/cobra"
 	"golang.org/x/term"
 )

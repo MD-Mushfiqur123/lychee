@@ -3,7 +3,7 @@ package flux2
 import (
 	"math"
 
-	"github.com/lychee/lychee/x/imagegen/mlx"
+	"github.com/MD-Mushfiqur123/lychee/x/imagegen/mlx"
 )
 
 // SchedulerConfig holds Flow-Match scheduler configuration

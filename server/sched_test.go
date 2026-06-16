@@ -12,12 +12,12 @@ import (
 
 	"github.com/stretchr/testify/require"
 
-	"github.com/lychee/lychee/api"
-	"github.com/lychee/lychee/format"
-	"github.com/lychee/lychee/fs/ggml"
-	"github.com/lychee/lychee/llm"
-	"github.com/lychee/lychee/ml"
-	"github.com/lychee/lychee/types/model"
+	"github.com/MD-Mushfiqur123/lychee/api"
+	"github.com/MD-Mushfiqur123/lychee/format"
+	"github.com/MD-Mushfiqur123/lychee/fs/ggml"
+	"github.com/MD-Mushfiqur123/lychee/llm"
+	"github.com/MD-Mushfiqur123/lychee/ml"
+	"github.com/MD-Mushfiqur123/lychee/types/model"
 )
 
 func TestMain(m *testing.M) {
