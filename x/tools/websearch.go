@@ -15,6 +15,8 @@ import (
 	"github.com/lychee/lychee/api"
 )
 
+var ErrWebSearchAuthRequired = errors.New("web search requires authentication")
+
 const (
 	webSearchTimeout = 15 * time.Second
 )

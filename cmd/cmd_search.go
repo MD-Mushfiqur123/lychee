@@ -139,7 +139,7 @@ func searchHandler(cmd *cobra.Command, args []string, catalogURL, token string) 
 		for _, m := range merged {
 			selectionItems = append(selectionItems, launch.SelectionItem{
 				Name:        m[1],
-				DisplayName: fmt.Sprintf("%s (%s)", m[0], m[1]),
+				Description: fmt.Sprintf("%s (%s)", m[0], m[1]),
 			})
 		}
 		

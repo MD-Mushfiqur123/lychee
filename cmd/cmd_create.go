@@ -20,7 +20,6 @@ import (
 	"github.com/lychee/lychee/parser"
 	"github.com/lychee/lychee/types/model"
 	"github.com/lychee/lychee/types/syncmap"
-	xcreate "github.com/lychee/lychee/x/create"
 	xcreateclient "github.com/lychee/lychee/x/create/client"
 )
 

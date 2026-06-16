@@ -1,3 +1,5 @@
+//go:build darwin
+
 package main
 
 import "github.com/lychee/lychee/x/imagegen/mlx"

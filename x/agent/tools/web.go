@@ -3,6 +3,7 @@ package tools
 import (
 	"context"
 	"encoding/json"
+	"errors"
 	"fmt"
 	"io"
 	"net/http"
@@ -14,6 +15,9 @@ import (
 	"github.com/lychee/lychee/api"
 	"github.com/lychee/lychee/x/agent"
 )
+
+// ErrWebSearchAuthRequired is returned when web search requires authentication.
+var ErrWebSearchAuthRequired = errors.New("web search requires authentication")
 
 const (
 	webSearchTimeout = 15 * time.Second

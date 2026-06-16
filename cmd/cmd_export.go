@@ -14,6 +14,8 @@ import (
 
 	"github.com/spf13/cobra"
 
+	"github.com/lychee/lychee/envconfig"
+	"github.com/lychee/lychee/format"
 	"github.com/lychee/lychee/manifest"
 	"github.com/lychee/lychee/types/model"
 )

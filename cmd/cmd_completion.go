@@ -57,7 +57,7 @@ PowerShell:
 			case "zsh":
 				return cmd.Root().GenZshCompletion(os.Stdout)
 			case "fish":
-				return cmd.Root().GenFishCompletion(os.Stdout)
+				return cmd.Root().GenFishCompletion(os.Stdout, true)
 			case "powershell":
 				return cmd.Root().GenPowerShellCompletion(os.Stdout)
 			default:

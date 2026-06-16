@@ -7,7 +7,6 @@ import (
 	"io"
 	"os"
 	"runtime"
-	"slices"
 	"strings"
 	"sync"
 	"time"
@@ -249,6 +248,25 @@ func OutputMetrics(w io.Writer, format string, metrics []benchMetrics, verbose b
 	default:
 		fmt.Fprintf(os.Stderr, "Unknown output format '%s'\n", format)
 	}
+}
+
+func readImage(imageFile string) (api.ImageData, error) {
+	data, err := os.ReadFile(imageFile)
+	if err != nil {
+		return nil, err
+	}
+	return api.ImageData(data), nil
+}
+
+func unloadModel(client *api.Client, model string, timeoutSeconds int) {
+	ctx, cancel := context.WithTimeout(context.Background(), time.Duration(timeoutSeconds)*time.Second)
+	defer cancel()
+	_ = client.Generate(ctx, &api.GenerateRequest{
+		Model:     model,
+		KeepAlive: &api.Duration{Duration: 0},
+	}, func(r api.GenerateResponse) error {
+		return nil
+	})
 }
 
 func BenchmarkModel(fOpt benchFlagOptions) error {
