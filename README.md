@@ -350,3 +350,5 @@ Lychee leverages the best-in-class local inference engines under the hood:
 ## 📄 License
 
 Lychee is open-source software licensed under the [MIT License](LICENSE).
+
+[![Star History Chart](https://api.star-history.com/chart?repos=MD-Mushfiqur123/lychee&type=timeline&logscale&legend=bottom-right)](https://www.star-history.com/?repos=MD-Mushfiqur123%2Flychee&type=timeline&logscale=&legend=bottom-right)
