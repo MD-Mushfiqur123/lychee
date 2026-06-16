@@ -19,10 +19,59 @@ and multi-instance load balancing. Everything Ollama does, Lychee does too — p
   <a href="https://github.com/MD-Mushfiqur123/lychee/blob/main/LICENSE">
     <img src="https://img.shields.io/badge/license-MIT-blue?style=flat-square" alt="MIT License"/>
   </a>
+  <a href="https://goreportcard.com/report/github.com/MD-Mushfiqur123/lychee">
+    <img src="https://goreportcard.com/badge/github.com/MD-Mushfiqur123/lychee?style=flat-square" alt="Go Report Card"/>
+  </a>
   <a href="https://md-mushfiqur123.github.io/lychee-docs/">
     <img src="https://img.shields.io/badge/docs-vitepress-646cff?style=flat-square" alt="Documentation"/>
   </a>
 </p>
+
+---
+
+## 🎯 Why Lychee?
+
+Lychee is built on top of [Ollama](https://github.com/ollama/ollama), extending it with production-grade orchestration features that teams and developers need. Think of it as **Ollama + batteries included**.
+
+| Feature | Ollama | Lychee |
+| --- | :---: | :---: |
+| **Model running & inference** | ✅ | ✅ |
+| **OpenAI-compatible API** | ✅ | ✅ |
+| **HuggingFace model pulls** | ❌ | ✅ Native `lychee hf pull` |
+| **Anthropic Messages API** | ❌ | ✅ `/v1/messages` |
+| **OpenAI Responses API (structured)** | ❌ | ✅ `/v1/responses` |
+| **Multi-model pipelines (DAG)** | ❌ | ✅ Model Composer |
+| **Structured output + auto-retry** | ❌ | ✅ JSON schema validation |
+| **Persistent conversation memory** | ❌ | ✅ SQLite + JSON store |
+| **Multi-instance load balancing** | ❌ | ✅ Model Router |
+| **Interactive TUI dashboard** | ❌ | ✅ `lychee stats --tui` |
+| **Model benchmarking CLI** | ❌ | ✅ `lychee compare` |
+| **Interactive agent sandbox** | ❌ | ✅ `lychee run --experimental` |
+| **Official Python/JS SDKs** | ❌ | ✅ lychee-python / lychee-js |
+| **Hardware scanner & optimizer** | ❌ | ✅ `lychee scan` |
+| **Code boilerplate generator** | ❌ | ✅ `lychee generate-client` |
+
+> **TL;DR**: If you want a barebones local LLM runner, use Ollama. If you want **orchestration, multi-model pipelines, structured output validation, persistent memory, load balancing, and rich developer tooling** on top of the same inference engine — Lychee is for you.
+
+### Architecture
+
+```
+┌─────────────────────────────────────────────────────┐
+│                    Lychee Server                     │
+│  ┌──────────┐ ┌──────────┐ ┌──────────────────────┐ │
+│  │  OpenAI   │ │Anthropic │ │   Lychee Native API  │ │
+│  │ Compat API│ │  API     │ │  /api/chat, /api/... │ │
+│  └──────────┘ └──────────┘ └──────────────────────┘ │
+│  ┌─────────────────────────────────────────────────┐ │
+│  │         Orchestration Layer (Lychee)             │ │
+│  │  Composer │ Router │ Memory │ Structured Output  │ │
+│  └─────────────────────────────────────────────────┘ │
+│  ┌─────────────────────────────────────────────────┐ │
+│  │      Inference Engine (Ollama / llama.cpp)       │ │
+│  │     llama.cpp · MLX · CUDA · ROCm · CPU         │ │
+│  └─────────────────────────────────────────────────┘ │
+└─────────────────────────────────────────────────────┘
+```
 
 ---
 
@@ -66,7 +115,7 @@ Lychee acts as a local proxy that translates industry-standard APIs into optimiz
 
 ---
 
-## 📦 Installation
+## 🚀 Quick Install
 
 > [!NOTE]
 > Lychee is currently in active early alpha phase. Requires Go 1.22+.
@@ -338,12 +387,57 @@ Lychee leverages the best-in-class local inference engines under the hood:
 
 ---
 
-## 🔗 Links
+## 📚 Documentation
 
-- 📖 **Documentation**: [md-mushfiqur123.github.io/lychee-docs](https://md-mushfiqur123.github.io/lychee-docs/)
-- 🌐 **Landing Page**: [md-mushfiqur123.github.io/lychee-landing-page](https://md-mushfiqur123.github.io/lychee-landing-page/)
-- 💻 **GitHub**: [MD-Mushfiqur123/lychee](https://github.com/MD-Mushfiqur123/lychee)
-- 📦 **Releases**: [github.com/MD-Mushfiqur123/lychee/releases](https://github.com/MD-Mushfiqur123/lychee/releases)
+Full documentation is available at **[md-mushfiqur123.github.io/lychee-docs](https://md-mushfiqur123.github.io/lychee-docs/)** — powered by VitePress.
+
+| Resource | Link |
+| --- | --- |
+| 📖 **Full Documentation** | [lychee-docs](https://md-mushfiqur123.github.io/lychee-docs/) |
+| 🌐 **Landing Page** | [lychee-landing-page](https://md-mushfiqur123.github.io/lychee-landing-page/) |
+| 💻 **GitHub Repository** | [MD-Mushfiqur123/lychee](https://github.com/MD-Mushfiqur123/lychee) |
+| 📦 **Releases** | [Releases Page](https://github.com/MD-Mushfiqur123/lychee/releases) |
+| 🐛 **Issue Tracker** | [Issues](https://github.com/MD-Mushfiqur123/lychee/issues) |
+| 💬 **Discussions** | [Discussions](https://github.com/MD-Mushfiqur123/lychee/discussions) |
+
+---
+
+## 🤝 Contributing
+
+We welcome contributions! Whether it's a bug fix, feature, documentation improvement, or just a typo — every bit helps.
+
+See **[CONTRIBUTING.md](./CONTRIBUTING.md)** for:
+- Development setup and build instructions
+- Commit message conventions
+- Pull request guidelines
+- Testing requirements
+- Our roadmap focus and differentiators
+
+Not sure where to start? Check out [good first issues](https://github.com/MD-Mushfiqur123/lychee/issues?q=is%3Aissue+is%3Aopen+label%3A%22good+first+issue%22).
+
+---
+
+## 👥 Contributors
+
+Thanks to everyone who has contributed to making Lychee better!
+
+<!-- ALL-CONTRIBUTORS-LIST:START - Do not remove or modify this section -->
+<!-- prettier-ignore-start -->
+<!-- markdownlint-disable -->
+<!-- ALL-CONTRIBUTORS-LIST:END -->
+
+*Want to see your name here? Check out the [Contributing guide](./CONTRIBUTING.md) and open a PR!*
+
+---
+
+## ⭐ Star History
+
+<div align="center">
+  <a href="https://star-history.com/#MD-Mushfiqur123/lychee&Date">
+    <img src="https://api.star-history.com/svg?repos=MD-Mushfiqur123/lychee&type=Date" alt="Star History Chart" width="600"/>
+  </a>
+  <p><em>⭐ 14 stars and growing — <a href="https://github.com/MD-Mushfiqur123/lychee">star the repo</a> to show your support!</em></p>
+</div>
 
 ---
 
