@@ -27,6 +27,18 @@ and multi-instance load balancing. Everything Ollama does, Lychee does too — p
   </a>
 </p>
 
+<p align="center">
+  <a href="https://github.com/MD-Mushfiqur123/lychee-desktop">
+    <img src="https://img.shields.io/badge/desktop-app-A51C30?style=for-the-badge&logo=windows&logoColor=white" alt="Lychee Desktop"/>
+  </a>
+  &nbsp;
+  <a href="https://github.com/MD-Mushfiqur123/lychee-desktop/releases">
+    <img src="https://img.shields.io/github/v/release/MD-Mushfiqur123/lychee-desktop?style=flat-square&color=A51C30&label=desktop" alt="Desktop Release"/>
+  </a>
+</p>
+
+> 🖥️ **Lychee Desktop** is now available! Get the native desktop app with chat, pipeline builder, and model manager — [Download v0.1.0 Alpha](https://github.com/MD-Mushfiqur123/lychee-desktop/releases/tag/v0.1.0-alpha)
+
 ---
 
 ## 🎯 Why Lychee?
@@ -467,5 +479,11 @@ Thanks to everyone who has contributed to making Lychee better!
 ## 📄 License
 
 Lychee is open-source software licensed under the [MIT License](LICENSE).
+
+---
+
+## 🏗️ Built by Xolvyn
+
+Lychee is engineered and maintained by **[Xolvyn AI Agency](https://md-mushfiqur123.github.io/xolvyn-agency)** — _Intelligence, engineered._
 
 [![Star History Chart](https://api.star-history.com/chart?repos=MD-Mushfiqur123/lychee&type=timeline&logscale&legend=bottom-right)](https://www.star-history.com/?repos=MD-Mushfiqur123%2Flychee&type=timeline&logscale=&legend=bottom-right)
