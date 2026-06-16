@@ -417,6 +417,29 @@ Not sure where to start? Check out [good first issues](https://github.com/MD-Mus
 
 ---
 
+## 🔍 Contributors Wanted!
+
+Lychee is actively looking for talented contributors from the AI/LLM open-source community. We've identified **114 high-quality potential contributors** from top projects like Ollama, llama.cpp, Hugging Face Transformers, LangChain, vLLM, Open WebUI, and more.
+
+📋 See the full list: **[CONTRIBUTORS.md](./CONTRIBUTORS.md)**
+
+### Key Areas We Need Help With
+
+| Area | Skills Needed |
+| --- | --- |
+| 🧠 **LLM Inference** | Experience with llama.cpp, MLX, CUDA, ROCm optimization |
+| 🎛️ **Multi-Model Pipelines** | DAG orchestration, model composition, chaining |
+| 📊 **Structured Output** | JSON schema validation, constrained generation, Pydantic-style parsing |
+| 💾 **Conversation Memory** | SQLite, vector stores, RAG, embedding integration |
+| ⚖️ **Load Balancing** | Multi-instance routing, health checks, auto-scaling |
+| 🖥️ **TUI/CLI** | Go bubbletea, terminal UIs, developer tooling |
+| 🌐 **SDKs & APIs** | Python, JavaScript/TypeScript, API design |
+| 📚 **Documentation** | Technical writing, tutorials, guides |
+
+> Got skills in any of these areas? [Open an issue](https://github.com/MD-Mushfiqur123/lychee/issues/new) or [start a discussion](https://github.com/MD-Mushfiqur123/lychee/discussions) and let's build something great together! 🍒
+
+---
+
 ## 👥 Contributors
 
 Thanks to everyone who has contributed to making Lychee better!
