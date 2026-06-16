@@ -251,6 +251,12 @@ func FromFP8(x *Array, dtype DType) *Array { return nil }
 func ToFP8(x *Array) *Array { return nil }
 func DisableCompile() {}
 
+func SaveSafetensorsWithMetadata(path string, arrays map[string]*Array, metadata map[string]string) error {
+	return errors.New("MLX requires CGO")
+}
+
+func (t *Array) ItemInt32() int32 { return 0 }
+
 type LayerNorm struct {
 	Weight *Array
 	Bias   *Array
