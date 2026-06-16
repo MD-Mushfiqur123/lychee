@@ -1,14 +1,92 @@
+# =============================================================================
+# Lychee — Docker Compose Configuration
+# =============================================================================
+# Run a local lychee LLM inference server with persistent model storage.
+#
+# Quick start:
+#   docker compose up -d
+#
+# The server listens on port 11434 by default (OpenAI-compatible API).
+# Models are downloaded into a named Docker volume and persist across restarts.
+# =============================================================================
+
 services:
   lychee:
-    build:
-      context: .
-      dockerfile: Dockerfile
+    # -------------------------------------------------------------------
+    # Image: Pull from GitHub Container Registry (ghcr.io)
+    # Using pre-built multi-arch image (linux/amd64 + linux/arm64)
+    # -------------------------------------------------------------------
+    image: ghcr.io/md-mushfiqur123/lychee:latest
+
+    # -------------------------------------------------------------------
+    # Alternative: Build from local Dockerfile instead of pulling
+    # Uncomment the lines below and comment out the `image:` line above
+    # to build locally.
+    #   build:
+    #     context: .
+    #     dockerfile: Dockerfile
+    # -------------------------------------------------------------------
+
     container_name: lychee
+
+    # -------------------------------------------------------------------
+    # Ports: Expose the lychee server on localhost:11434
+    # This is the default Ollama-compatible API port.
+    # -------------------------------------------------------------------
     ports:
       - "11434:11434"
+
+    # -------------------------------------------------------------------
+    # Volumes: Persistent storage for downloaded models
+    # Models are stored at /root/.lychee/models inside the container.
+    # The named volume `lychee-models` survives container removal.
+    # -------------------------------------------------------------------
     volumes:
       - lychee-models:/root/.lychee/models
+
+    # -------------------------------------------------------------------
+    # Environment Variables
+    # -------------------------------------------------------------------
+    # Uncomment and adjust any settings below as needed.
+    # See docs: https://github.com/md-mushfiqur123/lychee
+    # -------------------------------------------------------------------
+    environment:
+      # Server host binding (default: 0.0.0.0)
+      - LYCHEE_HOST=0.0.0.0
+      # Server port (default: 11434)
+      - LYCHEE_PORT=11434
+      # Maximum number of models to keep loaded in memory
+      # - LYCHEE_MAX_LOADED_MODELS=0
+      # Number of parallel requests a model can handle
+      # - LYCHEE_NUM_PARALLEL=0
+      # Maximum queue size for pending requests
+      # - LYCHEE_MAX_QUEUE=0
+      # Keep models loaded in memory (0=unload after idle, positive=keep seconds)
+      # - LYCHEE_KEEP_ALIVE=300
+      # Log level: debug, info, warn, error
+      # - LYCHEE_LOG_LEVEL=info
+
+    # -------------------------------------------------------------------
+    # Restart Policy: Always restart unless explicitly stopped
+    # Options: no, always, on-failure, unless-stopped
+    # -------------------------------------------------------------------
     restart: unless-stopped
 
+    # -------------------------------------------------------------------
+    # Healthcheck: Verify the server is responding
+    # Checks the /api/tags endpoint every 30 seconds
+    # -------------------------------------------------------------------
+    healthcheck:
+      test: ["CMD", "wget", "--no-verbose", "--tries=1", "--spider", "http://localhost:11434/api/tags"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+      start_period: 15s
+
+# -------------------------------------------------------------------
+# Named Volumes
+# -------------------------------------------------------------------
 volumes:
   lychee-models:
+    name: lychee-models
+    driver: local

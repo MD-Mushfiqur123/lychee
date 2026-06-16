@@ -1,11 +1,33 @@
+# Dependencies (re-downloaded inside the container)
+node_modules
+
+# Build artifacts
+dist/
+build/
+
+# IDE / Editor files
 .vscode
-lychee
-app
-macapp
-dist
-build
+.idea
+
+# Platform-specific binaries and apps
+*.exe
+macapp/
+
+# Version control
+.git/
+.gitattributes
+
+# Environment and secrets
 .env
+
+# Test data and cache
 .cache
 test_data
-.git
 
+# Docker files (not needed in build context)
+docker-compose.yml
+Dockerfile
+.dockerignore
+
+# Documentation (not needed at runtime)
+docs/
