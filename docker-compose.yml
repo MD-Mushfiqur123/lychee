@@ -1,0 +1,14 @@
+services:
+  lychee:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: lychee
+    ports:
+      - "11434:11434"
+    volumes:
+      - lychee-models:/root/.lychee/models
+    restart: unless-stopped
+
+volumes:
+  lychee-models:
