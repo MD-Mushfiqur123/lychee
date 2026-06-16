@@ -1,0 +1,93 @@
+name: Release Upload
+
+on:
+  release:
+    types: [published]
+
+jobs:
+  assemble-release:
+    name: Assemble Release Assets
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+      actions: read
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Generate changelog
+        id: changelog
+        run: |
+          # Get the previous tag for changelog generation
+          PREV_TAG=$(git describe --tags --abbrev=0 HEAD^ 2>/dev/null || echo "")
+          if [ -n "$PREV_TAG" ]; then
+            echo "## Changelog (${PREV_TAG}...${{ github.ref_name }})" > CHANGELOG.md
+            echo "" >> CHANGELOG.md
+            git log --pretty=format:"* %s (%h)" "${PREV_TAG}..HEAD" >> CHANGELOG.md
+          else
+            echo "## Changelog (initial release)" > CHANGELOG.md
+            echo "" >> CHANGELOG.md
+            git log --pretty=format:"* %s (%h)" >> CHANGELOG.md
+          fi
+          echo "Changelog generated:"
+          cat CHANGELOG.md
+
+      - name: Download Windows build artifacts
+        uses: dawidd6/action-download-artifact@v6
+        with:
+          workflow: build-windows.yml
+          workflow_conclusion: success
+          branch: ${{ github.ref_name }}
+          name: lychee-windows-amd64
+          path: dist/windows
+          if_no_artifact_found: warn
+          check_artifacts: true
+          search_artifacts: true
+          skip_unpack: false
+
+      - name: Download Linux build artifacts
+        uses: dawidd6/action-download-artifact@v6
+        with:
+          workflow: build-linux.yml
+          workflow_conclusion: success
+          branch: ${{ github.ref_name }}
+          name: lychee-linux
+          path: dist/linux
+          if_no_artifact_found: warn
+          check_artifacts: true
+          search_artifacts: true
+          skip_unpack: false
+
+      - name: Download macOS build artifacts
+        uses: dawidd6/action-download-artifact@v6
+        with:
+          workflow: build-darwin.yml
+          workflow_conclusion: success
+          branch: ${{ github.ref_name }}
+          name: lychee-darwin
+          path: dist/darwin
+          if_no_artifact_found: warn
+          check_artifacts: true
+          search_artifacts: true
+          skip_unpack: false
+
+      - name: List downloaded artifacts
+        run: |
+          echo "=== Downloaded artifacts ==="
+          find dist -type f -exec ls -lh {} \; 2>/dev/null || echo "No artifacts found"
+          echo "============================"
+
+      - name: Upload assets to release
+        uses: softprops/action-gh-release@v2
+        with:
+          tag_name: ${{ github.ref_name }}
+          name: ${{ github.ref_name }}
+          body_path: CHANGELOG.md
+          files: |
+            dist/**/lychee-*
+          fail_on_unmatched_files: false
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}

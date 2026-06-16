@@ -1,0 +1,175 @@
+name: "Linux CGO Build + Release"
+
+on:
+  push:
+    branches: [main]
+    tags:
+      - 'v*'
+  workflow_dispatch:
+
+env:
+  CGO_ENABLED: 1
+  CGO_CFLAGS: '-O3'
+  CGO_CXXFLAGS: '-O3'
+
+permissions:
+  contents: write
+  actions: read
+
+jobs:
+  # ──────────────────────────────────────────────
+  # Extract version from git tag (or use commit SHA for dev builds)
+  # ──────────────────────────────────────────────
+  version:
+    runs-on: ubuntu-latest
+    outputs:
+      VERSION: ${{ steps.version.outputs.VERSION }}
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Set version
+        id: version
+        shell: bash
+        run: |
+          if [[ "$GITHUB_REF_TYPE" == "tag" ]]; then
+            echo "VERSION=${GITHUB_REF_NAME#v}" >> $GITHUB_OUTPUT
+          else
+            echo "VERSION=${GITHUB_SHA::8}" >> $GITHUB_OUTPUT
+          fi
+
+  # ──────────────────────────────────────────────
+  # Build amd64 binary (native)
+  # ──────────────────────────────────────────────
+  build-amd64:
+    needs: version
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Setup Go
+        uses: actions/setup-go@v5
+        with:
+          go-version: "1.25"
+          check-latest: true
+
+      - name: Install build dependencies
+        run: |
+          sudo apt-get update -qq
+          sudo apt-get install -y -qq gcc g++ make cmake
+
+      - name: Build (linux/amd64)
+        run: |
+          mkdir -p dist
+          GOOS=linux GOARCH=amd64 CGO_ENABLED=1 \
+            go build \
+              -ldflags="-s -w -X github.com/MD-Mushfiqur123/lychee/version.Version=${{ needs.version.outputs.VERSION }}" \
+              -o dist/lychee-linux-amd64 \
+              .
+
+      - name: Strip binary
+        run: strip dist/lychee-linux-amd64 || true
+
+      - name: Upload artifact (amd64)
+        uses: actions/upload-artifact@v4
+        with:
+          name: lychee-linux-amd64
+          path: dist/lychee-linux-amd64
+          if-no-files-found: error
+
+  # ──────────────────────────────────────────────
+  # Build arm64 binary (cross-compile)
+  # ──────────────────────────────────────────────
+  build-arm64:
+    needs: version
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Setup Go
+        uses: actions/setup-go@v5
+        with:
+          go-version: "1.25"
+          check-latest: true
+
+      - name: Install build dependencies (including arm64 cross-toolchain)
+        run: |
+          sudo apt-get update -qq
+          sudo apt-get install -y -qq gcc g++ make cmake gcc-aarch64-linux-gnu g++-aarch64-linux-gnu
+
+      - name: Build (linux/arm64)
+        run: |
+          mkdir -p dist
+          CC=aarch64-linux-gnu-gcc \
+          CXX=aarch64-linux-gnu-g++ \
+          GOOS=linux GOARCH=arm64 CGO_ENABLED=1 \
+            go build \
+              -ldflags="-s -w -X github.com/MD-Mushfiqur123/lychee/version.Version=${{ needs.version.outputs.VERSION }}" \
+              -o dist/lychee-linux-arm64 \
+              .
+
+      - name: Strip binary (arm64)
+        run: aarch64-linux-gnu-strip dist/lychee-linux-arm64 || true
+
+      - name: Upload artifact (arm64)
+        uses: actions/upload-artifact@v4
+        with:
+          name: lychee-linux-arm64
+          path: dist/lychee-linux-arm64
+          if-no-files-found: error
+
+  # ──────────────────────────────────────────────
+  # Release: attach binaries to GitHub Release on v* tags
+  # ──────────────────────────────────────────────
+  release:
+    if: startsWith(github.ref, 'refs/tags/v')
+    needs: [version, build-amd64, build-arm64]
+    runs-on: ubuntu-latest
+    steps:
+      - name: Download all artifacts
+        uses: actions/download-artifact@v4
+        with:
+          path: dist
+
+      - name: Prepare release assets
+        shell: bash
+        run: |
+          set -euo pipefail
+          # Make binaries executable
+          chmod +x dist/lychee-linux-amd64/lychee-linux-amd64
+          chmod +x dist/lychee-linux-arm64/lychee-linux-arm64
+
+          # Create tarballs
+          cd dist
+          tar -czf lychee-linux-amd64.tar.gz -C lychee-linux-amd64 .
+          tar -czf lychee-linux-arm64.tar.gz -C lychee-linux-arm64 .
+
+      - name: Create GitHub Release & upload assets
+        uses: softprops/action-gh-release@v2
+        with:
+          name: "Lychee v${{ needs.version.outputs.VERSION }}"
+          body: |
+            ## 🐧 Linux Build — Lychee v${{ needs.version.outputs.VERSION }}
+
+            CGO-enabled build with llama.cpp support.
+
+            ### Downloads
+            | Architecture | File |
+            |---|---|
+            | **amd64** (x86_64) | `lychee-linux-amd64.tar.gz` |
+            | **arm64** (aarch64) | `lychee-linux-arm64.tar.gz` |
+
+            ### Requirements
+            - glibc 2.31+
+            - No GPU drivers required (CPU-only build)
+
+            ### Install
+            ```bash
+            tar -xzf lychee-linux-amd64.tar.gz
+            ./lychee-linux-amd64 version
+            ```
+          files: |
+            dist/lychee-linux-amd64.tar.gz
+            dist/lychee-linux-arm64.tar.gz
+          draft: false
+          prerelease: false
+          generate_release_notes: true

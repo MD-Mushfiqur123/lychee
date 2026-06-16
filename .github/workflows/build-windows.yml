@@ -1,0 +1,102 @@
+name: Windows CGO Build + Release
+
+on:
+  push:
+    branches: [main]
+    tags: ['v*']
+  workflow_dispatch:
+
+permissions:
+  contents: write
+  actions: read
+
+jobs:
+  build-windows:
+    name: Build Windows AMD64 (CGO)
+    runs-on: windows-latest
+
+    env:
+      CGO_ENABLED: 1
+      CGO_CFLAGS: '-O3'
+      CGO_CXXFLAGS: '-O3'
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Set up Go
+        uses: actions/setup-go@v5
+        with:
+          go-version-file: go.mod
+          cache-dependency-path: |
+            go.sum
+            LLAMA_CPP_VERSION
+            MLX_VERSION
+            MLX_C_VERSION
+
+      # Install llvm-mingw (provides clang as gcc-compatible C compiler for CGO).
+      # The project requires clang (not MSVC gcc) for proper CGO utf16 handling.
+      # This is the same toolchain used by the project's own release pipeline.
+      - name: Install C++ build tools (llvm-mingw / clang)
+        run: |
+          $ErrorActionPreference = "Stop"
+          $env:Path = [System.Environment]::GetEnvironmentVariable("Path","Machine") + ";" + [System.Environment]::GetEnvironmentVariable("Path","User")
+          Invoke-WebRequest -Uri "https://github.com/mstorsjo/llvm-mingw/releases/download/20240619/llvm-mingw-20240619-ucrt-x86_64.zip" -OutFile "${{ runner.temp }}\llvm-mingw-ucrt.zip"
+          Expand-Archive -Path "${{ runner.temp }}\llvm-mingw-ucrt.zip" -DestinationPath "C:\Program Files\"
+          $installPath = (Resolve-Path -Path "C:\Program Files\llvm-mingw-*-ucrt-x86_64").path
+          echo "$installPath\bin" | Out-File -FilePath $env:GITHUB_PATH -Encoding utf8 -Append
+
+      - name: Verify compiler
+        run: |
+          Write-Host "--- gcc version ---"
+          gcc -v 2>&1 | Out-String | Write-Host
+          Write-Host "--- g++ version ---"
+          g++ -v 2>&1 | Out-String | Write-Host
+          Write-Host "--- go version ---"
+          go version
+
+      - name: Build Lychee (Windows AMD64)
+        run: |
+          New-Item -ItemType Directory -Force -Path dist
+          go build `
+            -ldflags="-s -w" `
+            -o dist/lychee-windows-amd64.exe `
+            .
+
+      - name: Verify binary
+        shell: bash
+        run: |
+          set -euo pipefail
+          if [ ! -f "dist/lychee-windows-amd64.exe" ]; then
+            echo "::error::Build output missing: dist/lychee-windows-amd64.exe"
+            exit 1
+          fi
+          echo "Binary size: $(du -h dist/lychee-windows-amd64.exe | cut -f1)"
+          echo "SHA256:"
+          sha256sum dist/lychee-windows-amd64.exe
+
+      - name: Create zip archive
+        run: |
+          Compress-Archive `
+            -Path dist\lychee-windows-amd64.exe `
+            -DestinationPath dist\lychee-windows-amd64.zip
+
+      - name: Upload build artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: lychee-windows-amd64
+          path: |
+            dist/lychee-windows-amd64.exe
+            dist/lychee-windows-amd64.zip
+          if-no-files-found: error
+
+      # --- Release: only on tag pushes ---
+      - name: Upload to GitHub Release
+        if: startsWith(github.ref, 'refs/tags/v')
+        uses: softprops/action-gh-release@v2
+        with:
+          files: |
+            dist/lychee-windows-amd64.zip
+          draft: false
+          prerelease: false
+          generate_release_notes: true
