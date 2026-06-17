@@ -7,7 +7,9 @@ Gem::Specification.new do |s|
   s.email       = "hello@lychee.dev"
   s.homepage    = "https://github.com/MD-Mushfiqur123/lychee"
   s.license     = "MIT"
-  s.files       = Dir["lib/**/*.rb"]
+  s.files       = Dir.chdir(File.expand_path(__dir__)) do
+    Dir["lib/**/*.rb"] + ["README.md", "license"]
+  end
   s.require_paths = ["lib"]
   s.required_ruby_version = ">= 2.7"
   s.metadata = {

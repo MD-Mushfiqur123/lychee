@@ -702,6 +702,7 @@ Use "lychee [command] --help" for more information about a command.`,
 		NewInteractiveCmd(),
 		NewUpdateCmd(),
 		NewVersionCmd(),
+		NewInfoCmd(),
 		launch.LaunchCmd(checkServerHeartbeat, runInteractiveTUI),
 	)
 
