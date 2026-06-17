@@ -1,0 +1,81 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="628" viewBox="0 0 1200 628">
+  <defs>
+    <linearGradient id="bgGrad" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#0d1117"/>
+      <stop offset="100%" stop-color="#0a0e13"/>
+    </linearGradient>
+    <linearGradient id="accentGrad" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0%" stop-color="#059669"/>
+      <stop offset="100%" stop-color="#10b981"/>
+    </linearGradient>
+    <linearGradient id="glowGrad" x1="0.5" y1="0" x2="0.5" y2="1">
+      <stop offset="0%" stop-color="#059669" stop-opacity="0.15"/>
+      <stop offset="100%" stop-color="#059669" stop-opacity="0"/>
+    </linearGradient>
+  </defs>
+
+  <!-- Background -->
+  <rect width="1200" height="628" fill="url(#bgGrad)"/>
+
+  <!-- Subtle grid pattern -->
+  <g opacity="0.03">
+    <line x1="0" y1="100" x2="1200" y2="100" stroke="#059669" stroke-width="0.5"/>
+    <line x1="0" y1="200" x2="1200" y2="200" stroke="#059669" stroke-width="0.5"/>
+    <line x1="0" y1="300" x2="1200" y2="300" stroke="#059669" stroke-width="0.5"/>
+    <line x1="0" y1="400" x2="1200" y2="400" stroke="#059669" stroke-width="0.5"/>
+    <line x1="0" y1="500" x2="1200" y2="500" stroke="#059669" stroke-width="0.5"/>
+    <line x1="200" y1="0" x2="200" y2="628" stroke="#059669" stroke-width="0.5"/>
+    <line x1="400" y1="0" x2="400" y2="628" stroke="#059669" stroke-width="0.5"/>
+    <line x1="600" y1="0" x2="600" y2="628" stroke="#059669" stroke-width="0.5"/>
+    <line x1="800" y1="0" x2="800" y2="628" stroke="#059669" stroke-width="0.5"/>
+    <line x1="1000" y1="0" x2="1000" y2="628" stroke="#059669" stroke-width="0.5"/>
+  </g>
+
+  <!-- Decorative glow orb -->
+  <ellipse cx="950" cy="180" rx="300" ry="250" fill="#059669" opacity="0.04"/>
+
+  <!-- Terminal-style decoration top-left (>>) -->
+  <text x="80" y="100" font-family="'Courier New', monospace" font-size="14" fill="#059669" opacity="0.4">λ ~/lychee</text>
+
+  <!-- Main logo area - stylized brackets -->
+  <text x="80" y="300" font-family="'Courier New', monospace" font-size="120" font-weight="bold" fill="url(#accentGrad)">Lychee</text>
+
+  <!-- Cursor blink -->
+  <rect x="545" y="210" width="4" height="100" fill="#10b981" opacity="0.8">
+    <animate attributeName="opacity" values="1;0;1" dur="1s" repeatCount="indefinite"/>
+  </rect>
+
+  <!-- Subtitle -->
+  <text x="80" y="360" font-family="system-ui, -apple-system, sans-serif" font-size="28" fill="#8b949e" letter-spacing="1">Universal Local LLM Runtime</text>
+
+  <!-- Divider line -->
+  <line x1="80" y1="390" x2="400" y2="390" stroke="#059669" stroke-width="2" opacity="0.3"/>
+
+  <!-- Tagline -->
+  <text x="80" y="440" font-family="system-ui, -apple-system, sans-serif" font-size="18" fill="#484f58" letter-spacing="3">FREE &amp; OPEN SOURCE</text>
+
+  <!-- Bottom-right decorative code lines -->
+  <g opacity="0.06" font-family="'Courier New', monospace" font-size="12" fill="#059669">
+    <text x="720" y="450">model.inference(prompt)</text>
+    <text x="720" y="470">local.runtime.start()</text>
+    <text x="720" y="490">llm.serve(port=8080)</text>
+    <text x="720" y="510">openai.compatible.api()</text>
+  </g>
+
+  <!-- Bottom accent bar -->
+  <rect x="0" y="622" width="1200" height="6" fill="url(#accentGrad)"/>
+
+  <!-- Small dots decoration (bottom right) -->
+  <g fill="#059669" opacity="0.15">
+    <circle cx="1100" cy="595" r="2"/>
+    <circle cx="1116" cy="595" r="2"/>
+    <circle cx="1132" cy="595" r="2"/>
+    <circle cx="1100" cy="580" r="2"/>
+    <circle cx="1116" cy="580" r="2"/>
+    <circle cx="1100" cy="565" r="2"/>
+  </g>
+
+  <!-- Version badge -->
+  <rect x="1050" y="85" width="70" height="22" rx="4" fill="#059669" opacity="0.12"/>
+  <text x="1085" y="100" font-family="system-ui, -apple-system, sans-serif" font-size="11" fill="#059669" text-anchor="middle" opacity="0.7">v1.0</text>
+</svg>
