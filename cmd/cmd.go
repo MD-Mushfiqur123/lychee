@@ -496,6 +496,7 @@ Use "lychee [command] --help" for more information about a command.`,
 		RunE:    RunServer,
 	}
 
+	serveCmd.Flags().String("host", "127.0.0.1", "Host address to bind the server")
 	serveCmd.Flags().Int("parallel", 0, "Number of parallel request slots (env: LYCHEE_NUM_PARALLEL)")
 	serveCmd.Flags().Int("slots", 0, "Number of parallel request slots (alias for --parallel)")
 	serveCmd.Flags().String("log-level", "", "Log level: debug, info, warn, error")

@@ -42,7 +42,21 @@ func RunServer(cmd *cobra.Command, _ []string) error {
 		return err
 	}
 
-	ln, err := net.Listen("tcp", envconfig.Host().Host)
+	// Determine the address to listen on.
+	listenAddr := envconfig.Host().Host
+
+	// If --host flag is provided, override the bind address.
+	if host, err := cmd.Flags().GetString("host"); err == nil && host != "" {
+		port := "11434"
+		if _, p, splitErr := net.SplitHostPort(listenAddr); splitErr == nil {
+			port = p
+		}
+		listenAddr = net.JoinHostPort(host, port)
+		os.Setenv("LYCHEE_HOST", listenAddr)
+		slog.Info("serve: overriding host from --host flag", "addr", listenAddr)
+	}
+
+	ln, err := net.Listen("tcp", listenAddr)
 	if err != nil {
 		return err
 	}
