@@ -44,6 +44,20 @@
   </a>
 </p>
 
+<p align="center">
+  <a href="https://github.com/MD-Mushfiqur123/lychee/pkgs/container/lychee">
+    <img src="https://img.shields.io/badge/docker-ghcr.io-blue?style=for-the-badge&logo=docker&logoColor=white" alt="Docker GHCR"/>
+  </a>
+  &nbsp;
+  <a href="https://github.com/MD-Mushfiqur123/lychee/blob/main/Dockerfile">
+    <img src="https://img.shields.io/badge/dockerfile-multi--arch-2496ED?style=for-the-badge&logo=docker&logoColor=white" alt="Dockerfile"/>
+  </a>
+  &nbsp;
+  <a href="https://github.com/MD-Mushfiqur123/lychee/actions/workflows/docker-publish.yml">
+    <img src="https://img.shields.io/github/actions/workflow/status/MD-Mushfiqur123/lychee/docker-publish.yml?style=for-the-badge&label=docker%20build" alt="Docker Build Status"/>
+  </a>
+</p>
+
 ---
 
 ## 🚀 Quick Start
