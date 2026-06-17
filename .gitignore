@@ -1,32 +1,39 @@
-.DS_Store
-.vscode
-.env
-.venv
-.swp
+# Build artifacts
 /dist
 /build
+*.exe
+/lychee
+__debug_bin*
 .cache
 .gocache
-*.exe
-.idea
 test_data
 *.crt
-__debug_bin*
-llama/build
-llama/vendor
-/lychee
-integration/testdata/models/
-node_modules/
-/dist/
-/app/ui/app/dist/
-.idea/
-.vscode/
-.DS_Store
-*.exe
 .git-rewrite/
-__pycache__/
-*.pyc
+node_modules/
+/app/ui/app/dist/
 
 # Allow committing the built webui dist assets so they are available in CI and embed.go
 !/server/webui/dist/**
 
+# IDE files
+.vscode
+.idea
+.swp
+
+# OS files
+.DS_Store
+
+# Environment
+.env
+.venv
+
+# Models (large files)
+integration/testdata/models/
+
+# Python
+__pycache__/
+*.pyc
+
+# Go dependencies
+llama/build
+llama/vendor
