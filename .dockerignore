@@ -1,33 +1,47 @@
-# Dependencies (re-downloaded inside the container)
-node_modules
+# Git
+.git
+.gitignore
+.gitattributes
 
 # Build artifacts
 dist/
-build/
-
-# IDE / Editor files
-.vscode
-.idea
-
-# Platform-specific binaries and apps
+build/bin/
 *.exe
-macapp/
 
-# Version control
-.git/
-.gitattributes
+# IDE
+.vscode/
+.idea/
 
-# Environment and secrets
-.env
+# Docs and assets
+docs/
+*.md
+!README.md
 
-# Test data and cache
-.cache
-test_data
+# Tests
+*_test.go
 
-# Docker files (not needed in build context)
-docker-compose.yml
+# Examples
+examples/
+
+# SDKs (not needed in Docker)
+sdk/
+
+# Community
+community/
+
+# Node
+node_modules/
+
+# Temporary
+tmp/
+temp/
+*.log
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# Docker
 Dockerfile
 .dockerignore
-
-# Documentation (not needed at runtime)
-docs/
+docker-compose.yml
