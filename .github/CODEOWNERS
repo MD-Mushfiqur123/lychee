@@ -1,15 +1,2 @@
-# Lychee-original code
-/api/types_compose.go           @MD-Mushfiqur123
-/api/types_memory.go            @MD-Mushfiqur123
-/api/types_router.go            @MD-Mushfiqur123
-/model/chain.go                 @MD-Mushfiqur123
-/server/handler_compose.go      @MD-Mushfiqur123
-/server/structured_output.go    @MD-Mushfiqur123
-/server/memory_store.go         @MD-Mushfiqur123
-/server/model_router.go         @MD-Mushfiqur123
-/server/dashboard.go            @MD-Mushfiqur123
-/server/schema_validator.go     @MD-Mushfiqur123
-/server/prompt_cache.go         @MD-Mushfiqur123
-/sdk/                           @MD-Mushfiqur123
-/docs/openapi.yaml              @MD-Mushfiqur123
-/.github/workflows/lychee-*     @MD-Mushfiqur123
+# Default owners for everything
+* @MD-Mushfiqur123
