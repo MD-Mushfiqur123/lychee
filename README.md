@@ -583,14 +583,11 @@ Lychee is actively seeking contributors from the AI/LLM open-source community. S
 
 ---
 
-## ⭐ Star History
+## 📊 Stats
 
-<div align="center">
-  <a href="https://star-history.com/#MD-Mushfiqur123/lychee&Date">
-    <img src="https://api.star-history.com/svg?repos=MD-Mushfiqur123/lychee&type=Date" alt="Star History Chart" width="600"/>
-  </a>
-  <p><em>⭐ Star the repo to show your support!</em></p>
-</div>
+[![Star History](https://api.star-history.com/svg?repos=MD-Mushfiqur123/lychee&type=Date)](https://star-history.com/#MD-Mushfiqur123/lychee&Date)
+
+[![Contributors](https://img.shields.io/github/contributors/MD-Mushfiqur123/lychee)](https://github.com/MD-Mushfiqur123/lychee/graphs/contributors)
 
 ---
 
