@@ -44,7 +44,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Multi-model pipeline engine
 - Structured output support
 - Persistent memory
-- 742 HF model catalog
+- 50 HF model catalog
 
 [0.2.0-alpha]: https://github.com/lychee-org/lychee/compare/v0.1.1-alpha...v0.2.0-alpha
 [0.1.1-alpha]: https://github.com/lychee-org/lychee/releases/tag/v0.1.1-alpha

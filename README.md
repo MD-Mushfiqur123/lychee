@@ -127,7 +127,7 @@ client = OpenAI(base_url="http://localhost:11434/v1")
 client = Anthropic(base_url="http://localhost:11434/v1")
 ```
 
-### 📦 742+ HuggingFace Models
+### 📦 50+ HuggingFace Models
 Access every GGUF model on HuggingFace. Concurrent multi-shard downloads with SHA256 verification.
 
 </td>
@@ -187,7 +187,7 @@ curl http://localhost:11434/api/structured \
 | **OpenAI-compatible API** | ✅ `/v1/chat/completions` | ✅ `/v1/chat/completions` |
 | **Anthropic Messages API** | ❌ | ✅ `/v1/messages` |
 | **OpenAI Responses API** | ❌ | ✅ `/v1/responses` (structured) |
-| **HuggingFace model pull** | ❌ Registry-only | ✅ `lychee pull org/model` — **742+ models** |
+| **HuggingFace model pull** | ❌ Registry-only | ✅ `lychee pull org/model` — **50+ models** |
 | **Universal pull (auto HF detect)** | ❌ | ✅ Any `org/model` format |
 | **Auto-run (pull + chat)** | ❌ | ✅ `lychee pull model --run` |
 | **Built-in browser dashboard** | ❌ | ✅ `http://localhost:11434` |
@@ -225,7 +225,7 @@ Lychee Desktop is the native GUI companion app for Windows. It wraps the full Ly
 |:---:|:---:|:---:|
 | Beautiful multi-turn chat | Visual DAG pipeline composer | Pull, list, and manage models |
 | Supports all 24 CLI features | Drag-and-drop step chaining | Real-time download progress |
-| Conversation memory browser | Save & share pipelines | 742+ HuggingFace models |
+| Conversation memory browser | Save & share pipelines | 50+ HuggingFace models |
 
 ### Quick Install
 
@@ -304,6 +304,9 @@ pip install lychee-python
 
 # JavaScript / TypeScript
 npm install lychee-js
+
+# Go
+go get github.com/MD-Mushfiqur123/lychee/sdk/go
 
 # Ruby
 # gem install lychee

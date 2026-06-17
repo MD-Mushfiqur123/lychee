@@ -1,0 +1,409 @@
+﻿{
+    "_metadata":  {
+                      "source":  "https://huggingface.co/api/models?library=gguf\u0026sort=downloads\u0026direction=-1\u0026limit=50",
+                      "fetchedAt":  "2026-06-17T11:21:46+06:00",
+                      "totalCount":  50
+                  },
+    "models":  [
+                   {
+                       "modelId":  "sentence-transformers/all-MiniLM-L6-v2",
+                       "downloads":  170500268,
+                       "likes":  4959,
+                       "tags":  "sentence-transformers, pytorch, tf, rust, onnx, safetensors, openvino, bert, feature-extraction, sentence-similarity, transformers, en, dataset:s2orc, dataset:flax-sentence-embeddings/stackexchange_xml, dataset:ms_marco, dataset:gooaq, dataset:yahoo_answers_topics, dataset:code_search_net, dataset:search_qa, dataset:eli5, dataset:snli, dataset:multi_nli, dataset:wikihow, dataset:natural_questions, dataset:trivia_qa, dataset:embedding-data/sentence-compression, dataset:embedding-data/flickr30k-captions, dataset:embedding-data/altlex, dataset:embedding-data/simple-wiki, dataset:embedding-data/QQP, dataset:embedding-data/SPECTER, dataset:embedding-data/PAQ_pairs, dataset:embedding-data/WikiAnswers, arxiv:1904.06472, arxiv:2102.07033, arxiv:2104.08727, arxiv:1704.05179, arxiv:1810.09305, base_model:nreimers/MiniLM-L6-H384-uncased, base_model:quantized:nreimers/MiniLM-L6-H384-uncased, license:apache-2.0, eval-results, text-embeddings-inference, endpoints_compatible, deploy:azure, region:us",
+                       "pipeline_tag":  "sentence-similarity",
+                       "library_name":  "sentence-transformers"
+                   },
+                   {
+                       "modelId":  "cross-encoder/ms-marco-MiniLM-L6-v2",
+                       "downloads":  53054899,
+                       "likes":  265,
+                       "tags":  "sentence-transformers, pytorch, jax, onnx, safetensors, openvino, bert, text-classification, transformers, text-ranking, en, dataset:sentence-transformers/msmarco, base_model:cross-encoder/ms-marco-MiniLM-L12-v2, base_model:quantized:cross-encoder/ms-marco-MiniLM-L12-v2, license:apache-2.0, text-embeddings-inference, endpoints_compatible, region:us",
+                       "pipeline_tag":  "text-ranking",
+                       "library_name":  "sentence-transformers"
+                   },
+                   {
+                       "modelId":  "google-bert/bert-base-uncased",
+                       "downloads":  41795402,
+                       "likes":  2684,
+                       "tags":  "transformers, pytorch, tf, jax, rust, coreml, onnx, safetensors, bert, fill-mask, exbert, en, dataset:bookcorpus, dataset:wikipedia, arxiv:1810.04805, license:apache-2.0, endpoints_compatible, deploy:azure, region:us",
+                       "pipeline_tag":  "fill-mask",
+                       "library_name":  "transformers"
+                   },
+                   {
+                       "modelId":  "BAAI/bge-small-en-v1.5",
+                       "downloads":  40435833,
+                       "likes":  491,
+                       "tags":  "sentence-transformers, pytorch, onnx, safetensors, bert, feature-extraction, sentence-similarity, transformers, mteb, en, arxiv:2401.03462, arxiv:2312.15503, arxiv:2311.13534, arxiv:2310.07554, arxiv:2309.07597, license:mit, model-index, text-embeddings-inference, endpoints_compatible, deploy:azure, region:us",
+                       "pipeline_tag":  "feature-extraction",
+                       "library_name":  "sentence-transformers"
+                   },
+                   {
+                       "modelId":  "sentence-transformers/paraphrase-multilingual-MiniLM-L12-v2",
+                       "downloads":  34360161,
+                       "likes":  1271,
+                       "tags":  "sentence-transformers, pytorch, tf, onnx, safetensors, openvino, bert, feature-extraction, sentence-similarity, transformers, multilingual, ar, bg, ca, cs, da, de, el, en, es, et, fa, fi, fr, gl, gu, he, hi, hr, hu, hy, id, it, ja, ka, ko, ku, lt, lv, mk, mn, mr, ms, my, nb, nl, pl, pt, ro, ru, sk, sl, sq, sr, sv, th, tr, uk, ur, vi, arxiv:1908.10084, license:apache-2.0, text-embeddings-inference, endpoints_compatible, deploy:azure, region:us",
+                       "pipeline_tag":  "sentence-similarity",
+                       "library_name":  "sentence-transformers"
+                   },
+                   {
+                       "modelId":  "google/electra-base-discriminator",
+                       "downloads":  29291785,
+                       "likes":  124,
+                       "tags":  "transformers, pytorch, tf, jax, rust, electra, pretraining, en, arxiv:1406.2661, license:apache-2.0, endpoints_compatible, region:us",
+                       "pipeline_tag":  null,
+                       "library_name":  "transformers"
+                   },
+                   {
+                       "modelId":  "sentence-transformers/all-mpnet-base-v2",
+                       "downloads":  24672911,
+                       "likes":  1307,
+                       "tags":  "sentence-transformers, pytorch, onnx, safetensors, openvino, mpnet, fill-mask, feature-extraction, sentence-similarity, transformers, text-embeddings-inference, en, dataset:s2orc, dataset:flax-sentence-embeddings/stackexchange_xml, dataset:ms_marco, dataset:gooaq, dataset:yahoo_answers_topics, dataset:code_search_net, dataset:search_qa, dataset:eli5, dataset:snli, dataset:multi_nli, dataset:wikihow, dataset:natural_questions, dataset:trivia_qa, dataset:embedding-data/sentence-compression, dataset:embedding-data/flickr30k-captions, dataset:embedding-data/altlex, dataset:embedding-data/simple-wiki, dataset:embedding-data/QQP, dataset:embedding-data/SPECTER, dataset:embedding-data/PAQ_pairs, dataset:embedding-data/WikiAnswers, arxiv:1904.06472, arxiv:2102.07033, arxiv:2104.08727, arxiv:1704.05179, arxiv:1810.09305, license:apache-2.0, eval-results, endpoints_compatible, deploy:azure, region:us",
+                       "pipeline_tag":  "sentence-similarity",
+                       "library_name":  "sentence-transformers"
+                   },
+                   {
+                       "modelId":  "BAAI/bge-m3",
+                       "downloads":  22464568,
+                       "likes":  3122,
+                       "tags":  "sentence-transformers, pytorch, onnx, xlm-roberta, feature-extraction, sentence-similarity, arxiv:2402.03216, arxiv:2004.04906, arxiv:2106.14807, arxiv:2107.05720, arxiv:2004.12832, license:mit, eval-results, text-embeddings-inference, endpoints_compatible, deploy:azure, region:us",
+                       "pipeline_tag":  "sentence-similarity",
+                       "library_name":  "sentence-transformers"
+                   },
+                   {
+                       "modelId":  "Qwen/Qwen3-0.6B",
+                       "downloads":  18936575,
+                       "likes":  1335,
+                       "tags":  "transformers, safetensors, qwen3, text-generation, conversational, arxiv:2505.09388, base_model:Qwen/Qwen3-0.6B-Base, base_model:finetune:Qwen/Qwen3-0.6B-Base, license:apache-2.0, text-generation-inference, endpoints_compatible, deploy:azure, region:us",
+                       "pipeline_tag":  "text-generation",
+                       "library_name":  "transformers"
+                   },
+                   {
+                       "modelId":  "openai/clip-vit-base-patch32",
+                       "downloads":  16035649,
+                       "likes":  960,
+                       "tags":  "transformers, pytorch, tf, jax, clip, zero-shot-image-classification, vision, arxiv:2103.00020, arxiv:1908.04913, endpoints_compatible, region:us",
+                       "pipeline_tag":  "zero-shot-image-classification",
+                       "library_name":  "transformers"
+                   },
+                   {
+                       "modelId":  "FacebookAI/xlm-roberta-base",
+                       "downloads":  15036111,
+                       "likes":  847,
+                       "tags":  "transformers, pytorch, tf, jax, onnx, safetensors, xlm-roberta, fill-mask, exbert, multilingual, af, am, ar, as, az, be, bg, bn, br, bs, ca, cs, cy, da, de, el, en, eo, es, et, eu, fa, fi, fr, fy, ga, gd, gl, gu, ha, he, hi, hr, hu, hy, id, is, it, ja, jv, ka, kk, km, kn, ko, ku, ky, la, lo, lt, lv, mg, mk, ml, mn, mr, ms, my, ne, nl, no, om, or, pa, pl, ps, pt, ro, ru, sa, sd, si, sk, sl, so, sq, sr, su, sv, sw, ta, te, th, tl, tr, ug, uk, ur, uz, vi, xh, yi, zh, arxiv:1911.02116, license:mit, endpoints_compatible, deploy:azure, region:us",
+                       "pipeline_tag":  "fill-mask",
+                       "library_name":  "transformers"
+                   },
+                   {
+                       "modelId":  "colbert-ir/colbertv2.0",
+                       "downloads":  12472381,
+                       "likes":  360,
+                       "tags":  "transformers, pytorch, onnx, safetensors, bert, ColBERT, en, arxiv:2004.12832, arxiv:2007.00814, arxiv:2101.00436, arxiv:2112.01488, arxiv:2205.09707, license:mit, endpoints_compatible, region:us",
+                       "pipeline_tag":  null,
+                       "library_name":  "transformers"
+                   },
+                   {
+                       "modelId":  "laion/clap-htsat-fused",
+                       "downloads":  12444697,
+                       "likes":  104,
+                       "tags":  "transformers, pytorch, safetensors, clap, feature-extraction, zero-shot audio classification, zero-shot audio retrieval, audio-classification, en, arxiv:2211.06687, license:apache-2.0, endpoints_compatible, region:us",
+                       "pipeline_tag":  "audio-classification",
+                       "library_name":  "transformers"
+                   },
+                   {
+                       "modelId":  "nomic-ai/nomic-embed-text-v1.5",
+                       "downloads":  12350406,
+                       "likes":  847,
+                       "tags":  "sentence-transformers, onnx, safetensors, nomic_bert, feature-extraction, sentence-similarity, mteb, transformers, transformers.js, custom_code, en, arxiv:2402.01613, arxiv:2205.13147, license:apache-2.0, model-index, eval-results, text-embeddings-inference, endpoints_compatible, region:us",
+                       "pipeline_tag":  "sentence-similarity",
+                       "library_name":  "sentence-transformers"
+                   },
+                   {
+                       "modelId":  "hexgrad/Kokoro-82M",
+                       "downloads":  12053070,
+                       "likes":  6347,
+                       "tags":  "text-to-speech, en, arxiv:2306.07691, arxiv:2203.02395, base_model:yl4579/StyleTTS2-LJSpeech, base_model:finetune:yl4579/StyleTTS2-LJSpeech, doi:10.57967/hf/4329, license:apache-2.0, region:us",
+                       "pipeline_tag":  "text-to-speech",
+                       "library_name":  null
+                   },
+                   {
+                       "modelId":  "BAAI/bge-reranker-v2-m3",
+                       "downloads":  10798950,
+                       "likes":  1038,
+                       "tags":  "sentence-transformers, safetensors, xlm-roberta, text-classification, transformers, text-embeddings-inference, multilingual, arxiv:2312.15503, arxiv:2402.03216, license:apache-2.0, endpoints_compatible, deploy:azure, region:us",
+                       "pipeline_tag":  "text-classification",
+                       "library_name":  "sentence-transformers"
+                   },
+                   {
+                       "modelId":  "amazon/chronos-2",
+                       "downloads":  10695437,
+                       "likes":  330,
+                       "tags":  "chronos-forecasting, safetensors, t5, time series, forecasting, foundation models, pretrained models, time-series-forecasting, dataset:autogluon/chronos_datasets, dataset:Salesforce/GiftEvalPretrain, arxiv:2403.07815, arxiv:2510.15821, license:apache-2.0, region:us",
+                       "pipeline_tag":  "time-series-forecasting",
+                       "library_name":  "chronos-forecasting"
+                   },
+                   {
+                       "modelId":  "BAAI/bge-large-en-v1.5",
+                       "downloads":  10508944,
+                       "likes":  684,
+                       "tags":  "sentence-transformers, pytorch, onnx, safetensors, bert, feature-extraction, sentence-similarity, transformers, mteb, en, arxiv:2401.03462, arxiv:2312.15503, arxiv:2311.13534, arxiv:2310.07554, arxiv:2309.07597, license:mit, model-index, eval-results, text-embeddings-inference, endpoints_compatible, deploy:azure, region:us",
+                       "pipeline_tag":  "feature-extraction",
+                       "library_name":  "sentence-transformers"
+                   },
+                   {
+                       "modelId":  "Qwen/Qwen3-4B",
+                       "downloads":  10180627,
+                       "likes":  637,
+                       "tags":  "transformers, safetensors, text-generation, arxiv:2309.00071, arxiv:2505.09388, base_model:Qwen/Qwen3-4B-Base, base_model:finetune:Qwen/Qwen3-4B-Base, license:apache-2.0, endpoints_compatible, deploy:azure, region:us",
+                       "pipeline_tag":  "text-generation",
+                       "library_name":  "transformers"
+                   },
+                   {
+                       "modelId":  "openai-community/gpt2",
+                       "downloads":  10086105,
+                       "likes":  3300,
+                       "tags":  "transformers, pytorch, tf, jax, tflite, rust, onnx, safetensors, gpt2, text-generation, exbert, en, doi:10.57967/hf/0039, license:mit, text-generation-inference, endpoints_compatible, deploy:azure, region:us",
+                       "pipeline_tag":  "text-generation",
+                       "library_name":  "transformers"
+                   },
+                   {
+                       "modelId":  "timm/mobilenetv3_small_100.lamb_in1k",
+                       "downloads":  9804727,
+                       "likes":  77,
+                       "tags":  "timm, pytorch, safetensors, image-classification, transformers, dataset:imagenet-1k, arxiv:2110.00476, arxiv:1905.02244, license:apache-2.0, region:us",
+                       "pipeline_tag":  "image-classification",
+                       "library_name":  "timm"
+                   },
+                   {
+                       "modelId":  "FacebookAI/roberta-base",
+                       "downloads":  9486347,
+                       "likes":  614,
+                       "tags":  "transformers, pytorch, tf, jax, rust, safetensors, roberta, fill-mask, exbert, en, dataset:bookcorpus, dataset:wikipedia, arxiv:1907.11692, arxiv:1806.02847, license:mit, endpoints_compatible, deploy:azure, region:us",
+                       "pipeline_tag":  "fill-mask",
+                       "library_name":  "transformers"
+                   },
+                   {
+                       "modelId":  "Bingsu/adetailer",
+                       "downloads":  9238039,
+                       "likes":  723,
+                       "tags":  "ultralytics, pytorch, dataset:wider_face, dataset:skytnt/anime-segmentation, doi:10.57967/hf/3633, license:apache-2.0, region:us",
+                       "pipeline_tag":  null,
+                       "library_name":  "ultralytics"
+                   },
+                   {
+                       "modelId":  "Qwen/Qwen3-8B",
+                       "downloads":  9182506,
+                       "likes":  1144,
+                       "tags":  "transformers, safetensors, qwen3, text-generation, conversational, arxiv:2309.00071, arxiv:2505.09388, base_model:Qwen/Qwen3-8B-Base, base_model:finetune:Qwen/Qwen3-8B-Base, license:apache-2.0, text-generation-inference, endpoints_compatible, deploy:azure, region:us",
+                       "pipeline_tag":  "text-generation",
+                       "library_name":  "transformers"
+                   },
+                   {
+                       "modelId":  "Qwen/Qwen2.5-7B-Instruct",
+                       "downloads":  8786988,
+                       "likes":  1366,
+                       "tags":  "transformers, safetensors, qwen2, text-generation, chat, conversational, en, arxiv:2309.00071, arxiv:2407.10671, base_model:Qwen/Qwen2.5-7B, base_model:finetune:Qwen/Qwen2.5-7B, license:apache-2.0, eval-results, text-generation-inference, endpoints_compatible, deploy:azure, region:us",
+                       "pipeline_tag":  "text-generation",
+                       "library_name":  "transformers"
+                   },
+                   {
+                       "modelId":  "google/gemma-4-26B-A4B-it",
+                       "downloads":  8765530,
+                       "likes":  1148,
+                       "tags":  "transformers, safetensors, gemma4, image-text-to-text, conversational, base_model:google/gemma-4-26B-A4B, base_model:finetune:google/gemma-4-26B-A4B, license:apache-2.0, eval-results, endpoints_compatible, deploy:azure, region:us",
+                       "pipeline_tag":  "image-text-to-text",
+                       "library_name":  "transformers"
+                   },
+                   {
+                       "modelId":  "Qwen/Qwen2.5-3B-Instruct",
+                       "downloads":  8738939,
+                       "likes":  501,
+                       "tags":  "transformers, safetensors, qwen2, text-generation, chat, conversational, en, arxiv:2407.10671, base_model:Qwen/Qwen2.5-3B, base_model:finetune:Qwen/Qwen2.5-3B, license:other, text-generation-inference, endpoints_compatible, deploy:azure, region:us",
+                       "pipeline_tag":  "text-generation",
+                       "library_name":  "transformers"
+                   },
+                   {
+                       "modelId":  "autogluon/chronos-bolt-small",
+                       "downloads":  8554106,
+                       "likes":  43,
+                       "tags":  "safetensors, t5, time series, forecasting, pretrained models, foundation models, time series foundation models, time-series, time-series-forecasting, arxiv:1910.10683, arxiv:2403.07815, license:apache-2.0, region:us",
+                       "pipeline_tag":  "time-series-forecasting",
+                       "library_name":  null
+                   },
+                   {
+                       "modelId":  "openai/clip-vit-large-patch14",
+                       "downloads":  8283295,
+                       "likes":  2035,
+                       "tags":  "transformers, pytorch, tf, jax, safetensors, clip, zero-shot-image-classification, vision, arxiv:2103.00020, arxiv:1908.04913, endpoints_compatible, region:us",
+                       "pipeline_tag":  "zero-shot-image-classification",
+                       "library_name":  "transformers"
+                   },
+                   {
+                       "modelId":  "FacebookAI/roberta-large",
+                       "downloads":  8170569,
+                       "likes":  301,
+                       "tags":  "transformers, pytorch, tf, jax, onnx, safetensors, roberta, fill-mask, exbert, en, dataset:bookcorpus, dataset:wikipedia, arxiv:1907.11692, arxiv:1806.02847, license:mit, endpoints_compatible, deploy:azure, region:us",
+                       "pipeline_tag":  "fill-mask",
+                       "library_name":  "transformers"
+                   },
+                   {
+                       "modelId":  "facebook/opt-125m",
+                       "downloads":  7778496,
+                       "likes":  266,
+                       "tags":  "transformers, pytorch, tf, jax, opt, text-generation, en, arxiv:2205.01068, arxiv:2005.14165, license:other, text-generation-inference, deploy:azure, region:us",
+                       "pipeline_tag":  "text-generation",
+                       "library_name":  "transformers"
+                   },
+                   {
+                       "modelId":  "google/gemma-4-31B-it",
+                       "downloads":  7705133,
+                       "likes":  3004,
+                       "tags":  "transformers, safetensors, gemma4, image-text-to-text, conversational, base_model:google/gemma-4-31B, base_model:finetune:google/gemma-4-31B, license:apache-2.0, eval-results, endpoints_compatible, deploy:azure, region:us",
+                       "pipeline_tag":  "image-text-to-text",
+                       "library_name":  "transformers"
+                   },
+                   {
+                       "modelId":  "Qwen/Qwen2.5-1.5B-Instruct",
+                       "downloads":  7410668,
+                       "likes":  740,
+                       "tags":  "transformers, safetensors, qwen2, text-generation, chat, conversational, en, arxiv:2407.10671, base_model:Qwen/Qwen2.5-1.5B, base_model:finetune:Qwen/Qwen2.5-1.5B, license:apache-2.0, text-generation-inference, endpoints_compatible, deploy:azure, region:us",
+                       "pipeline_tag":  "text-generation",
+                       "library_name":  "transformers"
+                   },
+                   {
+                       "modelId":  "Qwen/Qwen3-Embedding-0.6B",
+                       "downloads":  7024640,
+                       "likes":  1069,
+                       "tags":  "sentence-transformers, safetensors, qwen3, text-generation, transformers, sentence-similarity, feature-extraction, text-embeddings-inference, arxiv:2506.05176, base_model:Qwen/Qwen3-0.6B-Base, base_model:finetune:Qwen/Qwen3-0.6B-Base, license:apache-2.0, endpoints_compatible, deploy:azure, region:us",
+                       "pipeline_tag":  "feature-extraction",
+                       "library_name":  "sentence-transformers"
+                   },
+                   {
+                       "modelId":  "coqui/XTTS-v2",
+                       "downloads":  7001629,
+                       "likes":  3603,
+                       "tags":  "coqui, text-to-speech, license:other, region:us",
+                       "pipeline_tag":  "text-to-speech",
+                       "library_name":  "coqui"
+                   },
+                   {
+                       "modelId":  "intfloat/multilingual-e5-small",
+                       "downloads":  6554284,
+                       "likes":  338,
+                       "tags":  "sentence-transformers, pytorch, onnx, safetensors, openvino, bert, mteb, Sentence Transformers, sentence-similarity, multilingual, af, am, ar, as, az, be, bg, bn, br, bs, ca, cs, cy, da, de, el, en, eo, es, et, eu, fa, fi, fr, fy, ga, gd, gl, gu, ha, he, hi, hr, hu, hy, id, is, it, ja, jv, ka, kk, km, kn, ko, ku, ky, la, lo, lt, lv, mg, mk, ml, mn, mr, ms, my, ne, nl, no, om, or, pa, pl, ps, pt, ro, ru, sa, sd, si, sk, sl, so, sq, sr, su, sv, sw, ta, te, th, tl, tr, ug, uk, ur, uz, vi, xh, yi, zh, arxiv:2402.05672, arxiv:2108.08787, arxiv:2104.08663, arxiv:2210.07316, license:mit, model-index, eval-results, text-embeddings-inference, endpoints_compatible, region:us",
+                       "pipeline_tag":  "sentence-similarity",
+                       "library_name":  "sentence-transformers"
+                   },
+                   {
+                       "modelId":  "Qwen/Qwen3.5-4B",
+                       "downloads":  6448806,
+                       "likes":  650,
+                       "tags":  "transformers, safetensors, qwen3_5, image-text-to-text, conversational, base_model:Qwen/Qwen3.5-4B-Base, base_model:finetune:Qwen/Qwen3.5-4B-Base, license:apache-2.0, eval-results, endpoints_compatible, deploy:azure, region:us",
+                       "pipeline_tag":  "image-text-to-text",
+                       "library_name":  "transformers"
+                   },
+                   {
+                       "modelId":  "meta-llama/Llama-3.1-8B-Instruct",
+                       "downloads":  6443229,
+                       "likes":  6097,
+                       "tags":  "transformers, safetensors, llama, text-generation, facebook, meta, pytorch, llama-3, conversational, en, de, fr, it, pt, hi, es, th, arxiv:2204.05149, base_model:meta-llama/Llama-3.1-8B, base_model:finetune:meta-llama/Llama-3.1-8B, license:llama3.1, eval-results, text-generation-inference, endpoints_compatible, region:us",
+                       "pipeline_tag":  "text-generation",
+                       "library_name":  "transformers"
+                   },
+                   {
+                       "modelId":  "Falconsai/nsfw_image_detection",
+                       "downloads":  6396682,
+                       "likes":  1099,
+                       "tags":  "transformers, pytorch, safetensors, vit, image-classification, arxiv:2010.11929, license:apache-2.0, endpoints_compatible, deploy:azure, region:us",
+                       "pipeline_tag":  "image-classification",
+                       "library_name":  "transformers"
+                   },
+                   {
+                       "modelId":  "BAAI/bge-base-en-v1.5",
+                       "downloads":  6357447,
+                       "likes":  437,
+                       "tags":  "sentence-transformers, pytorch, onnx, safetensors, bert, feature-extraction, sentence-similarity, transformers, mteb, en, arxiv:2401.03462, arxiv:2312.15503, arxiv:2311.13534, arxiv:2310.07554, arxiv:2309.07597, license:mit, model-index, text-embeddings-inference, endpoints_compatible, deploy:azure, region:us",
+                       "pipeline_tag":  "feature-extraction",
+                       "library_name":  "sentence-transformers"
+                   },
+                   {
+                       "modelId":  "distilbert/distilbert-base-uncased",
+                       "downloads":  6113707,
+                       "likes":  896,
+                       "tags":  "transformers, pytorch, tf, jax, rust, safetensors, distilbert, fill-mask, exbert, en, dataset:bookcorpus, dataset:wikipedia, arxiv:1910.01108, license:apache-2.0, endpoints_compatible, deploy:azure, region:us",
+                       "pipeline_tag":  "fill-mask",
+                       "library_name":  "transformers"
+                   },
+                   {
+                       "modelId":  "pyannote/speaker-diarization-3.1",
+                       "downloads":  5957592,
+                       "likes":  2352,
+                       "tags":  "pyannote-audio, pyannote, pyannote-audio-pipeline, audio, voice, speech, speaker, speaker-diarization, speaker-change-detection, voice-activity-detection, overlapped-speech-detection, automatic-speech-recognition, arxiv:2111.14448, arxiv:2012.01477, license:mit, endpoints_compatible, region:us",
+                       "pipeline_tag":  "automatic-speech-recognition",
+                       "library_name":  "pyannote-audio"
+                   },
+                   {
+                       "modelId":  "Qwen/Qwen3.5-9B",
+                       "downloads":  5911465,
+                       "likes":  1573,
+                       "tags":  "transformers, safetensors, qwen3_5, image-text-to-text, conversational, base_model:Qwen/Qwen3.5-9B-Base, base_model:finetune:Qwen/Qwen3.5-9B-Base, license:apache-2.0, eval-results, endpoints_compatible, deploy:azure, region:us",
+                       "pipeline_tag":  "image-text-to-text",
+                       "library_name":  "transformers"
+                   },
+                   {
+                       "modelId":  "argmaxinc/whisperkit-coreml",
+                       "downloads":  5824933,
+                       "likes":  192,
+                       "tags":  "whisperkit, coreml, whisper, asr, quantized, automatic-speech-recognition, region:us",
+                       "pipeline_tag":  "automatic-speech-recognition",
+                       "library_name":  "whisperkit"
+                   },
+                   {
+                       "modelId":  "autogluon/chronos-2",
+                       "downloads":  5817503,
+                       "likes":  32,
+                       "tags":  "chronos-forecasting, safetensors, t5, time series, forecasting, foundation models, pretrained models, time-series-forecasting, dataset:autogluon/chronos_datasets, dataset:Salesforce/GiftEvalPretrain, arxiv:2403.07815, arxiv:2510.15821, license:apache-2.0, region:us",
+                       "pipeline_tag":  "time-series-forecasting",
+                       "library_name":  "chronos-forecasting"
+                   },
+                   {
+                       "modelId":  "openai/whisper-large-v3-turbo",
+                       "downloads":  5741901,
+                       "likes":  3092,
+                       "tags":  "transformers, safetensors, whisper, automatic-speech-recognition, audio, en, zh, de, es, ru, ko, fr, ja, pt, tr, pl, ca, nl, ar, sv, it, id, hi, fi, vi, he, uk, el, ms, cs, ro, da, hu, ta, no, th, ur, hr, bg, lt, la, mi, ml, cy, sk, te, fa, lv, bn, sr, az, sl, kn, et, mk, br, eu, is, hy, ne, mn, bs, kk, sq, sw, gl, mr, pa, si, km, sn, yo, so, af, oc, ka, be, tg, sd, gu, am, yi, lo, uz, fo, ht, ps, tk, nn, mt, sa, lb, my, bo, tl, mg, as, tt, haw, ln, ha, ba, jw, su, arxiv:2212.04356, base_model:openai/whisper-large-v3, base_model:finetune:openai/whisper-large-v3, license:mit, eval-results, endpoints_compatible, deploy:azure, region:us",
+                       "pipeline_tag":  "automatic-speech-recognition",
+                       "library_name":  "transformers"
+                   },
+                   {
+                       "modelId":  "Qwen/Qwen3-VL-8B-Instruct",
+                       "downloads":  5656909,
+                       "likes":  959,
+                       "tags":  "transformers, safetensors, qwen3_vl, image-text-to-text, conversational, arxiv:2505.09388, arxiv:2502.13923, arxiv:2409.12191, arxiv:2308.12966, license:apache-2.0, eval-results, endpoints_compatible, deploy:azure, region:us",
+                       "pipeline_tag":  "image-text-to-text",
+                       "library_name":  "transformers"
+                   },
+                   {
+                       "modelId":  "google/gemma-3-270m",
+                       "downloads":  5617544,
+                       "likes":  1034,
+                       "tags":  "transformers, safetensors, gemma3, gemma, google, text-generation, arxiv:2503.19786, arxiv:1905.07830, arxiv:1905.10044, arxiv:1911.11641, arxiv:1705.03551, arxiv:1911.01547, arxiv:1907.10641, arxiv:2311.07911, arxiv:2311.12022, arxiv:2411.04368, arxiv:1904.09728, arxiv:1903.00161, arxiv:2009.03300, arxiv:2304.06364, arxiv:2103.03874, arxiv:2110.14168, arxiv:2108.07732, arxiv:2107.03374, arxiv:2403.07974, arxiv:2305.03111, arxiv:2405.04520, arxiv:2210.03057, arxiv:2106.03193, arxiv:1910.11856, arxiv:2502.12404, arxiv:2502.21228, arxiv:2404.16816, arxiv:2104.12756, arxiv:2311.16502, arxiv:2203.10244, arxiv:2404.12390, arxiv:1810.12440, arxiv:1908.02660, arxiv:2310.02255, arxiv:2312.11805, license:gemma, endpoints_compatible, region:us",
+                       "pipeline_tag":  "text-generation",
+                       "library_name":  "transformers"
+                   },
+                   {
+                       "modelId":  "meta-llama/Llama-3.2-1B-Instruct",
+                       "downloads":  5613672,
+                       "likes":  1486,
+                       "tags":  "transformers, safetensors, llama, text-generation, facebook, meta, pytorch, llama-3, conversational, en, de, fr, it, pt, hi, es, th, arxiv:2204.05149, arxiv:2405.16406, license:llama3.2, eval-results, text-generation-inference, endpoints_compatible, region:us",
+                       "pipeline_tag":  "text-generation",
+                       "library_name":  "transformers"
+                   },
+                   {
+                       "modelId":  "google-bert/bert-large-uncased",
+                       "downloads":  5553250,
+                       "likes":  147,
+                       "tags":  "transformers, pytorch, tf, jax, rust, safetensors, bert, fill-mask, en, dataset:bookcorpus, dataset:wikipedia, arxiv:1810.04805, license:apache-2.0, endpoints_compatible, deploy:azure, region:us",
+                       "pipeline_tag":  "fill-mask",
+                       "library_name":  "transformers"
+                   }
+               ]
+}
