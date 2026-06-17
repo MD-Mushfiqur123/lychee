@@ -597,6 +597,18 @@ Lychee is open-source software licensed under the [MIT License](LICENSE).
 
 ---
 
+## 🍒 Powered by Lychee
+
+Show the world your project runs on Lychee — add this badge to your README:
+
+```markdown
+[![Powered by Lychee](https://raw.githubusercontent.com/MD-Mushfiqur123/lychee/main/assets/powered-by-lychee.svg)](https://github.com/MD-Mushfiqur123/lychee)
+```
+
+[![Powered by Lychee](https://raw.githubusercontent.com/MD-Mushfiqur123/lychee/main/assets/powered-by-lychee.svg)](https://github.com/MD-Mushfiqur123/lychee)
+
+---
+
 ## 🏗️ Built by Xolvyn
 
 Lychee is engineered and maintained by **[Xolvyn AI Agency](https://md-mushfiqur123.github.io/xolvyn-agency)** — _Intelligence, engineered._
