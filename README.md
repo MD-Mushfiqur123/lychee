@@ -1,149 +1,259 @@
 # 🍒 Lychee
 
-### The Orchestration Layer for Local LLMs — Built on Ollama
+<p align="center">
+  <img src="https://raw.githubusercontent.com/MD-Mushfiqur123/lychee/main/docs/assets/lychee-banner.svg" alt="Lychee Logo" width="600"/>
+</p>
 
-Lychee extends [Ollama](https://github.com/ollama/ollama) with features the upstream doesn't have:
-multi-model pipelines, structured output with auto-retry, persistent conversation memory,
-and multi-instance load balancing. Everything Ollama does, Lychee does too — plus more.
+<p align="center">
+  <strong>The Universal Local LLM Runtime & Orchestration Layer</strong><br/>
+  <em>Pull. Run. Orchestrate. — Any model, any API, anywhere.</em>
+</p>
 
 <p align="center">
   <a href="https://github.com/MD-Mushfiqur123/lychee/stargazers">
-    <img src="https://img.shields.io/github/stars/MD-Mushfiqur123/lychee?style=flat-square&color=yellow" alt="GitHub Stars"/>
+    <img src="https://img.shields.io/github/stars/MD-Mushfiqur123/lychee?style=for-the-badge&color=yellow" alt="GitHub Stars"/>
   </a>
   <a href="https://github.com/MD-Mushfiqur123/lychee/releases">
-    <img src="https://img.shields.io/github/v/release/MD-Mushfiqur123/lychee?style=flat-square&color=green&label=release" alt="Latest Release"/>
+    <img src="https://img.shields.io/github/v/release/MD-Mushfiqur123/lychee?style=for-the-badge&color=green&label=release" alt="Latest Release"/>
   </a>
   <a href="https://github.com/MD-Mushfiqur123/lychee/blob/main/go.mod">
-    <img src="https://img.shields.io/github/go-mod/go-version/MD-Mushfiqur123/lychee?style=flat-square&color=00ADD8" alt="Go Version"/>
+    <img src="https://img.shields.io/github/go-mod/go-version/MD-Mushfiqur123/lychee?style=for-the-badge&color=00ADD8" alt="Go Version"/>
   </a>
   <a href="https://github.com/MD-Mushfiqur123/lychee/blob/main/LICENSE">
-    <img src="https://img.shields.io/badge/license-MIT-blue?style=flat-square" alt="MIT License"/>
+    <img src="https://img.shields.io/badge/license-MIT-blue?style=for-the-badge" alt="MIT License"/>
   </a>
   <a href="https://goreportcard.com/report/github.com/MD-Mushfiqur123/lychee">
-    <img src="https://goreportcard.com/badge/github.com/MD-Mushfiqur123/lychee?style=flat-square" alt="Go Report Card"/>
+    <img src="https://goreportcard.com/badge/github.com/MD-Mushfiqur123/lychee?style=for-the-badge" alt="Go Report Card"/>
   </a>
   <a href="https://md-mushfiqur123.github.io/lychee-docs/">
-    <img src="https://img.shields.io/badge/docs-vitepress-646cff?style=flat-square" alt="Documentation"/>
+    <img src="https://img.shields.io/badge/docs-vitepress-646cff?style=for-the-badge" alt="Documentation"/>
   </a>
 </p>
 
 <p align="center">
   <a href="https://github.com/MD-Mushfiqur123/lychee-desktop">
-    <img src="https://img.shields.io/badge/desktop-app-A51C30?style=for-the-badge&logo=windows&logoColor=white" alt="Lychee Desktop"/>
+    <img src="https://img.shields.io/badge/DESKTOP-AVAILABLE-Crimson?style=for-the-badge&logo=windows&logoColor=white" alt="Lychee Desktop Available"/>
   </a>
   &nbsp;
   <a href="https://github.com/MD-Mushfiqur123/lychee-desktop/releases">
-    <img src="https://img.shields.io/github/v/release/MD-Mushfiqur123/lychee-desktop?style=flat-square&color=A51C30&label=desktop" alt="Desktop Release"/>
+    <img src="https://img.shields.io/github/v/release/MD-Mushfiqur123/lychee-desktop?style=for-the-badge&color=Crimson&label=desktop%20release" alt="Desktop Release"/>
+  </a>
+  &nbsp;
+  <a href="https://github.com/MD-Mushfiqur123/lychee/releases">
+    <img src="https://img.shields.io/badge/download-binary-28a745?style=for-the-badge&logo=github&logoColor=white" alt="Download Binary"/>
   </a>
 </p>
 
-> 🖥️ **Lychee Desktop** is now available! Get the native desktop app with chat, pipeline builder, and model manager — [Download v0.1.0 Alpha](https://github.com/MD-Mushfiqur123/lychee-desktop/releases/tag/v0.1.0-alpha)
+---
+
+## 🚀 Quick Start
+
+```bash
+# Install Lychee (Go 1.22+ required)
+go install github.com/MD-Mushfiqur123/lychee@latest
+
+# Start the server
+lychee serve
+
+# Pull and chat with any HuggingFace model — instantly
+lychee pull microsoft/Phi-3-mini-4k-instruct-gguf --run
+```
+
+> 🌐 Open **http://localhost:11434** in your browser for the built-in Dashboard UI.
 
 ---
 
-## 🎯 Why Lychee?
+## ✨ Features
 
-Lychee is built on top of [Ollama](https://github.com/ollama/ollama), extending it with production-grade orchestration features that teams and developers need. Think of it as **Ollama + batteries included**.
+<table>
+<tr>
+<td width="50%">
 
-| Feature | Ollama | Lychee |
-| --- | :---: | :---: |
-| **Model running & inference** | ✅ | ✅ |
-| **OpenAI-compatible API** | ✅ | ✅ |
-| **HuggingFace model pulls** | ❌ | ✅ Native `lychee hf pull` |
+### 🌍 Universal Model Pull
+Pull **any HuggingFace GGUF model** natively. No registry lock-in.  
+`lychee pull org/model` — auto-detects HF repos.
+
+```bash
+lychee pull bartowski/Meta-Llama-3.1-8B-Instruct-GGUF
+```
+
+### ⚡ Auto-Run Mode
+Pull + chat in one command. Models start the moment they're ready.
+
+```bash
+lychee pull microsoft/Phi-3-mini-4k --run
+```
+
+### 🖥️ Built-in Dashboard
+Browser-based UI at `localhost:11434` — manage models, monitor performance, chat interactively.
+
+</td>
+<td width="50%">
+
+### 🎛️ 24 CLI Commands
+Full toolkit for model management, benchmarking, pipelines, and more.
+
+```bash
+lychee help    # See all 24 commands
+```
+
+### 🔌 Dual API Support
+OpenAI-compatible Chat Completions **and** Anthropic Messages API — point any SDK at Lychee.
+
+```python
+# OpenAI SDK → Lychee
+client = OpenAI(base_url="http://localhost:11434/v1")
+
+# Anthropic SDK → Lychee
+client = Anthropic(base_url="http://localhost:11434/v1")
+```
+
+### 📦 742+ HuggingFace Models
+Access every GGUF model on HuggingFace. Concurrent multi-shard downloads with SHA256 verification.
+
+</td>
+</tr>
+<tr>
+<td width="50%">
+
+### 🔗 Multi-Model Pipelines (DAG)
+Chain models sequentially. Output flows through composable steps.
+
+```bash
+curl http://localhost:11434/api/compose \
+  -d '{"input":"Hello","steps":[
+    {"model":"gemma3","prompt":"Translate: {{input}}"},
+    {"model":"phi3","prompt":"Analyze: {{step[0].output}}"}
+  ]}'
+```
+
+### 💾 Persistent Memory
+SQLite-backed conversation store. Save, resume, and search across sessions.
+
+```bash
+curl http://localhost:11434/api/conversations \
+  -d '{"model":"gemma3","messages":[...]}'
+```
+
+</td>
+<td width="50%">
+
+### ⚖️ Load Balancing Router
+Route requests across multiple instances with weighted round-robin.
+
+```bash
+curl http://localhost:11434/api/routes \
+  -d '{"name":"fast","endpoints":[...],"strategy":"weighted_round_robin"}'
+```
+
+### ✅ Structured Output + Auto-Retry
+JSON schema validation with automatic error-correction retries.
+
+```bash
+curl http://localhost:11434/api/structured \
+  -d '{"model":"gemma3","prompt":"...","schema":{...},"max_retries":3}'
+```
+
+</td>
+</tr>
+</table>
+
+---
+
+## 📊 Lychee vs Ollama
+
+| Feature | 🦙 Ollama | 🍒 Lychee |
+|:---|:---:|:---:|
+| **Core inference engine** | ✅ llama.cpp | ✅ llama.cpp + MLX |
+| **OpenAI-compatible API** | ✅ `/v1/chat/completions` | ✅ `/v1/chat/completions` |
 | **Anthropic Messages API** | ❌ | ✅ `/v1/messages` |
-| **OpenAI Responses API (structured)** | ❌ | ✅ `/v1/responses` |
-| **Multi-model pipelines (DAG)** | ❌ | ✅ Model Composer |
-| **Structured output + auto-retry** | ❌ | ✅ JSON schema validation |
+| **OpenAI Responses API** | ❌ | ✅ `/v1/responses` (structured) |
+| **HuggingFace model pull** | ❌ Registry-only | ✅ `lychee pull org/model` — **742+ models** |
+| **Universal pull (auto HF detect)** | ❌ | ✅ Any `org/model` format |
+| **Auto-run (pull + chat)** | ❌ | ✅ `lychee pull model --run` |
+| **Built-in browser dashboard** | ❌ | ✅ `http://localhost:11434` |
+| **Native desktop app** | ❌ | ✅ Lychee Desktop (Windows) |
+| **CLI commands** | ~12 | ✅ **24 commands** |
+| **Multi-model pipelines** | ❌ | ✅ DAG-based Model Composer |
 | **Persistent conversation memory** | ❌ | ✅ SQLite + JSON store |
-| **Multi-instance load balancing** | ❌ | ✅ Model Router |
+| **Structured output + auto-retry** | ❌ | ✅ JSON schema validation |
+| **Multi-instance load balancing** | ❌ | ✅ Weighted round-robin router |
 | **Interactive TUI dashboard** | ❌ | ✅ `lychee stats --tui` |
-| **Model benchmarking CLI** | ❌ | ✅ `lychee compare` |
+| **Model benchmarking** | ❌ | ✅ `lychee compare` |
 | **Interactive agent sandbox** | ❌ | ✅ `lychee run --experimental` |
-| **Official Python/JS SDKs** | ❌ | ✅ lychee-python / lychee-js |
 | **Hardware scanner & optimizer** | ❌ | ✅ `lychee scan` |
 | **Code boilerplate generator** | ❌ | ✅ `lychee generate-client` |
+| **Official Python SDK** | ❌ | ✅ `lychee-python` |
+| **Official JavaScript SDK** | ❌ | ✅ `lychee-js` |
 
-> **TL;DR**: If you want a barebones local LLM runner, use Ollama. If you want **orchestration, multi-model pipelines, structured output validation, persistent memory, load balancing, and rich developer tooling** on top of the same inference engine — Lychee is for you.
+> **TL;DR**: Use Ollama for barebones local inference. Use Lychee when you need **orchestration, multi-model pipelines, universal HuggingFace pulls, a browser dashboard, structured output, persistent memory, load balancing, and a full 24-command developer toolkit.**
 
-### Architecture
+---
 
+## 🖥️ Lychee Desktop
+
+<p align="center">
+  <a href="https://github.com/MD-Mushfiqur123/lychee-desktop/releases">
+    <img src="https://img.shields.io/badge/⬇️%20Download-Lychee%20Desktop%20v0.1.0%20Alpha-Crimson?style=for-the-badge&logo=windows&logoColor=white" alt="Download Lychee Desktop"/>
+  </a>
+</p>
+
+Lychee Desktop is the native GUI companion app for Windows. It wraps the full Lychee engine with a polished chat interface, pipeline builder, and model manager — no terminal required.
+
+| 🎯 **Chat Interface** | 🔗 **Pipeline Builder** | 📦 **Model Manager** |
+|:---:|:---:|:---:|
+| Beautiful multi-turn chat | Visual DAG pipeline composer | Pull, list, and manage models |
+| Supports all 24 CLI features | Drag-and-drop step chaining | Real-time download progress |
+| Conversation memory browser | Save & share pipelines | 742+ HuggingFace models |
+
+### Quick Install
+
+```powershell
+# Download the latest release
+Invoke-WebRequest -Uri "https://github.com/MD-Mushfiqur123/lychee-desktop/releases/latest/download/Lychee-Setup.exe" -OutFile "Lychee-Setup.exe"
+
+# Install
+Start-Process -FilePath "Lychee-Setup.exe" -Wait
 ```
-┌─────────────────────────────────────────────────────┐
-│                    Lychee Server                     │
-│  ┌──────────┐ ┌──────────┐ ┌──────────────────────┐ │
-│  │  OpenAI   │ │Anthropic │ │   Lychee Native API  │ │
-│  │ Compat API│ │  API     │ │  /api/chat, /api/... │ │
-│  └──────────┘ └──────────┘ └──────────────────────┘ │
-│  ┌─────────────────────────────────────────────────┐ │
-│  │         Orchestration Layer (Lychee)             │ │
-│  │  Composer │ Router │ Memory │ Structured Output  │ │
-│  └─────────────────────────────────────────────────┘ │
-│  ┌─────────────────────────────────────────────────┐ │
-│  │      Inference Engine (Ollama / llama.cpp)       │ │
-│  │     llama.cpp · MLX · CUDA · ROCm · CPU         │ │
-│  └─────────────────────────────────────────────────┘ │
-└─────────────────────────────────────────────────────┘
-```
+
+> 📖 See the [Lychee Desktop repo](https://github.com/MD-Mushfiqur123/lychee-desktop) for full documentation and release notes.
 
 ---
 
-## ⚡ What Lychee Adds (Original Features)
-
-Lychee extends Ollama with advanced orchestration and developer utilities:
-
-1. **Model Composer**
-   Chain multiple local models together sequentially into multi-step pipelines. Pass outputs from one step as inputs to the next, using DAG-based conditional logic and routing.
-2. **Structured Output with Auto-Retry**
-   Go beyond basic JSON modes. Lychee validates output against a schema and automatically retries with error-correction prompting if the model produces invalid JSON.
-3. **Conversation Memory Store**
-   Persist chats locally (using SQLite and JSON). Save, list, resume, and delete conversations across sessions with simple API calls.
-4. **Model Router with Load Balancing**
-   Define virtual model names that route requests across multiple local or remote Ollama/Lychee instances using round-robin, random, or least-loaded strategies.
-5. **Official Python & JS SDKs**
-   Modern SDKs featuring first-class support for Model Composer, Structured Output, Memory, and Router configurations.
-
-## 🤝 Inherited from Ollama (Full Credit)
-
-The core engine and main capabilities are built directly on top of the excellent work by the Ollama team:
-- **Core Inference Engine**: Powered by `llama.cpp` and Apple's MLX for high-performance GPU/CPU inference.
-- **Universal API Layer**: OpenAI and Anthropic endpoint compatibility.
-- **Stateful Agent Mode**: Embedded agent runtime with local tool execution and approval gates.
-- **Model Registry & Management**: Seamlessly pull, run, and customize models.
-- **Prompt Caching & KV Sharing**: Automated prefix hashing and KV cache management.
-
----
-
-## 🔌 API Compatibility Layer
-
-Lychee acts as a local proxy that translates industry-standard APIs into optimized backend executions.
-
-| Endpoint | Standard | Features Supported | Status |
-| --- | --- | --- | --- |
-| `/api/chat` | Lychee Native | Streaming, Tools, Multi-turn Chat | ✅ Production |
-| `/api/generate` | Lychee Native | Streaming, Format, Options | ✅ Production |
-| `/v1/chat/completions` | OpenAI | Chat completions, System prompts | ✅ Production |
-| `/v1/messages` | Anthropic | Messages API, Streaming, System prompt | ✅ Production |
-| `/v1/responses` | OpenAI Responses | Structured responses, validation | ✅ Production |
-
----
-
-## 🚀 Quick Install
-
-> [!NOTE]
-> Lychee is currently in active early alpha phase. Requires Go 1.22+.
+## 📦 Installation
 
 ### go install (Recommended)
+
 ```bash
-go install github.com/MD-Mushfiqur123/lychee@v0.1.1-alpha
+# Requires Go 1.22+
+go install github.com/MD-Mushfiqur123/lychee@latest
 ```
 
+### Pre-built Binaries
+
+Download the latest binary for your platform from the [Releases page](https://github.com/MD-Mushfiqur123/lychee/releases):
+
+| Platform | Format |
+|:---|:---|
+| 🪟 **Windows** | `.exe` (x64) |
+| 🍎 **macOS** | `.tar.gz` (Intel + Apple Silicon) |
+| 🐧 **Linux** | `.tar.gz` (x64 + ARM64) |
+
 ### Docker
+
 ```bash
 docker build -t lychee https://github.com/MD-Mushfiqur123/lychee.git
 docker run -d -v lychee:/root/.lychee -p 11434:11434 --name lychee lychee
 ```
 
+### Windows (PowerShell Installer)
+
+```powershell
+irm https://raw.githubusercontent.com/MD-Mushfiqur123/lychee/main/scripts/install.ps1 | iex
+```
+
 ### Build from Source
+
 ```bash
 git clone https://github.com/MD-Mushfiqur123/lychee.git
 cd lychee
@@ -151,317 +261,127 @@ go build -o lychee .
 sudo mv lychee /usr/local/bin/
 ```
 
-### Windows (PowerShell)
-```powershell
-irm https://raw.githubusercontent.com/MD-Mushfiqur123/lychee/main/scripts/install.ps1 | iex
+### Client SDKs
+
+```bash
+# Python
+pip install lychee-python
+
+# JavaScript / TypeScript
+npm install lychee-js
 ```
-
-### Client SDKs Installation
-
-Official client SDKs are available to integrate Lychee into your applications:
-
-* **Python SDK:**
-  ```bash
-  pip install lychee-python
-  ```
-* **JavaScript SDK:**
-  ```bash
-  npm install lychee-js
-  ```
-* **Rust SDK (coming soon):**
-  Add the dependency in your `Cargo.toml`:
-  ```toml
-  [dependencies]
-  lychee-rs = { git = "https://github.com/MD-Mushfiqur123/lychee.git", branch = "main" }
-  ```
-
 
 ---
 
-## 💡 Core Features Showcase
+## 🏗️ Architecture
 
-### 1. Direct HuggingFace Pull (`lychee hf`)
-Search and download any GGUF format model directly from HuggingFace Hub with resume support, concurrent multi-shard downloads, and SHA256 integrity verification:
-```bash
-# Search catalog models
-lychee hf search llama
-
-# Download the recommended quantization of a HuggingFace model
-lychee hf pull microsoft/Phi-3-mini-4k-instruct-gguf
-
-# List all available quantizations for a model repository
-lychee hf pull bartowski/Meta-Llama-3.1-8B-Instruct-GGUF --list
-
-# Download a specific quantization variant
-lychee hf pull bartowski/Meta-Llama-3.1-8B-Instruct-GGUF --quant q5_k_m
 ```
-
-### 2. Drop-in Anthropic SDK Support (`/v1/messages`)
-Deploy Claude-compatible workflows locally. Point the official Anthropic client to Lychee:
-```python
-from anthropic import Anthropic
-
-client = Anthropic(
-    base_url="http://localhost:11434/v1",
-    api_key="lychee-local"
-)
-
-message = client.messages.create(
-    model="gemma3",
-    max_tokens=1000,
-    messages=[
-        {"role": "user", "content": "Explain quantum computing in one sentence."}
-    ]
-)
-print(message.content[0].text)
+┌──────────────────────────────────────────────────────────────┐
+│                      Lychee Server (:11434)                   │
+│  ┌─────────────┐ ┌──────────────┐ ┌────────────────────────┐ │
+│  │  OpenAI API  │ │ Anthropic API│ │   Lychee Native API    │ │
+│  │/v1/chat/comp │ │ /v1/messages │ │ /api/chat, /api/compose│ │
+│  └─────────────┘ └──────────────┘ └────────────────────────┘ │
+│  ┌──────────────────────────────────────────────────────────┐ │
+│  │              Orchestration Layer (Lychee)                 │ │
+│  │  Composer │ Router │ Memory │ Structured Output │ Pull   │ │
+│  └──────────────────────────────────────────────────────────┘ │
+│  ┌──────────────────────────────────────────────────────────┐ │
+│  │       Inference Engine (llama.cpp / MLX)                  │ │
+│  │      CUDA · ROCm · Metal · CPU · Vulkan                  │ │
+│  └──────────────────────────────────────────────────────────┘ │
+└──────────────────────────────────────────────────────────────┘
 ```
-
-### 3. OpenAI Responses API (`/v1/responses`)
-Generate structured data conforming to a JSON Schema directly from local models:
-```bash
-curl http://localhost:11434/v1/responses \
-  -H "Content-Type: application/json" \
-  -d '{
-    "model": "gemma3",
-    "prompt": "Extract information: Jane Doe is a 28-year-old engineer.",
-    "response_format": {
-      "type": "json_schema",
-      "json_schema": {
-        "name": "profile",
-        "schema": {
-          "type": "object",
-          "properties": {
-            "name": {"type": "string"},
-            "age": {"type": "integer"},
-            "occupation": {"type": "string"}
-          },
-          "required": ["name", "age", "occupation"]
-        }
-      }
-    }
-  }'
-```
-
-### 4. Interactive Agent Sandbox (`lychee run --experimental`)
-Run LLM-driven agents with local tool support. Lychee prompts you with terminal UI approval before executing commands, searching the web, or accessing the filesystem:
-```bash
-# Start an interactive agent loop with bash, web search, and web fetch capabilities
-lychee run gemma3 --experimental
-
-# Inside the prompt, ask:
-# >>> Search the web for latest Rust news and compile a list of highlights in rust_news.txt
-#
-# Lychee will prompt you in real time to approve/reject the web search and bash write actions!
-```
-
-### 5. Multi-Model Benchmarking & Comparison (`lychee compare`)
-Evaluate multiple local models head-to-head on the same prompt with real-time, side-by-side streaming output and response metrics (tokens/sec, time-to-first-token):
-```bash
-# Compare gemma3 and phi3 side-by-side
-lychee compare "Explain quantum computing in three sentences." gemma3 phi3
-```
-
-### 6. Interactive Terminal Performance Dashboard (`lychee stats --tui`)
-Monitor active models, VRAM usage, token throughput, and model context usage in real time, directly from your shell, using a beautiful Bubbletea-powered terminal UI:
-```bash
-lychee stats --tui
-```
-
-### 7. Hardware Detection & Code Generation
-Optimizing and integrating local models has never been simpler:
-* **Hardware Scan (`lychee scan`)**: Scan your hardware configuration and receive personalized local model sizing and execution recommendations.
-* **Code Boilerplate Generator (`lychee generate-client`)**: Generate ready-to-run, native API client code in Python, JavaScript, Rust, or Go for any loaded model.
 
 ---
 
-## 🚀 Quickstart
+## 🔗 Ecosystem
 
-1. **Start the Lychee server**
-   ```bash
-   lychee serve
-   ```
-
-2. **Run your first model**
-   ```bash
-   lychee run gemma3
-   ```
-
-3. **Interact via API**
-   
-   *Using the Anthropic Messages API:*
-   ```bash
-   curl http://localhost:11434/v1/messages \
-     -H "Content-Type: application/json" \
-     -d '{
-       "model": "gemma3",
-       "messages": [{"role": "user", "content": "Hello!"}],
-       "max_tokens": 1024
-     }'
-   ```
-
-   *Structured Output with Auto-Retry (`/api/structured`):*
-   ```bash
-   curl http://localhost:11434/api/structured \
-     -H "Content-Type: application/json" \
-     -d '{
-       "model": "gemma3",
-       "prompt": "Extract the country name and population: France has a population of 67 million.",
-       "schema": {
-         "type": "object",
-         "properties": {
-           "country": {"type": "string"},
-           "population": {"type": "string"}
-         },
-         "required": ["country", "population"]
-       },
-       "max_retries": 3
-     }'
-   ```
-
-   *Conversation Memory Store (`/api/conversations`):*
-   ```bash
-   # Create a new persistent conversation session
-   curl http://localhost:11434/api/conversations \
-     -H "Content-Type: application/json" \
-     -d '{
-       "model": "gemma3",
-       "messages": [
-         {"role": "user", "content": "Hello! I am planning a trip to Paris."}
-       ]
-     }'
-   
-   # Retrieve conversation details and message history using the returned session ID
-   curl http://localhost:11434/api/conversations/<conversation_id>
-
-   # Resume conversation by passing the conversation_id parameter to the chat endpoint
-   curl http://localhost:11434/api/chat \
-     -H "Content-Type: application/json" \
-     -d '{
-       "model": "gemma3",
-       "conversation_id": "<conversation_id>",
-       "messages": [
-         {"role": "user", "content": "What is the first thing I should visit?"}
-       ]
-     }'
-   ```
-
-   *Virtual Model Router (`/api/routes`):*
-   ```bash
-   # Register a virtual model route called 'fast-route' distributed across two backends
-   curl http://localhost:11434/api/routes \
-     -H "Content-Type: application/json" \
-     -d '{
-       "name": "fast-route",
-       "endpoints": [
-         {"host": "http://localhost:11434", "model": "gemma3", "weight": 2},
-         {"host": "http://localhost:11435", "model": "phi3", "weight": 1}
-       ],
-       "strategy": "weighted_round_robin"
-     }'
-
-   # Call the virtual route like a standard model
-   curl http://localhost:11434/api/chat \
-     -H "Content-Type: application/json" \
-     -d '{
-       "model": "fast-route",
-       "messages": [{"role": "user", "content": "Hello!"}]
-     }'
-   ```
-
-   *Model Composer Chaining (`/api/compose`):*
-   ```bash
-   # Execute a multi-model pipeline where outputs pass sequentially
-   curl http://localhost:11434/api/compose \
-     -H "Content-Type: application/json" \
-     -d '{
-       "input": "Life is like a box of chocolates.",
-       "steps": [
-         {
-           "model": "gemma3",
-           "prompt": "Translate this sentence to French: {{input}}"
-         },
-         {
-           "model": "phi3",
-           "prompt": "Explain the meaning of this French translation: {{step[0].output}}"
-         }
-       ],
-       "stream": false
-     }'
-   ```
+| Resource | Description | Link |
+|:---|:---|:---|
+| 🖥️ **Lychee Desktop** | Native Windows GUI app | [md-mushfiqur123/lychee-desktop](https://github.com/MD-Mushfiqur123/lychee-desktop) |
+| 🌐 **Landing Page** | Project homepage & showcase | [lychee-landing-page](https://md-mushfiqur123.github.io/lychee-landing-page/) |
+| 📖 **Documentation** | Full VitePress docs | [lychee-docs](https://md-mushfiqur123.github.io/lychee-docs/) |
+| 🐍 **Python SDK** | Official Python client | `pip install lychee-python` |
+| 📦 **npm Package** | Official JS/TS client | `npm install lychee-js` |
+| 🐛 **Issue Tracker** | Bug reports & feature requests | [GitHub Issues](https://github.com/MD-Mushfiqur123/lychee/issues) |
+| 💬 **Discussions** | Community & Q&A | [GitHub Discussions](https://github.com/MD-Mushfiqur123/lychee/discussions) |
 
 ---
 
-## 🛠️ Supported Backends
+## 📚 Full CLI Command Reference
 
-Lychee leverages the best-in-class local inference engines under the hood:
-* **llama.cpp** — optimized CPU/GPU execution for Apple Silicon (Metal), NVIDIA (CUDA), and AMD (ROCm).
-* **MLX** — native Apple Silicon machine learning framework for maximum performance on macOS.
+Lychee ships with **24 CLI commands** — everything you need to manage local LLMs:
 
----
+```bash
+$ lychee help
 
-## 📚 Documentation
-
-Full documentation is available at **[md-mushfiqur123.github.io/lychee-docs](https://md-mushfiqur123.github.io/lychee-docs/)** — powered by VitePress.
-
-| Resource | Link |
-| --- | --- |
-| 📖 **Full Documentation** | [lychee-docs](https://md-mushfiqur123.github.io/lychee-docs/) |
-| 🌐 **Landing Page** | [lychee-landing-page](https://md-mushfiqur123.github.io/lychee-landing-page/) |
-| 💻 **GitHub Repository** | [MD-Mushfiqur123/lychee](https://github.com/MD-Mushfiqur123/lychee) |
-| 📦 **Releases** | [Releases Page](https://github.com/MD-Mushfiqur123/lychee/releases) |
-| 🐛 **Issue Tracker** | [Issues](https://github.com/MD-Mushfiqur123/lychee/issues) |
-| 💬 **Discussions** | [Discussions](https://github.com/MD-Mushfiqur123/lychee/discussions) |
+COMMANDS:
+  serve             Start the Lychee server
+  run               Run a model interactively
+  pull              Pull a model from HuggingFace (auto-detect)
+  list              List all downloaded models
+  show              Show model details
+  remove            Remove a downloaded model
+  compare           Benchmark models side-by-side
+  stats             Show performance stats (--tui for dashboard)
+  scan              Scan hardware & get model recommendations
+  generate-client   Generate API client boilerplate
+  hf search         Search HuggingFace for GGUF models
+  hf pull           Pull specific HuggingFace model quantization
+  compose           Execute multi-model DAG pipelines
+  routes            Manage load-balanced model routes
+  conversations     Manage persistent conversation memory
+  memory            View and search conversation history
+  ps                List running models
+  stop              Stop a running model
+  config            Show/edit configuration
+  version           Show version info
+  help              Show this help message
+```
 
 ---
 
 ## 🤝 Contributing
 
-We welcome contributions! Whether it's a bug fix, feature, documentation improvement, or just a typo — every bit helps.
+We welcome contributions of all kinds — bug fixes, features, docs, and ideas.
 
 See **[CONTRIBUTING.md](./CONTRIBUTING.md)** for:
-- Development setup and build instructions
+- Development setup & build instructions
 - Commit message conventions
 - Pull request guidelines
 - Testing requirements
-- Our roadmap focus and differentiators
+- Our roadmap & priority areas
 
-Not sure where to start? Check out [good first issues](https://github.com/MD-Mushfiqur123/lychee/issues?q=is%3Aissue+is%3Aopen+label%3A%22good+first+issue%22).
-
----
-
-## 🔍 Contributors Wanted!
-
-Lychee is actively looking for talented contributors from the AI/LLM open-source community. We've identified **114 high-quality potential contributors** from top projects like Ollama, llama.cpp, Hugging Face Transformers, LangChain, vLLM, Open WebUI, and more.
-
-📋 See the full list: **[CONTRIBUTORS.md](./CONTRIBUTORS.md)**
+**Not sure where to start?** Check out [good first issues](https://github.com/MD-Mushfiqur123/lychee/issues?q=is%3Aissue+is%3Aopen+label%3A%22good+first+issue%22).
 
 ### Key Areas We Need Help With
 
 | Area | Skills Needed |
-| --- | --- |
-| 🧠 **LLM Inference** | Experience with llama.cpp, MLX, CUDA, ROCm optimization |
-| 🎛️ **Multi-Model Pipelines** | DAG orchestration, model composition, chaining |
-| 📊 **Structured Output** | JSON schema validation, constrained generation, Pydantic-style parsing |
-| 💾 **Conversation Memory** | SQLite, vector stores, RAG, embedding integration |
-| ⚖️ **Load Balancing** | Multi-instance routing, health checks, auto-scaling |
-| 🖥️ **TUI/CLI** | Go bubbletea, terminal UIs, developer tooling |
-| 🌐 **SDKs & APIs** | Python, JavaScript/TypeScript, API design |
-| 📚 **Documentation** | Technical writing, tutorials, guides |
-
-> Got skills in any of these areas? [Open an issue](https://github.com/MD-Mushfiqur123/lychee/issues/new) or [start a discussion](https://github.com/MD-Mushfiqur123/lychee/discussions) and let's build something great together! 🍒
+|:---|:---|
+| 🧠 **LLM Inference** | llama.cpp, MLX, CUDA, ROCm optimization |
+| 🎛️ **Multi-Model Pipelines** | DAG orchestration, model composition |
+| 📊 **Structured Output** | JSON schema, constrained generation |
+| 💾 **Conversation Memory** | SQLite, vector stores, RAG |
+| ⚖️ **Load Balancing** | Multi-instance routing, health checks |
+| 🖥️ **TUI / Dashboard** | Go bubbletea, web UIs |
+| 🌐 **SDKs & APIs** | Python, TypeScript, API design |
+| 📚 **Documentation** | Technical writing, tutorials |
 
 ---
 
-## 👥 Contributors
+## 👥 Community & Contributors
 
-Thanks to everyone who has contributed to making Lychee better!
+Thanks to everyone who has contributed to Lychee! Want to see your name here? [Open a PR](https://github.com/MD-Mushfiqur123/lychee/pulls)!
 
-<!-- ALL-CONTRIBUTORS-LIST:START - Do not remove or modify this section -->
+<!-- ALL-CONTRIBUTORS-LIST:START -->
 <!-- prettier-ignore-start -->
 <!-- markdownlint-disable -->
 <!-- ALL-CONTRIBUTORS-LIST:END -->
 
-*Want to see your name here? Check out the [Contributing guide](./CONTRIBUTING.md) and open a PR!*
+### 📋 Contributors Wanted!
+
+Lychee is actively seeking contributors from the AI/LLM open-source community. See the full list of potential collaborators in **[CONTRIBUTORS.md](./CONTRIBUTORS.md)**.
 
 ---
 
@@ -471,7 +391,7 @@ Thanks to everyone who has contributed to making Lychee better!
   <a href="https://star-history.com/#MD-Mushfiqur123/lychee&Date">
     <img src="https://api.star-history.com/svg?repos=MD-Mushfiqur123/lychee&type=Date" alt="Star History Chart" width="600"/>
   </a>
-  <p><em>⭐ 14 stars and growing — <a href="https://github.com/MD-Mushfiqur123/lychee">star the repo</a> to show your support!</em></p>
+  <p><em>⭐ Star the repo to show your support!</em></p>
 </div>
 
 ---
