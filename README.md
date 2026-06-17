@@ -66,6 +66,51 @@
 
 ---
 
+## 📥 Install
+
+<p align="center">
+  <strong>Copy & paste into your terminal — one command, zero friction.</strong>
+</p>
+
+<table align="center">
+  <tr>
+    <th align="center">🪟 Windows</th>
+    <th align="center">🍎 macOS</th>
+    <th align="center">🐧 Linux</th>
+    <th align="center">🔧 Go</th>
+  </tr>
+  <tr>
+    <td align="center">
+      <sub>PowerShell</sub><br/>
+      <code>irm https://raw.githubusercontent.com/MD-Mushfiqur123/lychee/main/scripts/install.ps1 | iex</code>
+    </td>
+    <td align="center">
+      <sub>curl | sh</sub><br/>
+      <code>curl -fsSL https://raw.githubusercontent.com/MD-Mushfiqur123/lychee/main/scripts/install.sh | sh</code>
+    </td>
+    <td align="center">
+      <sub>curl | sh</sub><br/>
+      <code>curl -fsSL https://raw.githubusercontent.com/MD-Mushfiqur123/lychee/main/scripts/install.sh | sh</code>
+    </td>
+    <td align="center">
+      <sub>go install (latest)</sub><br/>
+      <code>go install github.com/MD-Mushfiqur123/lychee@latest</code>
+    </td>
+  </tr>
+</table>
+
+```bash
+# 🍒 Install Lychee (requires Go 1.22+)
+go install github.com/MD-Mushfiqur123/lychee@latest
+
+# Verify it works
+lychee version
+```
+
+> 💡 The one-liner scripts auto-detect your OS and architecture. They try `go install` first (if Go 1.22+ is available), otherwise they download the pre-built binary from GitHub Releases. **Docker images** are also available — see [Installation](#-installation) section below.
+
+---
+
 ## 🚀 Quick Start
 
 ### One-Liner Install
