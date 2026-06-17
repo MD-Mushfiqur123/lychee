@@ -696,6 +696,8 @@ Use "lychee [command] --help" for more information about a command.`,
 		NewGenerateClientCmd(),
 		NewCommunityCmd(),
 		NewCompletionCmd(),
+		NewInteractiveCmd(),
+		NewUpdateCmd(),
 		launch.LaunchCmd(checkServerHeartbeat, runInteractiveTUI),
 	)
 
