@@ -1,11 +1,13 @@
-openapi: 3.1.0
+openapi: "3.0.3"
 info:
   title: Lychee API
   description: |
     Lychee is a universal local LLM runtime with multi-protocol API support.
     It extends Ollama with Anthropic API compatibility, Model Composer, Agent Sandbox,
     and an embedded Web Dashboard.
-  version: 0.1.0-alpha
+
+    This document describes the native Lychee REST API endpoints.
+  version: "1.0.0"
   license:
     name: MIT
     url: https://github.com/MD-Mushfiqur123/lychee/blob/main/LICENSE
@@ -18,448 +20,995 @@ servers:
     description: Local Lychee server (default)
 
 tags:
-  - name: compose
-    description: Model Composer — chain multiple models in a pipeline
-  - name: chat
-    description: Native Lychee chat API
-  - name: anthropic
-    description: Anthropic Messages API compatibility layer
-  - name: openai
-    description: OpenAI API compatibility layer
-  - name: models
-    description: Model management
-  - name: structured
-    description: Structured Output API with auto-retry
-  - name: conversations
-    description: Conversation memory store CRUD operations
-  - name: routes
-    description: Virtual model router load balancing configurations
+  - name: General
+    description: Health check and server metadata
+  - name: Models
+    description: Model management — list, pull, show, delete
+  - name: Inference
+    description: Text generation, chat, and embeddings
+  - name: Composer
+    description: Pipeline composition across multiple models
+  - name: Structured
+    description: Schema-constrained generation with auto-retry
 
 paths:
-  /api/compose:
-    post:
-      tags: [compose]
-      summary: Execute a multi-model composition chain
-      description: |
-        Chains multiple local models in a pipeline. Supports streaming, parallel
-        branch execution, per-step timeouts, and automatic fallback model retry.
+  # ── Health / Dashboard ──────────────────────────────────────────────
 
-        Template variables:
-        - `{{input}}` — the original user input
-        - `{{step[N].output}}` — output from step N (0-indexed)
-        - `{{step[N].parallel[M].output}}` — output from parallel branch M of step N
-      operationId: composeChain
-      requestBody:
-        required: true
-        content:
-          application/json:
-            schema:
-              $ref: '#/components/schemas/ComposeRequest'
+  /:
+    get:
+      tags: [General]
+      summary: Health check / Dashboard
+      description: |
+        Returns a simple text response confirming the server is running.
+        When the request `Accept` header includes `text/html`, the embedded
+        Web Dashboard (Single Page App) is served instead.
+      operationId: healthCheck
       responses:
-        '200':
-          description: Chain result (or SSE stream if stream=true)
+        "200":
+          description: Server is running
+          content:
+            text/plain:
+              schema:
+                type: string
+                example: "Lychee is running"
+            text/html:
+              description: Embedded Web Dashboard (when Accept: text/html)
+        "500":
+          $ref: "#/components/responses/InternalError"
+
+  # ── Server Version ──────────────────────────────────────────────────
+
+  /api/version:
+    get:
+      tags: [General]
+      summary: Get server version
+      description: Returns the current Lychee server version string.
+      operationId: getVersion
+      responses:
+        "200":
+          description: Version information
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/ComposeResponse'
-            text/event-stream:
-              schema:
-                $ref: '#/components/schemas/ComposeEvent'
-        '400':
-          $ref: '#/components/responses/BadRequest'
-        '500':
-          $ref: '#/components/responses/InternalError'
+                type: object
+                required: [version]
+                properties:
+                  version:
+                    type: string
+                    example: "0.1.0-alpha"
+        "500":
+          $ref: "#/components/responses/InternalError"
 
-  /v1/messages:
+  # ── List Models ─────────────────────────────────────────────────────
+
+  /api/tags:
+    get:
+      tags: [Models]
+      summary: List all locally available models
+      description: |
+        Returns the list of models that have been pulled and are available
+        locally, including metadata like size, digest, format, family, and
+        parameter size.
+      operationId: listModels
+      responses:
+        "200":
+          description: List of local models
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ListResponse"
+        "500":
+          $ref: "#/components/responses/InternalError"
+
+  # ── Running Models ──────────────────────────────────────────────────
+
+  /api/ps:
+    get:
+      tags: [Models]
+      summary: List currently loaded / running models
+      description: |
+        Returns the list of models currently loaded in memory (active runners),
+        along with VRAM usage, context length, and expiration time.
+      operationId: listRunningModels
+      responses:
+        "200":
+          description: List of running models
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ProcessResponse"
+        "500":
+          $ref: "#/components/responses/InternalError"
+
+  # ── Pull Model ──────────────────────────────────────────────────────
+
+  /api/pull:
     post:
-      tags: [anthropic]
-      summary: Anthropic Messages API (drop-in compatible)
-      operationId: anthropicMessages
+      tags: [Models]
+      summary: Pull (download) a model from the registry
+      description: |
+        Downloads a model from a configured registry. Progress is streamed as
+        newline-delimited JSON (`application/x-ndjson`) when `stream` is true.
+      operationId: pullModel
       requestBody:
         required: true
         content:
           application/json:
             schema:
-              type: object
-              required: [model, messages, max_tokens]
-              properties:
-                model:
-                  type: string
-                  example: "gemma3"
-                messages:
-                  type: array
-                  items:
-                    type: object
-                    properties:
-                      role:
-                        type: string
-                        enum: [user, assistant]
-                      content:
-                        type: string
-                max_tokens:
-                  type: integer
-                stream:
-                  type: boolean
+              $ref: "#/components/schemas/PullRequest"
       responses:
-        '200':
-          description: Anthropic-format message response
+        "200":
+          description: Pull completed (or streaming progress)
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ProgressResponse"
+            application/x-ndjson:
+              schema:
+                $ref: "#/components/schemas/ProgressResponse"
+              description: Streaming progress events
+        "400":
+          $ref: "#/components/responses/BadRequest"
+        "500":
+          $ref: "#/components/responses/InternalError"
+
+  # ── Show Model Info ─────────────────────────────────────────────────
+
+  /api/show:
+    post:
+      tags: [Models]
+      summary: Show detailed model information
+      description: |
+        Returns detailed metadata about a model: modelfile, parameters, template,
+        license, capabilities, tensor information, and more.
+      operationId: showModel
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/ShowRequest"
+      responses:
+        "200":
+          description: Model details
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ShowResponse"
+        "400":
+          $ref: "#/components/responses/BadRequest"
+        "404":
+          $ref: "#/components/responses/NotFound"
+        "500":
+          $ref: "#/components/responses/InternalError"
+
+  # ── Delete Model ────────────────────────────────────────────────────
+
+  /api/delete:
+    delete:
+      tags: [Models]
+      summary: Delete a locally available model
+      description: Removes a model and its associated files from local storage.
+      operationId: deleteModel
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/DeleteRequest"
+      responses:
+        "200":
+          description: Model deleted successfully
+        "400":
+          $ref: "#/components/responses/BadRequest"
+        "404":
+          $ref: "#/components/responses/NotFound"
+        "500":
+          $ref: "#/components/responses/InternalError"
+
+  # ── Text Generation ─────────────────────────────────────────────────
+
+  /api/generate:
+    post:
+      tags: [Inference]
+      summary: Generate text completions
+      description: |
+        Generates a text response from a model given a prompt. Supports streaming
+        via newline-delimited JSON when `stream` is true (default). Also supports
+        image generation when the model has the Image capability.
+      operationId: generate
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/GenerateRequest"
+      responses:
+        "200":
+          description: Generation response (or streaming events)
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/GenerateResponse"
+            application/x-ndjson:
+              schema:
+                $ref: "#/components/schemas/GenerateResponse"
+              description: Streaming generation events (one per line)
+        "400":
+          $ref: "#/components/responses/BadRequest"
+        "404":
+          $ref: "#/components/responses/NotFound"
+        "500":
+          $ref: "#/components/responses/InternalError"
+        "503":
+          $ref: "#/components/responses/ServiceUnavailable"
+
+  # ── Chat Completion ─────────────────────────────────────────────────
 
   /api/chat:
     post:
-      tags: [chat]
-      summary: Native multi-turn chat
+      tags: [Inference]
+      summary: Multi-turn chat completion
+      description: |
+        Generates the next assistant message in a conversation given a list of
+        messages. Supports system prompts, tool calling (native function tools),
+        thinking/reasoning modes, image inputs (multimodal), and streaming.
+
+        Streaming uses newline-delimited JSON (`application/x-ndjson`).
       operationId: chat
       requestBody:
         required: true
         content:
           application/json:
             schema:
-              type: object
-              required: [model, messages]
-              properties:
-                model:
-                  type: string
-                messages:
-                  type: array
-                  items:
-                    type: object
-                stream:
-                  type: boolean
-                  default: true
+              $ref: "#/components/schemas/ChatRequest"
       responses:
-        '200':
-          description: Chat response
+        "200":
+          description: Chat response (or streaming events)
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ChatResponse"
+            application/x-ndjson:
+              schema:
+                $ref: "#/components/schemas/ChatResponse"
+              description: Streaming chat events (one per line)
+        "400":
+          $ref: "#/components/responses/BadRequest"
+        "404":
+          $ref: "#/components/responses/NotFound"
+        "500":
+          $ref: "#/components/responses/InternalError"
+        "503":
+          $ref: "#/components/responses/ServiceUnavailable"
 
-  /v1/chat/completions:
+  # ── Embeddings ──────────────────────────────────────────────────────
+
+  /api/embed:
     post:
-      tags: [openai]
-      summary: OpenAI Chat Completions (drop-in compatible)
-      operationId: openaiChatCompletions
+      tags: [Inference]
+      summary: Generate embeddings
+      description: |
+        Generates vector embeddings for the provided input. Accepts a single
+        string or an array of strings as input. The input is batched internally.
+      operationId: embed
       requestBody:
         required: true
         content:
           application/json:
             schema:
-              type: object
-              required: [model, messages]
-              properties:
-                model:
-                  type: string
-                messages:
-                  type: array
-                  items:
-                    type: object
-                stream:
-                  type: boolean
+              $ref: "#/components/schemas/EmbedRequest"
       responses:
-        '200':
-          description: OpenAI-format chat completion
+        "200":
+          description: Embedding vectors
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/EmbedResponse"
+        "400":
+          $ref: "#/components/responses/BadRequest"
+        "404":
+          $ref: "#/components/responses/NotFound"
+        "500":
+          $ref: "#/components/responses/InternalError"
 
-  /v1/responses:
+  # ── Pipeline Composition ────────────────────────────────────────────
+
+  /api/compose:
     post:
-      tags: [openai]
-      summary: OpenAI Responses API with JSON Schema validation
-      operationId: openaiResponses
+      tags: [Composer]
+      summary: Execute a multi-model composition pipeline
+      description: |
+        Chains multiple models in a DAG pipeline. Each step's output can be
+        referenced in downstream prompts via `{{input}}`, `{{step[N].output}}`,
+        or `{{step[N].parallel[M].output}}`.
+
+        Supports per-step streaming progress via Server-Sent Events when
+        `stream=true`.
+      operationId: compose
       requestBody:
         required: true
         content:
           application/json:
             schema:
-              type: object
-              required: [model, prompt]
-              properties:
-                model:
-                  type: string
-                prompt:
-                  type: string
-                response_format:
-                  type: object
+              $ref: "#/components/schemas/ComposeRequest"
       responses:
-        '200':
-          description: Structured JSON response
+        "200":
+          description: Pipeline result
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ComposeResponse"
+            text/event-stream:
+              schema:
+                $ref: "#/components/schemas/ComposeEvent"
+              description: Streaming progress events
+        "400":
+          $ref: "#/components/responses/BadRequest"
+        "500":
+          $ref: "#/components/responses/InternalError"
 
-  /api/tags:
-    get:
-      tags: [models]
-      summary: List all locally available models
-      operationId: listModels
-      responses:
-        '200':
-          description: List of models
+  # ── Structured Output ───────────────────────────────────────────────
 
   /api/structured:
     post:
-      tags: [structured]
+      tags: [Structured]
       summary: Generate schema-conforming JSON with auto-retry
-      operationId: generateStructured
+      description: |
+        Generates JSON output that conforms to a provided JSON Schema. On
+        validation failure the system retries up to `max_retries` times (default 3)
+        with error feedback fed back to the model.
+
+        Supports streaming progress via Server-Sent Events when `stream=true`.
+      operationId: structuredOutput
       requestBody:
         required: true
         content:
           application/json:
             schema:
-              type: object
-              required: [model, prompt]
-              properties:
-                model:
-                  type: string
-                prompt:
-                  type: string
-                schema:
-                  type: object
-                max_retries:
-                  type: integer
-                  default: 3
-                options:
-                  type: object
+              $ref: "#/components/schemas/StructuredRequest"
       responses:
-        '200':
+        "200":
           description: Structured generation result
           content:
             application/json:
               schema:
-                type: object
-                properties:
-                  output:
-                    type: string
-                  valid:
-                    type: boolean
-                  attempts:
-                    type: integer
-                  errors:
-                    type: array
-                    items:
-                      type: string
+                $ref: "#/components/schemas/StructuredResponse"
+            text/event-stream:
+              schema:
+                $ref: "#/components/schemas/StructuredEvent"
+              description: Streaming progress events
+        "400":
+          $ref: "#/components/responses/BadRequest"
+        "500":
+          $ref: "#/components/responses/InternalError"
 
-  /api/conversations:
-    get:
-      tags: [conversations]
-      summary: List summaries of all saved conversations
-      operationId: listConversations
-      responses:
-        '200':
-          description: List of conversation summaries
-          content:
-            application/json:
-              schema:
-                type: array
-                items:
-                  $ref: '#/components/schemas/ConversationSummary'
-    post:
-      tags: [conversations]
-      summary: Create a new conversation
-      operationId: createConversation
-      requestBody:
-        required: true
-        content:
-          application/json:
-            schema:
-              type: object
-              required: [model, messages]
-              properties:
-                model:
-                  type: string
-                messages:
-                  type: array
-                  items:
-                    $ref: '#/components/schemas/ChatMessage'
-      responses:
-        '201':
-          description: Conversation created
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/Conversation'
-
-  /api/conversations/{id}:
-    get:
-      tags: [conversations]
-      summary: Retrieve conversation details and message history
-      operationId: getConversation
-      parameters:
-        - name: id
-          in: path
-          required: true
-          schema:
-            type: string
-      responses:
-        '200':
-          description: Full conversation details
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/Conversation'
-    delete:
-      tags: [conversations]
-      summary: Delete a conversation
-      operationId: deleteConversation
-      parameters:
-        - name: id
-          in: path
-          required: true
-          schema:
-            type: string
-      responses:
-        '200':
-          description: Conversation deleted
-
-  /api/routes:
-    get:
-      tags: [routes]
-      summary: List all registered virtual routes
-      operationId: listRoutes
-      responses:
-        '200':
-          description: List of routes
-          content:
-            application/json:
-              schema:
-                type: array
-                items:
-                  $ref: '#/components/schemas/ModelRoute'
-    post:
-      tags: [routes]
-      summary: Create or update a virtual model route
-      operationId: createRoute
-      requestBody:
-        required: true
-        content:
-          application/json:
-            schema:
-              $ref: '#/components/schemas/ModelRoute'
-      responses:
-        '200':
-          description: Route created or updated
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/ModelRoute'
-
-  /api/routes/{name}:
-    delete:
-      tags: [routes]
-      summary: Delete a virtual model route
-      operationId: deleteRoute
-      parameters:
-        - name: name
-          in: path
-          required: true
-          schema:
-            type: string
-      responses:
-        '200':
-          description: Route deleted
-
-  /api/routes/{name}/status:
-    get:
-      tags: [routes]
-      summary: Query the health and status of a virtual model route
-      operationId: getRouteStatus
-      parameters:
-        - name: name
-          in: path
-          required: true
-          schema:
-            type: string
-      responses:
-        '200':
-          description: Route status details
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/RouteStatusResponse'
-        '404':
-          $ref: '#/components/responses/NotFound'
-        '500':
-          $ref: '#/components/responses/InternalError'
+# ═══════════════════════════════════════════════════════════════════════
+# Component Schemas
+# ═══════════════════════════════════════════════════════════════════════
 
 components:
   schemas:
-    ComposeStep:
+    # ── Generic ───────────────────────────────────────────────────────
+
+    Error:
+      type: object
+      required: [error]
+      properties:
+        error:
+          type: string
+          description: Human-readable error message.
+          example: "model 'foo' not found, try pulling it first"
+
+    # ── Model listing ─────────────────────────────────────────────────
+
+    ModelDetails:
+      type: object
+      description: Detailed metadata about a model's configuration.
+      properties:
+        parent_model:
+          type: string
+          example: ""
+        format:
+          type: string
+          example: "gguf"
+        family:
+          type: string
+          example: "gemma3"
+        families:
+          type: array
+          items:
+            type: string
+          example: ["gemma3"]
+        parameter_size:
+          type: string
+          example: "12B"
+        quantization_level:
+          type: string
+          example: "Q4_K_M"
+        context_length:
+          type: integer
+          example: 131072
+        embedding_length:
+          type: integer
+          example: 3840
+
+    ListModelResponse:
+      type: object
+      required: [name, model, modified_at, size, digest]
+      properties:
+        name:
+          type: string
+          example: "gemma3:12b"
+        model:
+          type: string
+          example: "gemma3:12b"
+        remote_model:
+          type: string
+          nullable: true
+        remote_host:
+          type: string
+          nullable: true
+        modified_at:
+          type: string
+          format: date-time
+          example: "2026-06-01T10:00:00Z"
+        size:
+          type: integer
+          format: int64
+          example: 8154202112
+        digest:
+          type: string
+          example: "sha256:a4e5e156ddec27e286f75328784d7106b60a4eb1d246e950a001a3f944fbda99"
+        details:
+          $ref: "#/components/schemas/ModelDetails"
+        capabilities:
+          type: array
+          items:
+            type: string
+          example: ["completion", "chat"]
+
+    ListResponse:
+      type: object
+      description: Response from GET /api/tags.
+      properties:
+        models:
+          type: array
+          items:
+            $ref: "#/components/schemas/ListModelResponse"
+
+    # ── Running models (ps) ────────────────────────────────────────────
+
+    ProcessModelResponse:
+      type: object
+      required: [name, model, size, digest, expires_at, size_vram]
+      properties:
+        name:
+          type: string
+          example: "gemma3:12b"
+        model:
+          type: string
+          example: "gemma3:12b"
+        size:
+          type: integer
+          format: int64
+          description: Total memory usage in bytes.
+          example: 12160237568
+        digest:
+          type: string
+          example: "sha256:a4e5e156ddec27e286f75328784d7106b60a4eb1d246e950a001a3f944fbda99"
+        details:
+          $ref: "#/components/schemas/ModelDetails"
+        expires_at:
+          type: string
+          format: date-time
+          description: When the model will be unloaded from memory.
+          example: "2026-06-17T11:25:00Z"
+        size_vram:
+          type: integer
+          format: int64
+          description: VRAM usage in bytes.
+          example: 11534336000
+        context_length:
+          type: integer
+          description: Context length the model was loaded with.
+          example: 32768
+
+    ProcessResponse:
+      type: object
+      description: Response from GET /api/ps.
+      properties:
+        models:
+          type: array
+          items:
+            $ref: "#/components/schemas/ProcessModelResponse"
+
+    # ── Pull ──────────────────────────────────────────────────────────
+
+    PullRequest:
+      type: object
+      required: [model]
+      properties:
+        model:
+          type: string
+          description: Model name to pull (e.g. "gemma3:12b").
+          example: "gemma3:12b"
+        stream:
+          type: boolean
+          default: false
+          description: Stream pull progress as newline-delimited JSON.
+        insecure:
+          type: boolean
+          default: false
+          deprecated: true
+        name:
+          type: string
+          deprecated: true
+          description: Deprecated — use `model` instead.
+
+    ProgressResponse:
+      type: object
+      required: [status]
+      properties:
+        status:
+          type: string
+          description: Current status. Final value is `"success"`.
+          example: "downloading 4e5e156ddec2"
+        digest:
+          type: string
+          example: "sha256:4e5e156ddec27e286f75328784d7106b60a4eb1d246e950a001a3f944fbda99"
+        total:
+          type: integer
+          format: int64
+          example: 8593788928
+        completed:
+          type: integer
+          format: int64
+          example: 2147483648
+
+    # ── Show ──────────────────────────────────────────────────────────
+
+    ShowRequest:
+      type: object
+      required: [model]
+      properties:
+        model:
+          type: string
+          description: Model name to inspect.
+          example: "gemma3:12b"
+        system:
+          type: string
+          description: Override the system prompt to display.
+        template:
+          type: string
+          deprecated: true
+        verbose:
+          type: boolean
+          default: false
+        options:
+          type: object
+          additionalProperties: true
+        name:
+          type: string
+          deprecated: true
+          description: Deprecated — use `model` instead.
+
+    Tensor:
+      type: object
+      properties:
+        name:
+          type: string
+          example: "blk.0.attn_q.weight"
+        type:
+          type: string
+          example: "Q4_K_M"
+        shape:
+          type: array
+          items:
+            type: integer
+            format: uint64
+          example: [4096, 4096]
+
+    ShowResponse:
+      type: object
+      description: Response from POST /api/show.
+      properties:
+        license:
+          type: string
+          example: "gemma"
+        modelfile:
+          type: string
+          example: "# Modelfile generated by lychee ..."
+        parameters:
+          type: string
+          example: "stop \"<end_of_turn>\""
+        template:
+          type: string
+          example: "{{ .System }} {{ .Prompt }}"
+        system:
+          type: string
+          example: "You are a helpful assistant."
+        renderer:
+          type: string
+        parser:
+          type: string
+        details:
+          $ref: "#/components/schemas/ModelDetails"
+        messages:
+          type: array
+          items:
+            $ref: "#/components/schemas/Message"
+        remote_model:
+          type: string
+          nullable: true
+        remote_host:
+          type: string
+          nullable: true
+        model_info:
+          type: object
+          additionalProperties: true
+        projector_info:
+          type: object
+          additionalProperties: true
+        tensors:
+          type: array
+          items:
+            $ref: "#/components/schemas/Tensor"
+        capabilities:
+          type: array
+          items:
+            type: string
+          example: ["completion", "chat"]
+        modified_at:
+          type: string
+          format: date-time
+        requires:
+          type: string
+
+    # ── Delete ────────────────────────────────────────────────────────
+
+    DeleteRequest:
+      type: object
+      required: [model]
+      properties:
+        model:
+          type: string
+          description: Model name to delete.
+          example: "gemma3:12b"
+        name:
+          type: string
+          deprecated: true
+          description: Deprecated — use `model` instead.
+
+    # ── Generate ──────────────────────────────────────────────────────
+
+    GenerateRequest:
       type: object
       required: [model, prompt]
       properties:
         model:
           type: string
-          example: "gemma3"
+          description: Model name.
+          example: "gemma3:12b"
         prompt:
           type: string
-          example: "Summarize: {{input}}"
-        options:
-          type: object
-          additionalProperties: true
-        timeout_sec:
-          type: integer
-          example: 30
-        fallback_model:
+          description: Text prompt to send to the model.
+          example: "Why is the sky blue?"
+        suffix:
           type: string
-          example: "llama3.2"
-        parallel:
+          description: Text to append after the model's response.
+        system:
+          type: string
+          description: Override the model's default system message.
+        template:
+          type: string
+          description: Override the model's default prompt template.
+        context:
           type: array
           items:
-            $ref: '#/components/schemas/ComposeStep'
-
-    ComposeRequest:
-      type: object
-      required: [input, steps]
-      properties:
-        input:
-          type: string
-          example: "Explain quantum entanglement simply."
-        steps:
-          type: array
-          minItems: 1
-          items:
-            $ref: '#/components/schemas/ComposeStep'
+            type: integer
+          description: Context encoding from a prior response (for conversational memory).
         stream:
           type: boolean
+          default: true
+          description: Stream the response as newline-delimited JSON.
+        raw:
+          type: boolean
           default: false
+          description: If true, bypass prompt formatting.
+        format:
+          description: Response format specification (e.g. `"json"`).
+        keep_alive:
+          $ref: "#/components/schemas/Duration"
+        images:
+          type: array
+          description: Base64-encoded images for multimodal input.
+          items:
+            type: string
+            format: byte
+        options:
+          $ref: "#/components/schemas/Options"
+        think:
+          $ref: "#/components/schemas/ThinkValue"
+        truncate:
+          type: boolean
+          description: Truncate history if the rendered prompt exceeds context length.
+        shift:
+          type: boolean
+          description: Shift conversation history instead of erroring when context is full.
+        cache_control:
+          type: object
+          properties:
+            type:
+              type: string
+              enum: [ephemeral]
+          description: Configure ephemeral prompt caching.
+        validate_output:
+          type: boolean
+          default: false
+          description: Validate output against JSON Schema.
+        logprobs:
+          type: boolean
+          default: false
+          description: Return log probabilities of output tokens.
+        top_logprobs:
+          type: integer
+          minimum: 0
+          maximum: 20
+          default: 0
+          description: Number of most likely tokens to return per position (requires logprobs=true).
+        # Image generation fields (experimental)
+        width:
+          type: integer
+          format: int32
+          description: Generated image width in pixels (image models only).
+        height:
+          type: integer
+          format: int32
+          description: Generated image height in pixels (image models only).
+        steps:
+          type: integer
+          format: int32
+          description: Number of diffusion steps (image models only).
 
-    StepResult:
+    Options:
       type: object
+      description: Model-specific inference and runner options.
       properties:
-        model:
-          type: string
-        output:
-          type: string
-        parallel_results:
+        # Predict options
+        num_keep:
+          type: integer
+        seed:
+          type: integer
+        num_predict:
+          type: integer
+          default: -1
+        top_k:
+          type: integer
+          default: 40
+        top_p:
+          type: number
+          format: float
+          default: 0.9
+        min_p:
+          type: number
+          format: float
+        typical_p:
+          type: number
+          format: float
+          default: 1.0
+        repeat_last_n:
+          type: integer
+          default: 64
+        temperature:
+          type: number
+          format: float
+          default: 0.8
+        repeat_penalty:
+          type: number
+          format: float
+          default: 1.1
+        presence_penalty:
+          type: number
+          format: float
+        frequency_penalty:
+          type: number
+          format: float
+        stop:
           type: array
           items:
-            $ref: '#/components/schemas/StepResult'
+            type: string
+        # Runner options
+        num_ctx:
+          type: integer
+          description: Context window size in tokens.
+        num_batch:
+          type: integer
+          default: 512
+        num_gpu:
+          type: integer
+          description: Number of GPU layers to offload.
+        main_gpu:
+          type: integer
+          description: Main GPU device index.
+        use_mmap:
+          type: boolean
+          description: Use memory-mapped model loading.
+        num_thread:
+          type: integer
+          description: Number of CPU threads.
+        draft_num_predict:
+          type: integer
+          description: Draft model token count for speculative decoding.
+        draft_model:
+          type: string
+          description: Draft model name for speculative decoding.
 
-    ComposeResponse:
+    Duration:
+      type: string
+      description: |
+        Duration string (Go-style, e.g. `"5m"`, `"30s"`, `"1h"`) or `-1` for
+        "keep forever", or float64 seconds. Default is `"5m"`.
+      example: "5m"
+
+    ThinkValue:
+      description: |
+        Controls thinking/reasoning mode. Can be a boolean (`true`/`false`)
+        or a string (`"high"`, `"medium"`, `"low"`, `"max"`).
+      oneOf:
+        - type: boolean
+        - type: string
+          enum: [high, medium, low, max]
+
+    TokenLogprob:
       type: object
       properties:
-        output:
+        token:
           type: string
-        results:
+        logprob:
+          type: number
+          format: double
+        bytes:
           type: array
           items:
-            $ref: '#/components/schemas/StepResult'
+            type: integer
 
-    ComposeEvent:
+    Logprob:
       type: object
       properties:
-        event:
+        token:
           type: string
-          enum: [step_start, step_progress, step_complete, step_fallback, parallel_progress, complete, error]
+        logprob:
+          type: number
+          format: double
+        bytes:
+          type: array
+          items:
+            type: integer
+        top_logprobs:
+          type: array
+          items:
+            $ref: "#/components/schemas/TokenLogprob"
+
+    Metrics:
+      type: object
+      properties:
+        total_duration:
+          type: integer
+          format: int64
+          description: Total request duration in nanoseconds.
+        load_duration:
+          type: integer
+          format: int64
+          description: Model load time in nanoseconds.
+        prompt_eval_count:
+          type: integer
+          description: Number of prompt tokens evaluated.
+        prompt_eval_duration:
+          type: integer
+          format: int64
+          description: Prompt evaluation time in nanoseconds.
+        eval_count:
+          type: integer
+          description: Number of generated tokens.
+        eval_duration:
+          type: integer
+          format: int64
+          description: Generation time in nanoseconds.
+
+    ToolCallFunction:
+      type: object
+      properties:
         index:
           type: integer
-        model:
+        name:
           type: string
-        text:
-          type: string
-        output:
-          type: string
-        result:
-          $ref: '#/components/schemas/ComposeResponse'
+        arguments:
+          type: object
+          description: Tool call arguments (key-value pairs).
 
-    Error:
+    ToolCall:
       type: object
       properties:
-        error:
+        id:
           type: string
+          example: "call_abc12345"
+        function:
+          $ref: "#/components/schemas/ToolCallFunction"
 
-    ChatMessage:
+    GenerateResponse:
+      type: object
+      description: Response from POST /api/generate.
+      properties:
+        model:
+          type: string
+        remote_model:
+          type: string
+          nullable: true
+        remote_host:
+          type: string
+          nullable: true
+        created_at:
+          type: string
+          format: date-time
+        response:
+          type: string
+          description: The generated text (accumulated if streaming).
+        thinking:
+          type: string
+          description: Thinking/reasoning content when think mode is enabled.
+        done:
+          type: boolean
+          description: Whether the response is complete.
+        done_reason:
+          type: string
+          enum: [stop, length, load]
+          description: Reason generation stopped.
+        context:
+          type: array
+          items:
+            type: integer
+          description: Context encoding for conversational memory in follow-up requests.
+        total_duration:
+          type: integer
+          format: int64
+        load_duration:
+          type: integer
+          format: int64
+        prompt_eval_count:
+          type: integer
+        prompt_eval_duration:
+          type: integer
+          format: int64
+        eval_count:
+          type: integer
+        eval_duration:
+          type: integer
+          format: int64
+        tool_calls:
+          type: array
+          items:
+            $ref: "#/components/schemas/ToolCall"
+        logprobs:
+          type: array
+          items:
+            $ref: "#/components/schemas/Logprob"
+        # Image generation fields
+        image:
+          type: string
+          description: Base64-encoded generated image (image models only).
+        completed:
+          type: integer
+          format: int64
+          description: Completed diffusion steps (image streaming).
+        total:
+          type: integer
+          format: int64
+          description: Total diffusion steps (image streaming).
+
+    # ── Chat ──────────────────────────────────────────────────────────
+
+    Message:
       type: object
       required: [role, content]
       properties:
@@ -472,149 +1021,451 @@ components:
           example: "What is quantum computing?"
         thinking:
           type: string
-          example: "Thinking process..."
+          description: Thinking/reasoning trace from the model.
         images:
           type: array
           items:
             type: string
             format: byte
+          description: Base64-encoded images for multimodal input.
         tool_calls:
           type: array
           items:
-            type: object
+            $ref: "#/components/schemas/ToolCall"
         tool_name:
           type: string
         tool_call_id:
           type: string
+        cache_control:
+          type: object
+          properties:
+            type:
+              type: string
+              enum: [ephemeral]
+          description: Ephemeral caching configuration for this message.
 
-    ConversationSummary:
+    ToolFunction:
       type: object
-      required: [id, model, title, messages, created_at, updated_at]
-      properties:
-        id:
-          type: string
-          example: "conv-123"
-        model:
-          type: string
-          example: "gemma3"
-        title:
-          type: string
-          example: "What is quantum computing?"
-        messages:
-          type: integer
-          example: 2
-        created_at:
-          type: string
-          format: date-time
-        updated_at:
-          type: string
-          format: date-time
-
-    Conversation:
-      type: object
-      required: [id, model, messages, created_at, updated_at]
-      properties:
-        id:
-          type: string
-          example: "conv-123"
-        model:
-          type: string
-          example: "gemma3"
-        messages:
-          type: array
-          items:
-            $ref: '#/components/schemas/ChatMessage'
-        created_at:
-          type: string
-          format: date-time
-        updated_at:
-          type: string
-          format: date-time
-
-    ModelEndpoint:
-      type: object
-      required: [host]
-      properties:
-        host:
-          type: string
-          example: "http://localhost:11434"
-        model:
-          type: string
-          example: "gemma3"
-        weight:
-          type: integer
-          example: 1
-
-    ModelRoute:
-      type: object
-      required: [name, endpoints, strategy]
+      required: [name, parameters]
       properties:
         name:
           type: string
-          example: "fast"
-        endpoints:
-          type: array
-          items:
-            $ref: '#/components/schemas/ModelEndpoint'
-        strategy:
+        description:
           type: string
-          enum: [round_robin, random, least_loaded, weighted_round_robin]
-          example: "round_robin"
+        parameters:
+          type: object
+          required: [type, properties]
+          properties:
+            type:
+              type: string
+              enum: [object]
+            properties:
+              type: object
+              additionalProperties:
+                type: object
+                properties:
+                  type:
+                    description: JSON Schema type for the parameter.
+                  description:
+                    type: string
+                  enum:
+                    type: array
+                    items: {}
+            required:
+              type: array
+              items:
+                type: string
 
-    ModelEndpointStatus:
+    Tool:
       type: object
-      required: [host, healthy, active_requests]
+      required: [type, function]
       properties:
-        host:
+        type:
           type: string
-          example: "http://localhost:11434"
+          enum: [function]
+        function:
+          $ref: "#/components/schemas/ToolFunction"
+
+    ChatRequest:
+      type: object
+      required: [model, messages]
+      properties:
         model:
           type: string
-          example: "gemma3"
-        healthy:
+          example: "gemma3:12b"
+        messages:
+          type: array
+          items:
+            $ref: "#/components/schemas/Message"
+        stream:
           type: boolean
-          example: true
-        active_requests:
-          type: integer
-          example: 0
-        last_check:
-          type: string
-          format: date-time
-        last_error:
-          type: string
-          example: "connection refused"
-
-    RouteStatusResponse:
-      type: object
-      required: [name, strategy, endpoints]
-      properties:
-        name:
-          type: string
-          example: "fast"
-        strategy:
-          type: string
-          example: "round_robin"
-        endpoints:
+          default: true
+        format:
+          description: Response format specification (e.g. `"json"`).
+        keep_alive:
+          $ref: "#/components/schemas/Duration"
+        tools:
           type: array
           items:
-            $ref: '#/components/schemas/ModelEndpointStatus'
+            $ref: "#/components/schemas/Tool"
+          description: Tool definitions available to the model.
+        options:
+          $ref: "#/components/schemas/Options"
+        think:
+          $ref: "#/components/schemas/ThinkValue"
+        conversation_id:
+          type: string
+          description: Persist conversation to the memory store under this ID.
+        truncate:
+          type: boolean
+          description: Truncate history if prompt exceeds context length.
+        shift:
+          type: boolean
+          description: Shift conversation history instead of erroring on context overflow.
+        cache_control:
+          type: object
+          properties:
+            type:
+              type: string
+              enum: [ephemeral]
+        validate_output:
+          type: boolean
+        logprobs:
+          type: boolean
+        top_logprobs:
+          type: integer
+          minimum: 0
+          maximum: 20
+
+    ChatResponse:
+      type: object
+      description: Response from POST /api/chat.
+      properties:
+        model:
+          type: string
+        remote_model:
+          type: string
+          nullable: true
+        remote_host:
+          type: string
+          nullable: true
+        created_at:
+          type: string
+          format: date-time
+        message:
+          $ref: "#/components/schemas/Message"
+        done:
+          type: boolean
+        done_reason:
+          type: string
+          enum: [stop, length, load]
+        logprobs:
+          type: array
+          items:
+            $ref: "#/components/schemas/Logprob"
+        total_duration:
+          type: integer
+          format: int64
+        load_duration:
+          type: integer
+          format: int64
+        prompt_eval_count:
+          type: integer
+        prompt_eval_duration:
+          type: integer
+          format: int64
+        eval_count:
+          type: integer
+        eval_duration:
+          type: integer
+          format: int64
+
+    # ── Embed ─────────────────────────────────────────────────────────
+
+    EmbedRequest:
+      type: object
+      required: [model, input]
+      properties:
+        model:
+          type: string
+          example: "nomic-embed-text"
+        input:
+          description: |
+            Input text to embed. Can be a single string or an array of strings.
+          oneOf:
+            - type: string
+              example: "The quick brown fox jumps over the lazy dog."
+            - type: array
+              items:
+                type: string
+              example: ["Hello", "World"]
+        keep_alive:
+          $ref: "#/components/schemas/Duration"
+        truncate:
+          type: boolean
+          description: Truncate input to fit the model's max sequence length.
+        dimensions:
+          type: integer
+          description: Truncate output embedding to this dimension.
+        options:
+          $ref: "#/components/schemas/Options"
+
+    EmbedResponse:
+      type: object
+      required: [model, embeddings]
+      properties:
+        model:
+          type: string
+        embeddings:
+          type: array
+          items:
+            type: array
+            items:
+              type: number
+              format: float
+          description: List of embedding vectors (one per input item).
+        total_duration:
+          type: integer
+          format: int64
+        load_duration:
+          type: integer
+          format: int64
+        prompt_eval_count:
+          type: integer
+
+    # ── Compose ───────────────────────────────────────────────────────
+
+    ComposeCondition:
+      type: object
+      description: Conditional execution rule for a composition step.
+      properties:
+        contains:
+          type: string
+          description: Execute if previous step output contains this substring (case-insensitive).
+        not_contains:
+          type: string
+          description: Execute if previous step output does NOT contain this substring.
+        min_length:
+          type: integer
+          description: Execute if previous step output is at least N characters.
+        max_length:
+          type: integer
+          description: Execute if previous step output is at most N characters.
+        always:
+          type: boolean
+          description: Always execute this step regardless of previous output.
+
+    ComposeStep:
+      type: object
+      required: [model, prompt]
+      properties:
+        model:
+          type: string
+          example: "gemma3:12b"
+        prompt:
+          type: string
+          description: |
+            Prompt template. Supports variables: `{{input}}`, `{{step[N].output}}`,
+            `{{step[N].parallel[M].output}}`.
+          example: "Summarize: {{input}}"
+        options:
+          $ref: "#/components/schemas/Options"
+        timeout_sec:
+          type: integer
+          example: 30
+        fallback_model:
+          type: string
+          description: Model to use if the primary model fails.
+          example: "llama3.2"
+        parallel:
+          type: array
+          items:
+            $ref: "#/components/schemas/ComposeStep"
+          description: Sibling steps to run concurrently.
+        condition:
+          $ref: "#/components/schemas/ComposeCondition"
+        skip_on_error:
+          type: boolean
+          default: false
+          description: Continue the pipeline even if this step fails.
+
+    ComposeRequest:
+      type: object
+      required: [input, steps]
+      properties:
+        input:
+          type: string
+          description: Initial input to the pipeline.
+          example: "Explain quantum entanglement simply."
+        steps:
+          type: array
+          minItems: 1
+          items:
+            $ref: "#/components/schemas/ComposeStep"
+        stream:
+          type: boolean
+          default: false
+
+    StepResult:
+      type: object
+      properties:
+        model:
+          type: string
+        output:
+          type: string
+        skipped:
+          type: boolean
+          description: True if step was skipped by a condition.
+        error:
+          type: string
+          description: Set if step failed but `skip_on_error` was true.
+        parallel_results:
+          type: array
+          items:
+            $ref: "#/components/schemas/StepResult"
+
+    ComposeResponse:
+      type: object
+      required: [output, results]
+      properties:
+        output:
+          type: string
+          description: Final concatenated output from all steps.
+        results:
+          type: array
+          items:
+            $ref: "#/components/schemas/StepResult"
+
+    ComposeEvent:
+      type: object
+      description: Server-Sent Event streamed during pipeline execution.
+      required: [event]
+      properties:
+        event:
+          type: string
+          enum:
+            - step_start
+            - step_progress
+            - step_complete
+            - step_fallback
+            - parallel_progress
+            - complete
+            - error
+        index:
+          type: integer
+        model:
+          type: string
+        text:
+          type: string
+        output:
+          type: string
+        result:
+          $ref: "#/components/schemas/ComposeResponse"
+
+    # ── Structured ────────────────────────────────────────────────────
+
+    StructuredRequest:
+      type: object
+      required: [model, prompt, schema]
+      properties:
+        model:
+          type: string
+          example: "gemma3:12b"
+        prompt:
+          type: string
+          example: "Extract the person's name and age from the text."
+        schema:
+          description: JSON Schema that the output must conform to.
+          type: object
+          example:
+            type: object
+            properties:
+              name:
+                type: string
+              age:
+                type: integer
+            required: [name, age]
+        max_retries:
+          type: integer
+          default: 3
+          description: Maximum retry attempts on validation failure.
+        options:
+          $ref: "#/components/schemas/Options"
+        stream:
+          type: boolean
+          default: false
+        timeout_sec:
+          type: integer
+          default: 60
+          description: Per-attempt timeout in seconds.
+
+    StructuredResponse:
+      type: object
+      required: [output, valid, attempts]
+      properties:
+        output:
+          type: string
+          description: The generated JSON string.
+        valid:
+          type: boolean
+          description: Whether the output passed schema validation.
+        attempts:
+          type: integer
+          description: Number of attempts taken (1 + retries).
+        errors:
+          type: array
+          items:
+            type: string
+          description: Validation errors from failed attempts.
+
+    StructuredEvent:
+      type: object
+      description: Server-Sent Event streamed during structured generation.
+      required: [event]
+      properties:
+        event:
+          type: string
+          enum:
+            - attempt_start
+            - attempt_complete
+            - validate_fail
+            - complete
+            - error
+        attempt:
+          type: integer
+        output:
+          type: string
+        error:
+          type: string
+        response:
+          $ref: "#/components/schemas/StructuredResponse"
+
+  # ═══════════════════════════════════════════════════════════════════════
+  # Reusable Responses
+  # ═══════════════════════════════════════════════════════════════════════
 
   responses:
     BadRequest:
-      description: Invalid request
+      description: Invalid or malformed request.
       content:
         application/json:
           schema:
-            $ref: '#/components/schemas/Error'
+            $ref: "#/components/schemas/Error"
     NotFound:
-      description: Resource not found
+      description: The requested resource was not found.
       content:
         application/json:
           schema:
-            $ref: '#/components/schemas/Error'
+            $ref: "#/components/schemas/Error"
     InternalError:
-      description: Server error
+      description: An unexpected server error occurred.
       content:
         application/json:
           schema:
-            $ref: '#/components/schemas/Error'
+            $ref: "#/components/schemas/Error"
+    ServiceUnavailable:
+      description: Server is overloaded or the model queue is full.
+      content:
+        application/json:
+          schema:
+            $ref: "#/components/schemas/Error"
