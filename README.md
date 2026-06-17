@@ -281,9 +281,17 @@ Download the latest binary for your platform from the [Releases page](https://gi
 ### Docker
 
 ```bash
+# Build from GitHub
 docker build -t lychee https://github.com/MD-Mushfiqur123/lychee.git
-docker run -d -v lychee:/root/.lychee -p 11434:11434 --name lychee lychee
+
+# Run with persistent model volume
+docker run -d -v lychee-models:/root/.lychee/models -p 11434:11434 --name lychee lychee
+
+# Quick one-liner test (build, start, verify, cleanup)
+./scripts/docker-test.sh
 ```
+
+> 💡 Use `docker compose up -d` with the included `docker-compose.yml` for health checks and automatic restarts.
 
 ### Build from Source
 
