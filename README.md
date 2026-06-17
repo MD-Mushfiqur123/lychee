@@ -597,6 +597,18 @@ Lychee is open-source software licensed under the [MIT License](LICENSE).
 
 ---
 
+## 🌍 Translations
+
+- 🇬🇧 [English](README.md)
+- 🇧🇩 [বাংলা](README.bn.md) _(coming soon)_
+- 🇨🇳 [中文](README.zh.md) _(coming soon)_
+- 🇯🇵 [日本語](README.ja.md) _(coming soon)_
+- 🇪🇸 [Español](README.es.md) _(coming soon)_
+
+Want to translate? See [CONTRIBUTING.md](CONTRIBUTING.md#translations)
+
+---
+
 ## 🍒 Powered by Lychee
 
 Show the world your project runs on Lychee — add this badge to your README:

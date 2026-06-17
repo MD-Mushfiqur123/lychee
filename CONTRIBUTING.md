@@ -116,6 +116,27 @@ When contributing new features or improvements to Lychee, keep in mind our core 
 
 Features aligning with these pillars are highly encouraged.
 
+## Translations
+
+We welcome community translations of the Lychee README and documentation! If you'd like to help make Lychee accessible in your language:
+
+1. **Read the English README** ([README.md](./README.md)) to understand the full project scope.
+2. **Create a new file** named `README.xx.md` (e.g., `README.fr.md` for French, `README.de.md` for German) in the repository root.
+3. **Translate the content** — keep the structure, code examples, and links intact. You may adapt phrasing for natural readability in your language.
+4. **Add your language** to the [🌍 Translations](./README.md#-translations) section of the main README.
+5. **Open a pull request** — mark it with the `documentation` and `translation` labels.
+
+### Guidelines
+
+- Preserve all code blocks, links, and badge URLs exactly as they are.
+- Translate descriptive text and headings, but keep technical terms (API names, commands, file paths) in English.
+- If a language already has a translation, you are welcome to review and improve it.
+- All translations are maintained by the community — if you notice an outdated translation, please help update it!
+
+Questions? Open a [discussion](https://github.com/MD-Mushfiqur123/lychee/discussions) or reach out in our community channels.
+
+---
+
 ## Need help?
 
 If you need help with anything, please open an issue or start a discussion on our GitHub repository.
