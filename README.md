@@ -31,8 +31,11 @@
   <a href="https://pkg.go.dev/github.com/MD-Mushfiqur123/lychee">
     <img src="https://pkg.go.dev/badge/github.com/MD-Mushfiqur123/lychee.svg" alt="Go Reference"/>
   </a>
-  <a href="https://github.com/MD-Mushfiqur123/lychee/actions">
-    <img src="https://img.shields.io/badge/CI-coming%20soon-lightgrey?style=for-the-badge" alt="CI Status"/>
+  <a href="https://github.com/MD-Mushfiqur123/lychee/actions/workflows/docker-publish.yml">
+    <img src="https://github.com/MD-Mushfiqur123/lychee/actions/workflows/docker-publish.yml/badge.svg" alt="Docker Build"/>
+  </a>
+  <a href="https://github.com/MD-Mushfiqur123/lychee/actions/workflows/ci.yml">
+    <img src="https://github.com/MD-Mushfiqur123/lychee/actions/workflows/ci.yml/badge.svg" alt="CI"/>
   </a>
 </p>
 
