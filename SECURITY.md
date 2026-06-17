@@ -1,25 +1,42 @@
-# Security
+# Security Policy
 
-The Lychee maintainer team takes security seriously and will actively work to resolve security issues.
+## Supported Versions
 
-## Reporting a vulnerability
+Only the following versions of Lychee receive security updates.
 
-If you discover a security vulnerability, please do not open a public issue. Instead, please report it using GitHub Private Security Advisories at https://github.com/MD-Mushfiqur123/lychee/security/advisories/new. We ask that you give us sufficient time to investigate and address the vulnerability before disclosing it publicly.
+| Version | Supported          |
+| ------- | ------------------ |
+| 0.2.x   | :white_check_mark: |
+| 0.1.x   | :x:                |
 
-Please include the following details in your report:
-- A description of the vulnerability
-- Steps to reproduce the issue
-- Your assessment of the potential impact
-- Any possible mitigations
+## Reporting a Vulnerability
 
-## Security best practices
+We take security seriously. If you discover a security vulnerability in Lychee, please report it responsibly.
 
-While the maintainer team does its best to secure Lychee, users are encouraged to implement their own security best practices, such as:
+**Do not open a public GitHub issue.** Instead, email us at:
 
-- Regularly updating to the latest version of Lychee
-- Securing access to hosted instances of Lychee
-- Monitoring systems for unusual activity
+> **security@lychee.example.com**
 
-## Contact
+_This is a placeholder email. Replace with the real contact address before the public release._
 
-For any other questions or concerns related to security, please create a draft advisory on GitHub Private Security Advisories at https://github.com/MD-Mushfiqur123/lychee/security/advisories/new.
+### What to Expect
+
+1. **Acknowledgment** — You will receive a confirmation within **48 hours**.
+2. **Triage** — We will assess the report, confirm the issue, and determine severity.
+3. **Fix development** — We will work on a fix in a private branch.
+4. **Coordinated disclosure** — Once the fix is ready, we will release it and coordinate public disclosure with you.
+5. **Credit** — Your name (or handle) will be credited in the release notes, unless you prefer to remain anonymous.
+
+### Responsible Disclosure
+
+- Please give us a reasonable amount of time to address the issue before any public disclosure.
+- Avoid accessing or modifying user data beyond what is necessary to demonstrate the vulnerability.
+- Do not degrade the service or impact other users while testing.
+
+### Bug Bounty
+
+We do not currently offer a bug bounty program. However, we are happy to credit researchers in our release notes and express our gratitude publicly.
+
+---
+
+We appreciate your help in keeping Lychee and its users safe.
