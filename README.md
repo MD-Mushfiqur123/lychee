@@ -28,6 +28,12 @@
   <a href="https://md-mushfiqur123.github.io/lychee-docs/">
     <img src="https://img.shields.io/badge/docs-vitepress-646cff?style=for-the-badge" alt="Documentation"/>
   </a>
+  <a href="https://pkg.go.dev/github.com/MD-Mushfiqur123/lychee">
+    <img src="https://pkg.go.dev/badge/github.com/MD-Mushfiqur123/lychee.svg" alt="Go Reference"/>
+  </a>
+  <a href="https://github.com/MD-Mushfiqur123/lychee/actions">
+    <img src="https://img.shields.io/badge/CI-coming%20soon-lightgrey?style=for-the-badge" alt="CI Status"/>
+  </a>
 </p>
 
 <p align="center">
@@ -532,3 +538,25 @@ Lychee is open-source software licensed under the [MIT License](LICENSE).
 Lychee is engineered and maintained by **[Xolvyn AI Agency](https://md-mushfiqur123.github.io/xolvyn-agency)** — _Intelligence, engineered._
 
 [![Star History Chart](https://api.star-history.com/chart?repos=MD-Mushfiqur123/lychee&type=timeline&logscale&legend=bottom-right)](https://www.star-history.com/?repos=MD-Mushfiqur123%2Flychee&type=timeline&logscale=&legend=bottom-right)
+
+---
+
+## 🌐 Community
+
+<p align="center">
+  <a href="https://discord.gg/lychee">
+    <img src="https://img.shields.io/badge/Discord-Join%20the%20community-5865F2?style=for-the-badge&logo=discord&logoColor=white" alt="Discord"/>
+  </a>
+  &nbsp;
+  <a href="https://github.com/MD-Mushfiqur123/lychee/discussions">
+    <img src="https://img.shields.io/badge/GitHub-Discussions-181717?style=for-the-badge&logo=github&logoColor=white" alt="GitHub Discussions"/>
+  </a>
+  &nbsp;
+  <a href="./CONTRIBUTING.md">
+    <img src="https://img.shields.io/badge/Contributing-Guidelines-28a745?style=for-the-badge" alt="Contributing"/>
+  </a>
+  &nbsp;
+  <a href="./CODE_OF_CONDUCT.md">
+    <img src="https://img.shields.io/badge/Code%20of%20Conduct-Read%20here-8B5CF6?style=for-the-badge" alt="Code of Conduct"/>
+  </a>
+</p>
