@@ -48,11 +48,16 @@
 
 ## 🚀 Quick Start
 
-```bash
-# Install Lychee (Go 1.22+ required)
-go install github.com/MD-Mushfiqur123/lychee@latest
+### One-Liner Install
 
-# Start the server
+| Platform | Command |
+|:---|:---|
+| 🐧 **Linux** / 🍎 **macOS** | `curl -fsSL https://raw.githubusercontent.com/MD-Mushfiqur123/lychee/main/scripts/install.sh \| sh` |
+| 🪟 **Windows** | `irm https://raw.githubusercontent.com/MD-Mushfiqur123/lychee/main/scripts/install.ps1 \| iex` |
+| 🔧 **Go users** | `go install github.com/MD-Mushfiqur123/lychee@latest` |
+
+```bash
+# After install, start the server
 lychee serve
 
 # Pull and chat with any HuggingFace model — instantly
@@ -222,11 +227,29 @@ Start-Process -FilePath "Lychee-Setup.exe" -Wait
 
 ## 📦 Installation
 
-### go install (Recommended)
+### 🍒 One-Liner (Recommended — All Platforms)
 
 ```bash
-# Requires Go 1.22+
+# Linux & macOS
+curl -fsSL https://raw.githubusercontent.com/MD-Mushfiqur123/lychee/main/scripts/install.sh | sh
+
+# Windows (PowerShell)
+irm https://raw.githubusercontent.com/MD-Mushfiqur123/lychee/main/scripts/install.ps1 | iex
+
+# Go users (requires Go 1.22+)
 go install github.com/MD-Mushfiqur123/lychee@latest
+```
+
+> 💡 The one-liner automatically detects your OS and architecture. It tries `go install` first (if Go 1.22+ is available), then falls back to downloading the pre-built binary from GitHub Releases.
+
+### Uninstall
+
+```bash
+# Linux & macOS
+curl -fsSL https://raw.githubusercontent.com/MD-Mushfiqur123/lychee/main/scripts/uninstall.sh | sh
+
+# Windows
+# Delete %LOCALAPPDATA%\Programs\lychee\lychee.exe and remove from PATH manually
 ```
 
 ### Pre-built Binaries
@@ -244,12 +267,6 @@ Download the latest binary for your platform from the [Releases page](https://gi
 ```bash
 docker build -t lychee https://github.com/MD-Mushfiqur123/lychee.git
 docker run -d -v lychee:/root/.lychee -p 11434:11434 --name lychee lychee
-```
-
-### Windows (PowerShell Installer)
-
-```powershell
-irm https://raw.githubusercontent.com/MD-Mushfiqur123/lychee/main/scripts/install.ps1 | iex
 ```
 
 ### Build from Source

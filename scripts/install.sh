@@ -1,457 +1,177 @@
 #!/bin/sh
-# This script installs Lychee on Linux and macOS.
-# It detects the current operating system architecture and installs the appropriate version of Lychee.
-
-# Wrap script in main function so that a truncated partial download doesn't end
-# up executing half a script.
-main() {
-
 set -eu
 
-red="$( (/usr/bin/tput bold || :; /usr/bin/tput setaf 1 || :) 2>&-)"
-plain="$( (/usr/bin/tput sgr0 || :) 2>&-)"
+# ──────────────────────────────────────────────
+# 🍒 Lychee — One-Liner Install Script
+# Installs the Lychee CLI binary on Linux & macOS.
+#
+# Usage:
+#   curl -fsSL https://raw.githubusercontent.com/MD-Mushfiqur123/lychee/main/scripts/install.sh | sh
+#
+# Or specify a version:
+#   curl -fsSL https://raw.githubusercontent.com/MD-Mushfiqur123/lychee/main/scripts/install.sh | LYCHEE_VERSION=v0.1.0 sh
+# ──────────────────────────────────────────────
 
-status() { echo ">>> $*" >&2; }
-error() { echo "${red}ERROR:${plain} $*"; exit 1; }
-warning() { echo "${red}WARNING:${plain} $*"; }
+# ── Helpers ───────────────────────────────────
+RED="$( (tput bold 2>/dev/null || :; tput setaf 1 2>/dev/null || :) )"
+GREEN="$( (tput bold 2>/dev/null || :; tput setaf 2 2>/dev/null || :) )"
+YELLOW="$( (tput setaf 3 2>/dev/null || :) )"
+CYAN="$( (tput setaf 6 2>/dev/null || :) )"
+PLAIN="$( (tput sgr0 2>/dev/null || :) )"
 
-TEMP_DIR=$(mktemp -d)
-cleanup() { rm -rf $TEMP_DIR; }
+log()     { printf '%s\n' ">>> $*" >&2; }
+success() { printf '%s\n' "${GREEN}✔${PLAIN} $*" >&2; }
+warn()    { printf '%s\n' "${YELLOW}⚠${PLAIN} $*" >&2; }
+err()     { printf '%s\n' "${RED}✘${PLAIN} $*" >&2; exit 1; }
+
+TEMP_DIR="$(mktemp -d)"
+cleanup() { rm -rf "$TEMP_DIR"; }
 trap cleanup EXIT
 
-available() { command -v $1 >/dev/null; }
-require() {
-    local MISSING=''
-    for TOOL in $*; do
-        if ! available $TOOL; then
-            MISSING="$MISSING $TOOL"
-        fi
-    done
+available() { command -v "$1" >/dev/null 2>&1; }
 
-    echo $MISSING
-}
-
+# ── OS / Arch detection ───────────────────────
 OS="$(uname -s)"
-ARCH=$(uname -m)
+ARCH="$(uname -m)"
+
 case "$ARCH" in
-    x86_64) ARCH="amd64" ;;
+    x86_64|amd64)  ARCH="amd64" ;;
     aarch64|arm64) ARCH="arm64" ;;
-    *) error "Unsupported architecture: $ARCH" ;;
+    *)             err "Unsupported architecture: $ARCH" ;;
 esac
 
-if [ -n "${LYCHEE_VERSION:-}" ]; then
-    DOWNLOAD_URL="https://github.com/MD-Mushfiqur123/lychee/releases/download/v${LYCHEE_VERSION}/Lychee-darwin.zip"
-    BASE_URL="https://github.com/MD-Mushfiqur123/lychee/releases/download/v${LYCHEE_VERSION}"
-    VER_PARAM=""
-else
-    DOWNLOAD_URL="https://github.com/MD-Mushfiqur123/lychee/releases/latest/download/Lychee-darwin.zip"
-    BASE_URL="https://github.com/MD-Mushfiqur123/lychee/releases/latest/download"
-    VER_PARAM=""
-fi
-
-if [ "$OS" = "Darwin" ]; then
-    NEEDS=$(require curl unzip)
-    if [ -n "$NEEDS" ]; then
-        status "ERROR: The following tools are required but missing:"
-        for NEED in $NEEDS; do
-            echo "  - $NEED"
-        done
-        exit 1
-    fi
-
-    if pgrep -x Lychee >/dev/null 2>&1; then
-        status "Stopping running Lychee instance..."
-        pkill -x Lychee 2>/dev/null || true
-        sleep 2
-    fi
-
-    if [ -d "/Applications/Lychee.app" ]; then
-        status "Removing existing Lychee installation..."
-        rm -rf "/Applications/Lychee.app"
-    fi
-
-    status "Downloading Lychee for macOS..."
-    curl --fail --show-error --location --progress-bar \
-        -o "$TEMP_DIR/Lychee-darwin.zip" "$DOWNLOAD_URL"
-
-    status "Installing Lychee to /Applications..."
-    unzip -q "$TEMP_DIR/Lychee-darwin.zip" -d "$TEMP_DIR"
-    mv "$TEMP_DIR/Lychee.app" "/Applications/"
-
-    if [ ! -L "/usr/local/bin/lychee" ] || [ "$(readlink "/usr/local/bin/lychee")" != "/Applications/Lychee.app/Contents/Resources/lychee" ]; then
-        status "Adding 'lychee' command to PATH (may require password)..."
-        mkdir -p "/usr/local/bin" 2>/dev/null || sudo mkdir -p "/usr/local/bin"
-        ln -sf "/Applications/Lychee.app/Contents/Resources/lychee" "/usr/local/bin/lychee" 2>/dev/null || \
-            sudo ln -sf "/Applications/Lychee.app/Contents/Resources/lychee" "/usr/local/bin/lychee"
-    fi
-
-    if [ -z "${LYCHEE_NO_START:-}" ]; then
-        status "Starting Lychee..."
-        open -a Lychee --args hidden
-    fi
-
-    status "Install complete. You can now run 'lychee'."
-    exit 0
-fi
-
-###########################################
-# Linux
-###########################################
-
-[ "$OS" = "Linux" ] || error 'This script is intended to run on Linux and macOS only.'
-
-IS_WSL2=false
-
-KERN=$(uname -r)
-case "$KERN" in
-    *icrosoft*WSL2 | *icrosoft*wsl2) IS_WSL2=true;;
-    *icrosoft) error "Microsoft WSL1 is not currently supported. Please use WSL2 with 'wsl --set-version <distro> 2'" ;;
-    *) ;;
+case "$OS" in
+    Linux)  OS="linux" ;;
+    Darwin) OS="darwin" ;;
+    *)      err "Unsupported OS: $OS (only Linux and macOS are supported)" ;;
 esac
 
-SUDO=
-if [ "$(id -u)" -ne 0 ]; then
-    # Running as root, no need for sudo
-    if ! available sudo; then
-        error "This script requires superuser permissions. Please re-run as root."
-    fi
+log "Detected: ${OS}/${ARCH}"
 
-    SUDO="sudo"
-fi
+# ── Determine install path ─────────────────────
+INSTALL_DIR="${LYCHEE_INSTALL_DIR:-/usr/local/bin}"
 
-NEEDS=$(require curl awk grep sed tee xargs)
-if [ -n "$NEEDS" ]; then
-    status "ERROR: The following tools are required but missing:"
-    for NEED in $NEEDS; do
-        echo "  - $NEED"
-    done
-    exit 1
-fi
+# ── Install via Go (preferred if available) ────
+if available go; then
+    GO_VERSION="$(go version 2>/dev/null | grep -oP 'go\K[0-9]+\.[0-9]+' || echo "0.0")"
+    GO_MAJOR="$(echo "$GO_VERSION" | cut -d. -f1)"
+    GO_MINOR="$(echo "$GO_VERSION" | cut -d. -f2)"
 
-# Function to download and extract with fallback from zst to tgz
-download_and_extract() {
-    local url_base="$1"
-    local dest_dir="$2"
-    local filename="$3"
+    if [ "$GO_MAJOR" -gt 1 ] || { [ "$GO_MAJOR" -eq 1 ] && [ "$GO_MINOR" -ge 22 ]; }; then
+        log "Go ${GO_VERSION} detected — installing via 'go install'..."
 
-    # Check if .tar.zst is available
-    if curl --fail --silent --head --location "${url_base}/${filename}.tar.zst${VER_PARAM}" >/dev/null 2>&1; then
-        # zst file exists - check if we have zstd tool
-        if ! available zstd; then
-            error "This version requires zstd for extraction. Please install zstd and try again:
-  - Debian/Ubuntu: sudo apt-get install zstd
-  - RHEL/CentOS/Fedora: sudo dnf install zstd
-  - Arch: sudo pacman -S zstd"
+        VERSION_FLAG="@latest"
+        if [ -n "${LYCHEE_VERSION:-}" ]; then
+            VERSION_FLAG="@${LYCHEE_VERSION}"
         fi
 
-        status "Downloading ${filename}.tar.zst"
-        curl --fail --show-error --location --progress-bar \
-            "${url_base}/${filename}.tar.zst${VER_PARAM}" | \
-            zstd -d | $SUDO tar -xf - -C "${dest_dir}"
-        return 0
-    fi
+        go install "github.com/MD-Mushfiqur123/lychee${VERSION_FLAG}"
 
-    # Fall back to .tgz for older versions
-    status "Downloading ${filename}.tgz"
-    curl --fail --show-error --location --progress-bar \
-        "${url_base}/${filename}.tgz${VER_PARAM}" | \
-        $SUDO tar -xzf - -C "${dest_dir}"
-}
+        GOPATH="$(go env GOPATH 2>/dev/null || echo "$HOME/go")"
+        LYCHEE_BIN="${GOPATH}/bin/lychee"
 
-for BINDIR in /usr/local/bin /usr/bin /bin; do
-    echo $PATH | grep -q $BINDIR && break || continue
-done
-LYCHEE_INSTALL_DIR=$(dirname ${BINDIR})
-
-if [ -d "$LYCHEE_INSTALL_DIR/lib/lychee" ] ; then
-    status "Cleaning up old version at $LYCHEE_INSTALL_DIR/lib/lychee"
-    $SUDO rm -rf "$LYCHEE_INSTALL_DIR/lib/lychee"
-fi
-status "Installing lychee to $LYCHEE_INSTALL_DIR"
-$SUDO install -o0 -g0 -m755 -d $BINDIR
-$SUDO install -o0 -g0 -m755 -d "$LYCHEE_INSTALL_DIR/lib/lychee"
-download_and_extract "$BASE_URL" "$LYCHEE_INSTALL_DIR" "lychee-linux-${ARCH}"
-
-if [ "$LYCHEE_INSTALL_DIR/bin/lychee" != "$BINDIR/lychee" ] ; then
-    status "Making lychee accessible in the PATH in $BINDIR"
-    $SUDO ln -sf "$LYCHEE_INSTALL_DIR/lychee" "$BINDIR/lychee"
-fi
-
-# Check for NVIDIA JetPack systems with additional downloads
-if [ -f /etc/nv_tegra_release ] ; then
-    if grep R36 /etc/nv_tegra_release > /dev/null ; then
-        download_and_extract "$BASE_URL" "$LYCHEE_INSTALL_DIR" "lychee-linux-${ARCH}-jetpack6"
-    elif grep R35 /etc/nv_tegra_release > /dev/null ; then
-        download_and_extract "$BASE_URL" "$LYCHEE_INSTALL_DIR" "lychee-linux-${ARCH}-jetpack5"
+        if [ -x "$LYCHEE_BIN" ]; then
+            if [ "$LYCHEE_BIN" != "${INSTALL_DIR}/lychee" ]; then
+                if [ -w "$INSTALL_DIR" ]; then
+                    ln -sf "$LYCHEE_BIN" "${INSTALL_DIR}/lychee"
+                else
+                    sudo ln -sf "$LYCHEE_BIN" "${INSTALL_DIR}/lychee"
+                fi
+            fi
+            success "Lychee installed via Go — $(lychee version 2>/dev/null || echo "done")"
+            exit 0
+        fi
+        warn "go install succeeded but binary not found at ${LYCHEE_BIN} — falling back to binary download..."
     else
-        warning "Unsupported JetPack version detected.  GPU may not be supported"
+        warn "Go ${GO_VERSION} detected but 1.22+ required — falling back to binary download..."
     fi
 fi
 
-install_success() {
-    status 'The Lychee API is now available at 127.0.0.1:11434.'
-    status 'Install complete. Run "lychee" from the command line.'
-}
-trap install_success EXIT
+# ── Install via pre-built binary ───────────────
+log "Installing via pre-built binary..."
 
-# Everything from this point onwards is optional.
-
-configure_systemd() {
-    if ! id lychee >/dev/null 2>&1; then
-        status "Creating lychee user..."
-        $SUDO useradd -r -s /bin/false -U -m -d /usr/share/lychee lychee
-    fi
-    if getent group render >/dev/null 2>&1; then
-        status "Adding lychee user to render group..."
-        $SUDO usermod -a -G render lychee
-    fi
-    if getent group video >/dev/null 2>&1; then
-        status "Adding lychee user to video group..."
-        $SUDO usermod -a -G video lychee
-    fi
-
-    status "Adding current user to lychee group..."
-    $SUDO usermod -a -G lychee $(whoami)
-
-    status "Creating lychee systemd service..."
-    cat <<EOF | $SUDO tee /etc/systemd/system/lychee.service >/dev/null
-[Unit]
-Description=Lychee Service
-After=network-online.target
-
-[Service]
-ExecStart=$BINDIR/lychee serve
-User=lychee
-Group=lychee
-Restart=always
-RestartSec=3
-Environment="PATH=$PATH"
-
-[Install]
-WantedBy=default.target
-EOF
-    SYSTEMCTL_RUNNING="$(systemctl is-system-running || true)"
-    case $SYSTEMCTL_RUNNING in
-        running|degraded)
-            status "Enabling and starting lychee service..."
-            $SUDO systemctl daemon-reload
-            $SUDO systemctl enable lychee
-
-            start_service() { $SUDO systemctl restart lychee; }
-            trap start_service EXIT
-            ;;
-        *)
-            warning "systemd is not running"
-            if [ "$IS_WSL2" = true ]; then
-                warning "see https://learn.microsoft.com/en-us/windows/wsl/systemd#how-to-enable-systemd to enable it"
-            fi
-            ;;
-    esac
-}
-
-if available systemctl; then
-    configure_systemd
+if ! available curl; then
+    err "curl is required but not installed. Install curl and try again."
 fi
 
-# WSL2 only supports GPUs via nvidia passthrough
-# so check for nvidia-smi to determine if GPU is available
-if [ "$IS_WSL2" = true ]; then
-    if available nvidia-smi && [ -n "$(nvidia-smi | grep -o "CUDA Version: [0-9]*\.[0-9]*")" ]; then
-        status "Nvidia GPU detected."
-    fi
-    install_success
-    exit 0
+REPO="MD-Mushfiqur123/lychee"
+if [ -n "${LYCHEE_VERSION:-}" ]; then
+    RELEASE_URL="https://github.com/${REPO}/releases/download/${LYCHEE_VERSION}"
+else
+    RELEASE_URL="https://github.com/${REPO}/releases/latest/download"
 fi
 
-# Don't attempt to install drivers on Jetson systems
-if [ -f /etc/nv_tegra_release ] ; then
-    status "NVIDIA JetPack ready."
-    install_success
-    exit 0
-fi
+BINARY_NAME="lychee-${OS}-${ARCH}"
+ARCHIVE_EXT=""
+DOWNLOAD_URL=""
 
-# Install GPU dependencies on Linux
-if ! available lspci && ! available lshw; then
-    warning "Unable to detect NVIDIA/AMD GPU. Install lspci or lshw to automatically detect and install GPU dependencies."
-    exit 0
-fi
-
-check_gpu() {
-    # Look for devices based on vendor ID for NVIDIA and AMD
-    case $1 in
-        lspci)
-            case $2 in
-                nvidia) available lspci && lspci -d '10de:' | grep -q 'NVIDIA' || return 1 ;;
-                amdgpu) available lspci && lspci -d '1002:' | grep -q 'AMD' || return 1 ;;
-            esac ;;
-        lshw)
-            case $2 in
-                nvidia) available lshw && $SUDO lshw -c display -numeric -disable network | grep -q 'vendor: .* \[10DE\]' || return 1 ;;
-                amdgpu) available lshw && $SUDO lshw -c display -numeric -disable network | grep -q 'vendor: .* \[1002\]' || return 1 ;;
-            esac ;;
-        nvidia-smi) available nvidia-smi || return 1 ;;
-    esac
-}
-
-if check_gpu nvidia-smi; then
-    status "NVIDIA GPU installed."
-    exit 0
-fi
-
-if ! check_gpu lspci nvidia && ! check_gpu lshw nvidia && ! check_gpu lspci amdgpu && ! check_gpu lshw amdgpu; then
-    install_success
-    warning "No NVIDIA/AMD GPU detected. Lychee will run in CPU-only mode."
-    exit 0
-fi
-
-if check_gpu lspci amdgpu || check_gpu lshw amdgpu; then
-    download_and_extract "$BASE_URL" "$LYCHEE_INSTALL_DIR" "lychee-linux-${ARCH}-rocm"
-
-    install_success
-    status "AMD GPU ready."
-    exit 0
-fi
-
-CUDA_REPO_ERR_MSG="NVIDIA GPU detected, but your OS and Architecture are not supported by NVIDIA.  Please install the CUDA driver manually https://docs.nvidia.com/cuda/cuda-installation-guide-linux/"
-# ref: https://docs.nvidia.com/cuda/cuda-installation-guide-linux/index.html#rhel-7-centos-7
-# ref: https://docs.nvidia.com/cuda/cuda-installation-guide-linux/index.html#rhel-8-rocky-8
-# ref: https://docs.nvidia.com/cuda/cuda-installation-guide-linux/index.html#rhel-9-rocky-9
-# ref: https://docs.nvidia.com/cuda/cuda-installation-guide-linux/index.html#fedora
-install_cuda_driver_yum() {
-    status 'Installing NVIDIA repository...'
-    
-    case $PACKAGE_MANAGER in
-        yum)
-            $SUDO $PACKAGE_MANAGER -y install yum-utils
-            if curl -I --silent --fail --location "https://developer.download.nvidia.com/compute/cuda/repos/$1$2/$(uname -m | sed -e 's/aarch64/sbsa/')/cuda-$1$2.repo" >/dev/null ; then
-                $SUDO $PACKAGE_MANAGER-config-manager --add-repo https://developer.download.nvidia.com/compute/cuda/repos/$1$2/$(uname -m | sed -e 's/aarch64/sbsa/')/cuda-$1$2.repo
-            else
-                error $CUDA_REPO_ERR_MSG
-            fi
-            ;;
-        dnf)
-            if curl -I --silent --fail --location "https://developer.download.nvidia.com/compute/cuda/repos/$1$2/$(uname -m | sed -e 's/aarch64/sbsa/')/cuda-$1$2.repo" >/dev/null ; then
-                $SUDO $PACKAGE_MANAGER config-manager --add-repo https://developer.download.nvidia.com/compute/cuda/repos/$1$2/$(uname -m | sed -e 's/aarch64/sbsa/')/cuda-$1$2.repo
-            else
-                error $CUDA_REPO_ERR_MSG
-            fi
-            ;;
-    esac
-
-    case $1 in
-        rhel)
-            status 'Installing EPEL repository...'
-            # EPEL is required for third-party dependencies such as dkms and libvdpau
-            $SUDO $PACKAGE_MANAGER -y install https://dl.fedoraproject.org/pub/epel/epel-release-latest-$2.noarch.rpm || true
-            ;;
-    esac
-
-    status 'Installing CUDA driver...'
-
-    if [ "$1" = 'centos' ] || [ "$1$2" = 'rhel7' ]; then
-        $SUDO $PACKAGE_MANAGER -y install nvidia-driver-latest-dkms
-    fi
-
-    $SUDO $PACKAGE_MANAGER -y install cuda-drivers
-}
-
-# ref: https://docs.nvidia.com/cuda/cuda-installation-guide-linux/index.html#ubuntu
-# ref: https://docs.nvidia.com/cuda/cuda-installation-guide-linux/index.html#debian
-install_cuda_driver_apt() {
-    status 'Installing NVIDIA repository...'
-    if curl -I --silent --fail --location "https://developer.download.nvidia.com/compute/cuda/repos/$1$2/$(uname -m | sed -e 's/aarch64/sbsa/')/cuda-keyring_1.1-1_all.deb" >/dev/null ; then
-        curl -fsSL -o $TEMP_DIR/cuda-keyring.deb https://developer.download.nvidia.com/compute/cuda/repos/$1$2/$(uname -m | sed -e 's/aarch64/sbsa/')/cuda-keyring_1.1-1_all.deb
+# Try different archive formats
+for EXT in ".tar.gz" ".tgz" ".tar.zst" ""; do
+    if [ -n "$EXT" ]; then
+        TEST_URL="${RELEASE_URL}/${BINARY_NAME}${EXT}"
     else
-        error $CUDA_REPO_ERR_MSG
+        TEST_URL="${RELEASE_URL}/${BINARY_NAME}"
     fi
 
-    case $1 in
-        debian)
-            status 'Enabling contrib sources...'
-            $SUDO sed 's/main/contrib/' < /etc/apt/sources.list | $SUDO tee /etc/apt/sources.list.d/contrib.list > /dev/null
-            if [ -f "/etc/apt/sources.list.d/debian.sources" ]; then
-                $SUDO sed 's/main/contrib/' < /etc/apt/sources.list.d/debian.sources | $SUDO tee /etc/apt/sources.list.d/contrib.sources > /dev/null
-            fi
-            ;;
-    esac
-
-    status 'Installing CUDA driver...'
-    $SUDO dpkg -i $TEMP_DIR/cuda-keyring.deb
-    $SUDO apt-get update
-
-    [ -n "$SUDO" ] && SUDO_E="$SUDO -E" || SUDO_E=
-    DEBIAN_FRONTEND=noninteractive $SUDO_E apt-get -y install cuda-drivers -q
-}
-
-if [ ! -f "/etc/os-release" ]; then
-    error "Unknown distribution. Skipping CUDA installation."
-fi
-
-. /etc/os-release
-
-OS_NAME=$ID
-OS_VERSION=$VERSION_ID
-
-PACKAGE_MANAGER=
-for PACKAGE_MANAGER in dnf yum apt-get; do
-    if available $PACKAGE_MANAGER; then
+    if curl --fail --silent --head --location "$TEST_URL" >/dev/null 2>&1; then
+        DOWNLOAD_URL="$TEST_URL"
+        if [ -n "$EXT" ]; then
+            ARCHIVE_EXT="$EXT"
+        fi
         break
     fi
 done
 
-if [ -z "$PACKAGE_MANAGER" ]; then
-    error "Unknown package manager. Skipping CUDA installation."
+if [ -z "$DOWNLOAD_URL" ]; then
+    err "No pre-built binary found for ${OS}/${ARCH} at ${RELEASE_URL}\n       Try installing via Go:  go install github.com/MD-Mushfiqur123/lychee@latest"
 fi
 
-if ! check_gpu nvidia-smi || [ -z "$(nvidia-smi | grep -o "CUDA Version: [0-9]*\.[0-9]*")" ]; then
-    case $OS_NAME in
-        centos|rhel) install_cuda_driver_yum 'rhel' $(echo $OS_VERSION | cut -d '.' -f 1) ;;
-        rocky) install_cuda_driver_yum 'rhel' $(echo $OS_VERSION | cut -c1) ;;
-        fedora) [ $OS_VERSION -lt '39' ] && install_cuda_driver_yum $OS_NAME $OS_VERSION || install_cuda_driver_yum $OS_NAME '39';;
-        amzn) install_cuda_driver_yum 'fedora' '37' ;;
-        debian) install_cuda_driver_apt $OS_NAME $OS_VERSION ;;
-        ubuntu) install_cuda_driver_apt $OS_NAME $(echo $OS_VERSION | sed 's/\.//') ;;
-        *) exit ;;
+log "Downloading ${DOWNLOAD_URL} ..."
+curl --fail --show-error --location --progress-bar -o "${TEMP_DIR}/lychee${ARCHIVE_EXT}" "$DOWNLOAD_URL"
+
+# Extract if archive
+if [ -n "$ARCHIVE_EXT" ]; then
+    case "$ARCHIVE_EXT" in
+        .tar.gz|.tgz)
+            tar -xzf "${TEMP_DIR}/lychee${ARCHIVE_EXT}" -C "$TEMP_DIR"
+            ;;
+        .tar.zst)
+            if ! available zstd; then
+                err "zstd is required to extract ${ARCHIVE_EXT}. Install zstd and try again."
+            fi
+            zstd -d < "${TEMP_DIR}/lychee${ARCHIVE_EXT}" | tar -xf - -C "$TEMP_DIR"
+            ;;
     esac
+    # Find the lychee binary in extracted files
+    find "$TEMP_DIR" -type f -name "lychee" -exec mv {} "${TEMP_DIR}/lychee" \; 2>/dev/null || true
+else
+    mv "${TEMP_DIR}/lychee" "${TEMP_DIR}/lychee.bin" 2>/dev/null || true
+    mv "${TEMP_DIR}/lychee.bin" "${TEMP_DIR}/lychee" 2>/dev/null || true
 fi
 
-if ! lsmod | grep -q nvidia || ! lsmod | grep -q nvidia_uvm; then
-    KERNEL_RELEASE="$(uname -r)"
-    case $OS_NAME in
-        rocky) $SUDO $PACKAGE_MANAGER -y install kernel-devel kernel-headers ;;
-        centos|rhel|amzn) $SUDO $PACKAGE_MANAGER -y install kernel-devel-$KERNEL_RELEASE kernel-headers-$KERNEL_RELEASE ;;
-        fedora) $SUDO $PACKAGE_MANAGER -y install kernel-devel-$KERNEL_RELEASE ;;
-        debian|ubuntu) $SUDO apt-get -y install linux-headers-$KERNEL_RELEASE ;;
-        *) exit ;;
-    esac
+chmod +x "${TEMP_DIR}/lychee" 2>/dev/null || true
 
-    NVIDIA_CUDA_VERSION=$($SUDO dkms status | awk -F: '/added/ { print $1 }')
-    if [ -n "$NVIDIA_CUDA_VERSION" ]; then
-        $SUDO dkms install $NVIDIA_CUDA_VERSION
-    fi
-
-    if lsmod | grep -q nouveau; then
-        status 'Reboot to complete NVIDIA CUDA driver install.'
-        exit 0
-    fi
-
-    $SUDO modprobe nvidia
-    $SUDO modprobe nvidia_uvm
+if [ ! -x "${TEMP_DIR}/lychee" ]; then
+    err "Failed to extract binary from download."
 fi
 
-# make sure the NVIDIA modules are loaded on boot with nvidia-persistenced
-if available nvidia-persistenced; then
-    $SUDO touch /etc/modules-load.d/nvidia.conf
-    MODULES="nvidia nvidia-uvm"
-    for MODULE in $MODULES; do
-        if ! grep -qxF "$MODULE" /etc/modules-load.d/nvidia.conf; then
-            echo "$MODULE" | $SUDO tee -a /etc/modules-load.d/nvidia.conf > /dev/null
-        fi
-    done
+# Install to destination
+if [ -w "$INSTALL_DIR" ]; then
+    mv -f "${TEMP_DIR}/lychee" "${INSTALL_DIR}/lychee"
+else
+    sudo mv -f "${TEMP_DIR}/lychee" "${INSTALL_DIR}/lychee"
 fi
 
-status "NVIDIA GPU ready."
-install_success
-}
+# ── Verify ─────────────────────────────────────
+if available lychee; then
+    success "Lychee installed successfully!"
+    lychee version 2>/dev/null || true
+    echo ""
+    log "Run 'lychee serve' to start the server."
+    log "Run 'lychee --help' for all commands."
+else
+    warn "Lychee installed to ${INSTALL_DIR} but it's not in your PATH."
+    log "Add it to PATH or run:  ${INSTALL_DIR}/lychee"
+fi
 
-main
+exit 0
