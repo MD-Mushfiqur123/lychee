@@ -1,0 +1,39 @@
+{
+  "name": "lychee-js",
+  "version": "0.2.0",
+  "description": "JavaScript/TypeScript SDK for Lychee — Universal LLM Runtime",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "files": [
+    "dist"
+  ],
+  "scripts": {
+    "build": "tsc",
+    "prepublishOnly": "npm run build"
+  },
+  "keywords": [
+    "lychee",
+    "llm",
+    "ai",
+    "ollama",
+    "openai",
+    "anthropic",
+    "chatgpt",
+    "local-llm",
+    "huggingface",
+    "orchestration"
+  ],
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/MD-Mushfiqur123/lychee.git",
+    "directory": "sdk/javascript"
+  },
+  "homepage": "https://github.com/MD-Mushfiqur123/lychee#readme",
+  "engines": {
+    "node": ">=18.0.0"
+  },
+  "devDependencies": {
+    "typescript": "^5.5.0"
+  }
+}
