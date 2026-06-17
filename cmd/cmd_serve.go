@@ -6,6 +6,7 @@ import (
 	"encoding/pem"
 	"errors"
 	"fmt"
+	"log/slog"
 	"net"
 	"net/http"
 	"os"
@@ -14,11 +15,23 @@ import (
 	"github.com/spf13/cobra"
 	"golang.org/x/crypto/ssh"
 
+	"github.com/MD-Mushfiqur123/lychee/config"
 	"github.com/MD-Mushfiqur123/lychee/envconfig"
 	"github.com/MD-Mushfiqur123/lychee/server"
 )
 
 func RunServer(cmd *cobra.Command, _ []string) error {
+	// Load YAML config from ~/.lychee/config.yaml
+	cfg, err := config.Load()
+	if err != nil {
+		return fmt.Errorf("loading config: %w", err)
+	}
+	slog.Info("serve config", "host", cfg.Host, "model_dir", cfg.ModelDir, "log_level", cfg.LogLevel)
+
+	if logLevel, err := cmd.Flags().GetString("log-level"); err == nil && logLevel != "" {
+		server.InitLogger(logLevel, "text")
+	}
+
 	if parallel, err := cmd.Flags().GetInt("parallel"); err == nil && parallel > 0 {
 		os.Setenv("LYCHEE_NUM_PARALLEL", fmt.Sprintf("%d", parallel))
 	} else if slots, err := cmd.Flags().GetInt("slots"); err == nil && slots > 0 {

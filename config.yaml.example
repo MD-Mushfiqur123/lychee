@@ -1,0 +1,18 @@
+# Lychee Server Configuration
+# Copy this file to ~/.lychee/config.yaml and adjust as needed.
+
+# Host address for the Lychee server (default: localhost:11434)
+host: localhost:11434
+
+# Directory for model storage (default: auto-detected)
+# model_dir: /path/to/models
+
+# Log level: debug, info, warn, error (default: info)
+log_level: info
+
+# HuggingFace configuration
+huggingface:
+  # Cache directory for HuggingFace models
+  cache_dir: ""
+  # HuggingFace API token for gated/private models
+  # token: hf_your_token_here
