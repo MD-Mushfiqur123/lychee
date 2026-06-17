@@ -204,6 +204,8 @@ curl http://localhost:11434/api/structured \
 | **Code boilerplate generator** | ❌ | ✅ `lychee generate-client` |
 | **Official Python SDK** | ❌ | ✅ `lychee-python` |
 | **Official JavaScript SDK** | ❌ | ✅ `lychee-js` |
+| **Official Ruby SDK** | ❌ | ✅ `lychee` gem |
+| **Official Go SDK** | ❌ | ✅ `sdk/go` |
 
 > **TL;DR**: Use Ollama for barebones local inference. Use Lychee when you need **orchestration, multi-model pipelines, universal HuggingFace pulls, a browser dashboard, structured output, persistent memory, load balancing, and a full 24-command developer toolkit.**
 
@@ -302,6 +304,10 @@ pip install lychee-python
 
 # JavaScript / TypeScript
 npm install lychee-js
+
+# Ruby
+# gem install lychee
+# (or add to Gemfile: gem 'lychee')
 ```
 
 #### 🐍 Python Quick Example
@@ -346,6 +352,38 @@ print(result["output"])
 > single-file `lychee.py` module (requires `requests`). See
 > [sdk/python/README.md](sdk/python/README.md) for details.
 
+#### 💎 Ruby Quick Example
+
+```ruby
+require 'lychee'
+
+client = LycheeClient.new  # http://localhost:11434
+
+# Chat
+resp = client.chat("gemma3", [{role: "user", content: "Explain AI in one sentence."}])
+puts resp["message"]["content"]
+
+# Generate with streaming
+client.generate("gemma3", "Write a haiku.", stream: true) do |chunk|
+  print chunk["response"]
+end
+
+# List all models
+client.list_models["models"].each { |m| puts "#{m['name']} #{m['size']}" }
+
+# Pull from HuggingFace
+client.pull_model("bartowski/Meta-Llama-3.1-8B-Instruct-GGUF") do |p|
+  print "\r#{p['status']}: #{p['completed']}/#{p['total']}"
+end
+
+# Get embeddings
+vec = client.embeddings("nomic-embed-text", "Hello world")
+puts vec.length  # e.g. 768
+```
+
+> 💎 The Ruby SDK is a zero-dependency gem (stdlib only). See
+> [sdk/ruby/README.md](sdk/ruby/README.md) for details.
+
 ---
 
 ## 🏗️ Architecture
@@ -379,6 +417,7 @@ print(result["output"])
 | 📖 **Documentation** | Full VitePress docs | [lychee-docs](https://md-mushfiqur123.github.io/lychee-docs/) |
 | 🐍 **Python SDK** | Official Python client | `pip install lychee-python` |
 | 📦 **npm Package** | Official JS/TS client | `npm install lychee-js` |
+| 💎 **Ruby Gem** | Official Ruby client | `gem 'lychee'` |
 | 🐛 **Issue Tracker** | Bug reports & feature requests | [GitHub Issues](https://github.com/MD-Mushfiqur123/lychee/issues) |
 | 💬 **Discussions** | Community & Q&A | [GitHub Discussions](https://github.com/MD-Mushfiqur123/lychee/discussions) |
 
