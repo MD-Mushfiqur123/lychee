@@ -64,6 +64,25 @@
   </a>
 </p>
 
+<p align="center">
+  <a href="https://github.com/MD-Mushfiqur123/lychee">
+    <img src="https://img.shields.io/badge/Try%20it-go%20install%20%40latest-28a745?style=for-the-badge&logo=go&logoColor=white" alt="Try it: go install @latest"/>
+  </a>
+</p>
+
+## 🍒 Try It Now
+
+```bash
+# 1. Install
+go install github.com/MD-Mushfiqur123/lychee@latest
+
+# 2. Start server
+lychee serve
+
+# 3. Chat with a model
+lychee run qwen2.5:3b "Hello, Lychee!"
+```
+
 ---
 
 ## 📥 Install
