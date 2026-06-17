@@ -494,6 +494,8 @@ func NewCLI() *cobra.Command {
 	}
 
 	pullCmd.Flags().Bool("insecure", false, "Use an insecure registry")
+	pullCmd.Flags().String("quant", "", "Quantization to prefer (e.g. q4_k_m, q5_k_m) — for HuggingFace models")
+	pullCmd.Flags().Bool("list", false, "List all available quantizations then exit — for HuggingFace models")
 
 	pushCmd := &cobra.Command{
 		Use:               "push MODEL",

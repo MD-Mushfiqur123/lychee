@@ -12,6 +12,19 @@ import (
 )
 
 func PullHandler(cmd *cobra.Command, args []string) error {
+	modelName := args[0]
+
+	// Auto-route: if model contains "/", treat as HuggingFace model reference
+	if strings.Contains(modelName, "/") {
+		fmt.Printf("Detected HuggingFace model: %s\n", modelName)
+		fmt.Printf("Routing to HuggingFace pull...\n\n")
+
+		quant, _ := cmd.Flags().GetString("quant")
+		list, _ := cmd.Flags().GetBool("list")
+
+		return HFPullHandler(cmd, []string{modelName}, quant, list)
+	}
+
 	insecure, err := cmd.Flags().GetBool("insecure")
 	if err != nil {
 		return err
