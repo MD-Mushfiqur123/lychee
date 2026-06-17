@@ -12,7 +12,7 @@ import (
 func DeleteHandler(cmd *cobra.Command, args []string) error {
 	client, err := api.ClientFromEnvironment()
 	if err != nil {
-		return err
+		return wrapServerError("connect to Lychee", err)
 	}
 
 	for _, arg := range args {

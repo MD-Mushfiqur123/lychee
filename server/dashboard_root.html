@@ -1,0 +1,370 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Lychee Server Dashboard</title>
+<style>
+  :root {
+    --bg: #0d1117;
+    --surface: #161b22;
+    --border: #30363d;
+    --text: #e6edf3;
+    --text-muted: #8b949e;
+    --accent: #58a6ff;
+    --accent-green: #3fb950;
+    --accent-orange: #d2991d;
+    --accent-red: #f85149;
+    --radius: 8px;
+    --transition-speed: 0.3s;
+  }
+  /* Light theme */
+  .light {
+    --bg: #ffffff;
+    --surface: #f6f8fa;
+    --border: #d0d7de;
+    --text: #1f2328;
+    --text-muted: #656d76;
+    --accent: #0969da;
+    --accent-green: #1a7f37;
+    --accent-orange: #9a6700;
+    --accent-red: #cf222e;
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  * { transition: background var(--transition-speed) ease, color var(--transition-speed) ease, border-color var(--transition-speed) ease; }
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Noto Sans', Helvetica, Arial, sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    line-height: 1.6;
+    min-height: 100vh;
+  }
+  .header {
+    background: var(--surface);
+    border-bottom: 1px solid var(--border);
+    padding: 1.25rem 2rem;
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+  }
+  .logo {
+    width: 40px;
+    height: 40px;
+    background: linear-gradient(135deg, #58a6ff, #8b5cf6);
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: #fff;
+  }
+  .header h1 { font-size: 1.5rem; font-weight: 600; }
+  .header .version { font-size: 0.85rem; color: var(--text-muted); margin-left: 0.5rem; }
+  .container { max-width: 1100px; margin: 0 auto; padding: 2rem; }
+  .status-bar {
+    display: flex;
+    gap: 1rem;
+    margin-bottom: 2rem;
+    flex-wrap: wrap;
+  }
+  .status-card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    padding: 1rem 1.25rem;
+    flex: 1;
+    min-width: 160px;
+  }
+  .status-card .label { font-size: 0.8rem; color: var(--text-muted); text-transform: uppercase; letter-spacing: 0.05em; margin-bottom: 0.25rem; }
+  .status-card .value { font-size: 1.1rem; font-weight: 600; }
+  .status-dot { display: inline-block; width: 8px; height: 8px; border-radius: 50%; margin-right: 6px; }
+  .status-dot.online { background: var(--accent-green); box-shadow: 0 0 6px var(--accent-green); }
+  .section {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    padding: 1.5rem;
+    margin-bottom: 1.5rem;
+  }
+  .section h2 {
+    font-size: 1.15rem;
+    font-weight: 600;
+    margin-bottom: 1rem;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+  }
+  .section h2 .icon { font-size: 1.2rem; }
+  .model-list { display: flex; flex-direction: column; gap: 0.5rem; }
+  .model-item {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0.6rem 0.75rem;
+    background: var(--bg);
+    border-radius: var(--radius);
+    border: 1px solid var(--border);
+    font-size: 0.9rem;
+  }
+  .model-item .name { font-weight: 500; font-family: 'SF Mono', 'Cascadia Code', 'Fira Code', monospace; }
+  .model-item .meta { color: var(--text-muted); font-size: 0.8rem; }
+  .model-item .badge {
+    font-size: 0.7rem;
+    padding: 2px 8px;
+    border-radius: 12px;
+    background: rgba(88,166,255,0.12);
+    color: var(--accent);
+    font-weight: 500;
+  }
+  .empty-state { color: var(--text-muted); font-style: italic; font-size: 0.9rem; }
+  .endpoint-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+    gap: 0.75rem;
+  }
+  .endpoint {
+    background: var(--bg);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    padding: 0.75rem;
+    font-size: 0.85rem;
+  }
+  .endpoint .method {
+    display: inline-block;
+    padding: 1px 6px;
+    border-radius: 4px;
+    font-size: 0.7rem;
+    font-weight: 700;
+    margin-right: 6px;
+    text-transform: uppercase;
+  }
+  .method.get { background: rgba(63,185,80,0.15); color: var(--accent-green); }
+  .method.post { background: rgba(88,166,255,0.15); color: var(--accent); }
+  .method.delete { background: rgba(248,81,73,0.15); color: var(--accent-red); }
+  .endpoint .path { font-family: 'SF Mono', 'Cascadia Code', 'Fira Code', monospace; font-weight: 500; margin-bottom: 0.25rem; }
+  .endpoint .desc { color: var(--text-muted); font-size: 0.8rem; }
+  .try-section { margin-top: 1rem; }
+  .try-section h3 { font-size: 0.95rem; margin-bottom: 0.75rem; color: var(--text-muted); }
+  pre {
+    background: #0d1117;
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    padding: 1rem;
+    overflow-x: auto;
+    font-family: 'SF Mono', 'Cascadia Code', 'Fira Code', monospace;
+    font-size: 0.8rem;
+    line-height: 1.5;
+  }
+  pre code { color: var(--text); }
+  pre .comment { color: var(--text-muted); }
+  .footer {
+    text-align: center;
+    padding: 2rem;
+    color: var(--text-muted);
+    font-size: 0.85rem;
+  }
+  .footer a { color: var(--accent); text-decoration: none; }
+  .footer a:hover { text-decoration: underline; }
+  .links { display: flex; gap: 1rem; flex-wrap: wrap; margin-top: 0.5rem; }
+  .link-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.35rem;
+    padding: 0.5rem 1rem;
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    color: var(--text);
+    text-decoration: none;
+    font-size: 0.85rem;
+    transition: background 0.15s;
+  }
+  .link-btn:hover { background: rgba(88,166,255,0.08); border-color: var(--accent); }
+  .spinner {
+    display: inline-block;
+    width: 14px;
+    height: 14px;
+    border: 2px solid var(--border);
+    border-top-color: var(--accent);
+    border-radius: 50%;
+    animation: spin 0.6s linear infinite;
+  }
+  @keyframes spin { to { transform: rotate(360deg); } }
+  @media (max-width: 600px) {
+    .container { padding: 1rem; }
+    .header { padding: 1rem; }
+  }
+</style>
+</head>
+<body>
+<div class="header">
+  <div class="logo">L</div>
+  <h1>Lychee</h1>
+  <span class="version" id="version-text">loading&hellip;</span>
+</div>
+
+<div class="container">
+  <!-- Status Bar -->
+  <div class="status-bar">
+    <div class="status-card">
+      <div class="label">Status</div>
+      <div class="value"><span class="status-dot online"></span> Running</div>
+    </div>
+    <div class="status-card">
+      <div class="label">Uptime</div>
+      <div class="value" id="uptime">--</div>
+    </div>
+    <div class="status-card">
+      <div class="label">Loaded Models</div>
+      <div class="value" id="loaded-count">--</div>
+    </div>
+    <div class="status-card">
+      <div class="label">Installed Models</div>
+      <div class="value" id="installed-count">--</div>
+    </div>
+  </div>
+
+  <!-- Installed Models -->
+  <div class="section">
+    <h2><span class="icon">&#x1F4E6;</span> Installed Models</h2>
+    <div class="model-list" id="model-list">
+      <div class="empty-state"><span class="spinner"></span>&nbsp; Loading models&hellip;</div>
+    </div>
+  </div>
+
+  <!-- API Endpoints -->
+  <div class="section">
+    <h2><span class="icon">&#x1F4E1;</span> API Endpoints</h2>
+    <div class="endpoint-grid">
+      <div class="endpoint"><span class="method get">GET</span><div class="path">/api/tags</div><div class="desc">List local models</div></div>
+      <div class="endpoint"><span class="method post">POST</span><div class="path">/api/chat</div><div class="desc">Chat completion</div></div>
+      <div class="endpoint"><span class="method post">POST</span><div class="path">/api/generate</div><div class="desc">Text generation</div></div>
+      <div class="endpoint"><span class="method post">POST</span><div class="path">/api/embed</div><div class="desc">Generate embeddings</div></div>
+      <div class="endpoint"><span class="method post">POST</span><div class="path">/api/embeddings</div><div class="desc">OpenAI-style embeddings</div></div>
+      <div class="endpoint"><span class="method post">POST</span><div class="path">/api/pull</div><div class="desc">Pull a model</div></div>
+      <div class="endpoint"><span class="method post">POST</span><div class="path">/api/push</div><div class="desc">Push a model</div></div>
+      <div class="endpoint"><span class="method post">POST</span><div class="path">/api/create</div><div class="desc">Create a model</div></div>
+      <div class="endpoint"><span class="method post">POST</span><div class="path">/api/copy</div><div class="desc">Copy a model</div></div>
+      <div class="endpoint"><span class="method delete">DELETE</span><div class="path">/api/delete</div><div class="desc">Delete a model</div></div>
+      <div class="endpoint"><span class="method post">POST</span><div class="path">/api/show</div><div class="desc">Model details</div></div>
+      <div class="endpoint"><span class="method get">GET</span><div class="path">/api/ps</div><div class="desc">Running models</div></div>
+      <div class="endpoint"><span class="method get">GET</span><div class="path">/api/version</div><div class="desc">Server version</div></div>
+      <div class="endpoint"><span class="method post">POST</span><div class="path">/api/structured</div><div class="desc">Structured output</div></div>
+      <div class="endpoint"><span class="method get">GET</span><div class="path">/api/conversations</div><div class="desc">Chat history</div></div>
+    </div>
+
+    <div class="try-section">
+      <h3>Try It &mdash; Quick curl Examples</h3>
+<pre><code><span class="comment"># List installed models</span>
+curl http://localhost:11434/api/tags
+
+<span class="comment"># Chat with a model</span>
+curl http://localhost:11434/api/chat -d '{
+  "model": "llama3.2",
+  "messages": [{"role": "user", "content": "Hello!"}]
+}'
+
+<span class="comment"># Generate text</span>
+curl http://localhost:11434/api/generate -d '{
+  "model": "llama3.2",
+  "prompt": "Explain quantum computing in one sentence"
+}'
+
+<span class="comment"># Get server version</span>
+curl http://localhost:11434/api/version</code></pre>
+    </div>
+  </div>
+
+  <!-- Links -->
+  <div class="section">
+    <h2><span class="icon">&#x1F517;</span> Resources</h2>
+    <div class="links">
+      <a class="link-btn" href="https://lychee.com/download" target="_blank">&#x2B07; Download Lychee Desktop</a>
+      <a class="link-btn" href="https://github.com/MD-Mushfiqur123/lychee" target="_blank">&#x1F4C2; GitHub Repository</a>
+      <a class="link-btn" href="https://lychee.com/docs" target="_blank">&#x1F4D6; Documentation</a>
+      <a class="link-btn" href="/dashboard/" target="_blank">&#x1F3A8; Advanced Dashboard</a>
+    </div>
+  </div>
+</div>
+
+<div class="footer">
+  Lychee &mdash; Run AI locally &middot;
+  <a href="https://lychee.com" target="_blank">lychee.com</a>
+</div>
+
+<script>
+const API = '';
+const startTime = performance.now();
+
+function formatUptime(ms) {
+  const s = Math.floor(ms / 1000);
+  const m = Math.floor(s / 60);
+  const h = Math.floor(m / 60);
+  const d = Math.floor(h / 24);
+  if (d > 0) return d + 'd ' + (h % 24) + 'h';
+  if (h > 0) return h + 'h ' + (m % 60) + 'm';
+  if (m > 0) return m + 'm ' + (s % 60) + 's';
+  return s + 's';
+}
+
+setInterval(() => {
+  document.getElementById('uptime').textContent = formatUptime(performance.now() - startTime);
+}, 1000);
+
+async function loadData() {
+  // Version
+  try {
+    const r = await fetch(API + '/api/version');
+    const d = await r.json();
+    document.getElementById('version-text').textContent = 'v' + d.version;
+  } catch(e) { document.getElementById('version-text').textContent = ''; }
+
+  // Models
+  try {
+    const r = await fetch(API + '/api/tags');
+    const d = await r.json();
+    const models = d.models || [];
+    document.getElementById('installed-count').textContent = models.length;
+    const list = document.getElementById('model-list');
+    if (models.length === 0) {
+      list.innerHTML = '<div class="empty-state">No models installed. Pull one with: <code>lychee pull &lt;model&gt;</code></div>';
+    } else {
+      list.innerHTML = models.map((m, i) => {
+        const name = m.name || m.model || 'unknown';
+        const size = m.size ? formatBytes(m.size) : '';
+        const family = (m.details && m.details.family) || '';
+        return '<div class="model-item">' +
+          '<span class="name">' + esc(name) + '</span>' +
+          '<span class="meta">' + esc(size) + (family ? ' &middot; ' + esc(family) : '') + '</span>' +
+        '</div>';
+      }).join('');
+    }
+  } catch(e) {
+    document.getElementById('installed-count').textContent = '?';
+    document.getElementById('model-list').innerHTML = '<div class="empty-state">Could not load models. Is the server running?</div>';
+  }
+
+  // Running models
+  try {
+    const r = await fetch(API + '/api/ps');
+    const d = await r.json();
+    document.getElementById('loaded-count').textContent = (d.models || []).length;
+  } catch(e) { document.getElementById('loaded-count').textContent = '?'; }
+}
+
+function formatBytes(bytes) {
+  if (!bytes || bytes === 0) return '0 B';
+  const k = 1024;
+  const sizes = ['B', 'KB', 'MB', 'GB', 'TB'];
+  const i = Math.floor(Math.log(bytes) / Math.log(k));
+  return parseFloat((bytes / Math.pow(k, i)).toFixed(1)) + ' ' + sizes[i];
+}
+
+function esc(s) {
+  return String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');
+}
+
+loadData();
+</script>
+</body>
+</html>
