@@ -390,7 +390,7 @@ Available Commands:
   run         Run a model
   pull        Pull a model from a registry
   create      Create a model from a Modelfile
-  list        List models
+  models      List installed models
   serve       Start Lychee
   completion  Generate shell completion scripts
 
@@ -559,13 +559,16 @@ Use "lychee [command] --help" for more information about a command.`,
 		RunE:    SignoutHandler,
 	}
 
-	listCmd := &cobra.Command{
-		Use:     "list",
-		Aliases: []string{"ls"},
-		Short:   "List models",
+	modelsCmd := &cobra.Command{
+		Use:     "models",
+		Aliases: []string{"list", "ls"},
+		Short:   "List installed models",
 		PreRunE: checkServerHeartbeat,
-		RunE:    ListHandler,
+		RunE:    ModelsHandler,
 	}
+
+	modelsCmd.Flags().Bool("size", false, "Sort by size (largest first)")
+	modelsCmd.Flags().Bool("json", false, "Output as JSON")
 
 	psCmd := &cobra.Command{
 		Use:     "ps",
@@ -623,7 +626,7 @@ Use "lychee [command] --help" for more information about a command.`,
 		stopCmd,
 		pullCmd,
 		pushCmd,
-		listCmd,
+		modelsCmd,
 		psCmd,
 		copyCmd,
 		deleteCmd,
@@ -674,7 +677,7 @@ Use "lychee [command] --help" for more information about a command.`,
 		loginCmd,
 		signoutCmd,
 		logoutCmd,
-		listCmd,
+		modelsCmd,
 		psCmd,
 		copyCmd,
 		deleteCmd,
