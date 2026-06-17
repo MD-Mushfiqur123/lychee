@@ -1,0 +1,9 @@
+# Lychee Project Statistics
+# Generated: 2026-06-17
+
+Total Files:    2,007
+Total Lines:    2,778,124
+Total Commits:  5,566 (lychee: 5,555 | desktop: 11)
+Total Releases: 5 (lychee: 4 | desktop: 1)
+GitHub Repos:   4 (lychee, lychee-desktop, lychee-docs, lychee-landing-page)
+Build Count:    17
