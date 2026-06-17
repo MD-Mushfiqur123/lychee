@@ -1,0 +1,9 @@
+# Ignore large model files
+*.gguf
+*.safetensors
+*.bin
+*.pt
+*.pth
+
+# But keep Modelfiles
+!Modelfile

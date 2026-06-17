@@ -1,0 +1,15 @@
+# Lychee Modelfile Example
+FROM qwen2.5:3b
+
+# System prompt
+SYSTEM You are a helpful AI assistant.
+
+# Parameters
+PARAMETER temperature 0.7
+PARAMETER top_p 0.9
+PARAMETER top_k 40
+
+# Template (optional)
+TEMPLATE """{{ .System }}
+User: {{ .Prompt }}
+Assistant: """
