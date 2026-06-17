@@ -379,8 +379,22 @@ func NewCLI() *cobra.Command {
 	}
 
 	rootCmd := &cobra.Command{
-		Use:           "lychee",
-		Short:         "Large language model runner",
+		Use:   "lychee",
+		Short: "Large language model runner",
+		Long: `Lychee is a tool for running large language models locally.
+
+Usage:
+  lychee [command]
+
+Available Commands:
+  run         Run a model
+  pull        Pull a model from a registry
+  create      Create a model from a Modelfile
+  list        List models
+  serve       Start Lychee
+  completion  Generate shell completion scripts
+
+Use "lychee [command] --help" for more information about a command.`,
 		SilenceUsage:  true,
 		SilenceErrors: true,
 		CompletionOptions: cobra.CompletionOptions{
@@ -496,6 +510,7 @@ func NewCLI() *cobra.Command {
 	pullCmd.Flags().Bool("insecure", false, "Use an insecure registry")
 	pullCmd.Flags().String("quant", "", "Quantization to prefer (e.g. q4_k_m, q5_k_m) — for HuggingFace models")
 	pullCmd.Flags().Bool("list", false, "List all available quantizations then exit — for HuggingFace models")
+	pullCmd.Flags().Bool("run", false, "After pull, automatically create and start an interactive chat")
 
 	pushCmd := &cobra.Command{
 		Use:               "push MODEL",
