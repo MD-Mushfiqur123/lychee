@@ -280,6 +280,8 @@ sudo mv lychee /usr/local/bin/
 
 ### Client SDKs
 
+Official SDKs for programmatic access to all Lychee features.
+
 ```bash
 # Python
 pip install lychee-python
@@ -287,6 +289,48 @@ pip install lychee-python
 # JavaScript / TypeScript
 npm install lychee-js
 ```
+
+#### 🐍 Python Quick Example
+
+```python
+from lychee import LycheeClient
+
+client = LycheeClient()  # http://localhost:11434
+
+# Chat
+resp = client.chat("gemma3", [{"role": "user", "content": "Explain AI in one sentence."}])
+print(resp["message"]["content"])
+
+# Generate with streaming
+for chunk in client.generate("gemma3", "Write a haiku.", stream=True):
+    print(chunk.get("response", ""), end="", flush=True)
+
+# List all models
+for m in client.list_models():
+    print(m["name"], m["size"])
+
+# Pull from HuggingFace
+for progress in client.pull_model("bartowski/Meta-Llama-3.1-8B-Instruct-GGUF"):
+    print(f"\r{progress.get('status')}: {progress.get('completed')}/{progress.get('total')}", end="")
+
+# Get embeddings
+vec = client.embeddings("nomic-embed-text", "Hello world")
+print(len(vec))  # e.g. 768
+
+# Multi-model DAG pipeline
+result = client.compose(
+    input="Hello world",
+    steps=[
+        {"model": "gemma3", "prompt": "Translate to French: {{input}}"},
+        {"model": "llama3.2", "prompt": "Summarize: {{step[0].output}}"},
+    ]
+)
+print(result["output"])
+```
+
+> 📦 The Python SDK is available as both the `lychee-python` package (zero-dependency) and a
+> single-file `lychee.py` module (requires `requests`). See
+> [sdk/python/README.md](sdk/python/README.md) for details.
 
 ---
 
