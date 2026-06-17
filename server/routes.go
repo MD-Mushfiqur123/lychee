@@ -380,11 +380,23 @@ func (s *Server) GenerateRoutes(rc *lychee.Registry) (http.Handler, error) {
 			c.Header("X-Lychee-API-Version", "1.0.0")
 			c.Next()
 		},
+		func(c *gin.Context) {
+			start := time.Now()
+			c.Next()
+			LogRequest(c.Request.Method, c.Request.URL.Path, c.Writer.Status(), time.Since(start))
+		},
 	)
 
 	// General
 	r.HEAD("/", func(c *gin.Context) { c.String(http.StatusOK, "Lychee is running") })
-	r.GET("/", func(c *gin.Context) { c.String(http.StatusOK, "Lychee is running") })
+	r.GET("/", func(c *gin.Context) {
+		accept := c.GetHeader("Accept")
+		if strings.Contains(accept, "text/html") {
+			s.serveDashboardRoot(c)
+			return
+		}
+		c.String(http.StatusOK, "Lychee is running")
+	})
 	r.HEAD("/api/version", func(c *gin.Context) { c.JSON(http.StatusOK, gin.H{"version": version.Version}) })
 	r.GET("/api/version", func(c *gin.Context) { c.JSON(http.StatusOK, gin.H{"version": version.Version}) })
 	r.GET("/api/status", s.StatusHandler)

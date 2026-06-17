@@ -498,6 +498,7 @@ Use "lychee [command] --help" for more information about a command.`,
 
 	serveCmd.Flags().Int("parallel", 0, "Number of parallel request slots (env: LYCHEE_NUM_PARALLEL)")
 	serveCmd.Flags().Int("slots", 0, "Number of parallel request slots (alias for --parallel)")
+	serveCmd.Flags().String("log-level", "", "Log level: debug, info, warn, error")
 
 	pullCmd := &cobra.Command{
 		Use:     "pull MODEL",
