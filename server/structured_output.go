@@ -50,7 +50,7 @@ func (s *Server) generateStructured(ctx context.Context, opts StructuredOpts) (*
 	if err != nil {
 		return nil, err
 	}
-	m, err := GetModel(name.String())
+	_, err = GetModel(name.String())
 	if err != nil {
 		return nil, err
 	}

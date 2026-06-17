@@ -252,6 +252,9 @@ func TestHTTPIntegration(t *testing.T) {
 
 		// Verify it is back in the list
 		resp, err = client.Get(ts.URL + "/api/conversations?limit=10")
+		if err != nil {
+			t.Fatalf("failed to get conversations: %v", err)
+		}
 		var list []ConversationSummary
 		_ = json.NewDecoder(resp.Body).Decode(&list)
 		resp.Body.Close()

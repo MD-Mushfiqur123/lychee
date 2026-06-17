@@ -178,7 +178,7 @@ import (
 func main() {
 	client, err := api.ClientFromEnvironment()
 	if err != nil {
-		log.Fatalf("failed to create client: %v", err)
+		log.Fatalf("failed to create client: %%v", err)
 	}
 
 	req := &api.ChatRequest{
@@ -193,7 +193,7 @@ func main() {
 		return nil
 	})
 	if err != nil {
-		log.Fatalf("chat failed: %v", err)
+		log.Fatalf("chat failed: %%v", err)
 	}
 	fmt.Println()
 }

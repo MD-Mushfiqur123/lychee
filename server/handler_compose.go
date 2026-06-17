@@ -37,7 +37,7 @@ func (s *Server) ComposeHandler(c *gin.Context) {
 		if err != nil {
 			return "", err
 		}
-		m, err := GetModel(name.String())
+		_, err = GetModel(name.String())
 		if err != nil {
 			return "", err
 		}

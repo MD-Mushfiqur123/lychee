@@ -290,7 +290,13 @@ func darwinMemInfo() memInfo {
 	}
 	freePages := extractVMStatValue(string(out), "free")
 	pageSizeStr, err := exec.Command("pagesize").Output()
-	pageSize, _ := strconv.ParseInt(strings.TrimSpace(string(pageSizeStr)), 10, 64)
+	if err != nil {
+		return memInfo{total: total}
+	}
+	pageSize, err := strconv.ParseInt(strings.TrimSpace(string(pageSizeStr)), 10, 64)
+	if err != nil {
+		return memInfo{total: total}
+	}
 	free := freePages * pageSize
 	used := total - free
 	return memInfo{total: total, used: used, free: free}
